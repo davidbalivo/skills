@@ -7,15 +7,7 @@ description: You MUST use this skill before any git operation — defines commit
 
 This skill defines the rules for all git operations in the project: what to commit together, how to format messages, and what requires user confirmation.
 
-**Announce at start:** 📣 "I'm using the git-operations skill to [commit/review changes/stage files/etc.]."
-
-## Anti-Pattern: "These Changes Are Related Enough"
-
-Commits that mix unrelated changes hide intent and make rollbacks painful. When in doubt, split. A commit that touches auth and UI in the same message is two commits.
-
-## When in Doubt
-
-Never assume or guess when information is missing — ask.
+**Announce at start:** 📣 "I'm using the git-operations skill"
 
 ## Commit Strategy
 
@@ -28,10 +20,11 @@ Never assume or guess when information is missing — ask.
 - **Local only**: no `push`, `pull`, or `fetch` — remote sync is user-only
 - **Strict confirmation**: explain and get explicit "OK" before any write operation (commit, reset, merge)
 - **Auto-read**: `status`, `diff`, and `log` require no confirmation
+- **Ask when unsure**: never assume or guess on missing information — ask before acting
 
 ## Message Format
 
-`type(scope): description` — One-line summary of what changed (present tense, imperative mood, <72 chars), no trailing period.
+`type(scope): description` — header only, no body, no footer. Present tense, imperative mood, <72 chars, lowercase first character of `description`, no trailing period.
 
 | Type       | Purpose                        |
 | ---------- | ------------------------------ |
@@ -45,7 +38,6 @@ Never assume or guess when information is missing — ask.
 | `build`    | Build system/dependencies      |
 | `ci`       | CI/config changes              |
 | `chore`    | Maintenance/misc               |
-| `revert`   | Revert commit                  |
 | `skill`    | Skill add/update/remove        |
 
 ## Skill Artifacts
