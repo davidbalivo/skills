@@ -11,23 +11,23 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Installation
 
-| Mode | Command | Destination | When to use |
-|---|---|---|---|
-| Global | `npx skills add davidbalivo/skills@<skill> -g` | `~/.claude/skills/` | Transversal skills useful in any project |
-| Per project | `npx skills add davidbalivo/skills@<skill>` | `<project>/.claude/skills/` | Skills specific to the project's domain |
+| Mode        | Command                                        | Destination                 | When to use                              |
+| ----------- | ---------------------------------------------- | --------------------------- | ---------------------------------------- |
+| Global      | `npx skills add davidbalivo/skills@<skill> -g` | `~/.claude/skills/`         | Transversal skills useful in any project |
+| Per project | `npx skills add davidbalivo/skills@<skill>`    | `<project>/.claude/skills/` | Skills specific to the project's domain  |
 
 ## Updating
 
-| Command | Effect |
-|---|---|
-| `npx skills update` | Update all skills in the current project |
-| `npx skills update -g` | Update only global skills |
-| `npx skills update <skill>` | Update a single skill |
+| Command                     | Effect                                   |
+| --------------------------- | ---------------------------------------- |
+| `npx skills update`         | Update all skills in the current project |
+| `npx skills update -g`      | Update only global skills                |
+| `npx skills update <skill>` | Update a single skill                    |
 
 ## Catalog
 
-| Skill | Category | Mode | Description |
-|---|---|---|---|
+| Skill                                              | Category    | Mode   | Description                                                               |
+| -------------------------------------------------- | ----------- | ------ | ------------------------------------------------------------------------- |
 | [deep-alignment](skills/discovery/deep-alignment/) | `discovery` | Global | Structured interview to align the agent with the user before implementing |
 
 ## Adding a new skill
