@@ -1,39 +1,39 @@
 # skills
 
-Store privado de skills personales para agentes (Claude Code y otros), instalables vía [`npx skills`](https://github.com/vercel-labs/skills).
+Private store of personal skills for agents (Claude Code and others), installable via [`npx skills`](https://github.com/vercel-labs/skills).
 
-## Prerequisitos
+## Prerequisites
 
-`npx skills` clona el repo con git, así que necesitas auth de GitHub configurada:
+`npx skills` clones the repo with git, so you need GitHub auth configured:
 
-- **SSH:** clave SSH añadida a tu cuenta de GitHub (`ssh -T git@github.com` debe responder con éxito), o
-- **HTTPS:** [`gh auth login`](https://cli.github.com/) hecho.
+- **SSH:** SSH key added to your GitHub account (`ssh -T git@github.com` should respond successfully), or
+- **HTTPS:** [`gh auth login`](https://cli.github.com/) done.
 
-## Instalación
+## Installation
 
-| Modalidad | Comando | Destino | Cuándo usar |
+| Mode | Command | Destination | When to use |
 |---|---|---|---|
-| Global | `npx skills add davidbalivo/skills@<skill> -g` | `~/.claude/skills/` | Skills transversales útiles en cualquier proyecto |
-| Por proyecto | `npx skills add davidbalivo/skills@<skill>` | `<proyecto>/.claude/skills/` | Skills específicas del dominio del proyecto |
+| Global | `npx skills add davidbalivo/skills@<skill> -g` | `~/.claude/skills/` | Transversal skills useful in any project |
+| Per project | `npx skills add davidbalivo/skills@<skill>` | `<project>/.claude/skills/` | Skills specific to the project's domain |
 
-## Actualización
+## Updating
 
-| Comando | Efecto |
+| Command | Effect |
 |---|---|
-| `npx skills update` | Actualiza todas las skills del proyecto actual |
-| `npx skills update -g` | Actualiza solo las skills globales |
-| `npx skills update <skill>` | Actualiza una skill concreta |
+| `npx skills update` | Update all skills in the current project |
+| `npx skills update -g` | Update only global skills |
+| `npx skills update <skill>` | Update a single skill |
 
-## Catálogo
+## Catalog
 
-| Skill | Categoría | Modalidad | Descripción |
+| Skill | Category | Mode | Description |
 |---|---|---|---|
-| [deep-alignment](skills/discovery/deep-alignment/) | `discovery` | Global | Entrevista estructurada para alinear al agente con el usuario antes de implementar |
+| [deep-alignment](skills/discovery/deep-alignment/) | `discovery` | Global | Structured interview to align the agent with the user before implementing |
 
-## Añadir una skill nueva
+## Adding a new skill
 
-1. Crear carpeta `skills/<categoría>/<nombre-skill>/`. Categoría existente preferida; si es nueva, validar el nombre con propuesta 3-5.
-2. Escribir `SKILL.md` con frontmatter YAML obligatorio (`name`, `description`).
-3. Escribir `README.md` siguiendo la estructura: instalación primero, luego cuándo usarla e invocación.
-4. Añadir fila al [catálogo](#catálogo).
-5. Commit atómico: `feat(<categoría>): add <skill> skill`.
+1. Create folder `skills/<category>/<skill-name>/`. Prefer existing categories; if new, validate the name with a 3-5 option proposal.
+2. Write `SKILL.md` with required YAML frontmatter (`name`, `description`).
+3. Write `README.md` following the per-skill contract defined in [CLAUDE.md](./CLAUDE.md).
+4. Add a row to the [catalog](#catalog).
+5. Atomic commit: `feat(<category>): add <skill> skill`.
