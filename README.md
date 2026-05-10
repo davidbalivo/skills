@@ -37,3 +37,10 @@ Private store of personal skills for agents (Claude Code and others), installabl
 3. Write `README.md` following the per-skill contract defined in [CLAUDE.md](./CLAUDE.md).
 4. Add a row to the [catalog](#catalog).
 5. Atomic commit: `feat(<category>): add <skill> skill`.
+
+## Development
+
+Markdown is auto-formatted with [Prettier](https://prettier.io/) (config in `.prettierrc`):
+
+- VSCode: format on save (requires the `esbenp.prettier-vscode` extension).
+- Claude Code: on Write/Edit via the `PostToolUse` hook in `.claude/settings.json`.
