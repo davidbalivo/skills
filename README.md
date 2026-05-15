@@ -26,11 +26,12 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Catalog
 
-| Skill                                                | Category      | Mode        | Description                                                                       |
-| ---------------------------------------------------- | ------------- | ----------- | --------------------------------------------------------------------------------- |
-| [deep-alignment](skills/discovery/deep-alignment/)   | `discovery`   | Global      | Structured interview to align the agent with the user before implementing         |
-| [git-operations](skills/engineering/git-operations/) | `engineering` | Per project | Rules for local git: commit strategy, write-op confirmation, message format       |
-| [spec-forge](skills/engineering/spec-forge/)         | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs |
+| Skill                                                                        | Category      | Mode        | Description                                                                       |
+| ---------------------------------------------------------------------------- | ------------- | ----------- | --------------------------------------------------------------------------------- |
+| [deep-alignment](skills/discovery/deep-alignment/)                           | `discovery`   | Global      | Structured interview to align the agent with the user before implementing         |
+| [git-operations](skills/engineering/git-operations/)                         | `engineering` | Per project | Rules for local git: commit strategy, write-op confirmation, message format       |
+| [spec-forge](skills/engineering/spec-forge/)                                 | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs |
+| [step-based-skills-standard](skills/engineering/step-based-skills-standard/) | `engineering` | Per project | Canonical structure, keywords, tags and mermaid conventions for SDD-flow skills   |
 
 ## Adding a new skill
 
