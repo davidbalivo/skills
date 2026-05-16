@@ -34,6 +34,8 @@ A plan evolves through three states, tracked in frontmatter `status:`:
 | `internally-reviewed` | After Step 7 (Self-review) | author | Waits for external review |
 | `validated`           | After Step 10 (Promote)    | author | Ready for plan-craft      |
 
+## Steps Flow
+
 ```mermaid
 flowchart TD
     S1[1. Understand Context] --> S2[2. Understand Idea]

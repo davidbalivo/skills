@@ -39,6 +39,8 @@ Short statement of identity and stance the skill adopts; shapes tone and decisio
 | `internally-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
 | `validated`           | After Step 6 (Triage)      | author | Ready for next phase   |
 
+## Steps Flow
+
 ` ` `mermaid
 flowchart TD
 S1["1. Input Validation"]

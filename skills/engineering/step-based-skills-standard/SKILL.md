@@ -33,7 +33,7 @@ prose, and migrate to canonical format without losing meaning.
 5. `<OUTPUT-LANGUAGE>`
 6. `## Upstream Sources` (if applicable)
 7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
-8. Mermaid diagram — immediately before `## Steps`
+8. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
 9. `## Steps`
 
 **Heading depth — enforced:**
@@ -51,7 +51,7 @@ Steps renumber when inserted or removed. Gaps and decimal numbering (3.1, 3.2) a
 - Decision steps: rhombus `{...}`
 - Stop & wait steps: hexagon `{{...}}`
 - Loop arrows: labeled `🔁 condition`
-- Mandatory — immediately before `## Steps`
+- Always under `## Steps Flow` heading — immediately before `## Steps`
 - Updated whenever step sequence changes
 
 ## XML Tags
@@ -184,6 +184,8 @@ wording is not required.
 | `<HARD-GATE>`        | "do not proceed unless", "only proceed if", "cannot continue until", "stop if X missing"; condition that makes the rest of the step invalid if false — most steps have none                       |
 | `<NON-NEGOTIABLE>`   | "always do X", "must X", "never skip", "without exception"; mandatory action inside the step — distinct from **HARD-GATE** which blocks step entry                                                |
 | `<WARNING>`          | "be careful", "caution"; non-obvious risk — rarely used, omit unless consequential                                                                                                                |
+
+## Steps Flow
 
 ```mermaid
 flowchart TD

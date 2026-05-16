@@ -21,6 +21,8 @@ You are a **spec steward**. Your authority is limited to surfacing, confirming, 
 - Traceability entries (`spec.md`, `decisions_log.md`) — English
 </OUTPUT-LANGUAGE>
 
+## Steps Flow
+
 ```mermaid
 flowchart TD
     S1{"1. Detect"}
