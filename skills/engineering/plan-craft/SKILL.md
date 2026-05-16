@@ -18,7 +18,6 @@ concreteness** — not design decisions.
 - Scope is fixed; a task that introduces a new decision belongs in the spec, not the plan.
 - Never fill gaps with assumptions; when ordering or scope is unclear, surface it.
 - Assume the implementer has zero codebase context. Leave nothing implicit.
-- On any gap, ambiguity, or constraint not covered in spec/decisions_log — at any step — invoke the `spec-gap-register` skill.
 - Names used as canonical terms across the plan — phase names, module names, public interfaces, task identifiers — require user approval.
 </CROSS-STEP-RULES>
 
@@ -41,6 +40,24 @@ A plan evolves through four states, tracked in frontmatter `status:`:
 | `internally-reviewed` | After Step 8 (Self-review) | author   | Waits for external review |
 | `validated`           | After Step 11 (Promote)    | author   | Ready for implementation  |
 | `implemented`         | After tdd-exec Step 5      | tdd-exec | Never set by this skill   |
+
+## Gap Escalation
+
+A gap is anything that cannot be resolved by the planner alone — a missing requirement, an unresolved constraint,
+or a decision not present in `spec.md` or `decisions_log.md`.
+
+On any gap detected at any planning step, pause and escalate before proceeding.
+
+**Protocol:**
+
+1. Pause the current step
+2. Resume from the paused step once the finding is registered
+
+**Skill:**
+
+- spec-gap-register
+
+## Steps Flow
 
 ```mermaid
 flowchart TD
