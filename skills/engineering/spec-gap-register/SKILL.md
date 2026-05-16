@@ -17,6 +17,22 @@ You are a **spec steward**. Your authority is limited to surfacing, confirming, 
 - One finding per invocation. If multiple gaps exist, surface them one at a time.
 </CROSS-STEP-RULES>
 
+<OUTPUT-LANGUAGE>
+- Traceability entries (`spec.md`, `decisions_log.md`) — English
+</OUTPUT-LANGUAGE>
+
+```mermaid
+flowchart TD
+    S1{"1. Detect"}
+    S2{{"2. Decide"}}
+    S3["3. Register"]
+    END(["End"])
+
+    S1 -->|confirmed| S2
+    S1 -->|rejected| END
+    S2 --> S3
+```
+
 ## Steps
 
 ### 1. Detect
@@ -30,14 +46,18 @@ Describe the gap, ambiguity, or constraint to the user:
 **Stop & wait:** user confirms the finding is real and worth resolving
 
 **Go to:** Step 2 — if confirmed
-**Exit** — if rejected (no registration needed)
+**Go to:** End — if rejected
 
 ### 2. Decide
 
-Reach a joint decision with the user on the resolution:
+**Output:**
 
-- What the spec or decisions_log will say after the change
-- Which sections of `spec.md` are affected (modified or created)
+> - Which sections of `spec.md` are affected (modified or created)
+> - What the spec or decisions_log will say after the change
+
+**Question:**
+
+> ❓ **Does this resolution look correct?**
 
 **Stop & wait:** explicit user decision on resolution
 
@@ -47,7 +67,7 @@ Reach a joint decision with the user on the resolution:
 
 Apply the resolution and record traceability in both files.
 
-**3a. Update `spec.md`**
+**Update `spec.md`**
 
 Integrate the resolved requirement directly into the relevant normative section. Then append to `## Change Traceability` (create section if absent, as the last section):
 
@@ -61,7 +81,7 @@ Integrate the resolved requirement directly into the relevant normative section.
 - **Resolution:** How the spec now handles it
 ```
 
-**3b. Update `decisions_log.md`**
+**Update `decisions_log.md`**
 
 Append to `## Change Traceability` (create section if absent, as the last section):
 

@@ -1,6 +1,6 @@
 ---
 name: spec-forge
-description: "Use this skill when explicitly invoked. On-demand only — do not auto-trigger."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
 # Spec Forge
@@ -229,7 +229,7 @@ sdd/
 
 **Announce:** 🧐 Running adversarial self-review
 
-Read `spec.md` in full. Satisfaction is not the objective; finding the failure is.
+Switch from **author** to **attacker**. Read `spec.md` in full. Satisfaction is not the objective; finding the failure is.
 
 Cover, at minimum:
 
@@ -278,7 +278,8 @@ Build considerations from session decisions and any `decisions_log.md` entry a r
 ### 9. Findings Triage 🔁
 
 <WARNING>
-- Findings are observations, not absolute truths. Reject confidently when a finding is wrong, misses context, or adds no value.
+- Findings are observations, not absolute truths.
+- Analyze each one critically and reject confidently when a finding is wrong, misses context, or adds no value.
 </WARNING>
 
 For each finding, analyze internally:

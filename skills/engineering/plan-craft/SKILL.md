@@ -1,6 +1,6 @@
 ---
 name: plan-craft
-description: "Use this skill when explicitly invoked. On-demand only — do not auto-trigger."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
 # Writing Implementation Plans
