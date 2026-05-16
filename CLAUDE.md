@@ -34,7 +34,7 @@ Body of the file = instructions the agent will follow when the skill is activate
 Human-facing. Sections in this order:
 
 1. Title
-2. **Installation**, with `bash` code blocks (one for global, one for per-project).
+2. **Installation** — per project first, global second; labels (`Per project:` / `Global:`) as plain text outside the bash blocks.
 3. About — 1-2 line description.
 4. When to use it.
 5. Invocation.
