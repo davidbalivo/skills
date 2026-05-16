@@ -2,14 +2,16 @@
 
 ## Installation
 
-```bash
-# Global
-npx skills add davidbalivo/skills@spec-gap-register -g
-```
+Per project:
 
 ```bash
-# Per project
 npx skills add davidbalivo/skills@spec-gap-register
+```
+
+Global:
+
+```bash
+npx skills add davidbalivo/skills@spec-gap-register -g
 ```
 
 ## About

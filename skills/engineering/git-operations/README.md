@@ -2,13 +2,13 @@
 
 ## Installation
 
-Recommended per project (apply only on development projects that use git):
+Per project:
 
 ```bash
 npx skills add davidbalivo/skills@git-operations
 ```
 
-Global install (applies to every project — only if you want the rules enforced everywhere):
+Global:
 
 ```bash
 npx skills add davidbalivo/skills@git-operations -g

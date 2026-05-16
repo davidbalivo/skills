@@ -2,16 +2,16 @@
 
 ## Installation
 
-Recommended as global (transversal utility, applicable to any project):
-
-```bash
-npx skills add davidbalivo/skills@deep-alignment -g
-```
-
-For the current project only:
+Per project:
 
 ```bash
 npx skills add davidbalivo/skills@deep-alignment
+```
+
+Global:
+
+```bash
+npx skills add davidbalivo/skills@deep-alignment -g
 ```
 
 ## About

@@ -2,14 +2,16 @@
 
 ## Installation
 
-```bash
-# Global
-npx skills add davidbalivo/skills@plan-craft -g
-```
+Per project:
 
 ```bash
-# Per project
 npx skills add davidbalivo/skills@plan-craft
+```
+
+Global:
+
+```bash
+npx skills add davidbalivo/skills@plan-craft -g
 ```
 
 ## About
