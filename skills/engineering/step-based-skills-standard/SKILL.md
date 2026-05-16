@@ -3,7 +3,7 @@ name: step-based-skills-standard
 description: "Use this skill when explicitly invoked. Defines the standard and guides migration of SDD-flow skills to canonical format."
 ---
 
-# Step-Based Skill Standard
+# Step-Based Skills Standard
 
 Defines structure, format, and conventions for SDD-flow skills: sdd-spec, sdd-plan, sdd-plan-tdd, sdd-impl-tdd,
 and future skills of the same lifecycle.

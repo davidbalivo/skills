@@ -3,7 +3,7 @@ name: sdd-spec
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
-# Spec Forge
+# SDD Spec
 
 Forge raw ideas — features, architectural changes, refactors, product initiatives — into **specifications that have survived deliberate stress** that a reviewer with zero prior context can evaluate independently.
 

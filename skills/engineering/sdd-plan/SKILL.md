@@ -3,7 +3,7 @@ name: sdd-plan
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
-# Writing Implementation Plans (Lite)
+# SDD Plan
 
 Converts a validated spec and decision log into a concrete, executable implementation plan
 that a skilled engineer with zero codebase context can follow independently.

@@ -16,7 +16,15 @@ npx skills add davidbalivo/skills@sdd-plan -g
 
 ## About
 
-Variant of [`sdd-plan-tdd`](../sdd-plan-tdd/) without the TDD protocol (RED → GREEN → REFACTOR cycles, outer/inner loop framing, handoff to `sdd-impl-tdd`); keeps testable acceptance criteria and the same phase/task structure.
+Variant of [`sdd-plan-tdd`](../sdd-plan-tdd/) without the TDD protocol.
+
+**Drops:**
+
+- RED → GREEN → REFACTOR cycles
+- Outer/inner loop framing
+- Handoff to `sdd-impl-tdd`
+
+**Keeps:** testable acceptance criteria and the same phase/task structure.
 
 Converts a validated SDD spec and decisions log into a concrete implementation plan a zero-context engineer can execute independently.
 

@@ -3,7 +3,7 @@ name: sdd-spec-gap
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. For gaps, ambiguities, or constraints not covered by spec or decisions."
 ---
 
-# Spec Gap Register
+# SDD Spec Gap
 
 Use when planning or implementation reveals **gaps, ambiguities, or constraints not covered** in the original spec or decisions.
 
