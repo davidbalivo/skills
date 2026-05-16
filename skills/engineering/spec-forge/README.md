@@ -16,7 +16,7 @@ npx skills add davidbalivo/skills@spec-forge -g
 
 ## About
 
-An `engineering` skill that runs an on-demand interrogation flow to turn ideas into reviewable specs a zero-context reader can evaluate.
+An `engineering` skill that runs an on-demand interrogation flow to turn ideas into reviewable specs a zero-context reader can evaluate. Implements the Spec Driven Development (SDD) workflow — artifacts live in `sdd/{YY-MM-DD}-{id}/`.
 
 ## When to use
 
