@@ -1,6 +1,6 @@
 ---
 name: step-based-skills-standard
-description: "Use this skill when explicitly invoked. Defines the standard and guides migration of SDD-flow skills to canonical format."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Defines the standard and guides migration of SDD-flow skills to canonical format."
 ---
 
 # Step-Based Skills Standard
