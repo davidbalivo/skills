@@ -1,5 +1,5 @@
 ---
-name: spec-forge
+name: sdd-spec
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
@@ -32,7 +32,7 @@ A plan evolves through three states, tracked in frontmatter `status:`:
 | --------------------- | -------------------------- | ------ | ------------------------- |
 | `draft`               | After Step 6 (Write)       | author | Internal self-review      |
 | `internally-reviewed` | After Step 7 (Self-review) | author | Waits for external review |
-| `validated`           | After Step 10 (Promote)    | author | Ready for plan-craft      |
+| `validated`           | After Step 10 (Promote)    | author | Ready for sdd-plan        |
 
 ## Steps Flow
 

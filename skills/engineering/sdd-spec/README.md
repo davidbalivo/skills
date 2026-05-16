@@ -1,17 +1,17 @@
-# spec-forge
+# sdd-spec
 
 ## Installation
 
 Per project:
 
 ```bash
-npx skills add davidbalivo/skills@spec-forge
+npx skills add davidbalivo/skills@sdd-spec
 ```
 
 Global:
 
 ```bash
-npx skills add davidbalivo/skills@spec-forge -g
+npx skills add davidbalivo/skills@sdd-spec -g
 ```
 
 ## About
@@ -24,4 +24,4 @@ On-demand only — do not auto-trigger. Invoke when starting a new SDD: features
 
 ## Invocation
 
-`/spec-forge`
+`/sdd-spec`

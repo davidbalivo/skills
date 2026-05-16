@@ -1,5 +1,5 @@
 ---
-name: spec-gap-register
+name: sdd-spec-gap
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. For gaps, ambiguities, or constraints not covered by spec or decisions."
 ---
 

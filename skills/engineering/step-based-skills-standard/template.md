@@ -66,7 +66,7 @@ S5["5. Promote"]
 
 ### 1 — Conditional navigation, no user interaction
 
-Based on spec-forge Step 1 (SDD scan).
+Based on sdd-spec Step 1 (SDD scan).
 
 ```markdown
 ### 1. Understand the Current Context
@@ -82,7 +82,7 @@ with the current request. If nothing seems relevant, proceed silently.
 
 ### 2 — HARD-GATE + Question + Stop & wait
 
-Based on spec-forge Step 3 (Understanding Lock).
+Based on sdd-spec Step 3 (Understanding Lock).
 
 ```markdown
 ### 3. Understanding Lock
@@ -111,7 +111,7 @@ Present an understanding summary and a list of all assumptions, each marked as `
 
 ### 3 — Announce + Output + Stop & wait + 🤝 handoff
 
-Based on spec-forge Step 8 (External Review Request).
+Based on sdd-spec Step 8 (External Review Request).
 
 ```markdown
 ### 8. External Review Request
@@ -139,7 +139,7 @@ might misread without context.
 
 ### 4 — Loop: 🔁 + Go to (back) + Commit + Skill
 
-Based on tdd-exec Stages 6–7 (Task Review → Findings Triage loop).
+Based on sdd-impl-tdd Stages 6–7 (Task Review → Findings Triage loop).
 
 ```markdown
 ### 5. Task Review

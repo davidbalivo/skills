@@ -1,17 +1,17 @@
-# spec-gap-register
+# sdd-spec-gap
 
 ## Installation
 
 Per project:
 
 ```bash
-npx skills add davidbalivo/skills@spec-gap-register
+npx skills add davidbalivo/skills@sdd-spec-gap
 ```
 
 Global:
 
 ```bash
-npx skills add davidbalivo/skills@spec-gap-register -g
+npx skills add davidbalivo/skills@sdd-spec-gap -g
 ```
 
 ## About
@@ -20,10 +20,10 @@ Structured three-step flow (detect → decide → register) for surfacing and tr
 
 ## When to use it
 
-Invoke when any SDD skill (e.g. `plan-craft`) surfaces a gap, ambiguity, or constraint not covered by the current spec or decisions.
+Invoke when any SDD skill (e.g. `sdd-plan`) surfaces a gap, ambiguity, or constraint not covered by the current spec or decisions.
 
 ## Invocation
 
 ```
-/spec-gap-register
+/sdd-spec-gap
 ```

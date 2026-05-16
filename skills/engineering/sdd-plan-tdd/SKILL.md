@@ -1,5 +1,5 @@
 ---
-name: plan-craft
+name: sdd-plan-tdd
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
@@ -34,12 +34,12 @@ concreteness** — not design decisions.
 
 A plan evolves through four states, tracked in frontmatter `status:`:
 
-| State                 | When                       | Who      | Action                    |
-| --------------------- | -------------------------- | -------- | ------------------------- |
-| `draft`               | After Step 7 (Write)       | author   | Internal self-review      |
-| `internally-reviewed` | After Step 8 (Self-review) | author   | Waits for external review |
-| `validated`           | After Step 11 (Promote)    | author   | Ready for implementation  |
-| `implemented`         | After tdd-exec Step 5      | tdd-exec | Never set by this skill   |
+| State                 | When                       | Who          | Action                    |
+| --------------------- | -------------------------- | ------------ | ------------------------- |
+| `draft`               | After Step 7 (Write)       | author       | Internal self-review      |
+| `internally-reviewed` | After Step 8 (Self-review) | author       | Waits for external review |
+| `validated`           | After Step 11 (Promote)    | author       | Ready for implementation  |
+| `implemented`         | After sdd-impl-tdd Step 5  | sdd-impl-tdd | Never set by this skill   |
 
 ## Gap Escalation
 
@@ -55,7 +55,7 @@ On any gap detected at any planning step, pause and escalate before proceeding.
 
 **Skill:**
 
-- spec-gap-register
+- sdd-spec-gap
 
 ## Steps Flow
 

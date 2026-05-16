@@ -5,7 +5,7 @@ description: "Use this skill when explicitly invoked. Defines the standard and g
 
 # Step-Based Skill Standard
 
-Defines structure, format, and conventions for SDD-flow skills: spec-forge, plan-craft, tdd-exec,
+Defines structure, format, and conventions for SDD-flow skills: sdd-spec, sdd-plan, sdd-plan-tdd, sdd-impl-tdd,
 and future skills of the same lifecycle.
 
 ## Role

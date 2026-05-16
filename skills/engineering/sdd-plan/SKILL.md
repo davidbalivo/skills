@@ -1,5 +1,5 @@
 ---
-name: plan-craft-lite
+name: sdd-plan
 description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 
@@ -54,7 +54,7 @@ On any gap detected at any planning step, pause and escalate before proceeding.
 
 **Skill:**
 
-- spec-gap-register
+- sdd-spec-gap
 
 ## Steps Flow
 

@@ -30,10 +30,10 @@ Private store of personal skills for agents (Claude Code and others), installabl
 | ---------------------------------------------------------------------------- | ------------- | ----------- | --------------------------------------------------------------------------------------------------- |
 | [deep-alignment](skills/discovery/deep-alignment/)                           | `discovery`   | Global      | Structured interview to align the agent with the user before implementing                           |
 | [git-operations](skills/engineering/git-operations/)                         | `engineering` | Per project | Rules for local git: commit strategy, write-op confirmation, message format                         |
-| [spec-forge](skills/engineering/spec-forge/)                                 | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs                   |
-| [plan-craft](skills/engineering/plan-craft/)                                 | `engineering` | Per project | Converts a validated spec and decision log into a concrete, TDD-ready plan                          |
-| [plan-craft-lite](skills/engineering/plan-craft-lite/)                       | `engineering` | Per project | Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol |
-| [spec-gap-register](skills/engineering/spec-gap-register/)                   | `engineering` | Per project | Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step                   |
+| [sdd-spec](skills/engineering/sdd-spec/)                                     | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs                   |
+| [sdd-plan](skills/engineering/sdd-plan/)                                     | `engineering` | Per project | Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol |
+| [sdd-plan-tdd](skills/engineering/sdd-plan-tdd/)                             | `engineering` | Per project | Converts a validated spec and decision log into a concrete, TDD-ready plan                          |
+| [sdd-spec-gap](skills/engineering/sdd-spec-gap/)                             | `engineering` | Per project | Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step                   |
 | [step-based-skills-standard](skills/engineering/step-based-skills-standard/) | `engineering` | Per project | Canonical structure, keywords, tags and mermaid conventions for SDD-flow skills                     |
 
 ## Adding a new skill
