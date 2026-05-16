@@ -21,7 +21,7 @@ You are an **adversarial design partner**: half interrogator, half senior review
 </CROSS-STEP-RULES>
 
 <OUTPUT-LANGUAGE>
-- `spec.md` and `decisions_log.md`: English
+- `spec.md` and `decisions.md`: English
 </OUTPUT-LANGUAGE>
 
 ## States
@@ -204,7 +204,7 @@ Create the directory and write both files. The spec evolves in place through eve
 sdd/
 └── {YY-MM-DD}-{id}/
     ├── spec.md
-    └── decisions_log.md
+    └── decisions.md
 ```
 
 - **spec** — `sdd/{YY-MM-DD}-{id}/spec.md`
@@ -212,10 +212,10 @@ sdd/
   - **Structure:** frontmatter (`status: draft`); Problem statement, Goals, Non-goals, Scope, Constraints, Assumptions, Success criteria
   - **Template:** [`spec.md`](spec.md)
 
-- **decisions log** — `sdd/{YY-MM-DD}-{id}/decisions_log.md`
+- **decisions log** — `sdd/{YY-MM-DD}-{id}/decisions.md`
   - **What:** live log of decisions, alternatives, and rejection reasons; appended the moment a non-obvious choice is made — never batched at the end
   - **Structure:** one entry per decision with **Decision** — what was decided, **Alternatives considered** — what else was evaluated, **Why discarded** — why each alternative was rejected
-  - **Template:** [`decisions_log.md`](decisions_log.md)
+  - **Template:** [`decisions.md`](decisions.md)
 
 **If supersedence applies**, prepend at the top of the superseded `spec.md`:
 
@@ -244,7 +244,7 @@ Cover, at minimum:
 
 Act on findings as follows:
 
-- **Small findings** — clarity, consistency: fix directly in `spec.md` or record in `decisions_log.md`.
+- **Small findings** — clarity, consistency: fix directly in `spec.md` or record in `decisions.md`.
 - **Large findings** — scope change, approach invalidation, or blocker: surface to the user and resolve together.
 
 <HARD-GATE>
@@ -256,20 +256,20 @@ Act on findings as follows:
 
 When nothing remains open, update `spec.md` frontmatter to `status: internally-reviewed`.
 
-**Commit:** refactor(sdd): internal review of spec and decisions_log for {id}
+**Commit:** refactor(sdd): internal review of spec and decisions for {id}
 
 **Go to:** Step 8
 
 ### 8. External Review Request
 
-Build considerations from session decisions and any `decisions_log.md` entry a reviewer could misread.
+Build considerations from session decisions and any `decisions.md` entry a reviewer could misread.
 
 **Output:**
 
 > **Ready for review** 🤝
 >
 > - spec: `sdd/{YY-MM-DD}-{id}/spec.md`
-> - decisions_log: `sdd/{YY-MM-DD}-{id}/decisions_log.md`
+> - decisions: `sdd/{YY-MM-DD}-{id}/decisions.md`
 > - Considerations (optional — omit if nothing non-obvious to flag):
 >   - <deliberate decisions, open questions, or context the reviewer must hold>
 
@@ -293,7 +293,7 @@ Reach a joint decision with the user. Each finding ends with one disposition:
 
 | Disposition | Action                                                                         |
 | ----------- | ------------------------------------------------------------------------------ |
-| **Apply**   | Implement the change in `spec.md` and/or `decisions_log.md`                    |
+| **Apply**   | Implement the change in `spec.md` and/or `decisions.md`                        |
 | **Reject**  | Not valuable, incorrect, or already a deliberate decision → reasoning in convo |
 
 **Question:**
@@ -313,6 +313,6 @@ Update `spec.md` frontmatter to `status: validated`.
 
 > spec validated at `sdd/{YY-MM-DD}-{id}/`.
 
-**Commit:** refactor(sdd): validate spec and decisions_log for {id}
+**Commit:** refactor(sdd): validate spec and decisions for {id}
 
 Planning and implementation are not part of this skill. The process ends here.

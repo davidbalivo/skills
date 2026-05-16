@@ -28,7 +28,7 @@ concreteness** — not design decisions.
 ## Upstream Sources
 
 - `sdd/{YY-MM-DD}-{id}/spec.md` — validated spec
-- `sdd/{YY-MM-DD}-{id}/decisions_log.md` — decision log
+- `sdd/{YY-MM-DD}-{id}/decisions.md` — decision log
 
 ## States
 
@@ -44,7 +44,7 @@ A plan evolves through four states, tracked in frontmatter `status:`:
 ## Gap Escalation
 
 A gap is anything that cannot be resolved by the planner alone — a missing requirement, an unresolved constraint,
-or a decision not present in `spec.md` or `decisions_log.md`.
+or a decision not present in `spec.md` or `decisions.md`.
 
 On any gap detected at any planning step, pause and escalate before proceeding.
 
@@ -88,10 +88,10 @@ flowchart TD
 
 <HARD-GATE>
 - `spec.md` exists and is complete (not a placeholder stub).
-- `decisions_log.md` exists and is complete (not a placeholder stub).
+- `decisions.md` exists and is complete (not a placeholder stub).
 </HARD-GATE>
 
-Confirm the SDD path: `sdd/{YY-MM-DD}-{id}/`. Read `spec.md` and `decisions_log.md`.
+Confirm the SDD path: `sdd/{YY-MM-DD}-{id}/`. Read `spec.md` and `decisions.md`.
 
 **Go to:** Step 2
 
@@ -219,7 +219,7 @@ Each task must include:
 - **Boundary:** the module and the public interface the tests will exercise (not internal
   functions). Internals emerge during GREEN and REFACTOR.
 - **Acceptance criteria:** the test list that drives the task (see below)
-- **Decision reference** from decisions_log (if applicable)
+- **Decision reference** from decisions (if applicable)
 - **Exploratory** (optional): mark `[exploratory]` if the task's tests are throwaway (spikes, learning tests). Specify the deletion trigger (e.g., "delete after Phase 2 closes").
 - Subtasks if needed (2–3 max; each a single coding action)
 
@@ -270,7 +270,7 @@ sdd/
 ```
 
 - **plan** — `sdd/{YY-MM-DD}-{id}/plan.md`
-  - **What:** executable implementation plan derived from `spec.md` and `decisions_log.md`
+  - **What:** executable implementation plan derived from `spec.md` and `decisions.md`
   - **Structure:** frontmatter (`status: draft`); Overview, Architectural Invariants, Setup (Preconditions + Groundwork), Phases with tasks and acceptance criteria
   - **Template:** [`plan.md`](plan.md)
 
@@ -289,7 +289,7 @@ Cover, at minimum:
 - **Trace coverage** — for each phase, can the acceptance test (outer loop) be driven green by the union of task-level acceptance criteria? A phase whose acceptance test exercises behavior no task delivers is a broken slice.
 - **Tracer integrity** — each task's first criterion must be the thinnest end-to-end path. A tracer that secretly tests infrastructure or does not contribute to the phase's outer loop is misplaced.
 - **Forward dependencies** — Phase 1's walking skeleton must not depend on anything built in a later phase. If it does, it is not a skeleton.
-- **Hidden decisions** — any design choice implied by a task must already exist in `decisions_log.md`. Otherwise the decision moves to spec/decisions_log first.
+- **Hidden decisions** — any design choice implied by a task must already exist in `decisions.md`. Otherwise the decision moves to spec/decisions first.
 - **Edge case orphans** — every business edge case in `spec.md` must appear in some task's acceptance criteria. Search the spec, not just the plan.
 - **Setup leakage** — apply the litmus test once more to every Setup item; anything ambiguous is misclassified.
 - **Hand-off test** — if you handed this plan to implementation and walked away for a week, would it ship correctly? Name the single weakest task; if you cannot defend it, fix it.

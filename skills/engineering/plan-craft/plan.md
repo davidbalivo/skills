@@ -29,7 +29,7 @@ Non-behavioral work inside the repo executed before Phase 1. Produces commits. N
 1. [ ] [Action]
    - Files: `path/to/file`
    - Verification: [binary check — command runs, file contains key, import resolves]
-   - Decision: [decisions_log reference]
+   - Decision: [decisions reference]
 
 ## Phase 1: Walking Skeleton
 
@@ -44,7 +44,7 @@ Non-behavioral work inside the repo executed before Phase 1. Produces commits. N
    - Acceptance:
      1. [tracer] `<input> → <output>` _or_ Given/When/Then
      2. `<input> → <output>` _or_ Given/When/Then
-   - Decision: [decisions_log reference]
+   - Decision: [decisions reference]
    - Subtasks:
      - [ ] Subtask 1
 
@@ -61,6 +61,6 @@ Non-behavioral work inside the repo executed before Phase 1. Produces commits. N
    - Acceptance:
      1. [tracer] `<input> → <output>` _or_ Given/When/Then
      2. `<input> → <output>` _or_ Given/When/Then
-   - Decision: [decisions_log reference]
+   - Decision: [decisions reference]
    - Subtasks:
      - [ ] Subtask 1

@@ -1,11 +1,11 @@
 ---
 name: spec-gap-register
-description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. For gaps, ambiguities, or constraints not covered by spec or decisions_log."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. For gaps, ambiguities, or constraints not covered by spec or decisions."
 ---
 
 # Spec Gap Register
 
-Use when planning or implementation reveals **gaps, ambiguities, or constraints not covered** in the original spec or decisions_log.
+Use when planning or implementation reveals **gaps, ambiguities, or constraints not covered** in the original spec or decisions.
 
 ## Role
 
@@ -18,7 +18,7 @@ You are a **spec steward**. Your authority is limited to surfacing, confirming, 
 </CROSS-STEP-RULES>
 
 <OUTPUT-LANGUAGE>
-- Traceability entries (`spec.md`, `decisions_log.md`) — English
+- Traceability entries (`spec.md`, `decisions.md`) — English
 </OUTPUT-LANGUAGE>
 
 ## Steps Flow
@@ -55,7 +55,7 @@ Describe the gap, ambiguity, or constraint to the user:
 **Output:**
 
 > - Which sections of `spec.md` are affected (modified or created)
-> - What the spec or decisions_log will say after the change
+> - What the spec or decisions will say after the change
 
 **Question:**
 
@@ -83,7 +83,7 @@ Integrate the resolved requirement directly into the relevant normative section.
 - **Resolution:** How the spec now handles it
 ```
 
-**Update `decisions_log.md`**
+**Update `decisions.md`**
 
 Append to `## Change Traceability` (create section if absent, as the last section):
 
@@ -102,4 +102,4 @@ Append to `## Change Traceability` (create section if absent, as the last sectio
 > Finding registered:
 >
 > - `spec.md` — section(s) updated + traceability entry added
-> - `decisions_log.md` — traceability entry added
+> - `decisions.md` — traceability entry added

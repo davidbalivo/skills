@@ -28,7 +28,7 @@ Short statement of identity and stance the skill adopts; shapes tone and decisio
 
 <OUTPUT-LANGUAGE>
 - `spec.md` — English
-- `decisions_log.md` — English
+- `decisions.md` — English
 </OUTPUT-LANGUAGE>
 
 ## States
@@ -116,7 +116,7 @@ Based on spec-forge Step 8 (External Review Request).
 ```markdown
 ### 8. External Review Request
 
-Derive considerations from decisions made this session and from `decisions_log.md` that a reviewer
+Derive considerations from decisions made this session and from `decisions.md` that a reviewer
 might misread without context.
 
 **Announce:** 🧐 Requesting external review
@@ -126,7 +126,7 @@ might misread without context.
 > **Ready for review** 🤝
 >
 > - spec: `sdd/{YY-MM-DD}-{id}/spec.md`
-> - decisions_log: `sdd/{YY-MM-DD}-{id}/decisions_log.md`
+> - decisions: `sdd/{YY-MM-DD}-{id}/decisions.md`
 > - Considerations:
 >   - <deliberate decisions or context the reviewer must hold>
 
@@ -239,7 +239,7 @@ Create the directory and write both files.
 sdd/
 └── {YY-MM-DD}-{id}/
 ├── spec.md
-└── decisions_log.md
+└── decisions.md
 
 ```
 
@@ -248,10 +248,10 @@ sdd/
   - **Structure:** frontmatter (`status: draft`); Problem statement, Goals, Non-goals, Scope, Constraints, Assumptions, Success criteria
   - **Template:** [`spec.md`](spec.md)
 
-- **decisions log** — `sdd/{YY-MM-DD}-{id}/decisions_log.md`
+- **decisions log** — `sdd/{YY-MM-DD}-{id}/decisions.md`
   - **What:** live log of decisions, alternatives, and rejection reasons; appended the moment a non-obvious choice is made
   - **Structure:** one entry per decision with Decision / Alternatives considered / Why discarded
-  - **Template:** [`decisions_log.md`](decisions_log.md)
+  - **Template:** [`decisions.md`](decisions.md)
 
 **Commit:** `feat(sdd): add {id} to sdd`
 
