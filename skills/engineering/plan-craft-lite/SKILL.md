@@ -32,7 +32,7 @@ concreteness** — not design decisions.
 
 ## States
 
-A plan evolves through four states, tracked in frontmatter `status:`:
+A plan evolves through three states, tracked in frontmatter `status:`:
 
 | State                 | When                       | Who    | Action                    |
 | --------------------- | -------------------------- | ------ | ------------------------- |
@@ -273,7 +273,7 @@ Switch from **author** to **attacker**. Read `plan.md` in full. Satisfaction is 
 
 Cover, at minimum:
 
-- **Trace coverage** — for each phase, can the acceptance test (outer loop) be driven green by the union of task-level acceptance criteria? A phase whose acceptance test exercises behavior no task delivers is a broken slice.
+- **Trace coverage** — for each phase, can the phase acceptance test be satisfied by the union of task-level acceptance criteria? A phase whose acceptance test exercises behavior no task delivers is a broken slice.
 - **Tracer integrity** — each task's first criterion must be the thinnest end-to-end path. A tracer that secretly tests infrastructure or does not contribute to the phase's acceptance test is misplaced.
 - **Forward dependencies** — Phase 1's initial slice must not depend on anything built in a later phase.
 - **Hidden decisions** — any design choice implied by a task must already exist in `decisions.md`. Otherwise the decision moves to spec/decisions first.
