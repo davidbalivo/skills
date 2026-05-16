@@ -33,6 +33,7 @@ Private store of personal skills for agents (Claude Code and others), installabl
 | [sdd-spec](skills/engineering/sdd-spec/)                                     | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs                   |
 | [sdd-plan](skills/engineering/sdd-plan/)                                     | `engineering` | Per project | Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol |
 | [sdd-plan-tdd](skills/engineering/sdd-plan-tdd/)                             | `engineering` | Per project | Converts a validated spec and decision log into a concrete, TDD-ready plan                          |
+| [sdd-impl-tdd](skills/engineering/sdd-impl-tdd/)                             | `engineering` | Per project | Executes a validated plan through vertical-slice TDD with per-task review checkpoints               |
 | [sdd-spec-gap](skills/engineering/sdd-spec-gap/)                             | `engineering` | Per project | Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step                   |
 | [step-based-skills-standard](skills/engineering/step-based-skills-standard/) | `engineering` | Per project | Canonical structure, keywords, tags and mermaid conventions for SDD-flow skills                     |
 
