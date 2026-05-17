@@ -345,7 +345,14 @@ Reach a joint decision with the user. Each finding ends with one disposition:
 | Disposition | Action                                                                         |
 | ----------- | ------------------------------------------------------------------------------ |
 | **Apply**   | Implement the change in `plan.md`                                              |
+| **Defer**   | Valid but out of scope → queue for batch recording                             |
 | **Reject**  | Not valuable, incorrect, or already a deliberate decision → reasoning in convo |
+
+After triaging all findings, if any were Deferred, invoke `defer-finding` **once** to record them as a batch.
+
+**Skill:**
+
+- defer-finding — only when at least one finding was Deferred.
 
 **Question:**
 
