@@ -47,14 +47,18 @@ When a discovery made **while coding** contradicts or extends the spec/plan, pau
 
 Findings from external review do not go through this path.
 
-## Process
+## Steps
 
 ### 1. Input Validation
 
 - Confirm `sdd/{YY-MM-DD}-{id}/plan.md` exists with `status: validated`
 - Read all unchecked phases and tasks
 
-If the plan is missing or its status is not `validated`, **stop and ask**.
+<HARD-GATE>
+- `plan.md` must exist with `status: validated` — if not, stop and ask.
+</HARD-GATE>
+
+**Go to:** Step 2
 
 ### 2. Setup
 
