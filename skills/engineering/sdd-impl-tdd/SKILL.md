@@ -234,41 +234,38 @@ On the first pass: mark this task and every completed subtask `[x]` in `plan.md`
 
 **Go to:** Step 11
 
-##### Stage 7 — Findings triage
+### 11. Findings Triage 🔁
 
-**Findings are technical observations, not absolute truths. Aim for objective analysis, not blanket compliance.**
+<WARNING>
+- Findings are technical observations, not absolute truths — analyze critically and reject confidently when wrong, missing context, or adding no value.
+</WARNING>
 
-For each finding, analyze: do you agree? If not, is it a deliberate decision, a misinterpretation,
-or missing context? Would applying it add real value, or is it noise / out of scope?
+For each finding, analyze internally: agreement (deliberate decision, misinterpretation, missing context?) and value (real improvement or noise?).
 
 Reach a joint decision. Each finding ends with one disposition:
 
-| Disposition | Action                                                                               |
-| ----------- | ------------------------------------------------------------------------------------ |
-| **Apply**   | Implement the change → return to Stage 2 for this task, then re-run Stages 3–6       |
-| **Defer**   | Valid but out of scope → record via the `write-deferred-findings` skill              |
-| **Reject**  | Not valuable, incorrect, or already a deliberate decision → reasoning stays in convo |
+| Disposition | Action                                                                     |
+| ----------- | -------------------------------------------------------------------------- |
+| **Apply**   | Implement the change → return to Step 6, then re-run Steps 7–10            |
+| **Defer**   | Valid but out of scope → record via `write-deferred-findings`              |
+| **Reject**  | Not valuable, incorrect, or deliberate decision → reasoning stays in convo |
 
-The `write-deferred-findings` skill must be invoked **only when the user confirms a Defer disposition**, and only at that moment. Do not load it preemptively.
+**Skill:**
 
-**After processing all findings in this cycle:** if at least one finding was `Apply`, commit the
-amendments. Use a counter `N` starting at 1, incremented per external review cycle that produced
-changes:
+- write-deferred-findings — only when user confirms a `Defer` disposition; do not load preemptively.
 
-```
-refactor(<scope>): <task-id> review amendments r<N> [Task <n>]
-```
+If at least one `Apply`: commit amendments; `N` starts at 1, incremented per review cycle with changes.
 
-If no finding was `Apply`, no commit is produced for this cycle.
+**Commit:** refactor(`<scope>`): `<task-id>` review amendments r`<N>` [Task `<n>`]
 
-**Then explicitly ask the user — do not advance silently:**
+**Question:**
 
-> "Findings de la ronda r<N> resueltos. ¿Quieres otra ronda de revisión (vuelve a Stage 6) o
-> avanzo a la siguiente tarea (Stage 8)?"
+> ❓ **Findings resolved. Another review round or advance to next task?**
 
-Wait for the user's response. Only on explicit approval to advance does the task exit Stage 7.
-If the user requests another pass, return to Stage 6 and repeat. The Stages 6–7 loop is the
-default; advancing is the exception that requires explicit confirmation.
+**Stop & wait:** explicit user decision
+
+**Go to:** Step 10 — another review round
+**Go to:** Step 12 — advance
 
 ##### Stage 8 — Advance
 
