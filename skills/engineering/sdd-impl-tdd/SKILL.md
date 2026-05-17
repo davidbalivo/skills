@@ -185,39 +185,36 @@ Evaluate in order:
 **Go to:** Step 6 — if a fix changes observable behavior
 **Go to:** Step 9
 
-##### Stage 5 — Adversarial self-review
+### 9. Self-Review
 
-**Announce:** 🔍 "Running adversarial self-review"
+**Announce:** 🧐 Running adversarial self-review
 
-Switch from **implementer** to **auditor**, scoped to **this task only**. The goal is not to
-confirm the task looks complete — it is to catch what slipped through the cycles before an
-external reviewer finds it.
+Switch from **implementer** to **auditor**, scoped to **this task only** — catch what slipped through before an external reviewer does.
 
 Run these probes against the task's diff:
 
-- **Criterion coverage.** Every acceptance criterion of this task must map to at least one test.
-  An untested criterion is a gap, not an assumption.
-- **Technical edge case coverage.** Did the technical edge cases identified in Stage 1 become
-  cycles? Are there obvious ones that slipped through?
-- **Test honesty.** Each test that's GREEN — does it actually prove the behavior, or does it
-  exercise the wrong path? A false positive is worse than a missing test.
-- **Orphaned code.** Is every production change in this task driven by a test? Code written
-  without a RED cycle is speculation.
-- **Refactor debt.** Did anything persist that Stage 3 should have caught?
-- **Interface drift.** Did any implementation decision silently change the public interface
-  beyond what the plan specified? If yes, it is a finding.
+- **Criterion coverage.** Every acceptance criterion of this task must map to at least one test. An untested criterion is a gap, not an assumption.
+- **Technical edge case coverage.** Did the technical edge cases identified in Step 5 become cycles? Are there obvious ones that slipped through?
+- **Test honesty.** Each GREEN test — does it actually prove the behavior, or does it exercise the wrong path? A false positive is worse than a missing test.
+- **Orphaned code.** Is every production change in this task driven by a test? Code written without a RED cycle is speculation.
+- **Refactor debt.** Did anything persist that Step 7 should have caught?
+- **Interface drift.** Did any implementation decision silently change the public interface beyond what the plan specified? If yes, it is a finding.
 
-If any probe is open, resolve it before advancing. Probes that imply a spec change go through the
-Implementation Findings Protocol.
+Probes that imply a spec change go through the Implementation Findings Protocol.
 
-- **Exit:** all probes closed. If this is the **first pass** through Stage 5 for this task, mark
-  this task and every completed subtask in `plan.md` with `[x]` (do not mark the phase — it closes
-  at 3.3), then commit:
-  ```
-  feat(<scope>): <task-id> self-reviewed [Task <n>]
-  ```
-  On re-runs triggered by an `Apply` disposition, skip marking and skip this commit — the amendment
-  commit fires at Stage 7 convergence instead.
+**Skill:**
+
+- sdd-spec-gap
+
+<HARD-GATE>
+- All probes closed before advancing.
+</HARD-GATE>
+
+On the first pass: mark this task and every completed subtask `[x]` in `plan.md` — do not mark the phase.
+
+**Commit:** feat(`<scope>`): `<task-id>` self-reviewed [Task `<n>`] — first pass only; skip on `Apply` re-runs.
+
+**Go to:** Step 10
 
 ##### Stage 6 — Ready for review
 
