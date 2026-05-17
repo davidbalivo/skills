@@ -17,6 +17,11 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 - TDD Principles apply at every step — see ## TDD Principles.
 </CROSS-STEP-RULES>
 
+## Upstream Sources
+
+- `sdd/{YY-MM-DD}-{id}/plan.md` — executable contract; `status: validated` required
+- `sdd/{YY-MM-DD}-{id}/spec.md` and `decisions.md` — upstream rationale; read only when the plan does not add up
+
 ## TDD Principles
 
 - **Tests verify behavior, not implementation.** A good test reads like a spec — exercises the
@@ -27,11 +32,6 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 - **Technical edge cases emerge here.** The plan defines business behavior; technical edge cases
   (null handling, boundary values, failure paths, etc.) are not in the plan — they are identified
   and scheduled in Stage 1 of each task.
-
-## Upstream Sources
-
-- `sdd/{YY-MM-DD}-{id}/plan.md` — executable contract; `status: validated` required
-- `sdd/{YY-MM-DD}-{id}/spec.md` and `decisions.md` — upstream rationale; read only when the plan does not add up
 
 ## Plan State Awareness
 
