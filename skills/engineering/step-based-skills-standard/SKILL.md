@@ -219,7 +219,7 @@ produces, and what the overall flow is.
 
 Identify all violations before touching any content:
 
-- Missing required sections (`Role`, mermaid, `<CROSS-STEP-RULES>`, `Steps`); `<OUTPUT-LANGUAGE>` only if the skill produces artifacts or user-facing outputs
+- Missing required sections (`Role`, mermaid, `<CROSS-STEP-RULES>`, `Steps`); `<OUTPUT-LANGUAGE>` only if the skill produces artifacts
 - Heading depth violations (`####` or deeper — must be flattened to `###`)
 - Step numbering gaps, decimal steps (`3.1`, `3.2`), or steps that must be renumbered after
   flattening
@@ -243,7 +243,7 @@ Before touching individual steps, identify content that belongs at skill level:
 
 - **CROSS-STEP-RULES candidates:** rules repeated across multiple steps, or stated once but
   implicitly required everywhere. If found embedded in a step, flag it — do not move it silently.
-- **OUTPUT-LANGUAGE candidates:** language or format constraints on artifacts or user-facing outputs.
+- **OUTPUT-LANGUAGE candidates:** language or format constraints on artifacts.
 - **Role:** verify it exists and accurately reflects the skill's stance and identity.
 
 **Output:**
@@ -320,6 +320,6 @@ Read the migrated skill in full. Verify:
 
 **Output:**
 
-> Surface any remaining issues.
+> Surface any remaining issues. If none remain, close the migration.
 
-**Stop & wait:** resolve with user before closing
+**Stop & wait:** only if issues remain; resolve with user before closing
