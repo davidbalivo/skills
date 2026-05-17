@@ -66,8 +66,11 @@ Verify every unchecked item in `plan.md` › Setup › Preconditions. Each must 
 
 <NON-NEGOTIABLE>
 - Preconditions are verified, never executed — no commits produced.
-- If one fails, stop and ask — implementation does not start until resolved out-of-band.
 </NON-NEGOTIABLE>
+
+<HARD-GATE>
+- All items resolve to ✅ — if any fails, stop and ask; implementation does not start until resolved out-of-band.
+</HARD-GATE>
 
 Mark each verified item `[x]` in `plan.md`.
 
@@ -75,7 +78,11 @@ Mark each verified item `[x]` in `plan.md`.
 
 ### 3. Groundwork
 
-Execute every unchecked item in `plan.md` › Setup › Groundwork in order. Each must pass its binary verification. Skip items already marked `[x]`.
+Execute every unchecked item in `plan.md` › Setup › Groundwork in order. Skip items already marked `[x]`.
+
+<HARD-GATE>
+- Each item must pass its binary verification — if one fails, stop and ask.
+</HARD-GATE>
 
 Mark each executed item `[x]` in `plan.md`.
 
@@ -85,7 +92,11 @@ Mark each executed item `[x]` in `plan.md`.
 
 ### 4. Phase Acceptance Test 🔁
 
-Execute phases in the order defined by `plan.md` — write each phase's acceptance test before any task begins. It must fail (RED) and stays RED until the phase closes.
+Execute phases in the order defined by `plan.md` — write each phase's acceptance test before any task begins. It stays RED until the phase closes.
+
+<HARD-GATE>
+- Acceptance test must be RED before any task begins.
+</HARD-GATE>
 
 <NON-NEGOTIABLE>
 - Runs once per phase, not per task.
@@ -132,23 +143,30 @@ For each cycle in order:
 - **RED** — write one failing test against the public interface.
 - **GREEN** — write the minimum code to pass; no anticipation of later cycles.
 
+<HARD-GATE>
+- Every cycle is GREEN before advancing.
+</HARD-GATE>
+
 **Go to:** Step 7
 
-##### Stage 3 — Refactor
+### 7. Refactor
 
-**Announce:** 🔧 "Refactoring"
+**Announce:** 🔧 Refactoring
 
-- **Enter:** Stage 2 exited (all tests green).
-- **Action:** evaluate, in order:
-  1. **Duplication** — extract repeated logic; do not merge coincidental similarity.
-  2. **Naming** — rename identifiers that survived GREEN under pressure but don't express intent.
-  3. **Responsibility** — each unit does one thing; split if boundaries blur.
-  4. **Dead paths** — remove unreachable branches or guards the type system already enforces.
-  5. **Complexity** — simplify conditionals and nesting where the logic allows.
+Evaluate in order:
 
-  Run all tests after each step. Show changes to the user.
+1. **Duplication** — extract repeated logic; do not merge coincidental similarity.
+2. **Naming** — rename identifiers that survived GREEN under pressure but don't express intent.
+3. **Responsibility** — each unit does one thing; split if boundaries blur.
+4. **Dead paths** — remove unreachable branches or guards the type system already enforces.
+5. **Complexity** — simplify conditionals and nesting where the logic allows.
 
-- **Exit:** all tests still green; no further safe refactor identified.
+<NON-NEGOTIABLE>
+- Run all tests after each item. Show changes to the user.
+- All tests must still be green before exiting; no further safe refactor identified.
+</NON-NEGOTIABLE>
+
+**Go to:** Step 8
 
 ##### Stage 4 — Validate
 
