@@ -33,7 +33,7 @@ prose, and migrate to canonical format without losing meaning.
 5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts)
 6. `## Upstream Sources` (if applicable)
 7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
-8. Domain sections (if applicable) — any `##` sections the skill needs beyond `Upstream Sources` and `States`; placed before `## Steps Flow`
+8. Domain sections (if applicable) — skill-specific `##` sections; after the last standard preamble section, before `## Steps Flow`
 9. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
 10. `## Steps`
 
