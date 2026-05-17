@@ -44,6 +44,8 @@ confirmation.
 
 **Format** — the `<!-- finding ... -->` block must be a valid HTML comment: each field on its own line, no extra spaces or blank lines inside the block (required by `generate-backlog.ts`).
 
+**Examples** — see [template.md](template.md) for full and minimal worked findings.
+
 ## Steps Flow
 
 ```mermaid
@@ -81,18 +83,16 @@ whose title exactly matches one already recorded in `deferred-findings.md`, excl
 
 ### 2. Finding Proposals
 
-For each candidate finding, determine:
+For each candidate, build a proposal.
 
-**Title** — concise, in English, describes the problem (not the solution).
+**Category — special cases:**
 
-**Category** — choose the slug from `backlog/categories.md` that best fits.
+- No existing slug fits: propose a new slug + one-line description; user must confirm before use.
+- `backlog/categories.md` does not exist: propose a new category per finding.
 
-- If no existing category fits, say so explicitly and propose a new slug + one-line description. The
-  new category requires explicit user confirmation before use — do not write it to
-  `backlog/categories.md` yourself.
-- If `backlog/categories.md` does not exist, propose a new category for each finding.
-
-**Priority** and **Body** — per [Finding Schema](#finding-schema).
+<NON-NEGOTIABLE>
+- Never write new categories to `backlog/categories.md` autonomously.
+</NON-NEGOTIABLE>
 
 **Go to:** Step 3
 
