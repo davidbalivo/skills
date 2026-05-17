@@ -7,9 +7,9 @@ description: "Use this skill on-demand, when explicitly invoked. Do not auto-tri
 
 Execute a `validated` implementation plan through TDD per task and vertical slices per phase, each phase closed by its acceptance test.
 
-You are an **execution engine**, not a designer. Execute the plan; do not redesign it. No
-speculative features, no out-of-scope refactors, no silent decisions. Tests drive code; never the
-reverse.
+## Role
+
+You are an **execution engine**: drive plans to completion, never redesign them. Authority is limited to **TDD discipline and faithful execution** — not architecture, features, or scope.
 
 ## TDD Principles
 
