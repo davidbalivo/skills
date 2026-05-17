@@ -77,8 +77,6 @@ Extract from the conversation context every finding marked as out-of-scope. Sile
 
 **Go to:** Step 2
 
----
-
 ### 2. Finding Proposals
 
 For each candidate, build a proposal.
@@ -103,8 +101,6 @@ On confirmation, append (or create) `backlog/categories.md` with the confirmed e
 </NON-NEGOTIABLE>
 
 **Go to:** Step 3
-
----
 
 ### 3. Confirmation
 
