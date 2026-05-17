@@ -47,6 +47,39 @@ When a discovery made **while coding** contradicts or extends the spec/plan, pau
 
 Findings from external review do not go through this path.
 
+## Steps Flow
+
+```mermaid
+flowchart TD
+    S1["1. Input Validation"]
+    S2["2. Preconditions"]
+    S3["3. Groundwork"]
+    S4["4. Phase Acceptance Test"]
+    S5["5. Plan Cycles"]
+    S6["6. RED → GREEN"]
+    S7["7. Refactor"]
+    S8{{"8. Validate 🔁"}}
+    S9["9. Self-Review"]
+    S10{{"10. Ready for Review"}}
+    S11{{"11. Findings Triage 🔁"}}
+    S12["12. Advance 🔁"]
+    S13{{"13. Phase Gate 🔁"}}
+    S14["14. Final Gate"]
+    S15["15. Implementation Closure"]
+
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
+    S8 -->|"🔁 fix changes behavior"| S6
+    S8 -->|clean| S9 --> S10 --> S11
+    S11 -->|"🔁 another round"| S10
+    S11 -->|advance| S12
+    S12 -->|"🔁 next task"| S5
+    S12 -->|no tasks remain| S13
+    S13 -->|"🔁 next phase"| S4
+    S13 -->|no phases remain| S14
+    S14 -->|unverified| S4
+    S14 -->|all satisfied| S15
+```
+
 ## Steps
 
 ### 1. Input Validation
