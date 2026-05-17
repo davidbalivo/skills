@@ -7,11 +7,12 @@ patterns; adapt them to any workflow domain.
 
 ## Skill Skeleton
 
-```markdown
+```yaml
 ---
 name: example-skill
 description: "On demand, when invoked by user."
 ---
+```
 
 # Example Skill
 
@@ -33,15 +34,15 @@ Short statement of identity and stance the skill adopts; shapes tone and decisio
 
 ## States
 
-| State           | When                       | Who    | Action                 |
-| --------------- | -------------------------- | ------ | ---------------------- |
-| `drafted`       | After Step 3 (Write)       | author | Internal self-review   |
-| `self-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
-| `approved`      | After Step 6 (Triage)      | author | Ready for handoff      |
+| State                 | When                       | Who    | Action                 |
+| --------------------- | -------------------------- | ------ | ---------------------- |
+| `draft`               | After Step 3 (Write)       | author | Internal self-review   |
+| `internally-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
+| `validated`           | After Step 6 (Triage)      | author | Ready for next phase   |
 
 ## Steps Flow
 
-` ` `mermaid
+```mermaid
 flowchart TD
 S1["1. Input Validation"]
 S2["2. Setup"]
@@ -54,11 +55,9 @@ S5["5. Promote"]
     S3 --> S4
     S4 -->|"🔁 another round"| S3
     S4 -->|all resolved| S5
-
-` ` `
+```
 
 ## Steps
-```
 
 ---
 
@@ -66,7 +65,6 @@ S5["5. Promote"]
 
 ### 1 — Conditional navigation, no user interaction
 
-```markdown
 ### 1. Understand the Current Context
 
 Scan `<context-directory>` — directory names only, never file contents. Identify paths that share
@@ -74,13 +72,11 @@ topic or scope with the current request. If nothing seems relevant, proceed sile
 
 **Go to:** Step 2 — if nothing relevant found
 **Go to:** Step 2 — after user confirms which items to consider
-```
 
 ---
 
 ### 2 — HARD-GATE + Question + Stop & wait
 
-```markdown
 ### 3. Understanding Lock
 
 Present an understanding summary and a list of all assumptions, each marked as `Confirmed` or
@@ -101,13 +97,11 @@ Present an understanding summary and a list of all assumptions, each marked as `
 
 **Go to:** Step 2 — if any blocking assumption is unresolved
 **Go to:** Step 4 — on confirmation
-```
 
 ---
 
 ### 3 — Announce + Output + Stop & wait + 🤝 handoff
 
-```markdown
 ### 8. External Review Request
 
 Derive considerations from decisions made this session and from the decision log that a reviewer
@@ -127,13 +121,11 @@ might misread without context.
 **Stop & wait:** reviewer responds with findings or "no findings"
 
 **Go to:** Step 9
-```
 
 ---
 
 ### 4 — Loop: 🔁 + Go to (back) + Commit + Skill
 
-```markdown
 ### 5. Unit Review
 
 Emit the handoff message and wait for reviewer findings.
@@ -181,7 +173,6 @@ review cycle that produced changes).
 
 **Go to:** Step 5 — if user requests another round
 **Go to:** Step 7 — if user approves advance
-```
 
 ---
 
@@ -196,7 +187,6 @@ Example of what the agent emits during execution:
 
 The step definition itself contains no 💬 reference:
 
-```markdown
 ### 4. Migrate All Steps
 
 Read each step in the original skill and rewrite it using the new format. If a step cannot be
@@ -207,13 +197,11 @@ expressed in the new format, surface it to the user before continuing.
 **Commit:** `refactor(skill): migrate example-skill to skill standard`
 
 **Go to:** Step 5
-```
 
 ---
 
 ### 6 — Announce + Artifacts + NON-NEGOTIABLE + Commit
 
-```markdown
 ### 6. Write the Draft
 
 Create the directory and write both files.
@@ -226,13 +214,12 @@ Create the directory and write both files.
 **Announce:** 📝 Materializing the draft
 
 **Artifacts:**
-```
 
+```markdown
 audits/
 └── {YY-MM-DD}-{id}/
 ├── summary.md
 └── log.md
-
 ```
 
 - **summary** — `audits/{YY-MM-DD}-{id}/summary.md`
@@ -247,4 +234,3 @@ audits/
 **Commit:** `feat(audit): add {id} to audits`
 
 **Go to:** Step 7
-```

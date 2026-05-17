@@ -30,7 +30,7 @@ prose, and migrate to canonical format without losing meaning.
 2. `# Skill Name` — short description of what the skill produces
 3. `## Role` — identity and stance; shapes tone and decision bias
 4. `<CROSS-STEP-RULES>`
-5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts or user-facing outputs)
+5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts)
 6. `## Upstream Sources` (if applicable)
 7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
 8. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
@@ -61,7 +61,7 @@ Steps renumber when inserted or removed. Gaps and decimal numbering (3.1, 3.2) a
 | Tag                  | Position                                            | Use                                           |
 | -------------------- | --------------------------------------------------- | --------------------------------------------- |
 | `<CROSS-STEP-RULES>` | Immediately after `## Role`                         | Rules governing every step                    |
-| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` (if present) | Language for artifacts or user-facing outputs |
+| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` (if present) | Language for artifacts                        |
 
 **Step-level — free placement within the step:**
 
@@ -126,13 +126,9 @@ All tags wrap content as a bulleted list — never free prose inside a tag.
   ```
   **Artifacts:**
 
-  ```
-
   path/to/directory/
   ├── file-a
   └── file-b
-
-  ```
 
   - **{artifact-name}** — `{path}`
     - **What:** one-line description of purpose
@@ -233,8 +229,6 @@ Identify all violations before touching any content:
 
 > Surface all structural violations with a proposed remediation plan.
 
-**Stop & wait:** for user confirmation
-
 **Question:**
 
 > ❓ **Confirm the remediation plan before proceeding?**
@@ -255,8 +249,6 @@ Before touching individual steps, identify content that belongs at skill level:
 **Output:**
 
 > Propose all global extractions in a single message.
-
-**Stop & wait:** for user confirmation
 
 **Question:**
 
@@ -279,6 +271,10 @@ For each step, in order:
 - One step per proposal — never batch multiple steps into a single message.
 </NON-NEGOTIABLE>
 
+**Output:**
+
+> Propose the changes for each step.
+
 **Question:**
 
 > ❓ **Confirm proposed changes before writing?**
@@ -300,8 +296,6 @@ After all steps are migrated, verify the mermaid diagram reflects the final step
 **Output:**
 
 > Propose the updated mermaid diagram.
-
-**Stop & wait:** for user confirmation
 
 **Question:**
 
