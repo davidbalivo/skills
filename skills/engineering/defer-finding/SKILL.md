@@ -108,50 +108,45 @@ For each candidate finding, determine:
 
 ### 3. Confirmation
 
-Present all candidate findings in a single message, with the full preview — exactly as they will be
-written to the file:
+**Output:**
 
-```text
-I've identified N out-of-scope findings to record in `sdd/{spec-id}/deferred-findings.md`.
+> I've identified N out-of-scope findings to record in `sdd/{spec-id}/deferred-findings.md`.
+> 
+> **[1]**
+> 
+> ## {Finding title}
+> 
+> <!-- finding
+> category: {slug}
+> priority: {1|2|3}
+> status: pending
+> date: {YYYY-MM-DD}
+> spec: {spec-id}
+> -->
+> 
+> - **Context:** ...
+> - **Risk:** ...             ← omit if not applicable
+> - **Impact:** ...           ← omit if not applicable
+> - **Future improvement:** ... ← omit if not applicable
+> - **Pending decision:** ... ← omit if not applicable
+> - **Recommendation:** ...   ← omit if not applicable
+> 
+> ---
+> 
+> **[2]**
+> 
+> ## {Second finding title}
+> 
+> ---
 
----
+**Question:**
 
-**[1]**
-
-## {Finding title}
-
-<!-- finding
-category: {slug}
-priority: {1|2|3}
-status: pending
-date: {YYYY-MM-DD}
-spec: {spec-id}
--->
-
-- **Context:** ...
-- **Risk:** ...             ← omit if not applicable
-- **Impact:** ...           ← omit if not applicable
-- **Future improvement:** ... ← omit if not applicable
-- **Pending decision:** ... ← omit if not applicable
-- **Recommendation:** ...   ← omit if not applicable
-
----
-
-**[2]**
-
-## {Second finding title}
-...
-
----
-
-Which findings do you want to record? Specify the indices to include or request changes to any entry.
-```
+> ❓ **Which findings do you want to record? Specify indices or request changes to any entry.**
 
 **Stop & wait:** user selects indices or requests changes
 
 **Go to:** Step 4
 
----
 
 ### 4. Writing
 
