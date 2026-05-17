@@ -6,6 +6,10 @@ Repo-specific instructions. User-level instructions in `~/.claude/CLAUDE.md` app
 
 Private store of personal skills consumed via [`npx skills`](https://github.com/vercel-labs/skills) (vercel-labs). Skills are installable globally (`-g`) into `~/.claude/skills/` or per-project into `<project>/.claude/skills/`.
 
+## Response Style
+
+Be extremly concise and sacrifice grammar for the sake of concision
+
 ## Structure
 
 ```
@@ -36,8 +40,7 @@ Human-facing. Sections in this order:
 1. Title
 2. **Installation** — per project first, global second; labels (`Per project:` / `Global:`) as plain text outside the bash blocks.
 3. About — 1-2 line description.
-4. When to use it.
-5. Invocation.
+4. When to use.
 
 ## Before committing a skill
 

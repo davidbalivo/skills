@@ -18,12 +18,6 @@ npx skills add davidbalivo/skills@sdd-spec-gap -g
 
 Structured three-step flow (detect → decide → register) for surfacing and tracing gaps, ambiguities, or unresolved constraints discovered during any SDD workflow step. Keeps `spec.md` and `decisions.md` consistent via a `## Change Traceability` section.
 
-## When to use it
+## When to use
 
 Invoke when any SDD skill (e.g. `sdd-plan`) surfaces a gap, ambiguity, or constraint not covered by the current spec or decisions.
-
-## Invocation
-
-```
-/sdd-spec-gap
-```

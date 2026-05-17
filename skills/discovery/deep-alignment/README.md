@@ -21,7 +21,3 @@ A `discovery` skill that syncs the agent with the user through a structured inte
 ## When to use
 
 Before implementing an idea with multiple open decisions or unstated assumptions. Don't use it for single-step obvious tasks.
-
-## Invocation
-
-`/deep-alignment`

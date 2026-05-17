@@ -20,8 +20,4 @@ An `engineering` skill that defines the rules for all local git operations.
 
 ## When to use
 
-Before any git operation in a project that uses git. Auto-activates git operations.
-
-## Invocation
-
-`/git-operations`
+Activates automatically before any git operation.

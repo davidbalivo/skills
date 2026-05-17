@@ -20,8 +20,4 @@ An `engineering` skill that runs an on-demand interrogation flow to turn ideas i
 
 ## When to use
 
-On-demand only — do not auto-trigger. Invoke when starting a new SDD: features, architectural changes, refactors, or product initiatives that require a stress-tested specification.
-
-## Invocation
-
-`/sdd-spec`
+When starting a new SDD — features, architectural changes, refactors, or product initiatives that require a stress-tested specification.
