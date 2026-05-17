@@ -1,4 +1,10 @@
 {
+  "permissions": {
+    "allow": [
+      "Skill(step-based-skills-standard)",
+      "Skill(step-based-skills-standard:*)"
+    ]
+  },
   "hooks": {
     "PostToolUse": [
       {
