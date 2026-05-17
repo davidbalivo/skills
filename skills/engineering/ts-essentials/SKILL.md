@@ -96,18 +96,35 @@ type Direction = typeof DIRECTIONS[number];
 
 ## 5. Nullability
 
-Always narrow before accessing a potentially absent value. Never assume a value exists.
+Two tools, two situations:
+
+- **Narrow** (`if`, type guard) when you'll use the value more than once, or pass it to something that requires `T` (not `T | undefined`).
+- **`?.` + `??`** for single-use expressions where a default covers the absent case.
+
+Never use `||` for defaults — it swallows `0` and `""`. Use `??`.
+
+Narrow when the value is reused:
 
 ```typescript
-// never
-const name = user.profile.name; // throws if profile is absent
-
-// always
 if (!user.profile) return;
-const name = user.profile.name;
+const name = user.profile.name; // string, narrowed
+sendEmail(name);
+logger.info(name.toUpperCase());
 ```
 
-Use `?.` for reads, `??` for defaults. Do not use `||` for defaults — it swallows `0` and `""`.
+`?.` + `??` for single-use:
+
+```typescript
+return user.profile?.name ?? "Anonymous";
+```
+
+Watch for `?.` chains without a default — `undefined` propagates silently:
+
+```typescript
+// dangerous — length is number | undefined
+const length = user.profile?.name.length;
+doMath(length); // type error or runtime surprise
+```
 
 ## 6. Async
 
