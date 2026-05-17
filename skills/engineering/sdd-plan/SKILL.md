@@ -210,6 +210,7 @@ Each task must include:
   functions). Internals emerge during implementation.
 - **Acceptance criteria:** the test list that drives the task (see below)
 - **Decision reference** from decisions (if applicable)
+- **Exploratory** (optional): mark `[exploratory]` if the task's tests are throwaway (spikes, learning tests). Specify the deletion trigger (e.g., "delete after Phase 2 closes").
 - Subtasks if needed (2–3 max; each a single coding action)
 
 **Acceptance criteria** — each criterion defines one verifiable test case.
