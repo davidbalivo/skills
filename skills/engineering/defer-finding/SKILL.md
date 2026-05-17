@@ -19,42 +19,22 @@ confirmation.
 
 ## Steps
 
-### 1. Candidate Validation
-
-<HARD-GATE>
-- At least one candidate finding must exist in the conversation context — identified during a
-  prior review or described by the user when invoking the skill. If none exist, stop and ask.
-</HARD-GATE>
+### 1. Preparation
 
 <NON-NEGOTIABLE>
 - Read `sdd/{spec-id}/deferred-findings.md` before proposing anything. Extract already-recorded
   titles for deduplication only — do not show them to the user.
 </NON-NEGOTIABLE>
 
+Read `backlog/categories.md` and extract the valid category slugs with their descriptions.
+
+If the file does not exist, communicate this explicitly and proceed — all findings will require a
+new category proposal.
+
+Extract from the conversation context every finding marked as out-of-scope. For each candidate
+whose title exactly matches one already recorded in `deferred-findings.md`, exclude it silently.
+
 **Go to:** Step 2
-
-## 1️⃣ Preparation
-
-### Step 1 — Read categories
-
-Read `backlog/categories.md` and extract the valid slugs with their descriptions.
-
-If the file does not exist, communicate this explicitly and proceed anyway — all findings will
-require a new category proposal.
-
-### Step 2 — Read existing file
-
-If `sdd/{spec-id}/deferred-findings.md` exists, read it and extract the titles of already-recorded
-findings. Use them exclusively for deduplication — do not show them to the user.
-
-### Step 3 — Identify and filter candidates
-
-Extract from the conversation context any findings marked as out-of-scope but important.
-
-For each candidate:
-
-- If its title exactly matches one already recorded in the file, exclude it. Note at the end of the
-  confirmation block how many duplicates were excluded (if any).
 
 ---
 
