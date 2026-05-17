@@ -1,11 +1,11 @@
 ---
 name: defer-finding
-description: "You MUST use this when formalizing deferred findings into sdd/{spec-id}/deferred_findings.md — extracts out-of-scope findings from conversation context, validates against known categories, and writes structured entries after user confirmation"
+description: "You MUST use this when formalizing deferred findings into sdd/{spec-id}/deferred-findings.md — extracts out-of-scope findings from conversation context, validates against known categories, and writes structured entries after user confirmation"
 ---
 
 # defer-finding
 
-Formalizes out-of-scope findings into structured, parseable entries in `sdd/{spec-id}/deferred_findings.md`.
+Formalizes out-of-scope findings into structured, parseable entries in `sdd/{spec-id}/deferred-findings.md`.
 
 ## Role
 
@@ -13,10 +13,9 @@ You are a **findings recorder**: extract out-of-scope findings from conversation
 validate them against known categories, and write structured, parseable entries after user
 confirmation.
 
-<CROSS-STEP-RULES>
-- A deferred finding is something deliberately excluded from current scope. If it should be
-  resolved in the ongoing task, it does not belong here.
-</CROSS-STEP-RULES>
+<OUTPUT-LANGUAGE>
+- `deferred-findings.md` entries — English
+</OUTPUT-LANGUAGE>
 
 ---
 
@@ -34,10 +33,10 @@ record before continuing.
 
 **Anti-Pattern: Recording in-scope findings**
 A deferred finding is something deliberately excluded from the current task's scope. If the finding
-should be resolved in the ongoing task, it does not belong in `deferred_findings.md`.
+should be resolved in the ongoing task, it does not belong in `deferred-findings.md`.
 
 **Anti-Pattern: Proposing already-recorded findings**
-Read the existing `deferred_findings.md` before presenting the confirmation block. Do not propose
+Read the existing `deferred-findings.md` before presenting the confirmation block. Do not propose
 any finding whose title already appears in the file — exclude it and notify the user.
 
 ---
@@ -60,7 +59,7 @@ require a new category proposal.
 
 ### Step 2 — Read existing file
 
-If `sdd/{spec-id}/deferred_findings.md` exists, read it and extract the titles of already-recorded
+If `sdd/{spec-id}/deferred-findings.md` exists, read it and extract the titles of already-recorded
 findings. Use them exclusively for deduplication — do not show them to the user.
 
 ### Step 3 — Identify and filter candidates
@@ -115,7 +114,7 @@ Present all candidate findings in a single message, with the full preview — ex
 written to the file:
 
 ```text
-I've identified N out-of-scope findings to record in `sdd/{spec-id}/deferred_findings.md`.
+I've identified N out-of-scope findings to record in `sdd/{spec-id}/deferred-findings.md`.
 
 ---
 
