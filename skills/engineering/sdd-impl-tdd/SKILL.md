@@ -35,9 +35,7 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 
 ## Plan State Awareness
 
-The plan may be fresh or partially executed by a previous session. Treat every [x] in `plan.md` as
-immutable history — do not re-verify, re-write, or re-commit completed items. Read the entire
-plan for context, then resume at the first unchecked phase, task, or setup item.
+The plan may be fresh or partially executed. Treat every `[x]` in `plan.md` as immutable history — do not re-verify, re-write, or re-commit completed items. Read the entire plan for context, then resume at the first unchecked item.
 
 ## Implementation Findings Protocol
 
