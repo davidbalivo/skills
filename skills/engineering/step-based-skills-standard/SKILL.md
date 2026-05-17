@@ -22,6 +22,10 @@ prose, and migrate to canonical format without losing meaning.
 - `SKILL.md` (migrated skill) — English
 </OUTPUT-LANGUAGE>
 
+## Domain Skills
+
+**Load:** md-essentials
+
 ## Skill Structure
 
 **Required sections — in this order:**
