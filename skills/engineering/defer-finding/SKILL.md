@@ -38,7 +38,7 @@ whose title exactly matches one already recorded in `deferred-findings.md`, excl
 
 ---
 
-## 2️⃣ Finding proposals
+### 2. Finding Proposals
 
 For each candidate finding, determine:
 
@@ -70,6 +70,8 @@ Omit any that add no real information — an empty field is worse than no field 
 | `**Options:**`            | When there is a Pending decision and multiple viable paths exist.                 |
 | `**Recommendation:**`     | When the agent has a reasoned initial stance.                                     |
 | `**Resolution:**`         | Only for `status: resolved`. What was done and in which spec or task.             |
+
+**Go to:** Step 3
 
 ---
 
