@@ -315,17 +315,14 @@ Verify the cross-phase **Success Criteria** defined in `spec.md`:
 **Go to:** Step 4 — if any criterion is unverified or unmarked; reopen the relevant phase
 **Go to:** Step 15 — all criteria satisfied
 
-### 5. Implementation Closure
+### 15. Implementation Closure
 
-After the user approves the Final Gate, execute the closure sequence once:
+<NON-NEGOTIABLE>
+- Execute only upon explicit user confirmation that the implementation is complete.
+</NON-NEGOTIABLE>
 
 1. Update `plan.md` frontmatter: `status: validated` → `status: implemented`.
 2. Run `pnpm pending`.
 3. Stage both files: `git add sdd/{id}/plan.md sdd/00-PENDING.md`.
-4. Commit:
-   ```
-   chore(sdd): mark {id} as implemented
-   ```
 
-This step is not triggered automatically — execute it upon explicit user confirmation that the
-implementation is complete.
+**Commit:** chore(sdd): mark {id} as implemented
