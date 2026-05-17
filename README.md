@@ -37,6 +37,7 @@ Private store of personal skills for agents (Claude Code and others), installabl
 | [sdd-spec-gap](skills/engineering/sdd-spec-gap/)                             | `engineering` | Per project | Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step                   |
 | [sdd-defer-finding](skills/engineering/sdd-defer-finding/)                   | `engineering` | Per project | Formalizes out-of-scope findings into structured entries in `deferred-findings.md`                  |
 | [md-essentials](skills/engineering/md-essentials/)                           | `engineering` | Global      | Canonical Markdown formatting rules aligned to the project's Prettier configuration                 |
+| [ts-essentials](skills/engineering/ts-essentials/)                           | `engineering` | Global      | Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async     |
 | [step-based-skills-standard](skills/engineering/step-based-skills-standard/) | `engineering` | Per project | Canonical structure, keywords, tags and mermaid conventions for step-based skills                   |
 
 ## Adding a new skill
