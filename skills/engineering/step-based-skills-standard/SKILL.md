@@ -129,12 +129,12 @@ All tags wrap content as a bulleted list — never free prose inside a tag.
   path/to/directory/
   ├── file-a
   └── file-b
+  ```
 
   - **{artifact-name}** — `{path}`
     - **What:** one-line description of purpose
     - **Structure:** required sections / fields / frontmatter
     - **Template:** [`link/to/template`](path) — optional; omit when no canonical template exists
-  ```
 
 - **Tags:** free placement within the step; sit next to the content they qualify
 

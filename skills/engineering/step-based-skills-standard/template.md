@@ -1,236 +1,182 @@
-# Step-Based Skills Standard — Examples
+# Step-Based Skills Standard — Example
 
-Demonstrates all structural elements defined in `SKILL.md`. Examples illustrate common step-based
-patterns; adapt them to any workflow domain.
+One coherent skill demonstrating every structural element. Domain kept abstract — swap `artifact` and the verbs for your own.
+
+Content below = what a skill's `SKILL.md` looks like end-to-end.
 
 ---
-
-## Skill Skeleton
 
 ```yaml
 ---
 name: example-skill
-description: "On demand, when invoked by user."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
 ---
 ```
 
 # Example Skill
 
-Short description of what the skill produces.
+Produces a validated `artifact` from upstream sources through a multi-step pipeline.
 
 ## Role
 
-Short statement of identity and stance the skill adopts; shapes tone and decision bias.
+You are a **methodical author**. Authority limited to producing the artifact faithfully — not introducing new decisions.
 
 <CROSS-STEP-RULES>
-- Ask until you actually understand — not until the user seems satisfied.
-- Challenge the user's framing when it looks incomplete or contradictory.
+- Upstream sources are the source of truth; never second-guess them.
+- Never fill gaps with assumptions; surface them.
+- Persistent names require user approval.
 </CROSS-STEP-RULES>
 
 <OUTPUT-LANGUAGE>
-- `<artifact-a>.md` — English
-- `<artifact-b>.md` — English
+- `artifact.md` — English
 </OUTPUT-LANGUAGE>
+
+## Upstream Sources
+
+- `<path>/<input-a>.md` — scope and requirements
+- `<path>/<input-b>.md` — supporting decision log
 
 ## States
 
-| State                 | When                       | Who    | Action                 |
-| --------------------- | -------------------------- | ------ | ---------------------- |
-| `draft`               | After Step 3 (Write)       | author | Internal self-review   |
-| `internally-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
-| `validated`           | After Step 6 (Triage)      | author | Ready for next phase   |
+| State                 | When                 | Who    | Action                    |
+| --------------------- | -------------------- | ------ | ------------------------- |
+| `draft`               | After Step 2 (Write) | author | Internal self-review      |
+| `internally-reviewed` | After Step 3         | author | Waits for external review |
+| `validated`           | After Step 6         | author | Ready for downstream use  |
 
 ## Steps Flow
 
 ```mermaid
 flowchart TD
-S1["1. Input Validation"]
-S2["2. Setup"]
-S3{{"3. External Review"}}
-S4["4. Findings Triage 🔁"]
-S5["5. Promote"]
+    S1["1. Input Validation"]
+    S2["2. Write Draft"]
+    S3{"3. Self-Review 🔁"}
+    S4{{"4. Review Handoff"}}
+    S5{"5. Findings Triage 🔁"}
+    S6["6. Promote"]
 
-    S1 --> S2
-    S2 --> S3
-    S3 --> S4
-    S4 -->|"🔁 another round"| S3
-    S4 -->|all resolved| S5
+    S1 --> S2 --> S3
+    S3 -->|"🔁 findings"| S2
+    S3 -->|clean| S4
+    S4 --> S5
+    S5 -->|"🔁 another round"| S4
+    S5 -->|promote| S6
 ```
 
 ## Steps
 
----
+### 1. Input Validation
 
-## Step Examples
-
-### 1 — Conditional navigation, no user interaction
-
-### 1. Understand the Current Context
-
-Scan `<context-directory>` — directory names only, never file contents. Identify paths that share
-topic or scope with the current request. If nothing seems relevant, proceed silently.
-
-**Go to:** Step 2 — if nothing relevant found
-**Go to:** Step 2 — after user confirms which items to consider
-
----
-
-### 2 — HARD-GATE + Question + Stop & wait
-
-### 3. Understanding Lock
-
-Present an understanding summary and a list of all assumptions, each marked as `Confirmed` or
-`Accepted risk`. If any assumption is unresolved and blocks the design, return to Step 2.
+**Announce:** 🔍 Scanning upstream sources
 
 <HARD-GATE>
-- Do not proceed to Step 4 without explicit user confirmation of the summary.
+- Every source listed in `## Upstream Sources` exists and is non-empty.
 </HARD-GATE>
 
-**Question:**
+**Go to:** Step 2
 
-> ❓ **Does this accurately reflect your intent?**
->
-> - Confirm to proceed
-> - Correct anything before we move to design
-
-**Stop & wait:** explicit user confirmation
-
-**Go to:** Step 2 — if any blocking assumption is unresolved
-**Go to:** Step 4 — on confirmation
-
----
-
-### 3 — Announce + Output + Stop & wait + 🤝 handoff
-
-### 8. External Review Request
-
-Derive considerations from decisions made this session and from the decision log that a reviewer
-might misread without context.
-
-**Announce:** 🧐 Requesting external review
-
-**Output:**
-
-> **Ready for review** 🤝
->
-> - primary artifact: `<workspace>/{YY-MM-DD}-{id}/<primary>.md`
-> - decision log: `<workspace>/{YY-MM-DD}-{id}/<log>.md`
-> - Considerations:
->   - <deliberate decisions or context the reviewer must hold>
-
-**Stop & wait:** reviewer responds with findings or "no findings"
-
-**Go to:** Step 9
-
----
-
-### 4 — Loop: 🔁 + Go to (back) + Commit + Skill
-
-### 5. Unit Review
-
-Emit the handoff message and wait for reviewer findings.
-
-**Output:**
-
-> **Ready for review** 🤝
->
-> - artifact: `<path>`
-> - scope: `<id and title>`
-> - unit: `<id and title>`
-> - iterations: `<count>`
-> - diff: `git diff <hash>..HEAD`
-> - Considerations:
->   - <decisions, trade-offs, context>
-
-**Stop & wait:** reviewer findings
-
-**Go to:** Step 6
-
----
-
-### 6. Findings Triage 🔁
-
-Findings are technical observations, not absolute truths. Analyze each critically. For each
-finding reach a joint decision with the user — Apply, Defer, or Reject.
-
-If at least one finding was Apply, commit amendments using counter N (1-indexed, incremented per
-review cycle that produced changes).
-
-**Commit:** `refactor(<scope>): <unit-id> review amendments r<N>`
-
-**Skill:**
-
-- <deferred-findings-handler> — only when user confirms Defer disposition
-
-**Question:**
-
-> ❓ **Findings r\<N\> resolved. Another review round or advance?**
->
-> - Another round → return to Step 5
-> - Advance → proceed to Step 7
-
-**Stop & wait:** explicit user approval to advance
-
-**Go to:** Step 5 — if user requests another round
-**Go to:** Step 7 — if user approves advance
-
----
-
-### 5 — 💬 Status (inline update during execution)
-
-`💬 Status` is not a step keyword — it is emitted during execution as a progress signal. It does not
-appear in the step definition.
-
-Example of what the agent emits during execution:
-
-> **💬 Status:** Migrating Step 3 of 9 — Understanding Lock
-
-The step definition itself contains no 💬 reference:
-
-### 4. Migrate All Steps
-
-Read each step in the original skill and rewrite it using the new format. If a step cannot be
-expressed in the new format, surface it to the user before continuing.
-
-**Announce:** 🔧 Migrating skill to standard
-
-**Commit:** `refactor(skill): migrate example-skill to skill standard`
-
-**Go to:** Step 5
-
----
-
-### 6 — Announce + Artifacts + NON-NEGOTIABLE + Commit
-
-### 6. Write the Draft
-
-Create the directory and write both files.
-
-<NON-NEGOTIABLE>
-- Write for a reader with zero context. Leave nothing implicit.
-- Self-contained from the first write — no "TBD" sections.
-</NON-NEGOTIABLE>
+### 2. Write Draft
 
 **Announce:** 📝 Materializing the draft
 
+<NON-NEGOTIABLE>
+- Self-contained from the first write — no "TBD" sections.
+</NON-NEGOTIABLE>
+
+**Skill:**
+
+- markdown-formatting
+
 **Artifacts:**
 
-```markdown
-audits/
-└── {YY-MM-DD}-{id}/
-├── summary.md
+```
+<working-directory>/{YY-MM-DD}-{id}/
+├── artifact.md
 └── log.md
 ```
 
-- **summary** — `audits/{YY-MM-DD}-{id}/summary.md`
-  - **What:** self-contained audit summary; evolves in place through every later step
-  - **Structure:** frontmatter (`status: draft`); Scope, Findings, Recommendations
-  - **Template:** [`summary.md`](summary.md)
+- **artifact** — `<working-directory>/{YY-MM-DD}-{id}/artifact.md`
+  - **What:** primary deliverable; evolves in place across later steps
+  - **Structure:** frontmatter (`status: draft`); Overview, Sections, Acceptance Criteria
+  - **Template:** [`artifact.md`](artifact.md)
 
-- **log** — `audits/{YY-MM-DD}-{id}/log.md`
-  - **What:** live log of decisions, alternatives, and rejection reasons; appended the moment a non-obvious choice is made
-  - **Structure:** one entry per decision with Decision / Alternatives considered / Why discarded
+- **log** — `<working-directory>/{YY-MM-DD}-{id}/log.md`
+  - **What:** live decision log; one entry per non-obvious choice
+  - **Structure:** Decision / Alternatives / Why discarded
 
-**Commit:** `feat(audit): add {id} to audits`
+**Commit:** feat(artifact): add {id}
 
-**Go to:** Step 7
+**Go to:** Step 3
+
+### 3. Self-Review 🔁
+
+**Announce:** 🧐 Running adversarial self-review
+
+Switch from **author** to **attacker**. Read the artifact in full; search for the failure.
+
+On clean review, update frontmatter to `status: internally-reviewed`.
+
+**Go to:** Step 2 — if any finding requires revisiting the draft
+**Go to:** Step 4 — clean
+
+### 4. Review Handoff
+
+**Output:**
+
+> **Ready for review** 🤝
+>
+> - artifact: `<working-directory>/{YY-MM-DD}-{id}/artifact.md`
+> - Considerations:
+>   - <deliberate decisions a reviewer might misread>
+
+**Stop & wait:** reviewer responds with findings or "no findings"
+
+**Go to:** Step 5
+
+### 5. Findings Triage 🔁
+
+<WARNING>
+- Findings are observations, not absolute truths. Reject when wrong, missing context, or out of scope.
+</WARNING>
+
+For each finding, reach a joint disposition with the user:
+
+| Disposition | Action                                        |
+| ----------- | --------------------------------------------- |
+| **Apply**   | Implement the change in the artifact          |
+| **Reject**  | Reasoning recorded in conversation; no change |
+
+**Announce:** 🔧 Applying review amendments
+
+**Commit:** refactor(artifact): r<N> review amendments
+
+**Question:**
+
+> ❓ **Findings r\<N> resolved. Another review round or promote?**
+
+**Stop & wait:** explicit user decision
+
+**Go to:** Step 4 — another round
+**Go to:** Step 6 — promote
+
+### 6. Promote
+
+Update frontmatter to `status: validated`.
+
+**Output:**
+
+> artifact validated at `<working-directory>/{YY-MM-DD}-{id}/`.
+
+**Commit:** refactor(artifact): validate {id}
+
+Process ends here.
+
+---
+
+## Runtime-only emissions
+
+`💬 Status` is not a step keyword — it is emitted during execution as a progress signal, never declared in step definitions.
+
+Example emitted at runtime:
+
+> **💬 Status:** Writing Step 2 of 6 — Write Draft
