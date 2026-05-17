@@ -216,23 +216,23 @@ On the first pass: mark this task and every completed subtask `[x]` in `plan.md`
 
 **Go to:** Step 10
 
-##### Stage 6 — Ready for review
+### 10. Ready for Review
 
-Output the following message, then **stop and wait** for the reviewer's response:
+**Output:**
 
-```markdown
-**Ready for review**
+> **Ready for review** 🤝
+>
+> - Implementation Plan: `<relative path to plan.md>`
+> - Phase: `<phase id and title>`
+> - Task: `<task id and title>`
+> - Cycles run: `<count>`
+> - Task diff: `git diff <hash-pre-task>..HEAD`
+> - Considerations (optional — omit if nothing non-obvious to flag):
+>   - `<deliberate decisions, trade-offs, or context the reviewer must hold>`
 
-- Implementation Plan: <relative path to plan.md>
-- Phase: <phase id and title>
-- Task: <task id and title>
-- Cycles run: <count>
-- Task diff: `git diff <hash-pre-task>..HEAD`
-- Considerations:
-  - <deliberate decisions, trade-offs, or context the reviewer must hold>
-```
+**Stop & wait:** reviewer responds with findings or "no findings"
 
-Then **stop and wait** for findings.
+**Go to:** Step 11
 
 ##### Stage 7 — Findings triage
 
