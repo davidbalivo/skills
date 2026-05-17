@@ -17,6 +17,12 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 - TDD Principles apply at every step — see ## TDD Principles.
 </CROSS-STEP-RULES>
 
+## Domain Skills
+
+**Load:**
+
+- ts-essentials
+
 ## Upstream Sources
 
 - `sdd/{YY-MM-DD}-{id}/plan.md` — executable contract; `status: validated` required
