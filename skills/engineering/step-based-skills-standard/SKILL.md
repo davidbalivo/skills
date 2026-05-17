@@ -33,8 +33,9 @@ prose, and migrate to canonical format without losing meaning.
 5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts)
 6. `## Upstream Sources` (if applicable)
 7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
-8. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
-9. `## Steps`
+8. Domain sections (if applicable) — any `##` sections the skill needs beyond `Upstream Sources` and `States`; placed before `## Steps Flow`
+9. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
+10. `## Steps`
 
 **Heading depth — enforced:**
 
@@ -188,16 +189,19 @@ flowchart TD
     S1["1. Full Read"]
     S2{{"2. Structural Assessment"}}
     S3{{"3. Global Extraction"}}
-    S4{{"4. Step-by-Step Migration 🔁"}}
-    S5{{"5. Mermaid Update"}}
-    S6{{"6. Final Consistency Check"}}
+    S4{{"4. Preamble Migration 🔁"}}
+    S5{{"5. Step-by-Step Migration 🔁"}}
+    S6{{"6. Mermaid Update"}}
+    S7{{"7. Final Consistency Check"}}
 
     S1 --> S2
     S2 --> S3
     S3 --> S4
-    S4 -->|"🔁 next step"| S4
-    S4 -->|all steps migrated| S5
-    S5 --> S6
+    S4 -->|"🔁 next section"| S4
+    S4 -->|all sections migrated| S5
+    S5 -->|"🔁 next step"| S5
+    S5 -->|all steps migrated| S6
+    S6 --> S7
 ```
 
 ## Steps
@@ -224,6 +228,7 @@ Identify all violations before touching any content:
 - Step numbering gaps, decimal steps (`3.1`, `3.2`), or steps that must be renumbered after
   flattening
 - Missing or outdated mermaid diagram
+- Domain sections positioned after `## Steps Flow` — must appear before it
 
 **Output:**
 
@@ -245,6 +250,7 @@ Before touching individual steps, identify content that belongs at skill level:
   implicitly required everywhere. If found embedded in a step, flag it — do not move it silently.
 - **OUTPUT-LANGUAGE candidates:** language or format constraints on artifacts.
 - **Role:** verify it exists and accurately reflects the skill's stance and identity.
+- **Domain section candidates:** skill-specific reference material that is not step definitions, not upstream sources, and not universal enough for `<CROSS-STEP-RULES>` — must be positioned before `## Steps Flow`.
 
 **Output:**
 
@@ -258,22 +264,68 @@ Before touching individual steps, identify content that belongs at skill level:
 
 **Go to:** Step 4
 
-### 4. Step-by-Step Migration 🔁
+### 4. Preamble Migration 🔁
+
+For each preamble section in order — `# Skill Name` description, `## Role`,
+`<CROSS-STEP-RULES>`, `<OUTPUT-LANGUAGE>`, `## Upstream Sources`, domain sections,
+steps-section rename:
+
+1. Propose structural changes based on Step 3 extractions.
+2. Write the confirmed version.
+3. Propose prose improvements if the result can be clearer or more concise without changing its meaning; otherwise declare clean.
+4. Apply approved improvements.
+5. Commit.
+
+<NON-NEGOTIABLE>
+- One section per iteration — never batch.
+- Prose review never changes what the text says — only how.
+</NON-NEGOTIABLE>
+
+**Output:**
+
+> Propose structural changes for the section.
+
+**Question:**
+
+> ❓ **Confirm structural changes?**
+
+**Stop & wait:** explicit user confirmation
+
+**Output:**
+
+> Proposed prose improvements, or "Clean — no changes."
+
+**Question:**
+
+> ❓ **Apply improvements?** (only when improvements are proposed)
+
+**Stop & wait:** only when improvements are proposed
+
+**Commit:** refactor(<skill>): migrate {section-name}
+
+**Go to:** Step 4 — next section
+**Go to:** Step 5 — all sections migrated
+
+### 5. Step-by-Step Migration 🔁
 
 For each step, in order:
 
 1. Apply Pattern Recognition to identify keyword and tag candidates in the free prose.
 2. Present the proposed changes — what stays as prose, what becomes a keyword, what becomes a tag,
    what condition each Go to carries.
-3. Write the confirmed version. Move to the next step.
+3. Write the confirmed version.
+4. Propose prose improvements if the result can be clearer or more concise without changing its meaning; otherwise declare clean.
+5. Apply approved improvements.
+6. Commit.
 
 <NON-NEGOTIABLE>
 - One step per proposal — never batch multiple steps into a single message.
+- Prose review never changes what the text says — only how.
 </NON-NEGOTIABLE>
 
 **Output:**
 
-> Propose the changes for each step.
+> Propose the changes for the step.
 
 **Question:**
 
@@ -281,10 +333,22 @@ For each step, in order:
 
 **Stop & wait:** explicit user confirmation
 
-**Go to:** Step 4 — next step
-**Go to:** Step 5 — all steps migrated
+**Output:**
 
-### 5. Mermaid Update
+> Proposed prose improvements, or "Clean — no changes."
+
+**Question:**
+
+> ❓ **Apply improvements?** (only when improvements are proposed)
+
+**Stop & wait:** only when improvements are proposed
+
+**Commit:** refactor(<skill>): migrate step {N}
+
+**Go to:** Step 5 — next step
+**Go to:** Step 6 — all steps migrated
+
+### 6. Mermaid Update
 
 After all steps are migrated, verify the mermaid diagram reflects the final step structure:
 
@@ -303,9 +367,9 @@ After all steps are migrated, verify the mermaid diagram reflects the final step
 
 **Stop & wait:** explicit user confirmation
 
-**Go to:** Step 6
+**Go to:** Step 7
 
-### 6. Final Consistency Check
+### 7. Final Consistency Check
 
 **Announce:** 🧐 Running self-review
 
@@ -317,6 +381,7 @@ Read the migrated skill in full. Verify:
 - Every **Go to** target exists as a numbered step
 - No heading below `###` depth remains
 - No content that belongs in `<CROSS-STEP-RULES>` was left inside a step
+- Domain sections are positioned before `## Steps Flow`
 
 **Output:**
 

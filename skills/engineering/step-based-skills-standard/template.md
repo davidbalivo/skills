@@ -44,6 +44,11 @@ You are a **methodical author**. Authority limited to producing the artifact fai
 | `internally-reviewed` | After Step 3         | author | Waits for external review |
 | `validated`           | After Step 6         | author | Ready for downstream use  |
 
+## Domain Rules _(example name — use a skill-specific title)_
+
+- Rule or behavioral constraint specific to this skill's domain.
+- Another constraint that doesn't fit in `<CROSS-STEP-RULES>` (not universal across steps) but must be accessible from multiple steps.
+
 ## Steps Flow
 
 ```mermaid
