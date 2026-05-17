@@ -296,12 +296,12 @@ Reach a joint decision. Each finding ends with one disposition:
 | Disposition | Action                                                                     |
 | ----------- | -------------------------------------------------------------------------- |
 | **Apply**   | Implement the change → return to Step 6, then re-run Steps 7–10            |
-| **Defer**   | Valid but out of scope → record via `write-deferred-findings`              |
+| **Defer**   | Valid but out of scope → record via `defer-finding`                        |
 | **Reject**  | Not valuable, incorrect, or deliberate decision → reasoning stays in convo |
 
 **Skill:**
 
-- write-deferred-findings — only when user confirms a `Defer` disposition; do not load preemptively.
+- defer-finding — only when user confirms a `Defer` disposition; do not load preemptively.
 
 If at least one `Apply`: commit amendments; `N` starts at 1, incremented per review cycle with changes.
 
