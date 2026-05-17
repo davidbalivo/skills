@@ -21,10 +21,9 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 
 - **Tests verify behavior, not implementation.** A good test reads like a spec — exercises the
   public interface, survives internal refactors. See [.agents/skills/sdd-impl-tdd/tests.md](tests.md) and [.agents/skills/sdd-impl-tdd/mocking.md](mocking.md).
-- **Vertical slices, never horizontal.** One test → one implementation → repeat. Never stack
-  multiple RED tests before any GREEN.
-- **Refactor only on GREEN.** Never refactor while any test is failing.
-- **Tracer bullet first.** The first cycle of each task is the thinnest end-to-end path.
+- **Vertical slices, never horizontal.** One test → one implementation → repeat.
+- **Refactor only on GREEN.**
+- **Tracer bullet first.** The thinnest end-to-end path that proves the task works.
 - **Technical edge cases emerge here.** The plan defines business behavior; technical edge cases
   (null handling, boundary values, failure paths, etc.) are not in the plan — they are identified
   and scheduled in Stage 1 of each task.
