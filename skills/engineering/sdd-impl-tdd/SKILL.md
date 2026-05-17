@@ -162,9 +162,12 @@ Evaluate in order:
 5. **Complexity** — simplify conditionals and nesting where the logic allows.
 
 <NON-NEGOTIABLE>
-- Run all tests after each item. Show changes to the user.
-- All tests must still be green before exiting; no further safe refactor identified.
+- Run all tests after each item; show changes to the user.
 </NON-NEGOTIABLE>
+
+<HARD-GATE>
+- All tests are green and no further safe refactor is identifiable.
+</HARD-GATE>
 
 **Go to:** Step 8
 
