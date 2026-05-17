@@ -297,7 +297,9 @@ Cover, at minimum:
 Act on findings as follows:
 
 - **Small findings** — sequencing, concreteness, missing edge cases: fix directly in `plan.md`.
-- **Large findings** — hidden decision, approach invalidation, or scope change: surface to the user and resolve via the Finding Register.
+- **Large findings:**
+  - **Hidden decision or scope change** — escalate via Gap Escalation (see section above).
+  - **Approach invalidation** — revisit phase or task decomposition (see Go to below).
 
 <HARD-GATE>
 - Do not proceed to Step 9 until all findings are resolved.
