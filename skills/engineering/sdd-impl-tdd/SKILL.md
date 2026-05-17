@@ -33,10 +33,8 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 
 ## Upstream Sources
 
-The plan derives from `spec.md` and `decisions.md` in the same SDD folder. Do not read them
-proactively — `plan.md` with `status: validated` is the executable contract. Consult them only
-reactively, when something in the plan does not add up during execution and you need the upstream
-rationale to resolve it.
+- `sdd/{YY-MM-DD}-{id}/plan.md` — executable contract; `status: validated` required
+- `sdd/{YY-MM-DD}-{id}/spec.md` and `decisions.md` — upstream rationale; read only when the plan does not add up
 
 ## Plan State Awareness
 
