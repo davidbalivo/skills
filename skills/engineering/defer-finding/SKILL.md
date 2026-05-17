@@ -75,7 +75,7 @@ Omit any that add no real information — an empty field is worse than no field 
 
 ---
 
-## 3️⃣ Confirmation block
+### 3. Confirmation
 
 Present all candidate findings in a single message, with the full preview — exactly as they will be
 written to the file:
@@ -116,7 +116,9 @@ spec: {spec-id}
 Which findings do you want to record? Specify the indices to include or request changes to any entry.
 ```
 
-Wait for the user's response before writing anything.
+**Stop & wait:** user selects indices or requests changes
+
+**Go to:** Step 4
 
 ---
 
