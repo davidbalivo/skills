@@ -19,13 +19,17 @@ confirmation.
 
 ## Finding Schema
 
-**Priority** — propose 1, 2, or 3:
+**Title** — concise; describes the problem, not the solution ("Repeated repository guard" — not "Extract guard to shared function").
+
+**Category** — slug from `backlog/categories.md`. Use the most specific available; do not fall back to `tech-debt` when `architecture` or `security` fits better.
+
+**Priority** — 1, 2, or 3, calibrated to real risk (never inflated to manufacture urgency):
 
 - **1 — Critical:** active security or correctness risk, or blocks future work in the area
 - **2 — Important:** real impact but not blocking; address in the next spec that touches the area
 - **3 — Desired:** quality, ergonomics, or maintainability improvement; applied opportunistically
 
-**Body fields** — all optional except `**Context:**`; omit any that add no real information.
+**Body fields** — all optional except `**Context:**`; omit any that add no real information. The body must allow understanding the problem, risk, and impact without memory of the review.
 
 | Field                     | When to include                                                                   |
 | ------------------------- | --------------------------------------------------------------------------------- |
@@ -38,19 +42,7 @@ confirmation.
 | `**Recommendation:**`     | When the agent has a reasoned initial stance.                                     |
 | `**Resolution:**`         | Only for `status: resolved`. What was done and in which spec or task.             |
 
-## Output Quality
-
-A well-formed finding:
-
-- Has a title that describes the problem, not the solution ("Repeated repository guard" — not
-  "Extract guard to shared function")
-- Uses the most specific available slug — does not fall back to `tech-debt` when `architecture` or
-  `security` fits better
-- Has a priority calibrated to real risk, not inflated to manufacture urgency
-- Has a body that allows understanding the problem, the risk, and the impact without memory of the
-  review
-- Is parseable by `generate-backlog.ts` — the `<!-- finding ... -->` block is a valid HTML comment
-  with each field on its own line, no extra spaces or blank lines inside the block
+**Format** — the `<!-- finding ... -->` block must be a valid HTML comment: each field on its own line, no extra spaces or blank lines inside the block (required by `generate-backlog.ts`).
 
 ## Steps Flow
 
@@ -111,11 +103,11 @@ For each candidate finding, determine:
 **Output:**
 
 > I've identified N out-of-scope findings to record in `sdd/{spec-id}/deferred-findings.md`.
-> 
+>
 > **[1]**
-> 
+>
 > ## {Finding title}
-> 
+>
 > <!-- finding
 > category: {slug}
 > priority: {1|2|3}
@@ -123,20 +115,20 @@ For each candidate finding, determine:
 > date: {YYYY-MM-DD}
 > spec: {spec-id}
 > -->
-> 
+>
 > - **Context:** ...
-> - **Risk:** ...             ← omit if not applicable
-> - **Impact:** ...           ← omit if not applicable
+> - **Risk:** ... ← omit if not applicable
+> - **Impact:** ... ← omit if not applicable
 > - **Future improvement:** ... ← omit if not applicable
 > - **Pending decision:** ... ← omit if not applicable
-> - **Recommendation:** ...   ← omit if not applicable
-> 
+> - **Recommendation:** ... ← omit if not applicable
+>
 > ---
-> 
+>
 > **[2]**
-> 
+>
 > ## {Second finding title}
-> 
+>
 > ---
 
 **Question:**
@@ -146,7 +138,6 @@ For each candidate finding, determine:
 **Stop & wait:** user selects indices or requests changes
 
 **Go to:** Step 4
-
 
 ### 4. Writing
 
