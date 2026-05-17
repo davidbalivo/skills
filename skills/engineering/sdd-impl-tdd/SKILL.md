@@ -83,25 +83,16 @@ Mark each executed item `[x]` in `plan.md`.
 
 **Go to:** Step 4
 
-### 3. Per Phase
+### 4. Phase Acceptance Test 🔁
 
-Execute phases in the order defined by `plan.md`. Each phase has two loops:
+Execute phases in the order defined by `plan.md` — write each phase's acceptance test before any task begins. It must fail (RED) and stays RED until the phase closes.
 
-- **Outer loop (per phase):** the phase acceptance test wraps the slice. Written once at 3.1,
-  closed once at 3.3.
-- **Inner loop (per task):** every unchecked task in the phase runs through all stages of 3.2 —
-  including its own self-review, review checkpoint, findings triage, and commits — before the
-  next task starts.
+<NON-NEGOTIABLE>
+- Runs once per phase, not per task.
+- If the acceptance test already exists from a prior session and is RED, keep it — do not rewrite.
+</NON-NEGOTIABLE>
 
-Within a phase, tasks run sequentially. Do not start task N+1 until task N has exited 3.2 cleanly.
-
-#### 3.1 Phase acceptance test (RED)
-
-Write the phase's acceptance test as defined in `plan.md`. It must fail (RED) before any task
-begins and stays RED until the phase closes. If the acceptance test already exists from a prior
-session and is RED, keep it — do not rewrite.
-
-This step runs **once per phase**, not per task.
+**Go to:** Step 5
 
 #### 3.2 Per Task
 
