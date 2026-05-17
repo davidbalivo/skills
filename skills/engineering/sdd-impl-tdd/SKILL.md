@@ -31,7 +31,7 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 - **Tracer bullet first.** The thinnest end-to-end path that proves the task works.
 - **Technical edge cases emerge here.** The plan defines business behavior; technical edge cases
   (null handling, boundary values, failure paths, etc.) are not in the plan — they are identified
-  and scheduled in Stage 1 of each task.
+  and scheduled in Step 5 of each task.
 
 ## Plan State Awareness
 
@@ -58,13 +58,13 @@ flowchart TD
     S5["5. Plan Cycles"]
     S6["6. RED → GREEN"]
     S7["7. Refactor"]
-    S8{{"8. Validate 🔁"}}
+    S8["8. Validate 🔁"]
     S9["9. Self-Review"]
     S10{{"10. Ready for Review"}}
     S11{{"11. Findings Triage 🔁"}}
     S12["12. Advance 🔁"]
     S13{{"13. Phase Gate 🔁"}}
-    S14["14. Final Gate"]
+    S14["14. Final Gate 🔁"]
     S15["15. Implementation Closure"]
 
     S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
@@ -75,6 +75,7 @@ flowchart TD
     S12 -->|"🔁 next task"| S5
     S12 -->|no tasks remain| S13
     S13 -->|"🔁 next phase"| S4
+    S13 -->|"🔁 request changes"| S5
     S13 -->|no phases remain| S14
     S14 -->|unverified| S4
     S14 -->|all satisfied| S15
@@ -335,7 +336,7 @@ All tasks in this phase are `[x]` — no further marking needed for the phase it
 **Go to:** Step 5 — request changes; reopen relevant task from appropriate step
 **Go to:** Step 14 — no more phases
 
-### 14. Final Gate
+### 14. Final Gate 🔁
 
 Verify the cross-phase **Success Criteria** defined in `spec.md`:
 
