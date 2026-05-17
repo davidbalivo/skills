@@ -60,28 +60,28 @@ Findings from external review do not go through this path.
 
 **Go to:** Step 2
 
-### 2. Setup
+### 2. Preconditions
 
-#### 2.1 Preconditions
+Verify every unchecked item in `plan.md` › Setup › Preconditions. Each must resolve to a binary ✅. Skip items already marked `[x]`.
 
-Verify every unchecked item in `plan.md` › Setup › Preconditions. Each must resolve to a binary
-✅. Preconditions are verified, never executed; no commits produced. If one fails, **stop and
-ask** — implementation does not start until it is resolved out-of-band. Skip items already marked
-[x].
+<NON-NEGOTIABLE>
+- Preconditions are verified, never executed — no commits produced.
+- If one fails, stop and ask — implementation does not start until resolved out-of-band.
+</NON-NEGOTIABLE>
 
-- **Exit:** all items ✅. Mark each verified item [x] in `plan.md`.
+Mark each verified item `[x]` in `plan.md`.
 
-#### 2.2 Groundwork
+**Go to:** Step 3
 
-Execute every unchecked item in `plan.md` › Setup › Groundwork in order. Each must pass its
-binary verification. Skip items already marked [x].
+### 3. Groundwork
 
-- **Exit:** all items verified. Mark each executed item [x] in `plan.md`, then group all
-  groundwork into a single commit — the [x] marks ship inside it:
+Execute every unchecked item in `plan.md` › Setup › Groundwork in order. Each must pass its binary verification. Skip items already marked `[x]`.
 
-```
-chore(sdd): groundwork for {id}
-```
+Mark each executed item `[x]` in `plan.md`.
+
+**Commit:** chore(sdd): groundwork for {id}
+
+**Go to:** Step 4
 
 ### 3. Per Phase
 
