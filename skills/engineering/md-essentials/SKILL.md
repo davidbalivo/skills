@@ -1,6 +1,6 @@
 ---
 name: md-essentials
-description: "You MUST use this when writing or modifying Markdown files — defines canonical formatting rules for structure, lists, emphasis, links, tables, and code fences."
+description: "You MUST use this skill when writing or modifying Markdown files — defines canonical formatting rules for structure, lists, emphasis, links, tables, and code fences."
 ---
 
 # Markdown Formatting
@@ -8,7 +8,6 @@ description: "You MUST use this when writing or modifying Markdown files — def
 Canonical Markdown rules for this repository. The goal is simple: write Markdown that Prettier can
 format without collapsing structure or degrading readability.
 
----
 
 ## Prettier Contract
 
@@ -21,7 +20,6 @@ assume these exact values are in effect:
 
 Any `.prettierrc` change that modifies these values requires re-validating every rule in this skill.
 
----
 
 ## 1. Headings
 
@@ -49,7 +47,6 @@ Incorrect:
 Content here.
 ```
 
----
 
 ## 2. List markers
 
@@ -72,7 +69,6 @@ Incorrect:
 * [x] Done task
 ```
 
----
 
 ## 3. Canonical list pattern
 
@@ -95,7 +91,6 @@ Rules:
 - Never write multiple test cases inline after `- Testing:`.
 - Never collapse multiple subtasks into one paragraph.
 
----
 
 ## 4. Long bullet content
 
@@ -118,7 +113,6 @@ Avoid:
 - Introduce a failing test, attempt to push; hook fails with `pnpm test` output and push is aborted.
 ```
 
----
 
 ## 5. Emphasis
 
@@ -138,7 +132,6 @@ Incorrect:
 Use **bold** for critical warnings and _italic_ for introduced terms.
 ```
 
----
 
 ## 6. Links
 
@@ -153,7 +146,6 @@ Correct:
 See the [Prettier documentation](https://prettier.io/docs) for details.
 ```
 
----
 
 ## 7. Tables
 
@@ -178,7 +170,6 @@ Incorrect (missing separator row, multiple rows collapsed):
 | id | string | yes | email | string | yes |
 ```
 
----
 
 ## 8. Code fences
 
@@ -197,7 +188,6 @@ Incorrect — no language tag, no blank lines:
     pnpm validate
     ```
 
----
 
 ## 9. Blank lines
 
