@@ -299,11 +299,11 @@ Reach a joint decision. Each finding ends with one disposition:
 | **Defer**   | Valid but out of scope → queue for batch recording                         |
 | **Reject**  | Not valuable, incorrect, or deliberate decision → reasoning stays in convo |
 
-After triaging all findings, if any were Deferred, invoke `defer-finding` **once** to record them as a batch.
+After triaging all findings, if any were Deferred, invoke `sdd-defer-finding` **once** to record them as a batch.
 
 **Skill:**
 
-- defer-finding — only when at least one finding was Deferred.
+- sdd-defer-finding — only when at least one finding was Deferred.
 
 If at least one `Apply`: commit amendments; `N` starts at 1, incremented per review cycle with changes.
 

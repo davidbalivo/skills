@@ -1,17 +1,17 @@
-# defer-finding
+# sdd-defer-finding
 
 ## Installation
 
 Per project:
 
 ```bash
-npx skills add davidbalivo/skills@defer-finding
+npx skills add davidbalivo/skills@sdd-defer-finding
 ```
 
 Global:
 
 ```bash
-npx skills add davidbalivo/skills@defer-finding -g
+npx skills add davidbalivo/skills@sdd-defer-finding -g
 ```
 
 ## About

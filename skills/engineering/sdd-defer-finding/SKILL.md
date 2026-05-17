@@ -1,9 +1,9 @@
 ---
-name: defer-finding
+name: sdd-defer-finding
 description: "You MUST use this when formalizing deferred findings into sdd/{spec-id}/deferred-findings.md — extracts out-of-scope findings from conversation context, validates against known categories, and writes structured entries after user confirmation"
 ---
 
-# defer-finding
+# sdd-defer-finding
 
 Formalizes out-of-scope findings into structured, parseable entries in `sdd/{spec-id}/deferred-findings.md`.
 
