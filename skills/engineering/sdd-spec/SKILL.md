@@ -219,7 +219,7 @@ sdd/
 
 **If supersedence applies**, prepend at the top of the superseded `spec.md`:
 
-```md
+```
 > **Superseded by:** [`sdd/{YY-MM-DD}-{id}/spec.md`](../{YY-MM-DD}-{id}/spec.md) ({YYYY-MM-DD}). The active design is documented there; this file is preserved as historical record.
 ```
 
