@@ -46,7 +46,15 @@ The plan may be fresh or partially executed. Treat every `[x]` in `plan.md` as i
 
 ## Implementation Findings Protocol
 
-When a discovery made **while coding** contradicts or extends the spec/plan, pause and register the finding via `sdd-spec-gap`. Show the diff and wait for explicit approval before continuing. This is the only exception to the no-interrupt rule within a phase.
+A finding is any discovery **while coding** that contradicts or extends the spec/plan.
+
+On any finding, pause and escalate before continuing — this is the only exception to the no-interrupt rule within a phase.
+
+**Protocol:**
+
+1. Show the diff
+2. Wait for explicit approval
+3. Resume from the paused step
 
 **Skill:**
 
