@@ -302,17 +302,18 @@ All tasks in this phase are `[x]` — no further marking needed for the phase it
 **Go to:** Step 5 — request changes; reopen relevant task from appropriate step
 **Go to:** Step 14 — no more phases
 
-### 4. Final Gate
+### 14. Final Gate
 
-After the last phase's 3.3 has been approved, verify the cross-phase **Success Criteria** defined
-in `spec.md`:
+Verify the cross-phase **Success Criteria** defined in `spec.md`:
 
-- Every Success Criterion is satisfied and observable
-- Manual steps required for any criterion are completed by the user
-- `plan.md` is fully marked done
+<HARD-GATE>
+- Every Success Criterion is satisfied and observable.
+- Manual steps required for any criterion are completed by the user.
+- `plan.md` is fully marked done.
+</HARD-GATE>
 
-If anything is unverified or unmarked, reopen the relevant phase. When clean, confirm the criteria
-are satisfied and proceed to Step 5.
+**Go to:** Step 4 — if any criterion is unverified or unmarked; reopen the relevant phase
+**Go to:** Step 15 — all criteria satisfied
 
 ### 5. Implementation Closure
 
