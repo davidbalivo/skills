@@ -267,10 +267,14 @@ If at least one `Apply`: commit amendments; `N` starts at 1, incremented per rev
 **Go to:** Step 10 — another review round
 **Go to:** Step 12 — advance
 
-##### Stage 8 — Advance
+### 12. Advance 🔁
 
-When Stage 7 has converged, advance to the next unchecked task in the phase (return to Stage 1).
-When no unchecked tasks remain, advance to 3.3.
+<NON-NEGOTIABLE>
+- Do not start the next task until the current one has fully exited Step 11.
+</NON-NEGOTIABLE>
+
+**Go to:** Step 5 — next unchecked task in the phase
+**Go to:** Step 13 — no unchecked tasks remain
 
 #### 3.3 Phase gate
 
