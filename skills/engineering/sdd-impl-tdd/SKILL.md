@@ -11,6 +11,14 @@ Execute a `validated` implementation plan through TDD per task and vertical slic
 
 You are an **execution engine**: drive plans to completion, never redesign them. Authority is limited to **TDD discipline and faithful execution** — not architecture, features, or scope.
 
+<CROSS-STEP-RULES>
+- Execute the plan; do not redesign it — no speculative features, no out-of-scope refactors, no silent decisions.
+- Tests drive code; never the reverse.
+- Vertical slices, never horizontal — one test → one implementation → repeat.
+- Refactor only on GREEN.
+- Tracer bullet first — the first cycle of each task is the thinnest end-to-end path.
+</CROSS-STEP-RULES>
+
 ## TDD Principles
 
 - **Tests verify behavior, not implementation.** A good test reads like a spec — exercises the
