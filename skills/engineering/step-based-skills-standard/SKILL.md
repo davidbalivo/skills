@@ -1,12 +1,12 @@
 ---
 name: step-based-skills-standard
-description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Defines the standard and guides migration of SDD-flow skills to canonical format."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Defines the standard and guides migration of step-based skills to canonical format."
 ---
 
 # Step-Based Skills Standard
 
-Defines structure, format, and conventions for SDD-flow skills: sdd-spec, sdd-plan, sdd-plan-tdd, sdd-impl-tdd,
-and future skills of the same lifecycle.
+Defines structure, format, and conventions for step-based skills — ordered multi-step
+workflows represented by a mermaid flow, optionally with state transitions.
 
 ## Role
 
@@ -30,7 +30,7 @@ prose, and migrate to canonical format without losing meaning.
 2. `# Skill Name` — short description of what the skill produces
 3. `## Role` — identity and stance; shapes tone and decision bias
 4. `<CROSS-STEP-RULES>`
-5. `<OUTPUT-LANGUAGE>`
+5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts or user-facing outputs)
 6. `## Upstream Sources` (if applicable)
 7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
 8. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
@@ -58,10 +58,10 @@ Steps renumber when inserted or removed. Gaps and decimal numbering (3.1, 3.2) a
 
 **Skill-level — fixed position:**
 
-| Tag                  | Position                               | Use                           |
-| -------------------- | -------------------------------------- | ----------------------------- |
-| `<CROSS-STEP-RULES>` | Immediately after `## Role`            | Rules governing every step    |
-| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` | Artifact language declaration |
+| Tag                  | Position                                            | Use                                           |
+| -------------------- | --------------------------------------------------- | --------------------------------------------- |
+| `<CROSS-STEP-RULES>` | Immediately after `## Role`                         | Rules governing every step                    |
+| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` (if present) | Language for artifacts or user-facing outputs |
 
 **Step-level — free placement within the step:**
 
@@ -137,7 +137,7 @@ All tags wrap content as a bulleted list — never free prose inside a tag.
   - **{artifact-name}** — `{path}`
     - **What:** one-line description of purpose
     - **Structure:** required sections / fields / frontmatter
-    - **Template:** [`link/to/template`](path)
+    - **Template:** [`link/to/template`](path) — optional; omit when no canonical template exists
   ```
 
 - **Tags:** free placement within the step; sit next to the content they qualify
@@ -223,7 +223,7 @@ produces, and what the overall flow is.
 
 Identify all violations before touching any content:
 
-- Missing required sections (`Role`, mermaid, `<CROSS-STEP-RULES>`, `<OUTPUT-LANGUAGE>`, `Steps`)
+- Missing required sections (`Role`, mermaid, `<CROSS-STEP-RULES>`, `Steps`); `<OUTPUT-LANGUAGE>` only if the skill produces artifacts or user-facing outputs
 - Heading depth violations (`####` or deeper — must be flattened to `###`)
 - Step numbering gaps, decimal steps (`3.1`, `3.2`), or steps that must be renumbered after
   flattening
@@ -249,7 +249,7 @@ Before touching individual steps, identify content that belongs at skill level:
 
 - **CROSS-STEP-RULES candidates:** rules repeated across multiple steps, or stated once but
   implicitly required everywhere. If found embedded in a step, flag it — do not move it silently.
-- **OUTPUT-LANGUAGE candidates:** language or format constraints on output artifacts.
+- **OUTPUT-LANGUAGE candidates:** language or format constraints on artifacts or user-facing outputs.
 - **Role:** verify it exists and accurately reflects the skill's stance and identity.
 
 **Output:**

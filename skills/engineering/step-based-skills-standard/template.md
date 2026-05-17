@@ -1,7 +1,7 @@
-# Step-Based Skill Standard — Examples
+# Step-Based Skills Standard — Examples
 
-Demonstrates all structural elements defined in `SKILL.md`. Examples are adapted from real
-SDD-flow skills.
+Demonstrates all structural elements defined in `SKILL.md`. Examples illustrate common step-based
+patterns; adapt them to any workflow domain.
 
 ---
 
@@ -27,17 +27,17 @@ Short statement of identity and stance the skill adopts; shapes tone and decisio
 </CROSS-STEP-RULES>
 
 <OUTPUT-LANGUAGE>
-- `spec.md` — English
-- `decisions.md` — English
+- `<artifact-a>.md` — English
+- `<artifact-b>.md` — English
 </OUTPUT-LANGUAGE>
 
 ## States
 
-| State                 | When                       | Who    | Action                 |
-| --------------------- | -------------------------- | ------ | ---------------------- |
-| `draft`               | After Step 3 (Write)       | author | Internal self-review   |
-| `internally-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
-| `validated`           | After Step 6 (Triage)      | author | Ready for next phase   |
+| State           | When                       | Who    | Action                 |
+| --------------- | -------------------------- | ------ | ---------------------- |
+| `drafted`       | After Step 3 (Write)       | author | Internal self-review   |
+| `self-reviewed` | After Step 4 (Self-review) | author | Awaits external review |
+| `approved`      | After Step 6 (Triage)      | author | Ready for handoff      |
 
 ## Steps Flow
 
@@ -66,23 +66,19 @@ S5["5. Promote"]
 
 ### 1 — Conditional navigation, no user interaction
 
-Based on sdd-spec Step 1 (SDD scan).
-
 ```markdown
 ### 1. Understand the Current Context
 
-Scan `sdd/` — directory names only, never file contents. Identify paths that share topic or scope
-with the current request. If nothing seems relevant, proceed silently.
+Scan `<context-directory>` — directory names only, never file contents. Identify paths that share
+topic or scope with the current request. If nothing seems relevant, proceed silently.
 
 **Go to:** Step 2 — if nothing relevant found
-**Go to:** Step 2 — after user confirms which SDDs to consider
+**Go to:** Step 2 — after user confirms which items to consider
 ```
 
 ---
 
 ### 2 — HARD-GATE + Question + Stop & wait
-
-Based on sdd-spec Step 3 (Understanding Lock).
 
 ```markdown
 ### 3. Understanding Lock
@@ -111,12 +107,10 @@ Present an understanding summary and a list of all assumptions, each marked as `
 
 ### 3 — Announce + Output + Stop & wait + 🤝 handoff
 
-Based on sdd-spec Step 8 (External Review Request).
-
 ```markdown
 ### 8. External Review Request
 
-Derive considerations from decisions made this session and from `decisions.md` that a reviewer
+Derive considerations from decisions made this session and from the decision log that a reviewer
 might misread without context.
 
 **Announce:** 🧐 Requesting external review
@@ -125,8 +119,8 @@ might misread without context.
 
 > **Ready for review** 🤝
 >
-> - spec: `sdd/{YY-MM-DD}-{id}/spec.md`
-> - decisions: `sdd/{YY-MM-DD}-{id}/decisions.md`
+> - primary artifact: `<workspace>/{YY-MM-DD}-{id}/<primary>.md`
+> - decision log: `<workspace>/{YY-MM-DD}-{id}/<log>.md`
 > - Considerations:
 >   - <deliberate decisions or context the reviewer must hold>
 
@@ -139,10 +133,8 @@ might misread without context.
 
 ### 4 — Loop: 🔁 + Go to (back) + Commit + Skill
 
-Based on sdd-impl-tdd Stages 6–7 (Task Review → Findings Triage loop).
-
 ```markdown
-### 5. Task Review
+### 5. Unit Review
 
 Emit the handoff message and wait for reviewer findings.
 
@@ -150,11 +142,11 @@ Emit the handoff message and wait for reviewer findings.
 
 > **Ready for review** 🤝
 >
-> - Implementation Plan: `<path to plan.md>`
-> - Phase: `<id and title>`
-> - Task: `<id and title>`
-> - Cycles run: `<count>`
-> - Task diff: `git diff <hash>..HEAD`
+> - artifact: `<path>`
+> - scope: `<id and title>`
+> - unit: `<id and title>`
+> - iterations: `<count>`
+> - diff: `git diff <hash>..HEAD`
 > - Considerations:
 >   - <decisions, trade-offs, context>
 
@@ -172,15 +164,15 @@ finding reach a joint decision with the user — Apply, Defer, or Reject.
 If at least one finding was Apply, commit amendments using counter N (1-indexed, incremented per
 review cycle that produced changes).
 
-**Commit:** `refactor(<scope>): <task-id> review amendments r<N> [Task <n>]`
+**Commit:** `refactor(<scope>): <unit-id> review amendments r<N>`
 
 **Skill:**
 
-- write-deferred-findings — only when user confirms Defer disposition
+- <deferred-findings-handler> — only when user confirms Defer disposition
 
 **Question:**
 
-> ❓ **Findings r\<N\> resolved. Another review round or advance to next task?**
+> ❓ **Findings r\<N\> resolved. Another review round or advance?**
 >
 > - Another round → return to Step 5
 > - Advance → proceed to Step 7
@@ -212,7 +204,7 @@ expressed in the new format, surface it to the user before continuing.
 
 **Announce:** 🔧 Migrating skill to standard
 
-**Commit:** `refactor(sdd): migrate example-skill to skill standard`
+**Commit:** `refactor(skill): migrate example-skill to skill standard`
 
 **Go to:** Step 5
 ```
@@ -236,24 +228,23 @@ Create the directory and write both files.
 **Artifacts:**
 ```
 
-sdd/
+audits/
 └── {YY-MM-DD}-{id}/
-├── spec.md
-└── decisions.md
+├── summary.md
+└── log.md
 
 ```
 
-- **spec** — `sdd/{YY-MM-DD}-{id}/spec.md`
-  - **What:** self-contained specification; evolves in place through every later step
-  - **Structure:** frontmatter (`status: draft`); Problem statement, Goals, Non-goals, Scope, Constraints, Assumptions, Success criteria
-  - **Template:** [`spec.md`](spec.md)
+- **summary** — `audits/{YY-MM-DD}-{id}/summary.md`
+  - **What:** self-contained audit summary; evolves in place through every later step
+  - **Structure:** frontmatter (`status: draft`); Scope, Findings, Recommendations
+  - **Template:** [`summary.md`](summary.md)
 
-- **decisions log** — `sdd/{YY-MM-DD}-{id}/decisions.md`
+- **log** — `audits/{YY-MM-DD}-{id}/log.md`
   - **What:** live log of decisions, alternatives, and rejection reasons; appended the moment a non-obvious choice is made
   - **Structure:** one entry per decision with Decision / Alternatives considered / Why discarded
-  - **Template:** [`decisions.md`](decisions.md)
 
-**Commit:** `feat(sdd): add {id} to sdd`
+**Commit:** `feat(audit): add {id} to audits`
 
 **Go to:** Step 7
 ```
