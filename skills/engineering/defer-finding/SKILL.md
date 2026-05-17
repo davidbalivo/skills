@@ -17,36 +17,21 @@ confirmation.
 - `deferred-findings.md` entries — English
 </OUTPUT-LANGUAGE>
 
----
+## Steps
 
-## HARD-GATE
+### 1. Candidate Validation
 
-Before continuing, verify that at least one candidate finding exists in the conversation context —
-identified during a prior review or described by the user when invoking the skill.
+<HARD-GATE>
+- At least one candidate finding must exist in the conversation context — identified during a
+  prior review or described by the user when invoking the skill. If none exist, stop and ask.
+</HARD-GATE>
 
-**If there are no candidate findings:** stop. Ask the user to describe the findings they want to
-record before continuing.
+<NON-NEGOTIABLE>
+- Read `sdd/{spec-id}/deferred-findings.md` before proposing anything. Extract already-recorded
+  titles for deduplication only — do not show them to the user.
+</NON-NEGOTIABLE>
 
----
-
-## Anti-Patterns
-
-**Anti-Pattern: Recording in-scope findings**
-A deferred finding is something deliberately excluded from the current task's scope. If the finding
-should be resolved in the ongoing task, it does not belong in `deferred-findings.md`.
-
-**Anti-Pattern: Proposing already-recorded findings**
-Read the existing `deferred-findings.md` before presenting the confirmation block. Do not propose
-any finding whose title already appears in the file — exclude it and notify the user.
-
----
-
-## When in Doubt
-
-If a finding's context is ambiguous, its category uncertain, or its priority debatable, ask before
-proposing. An incorrect proposal accepted without attention is worse than a clarifying question.
-
----
+**Go to:** Step 2
 
 ## 1️⃣ Preparation
 
