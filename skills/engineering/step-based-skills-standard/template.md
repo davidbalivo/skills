@@ -98,7 +98,7 @@ flowchart TD
 - **artifact** — `<working-directory>/{YY-MM-DD}-{id}/artifact.md`
   - **What:** primary deliverable; evolves in place across later steps
   - **Structure:** frontmatter (`status: draft`); Overview, Sections, Acceptance Criteria
-  - **Template:** [`artifact.md`](artifact.md)
+  - **Template:** `[artifact.md](artifact.md)`
 
 - **log** — `<working-directory>/{YY-MM-DD}-{id}/log.md`
   - **What:** live decision log; one entry per non-obvious choice

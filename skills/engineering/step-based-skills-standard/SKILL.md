@@ -58,10 +58,10 @@ Steps renumber when inserted or removed. Gaps and decimal numbering (3.1, 3.2) a
 
 **Skill-level — fixed position:**
 
-| Tag                  | Position                                            | Use                                           |
-| -------------------- | --------------------------------------------------- | --------------------------------------------- |
-| `<CROSS-STEP-RULES>` | Immediately after `## Role`                         | Rules governing every step                    |
-| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` (if present) | Language for artifacts                        |
+| Tag                  | Position                                            | Use                        |
+| -------------------- | --------------------------------------------------- | -------------------------- |
+| `<CROSS-STEP-RULES>` | Immediately after `## Role`                         | Rules governing every step |
+| `<OUTPUT-LANGUAGE>`  | Immediately after `<CROSS-STEP-RULES>` (if present) | Language for artifacts     |
 
 **Step-level — free placement within the step:**
 
@@ -134,7 +134,7 @@ All tags wrap content as a bulleted list — never free prose inside a tag.
   - **{artifact-name}** — `{path}`
     - **What:** one-line description of purpose
     - **Structure:** required sections / fields / frontmatter
-    - **Template:** [`link/to/template`](path) — optional; omit when no canonical template exists
+    - **Template:** `[link/to/template](path)` — optional; omit when no canonical template exists
 
 - **Tags:** free placement within the step; sit next to the content they qualify
 
