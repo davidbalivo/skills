@@ -17,6 +17,55 @@ confirmation.
 - `deferred-findings.md` entries — English
 </OUTPUT-LANGUAGE>
 
+## Finding Schema
+
+**Priority** — propose 1, 2, or 3:
+
+- **1 — Critical:** active security or correctness risk, or blocks future work in the area
+- **2 — Important:** real impact but not blocking; address in the next spec that touches the area
+- **3 — Desired:** quality, ergonomics, or maintainability improvement; applied opportunistically
+
+**Body fields** — all optional except `**Context:**`; omit any that add no real information.
+
+| Field                     | When to include                                                                   |
+| ------------------------- | --------------------------------------------------------------------------------- |
+| `**Context:**`            | Always. Background needed to understand the finding without memory of the review. |
+| `**Risk:**`               | When there is an active or latent risk (security, correctness, architecture).     |
+| `**Impact:**`             | When the Risk has a blast radius that warrants a separate description.            |
+| `**Future improvement:**` | For tech-debt/dx with no active risk; describes the path forward.                 |
+| `**Pending decision:**`   | When a design decision must be made before the finding can be resolved.           |
+| `**Options:**`            | When there is a Pending decision and multiple viable paths exist.                 |
+| `**Recommendation:**`     | When the agent has a reasoned initial stance.                                     |
+| `**Resolution:**`         | Only for `status: resolved`. What was done and in which spec or task.             |
+
+## Output Quality
+
+A well-formed finding:
+
+- Has a title that describes the problem, not the solution ("Repeated repository guard" — not
+  "Extract guard to shared function")
+- Uses the most specific available slug — does not fall back to `tech-debt` when `architecture` or
+  `security` fits better
+- Has a priority calibrated to real risk, not inflated to manufacture urgency
+- Has a body that allows understanding the problem, the risk, and the impact without memory of the
+  review
+- Is parseable by `generate-backlog.ts` — the `<!-- finding ... -->` block is a valid HTML comment
+  with each field on its own line, no extra spaces or blank lines inside the block
+
+## Steps Flow
+
+```mermaid
+flowchart TD
+    S1["1. Preparation"]
+    S2["2. Finding Proposals"]
+    S3{{"3. Confirmation"}}
+    S4["4. Writing"]
+
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+```
+
 ## Steps
 
 ### 1. Preparation
@@ -51,25 +100,7 @@ For each candidate finding, determine:
   `backlog/categories.md` yourself.
 - If `backlog/categories.md` does not exist, propose a new category for each finding.
 
-**Priority** — propose 1, 2, or 3 according to these definitions:
-
-- **1 — Critical:** active security or correctness risk, or blocks future work in the area
-- **2 — Important:** real impact but not blocking; address in the next spec that touches the area
-- **3 — Desired:** quality, ergonomics, or maintainability improvement; applied opportunistically
-
-**Body** — use the following fields as applicable. All are optional except `**Context:**`.
-Omit any that add no real information — an empty field is worse than no field at all.
-
-| Field                     | When to include                                                                   |
-| ------------------------- | --------------------------------------------------------------------------------- |
-| `**Context:**`            | Always. Background needed to understand the finding without memory of the review. |
-| `**Risk:**`               | When there is an active or latent risk (security, correctness, architecture).     |
-| `**Impact:**`             | When the Risk has a blast radius that warrants a separate description.            |
-| `**Future improvement:**` | For tech-debt/dx with no active risk; describes the path forward.                 |
-| `**Pending decision:**`   | When a design decision must be made before the finding can be resolved.           |
-| `**Options:**`            | When there is a Pending decision and multiple viable paths exist.                 |
-| `**Recommendation:**`     | When the agent has a reasoned initial stance.                                     |
-| `**Resolution:**`         | Only for `status: resolved`. What was done and in which spec or task.             |
+**Priority** and **Body** — per [Finding Schema](#finding-schema).
 
 **Go to:** Step 3
 
@@ -122,7 +153,7 @@ Which findings do you want to record? Specify the indices to include or request 
 
 ---
 
-## 4️⃣ Writing
+### 4. Writing
 
 After the user confirms:
 
@@ -141,19 +172,3 @@ After the user confirms:
 
 **If a new category was agreed upon:** remind the user that they must manually add it to
 `backlog/categories.md` for the generation script to recognize it.
-
----
-
-## Output Quality
-
-A well-formed finding:
-
-- Has a title that describes the problem, not the solution ("Repeated repository guard" — not
-  "Extract guard to shared function")
-- Uses the most specific available slug — does not fall back to `tech-debt` when `architecture` or
-  `security` fits better
-- Has a priority calibrated to real risk, not inflated to manufacture urgency
-- Has a body that allows understanding the problem, the risk, and the impact without memory of the
-  review
-- Is parseable by `generate-backlog.ts` — the `<!-- finding ... -->` block is a valid HTML comment
-  with each field on its own line, no extra spaces or blank lines inside the block
