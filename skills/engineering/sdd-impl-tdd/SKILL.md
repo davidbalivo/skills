@@ -276,31 +276,31 @@ If at least one `Apply`: commit amendments; `N` starts at 1, incremented per rev
 **Go to:** Step 5 — next unchecked task in the phase
 **Go to:** Step 13 — no unchecked tasks remain
 
-#### 3.3 Phase gate
+### 13. Phase Gate 🔁
 
-When every task in the phase has exited 3.2, the phase acceptance test must now be GREEN. If it
-isn't, the phase slice is incomplete — identify the missing behavior, add it as a new task or
-reopen the relevant one, and run it through 3.2.
+<HARD-GATE>
+- Phase acceptance test must be GREEN — if not, the slice is incomplete; identify the gap, add or reopen the relevant task, and run it through Steps 5–12.
+</HARD-GATE>
 
-All tasks in this phase are now [x] — no further marking needed for the phase itself (no commit —
-the task commits already cover the work).
+All tasks in this phase are `[x]` — no further marking needed for the phase itself.
 
-Present a single phase summary:
+**Output:**
 
-- Phase id and acceptance test name
-- Tasks completed
-- Total cycles and refactors applied across the phase
+> Phase summary:
+>
+> - Phase id and acceptance test name
+> - Tasks completed
+> - Total cycles and refactors applied
 
-Then ask: **"Phase X complete. Acceptance test GREEN. Ready to continue?"**
+**Question:**
 
-User can:
+> ❓ **Phase complete. Acceptance test GREEN. Ready to continue?**
 
-- ✅ Approve → next phase (return to 3.1)
-- 🔄 Request changes → reopen the relevant task and re-run 3.2 from Stage 1 or the appropriate
-  stage
-- 📝 Post-phase observation → triage as in Stage 7; **Apply** dispositions become work in the
-  next phase, not retroactive edits to the closed one
-- ⏸️ Stop
+**Stop & wait:** explicit user decision
+
+**Go to:** Step 4 — approve; continue to next phase
+**Go to:** Step 5 — request changes; reopen relevant task from appropriate step
+**Go to:** Step 14 — no more phases
 
 ### 4. Final Gate
 
