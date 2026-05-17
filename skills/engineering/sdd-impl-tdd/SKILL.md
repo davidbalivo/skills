@@ -94,35 +94,36 @@ Execute phases in the order defined by `plan.md` — write each phase's acceptan
 
 **Go to:** Step 5
 
-#### 3.2 Per Task
+### 5. Plan Cycles 🔁
 
-For each unchecked task in the phase, run the eight stages below in order. Do not enter a stage
-until the previous one has exited cleanly. Do not advance to the next task until Stage 8 of the
-current task has exited.
+For each unchecked task in the phase, in order.
 
-**Exploratory tasks** (`[exploratory]` in `plan.md`): tests are throwaway. Honor the deletion
-trigger declared in the task and remove the tests once the trigger fires.
+<NON-NEGOTIABLE>
+- Record `hash-pre-task = HEAD` before writing any test or code.
+- Do not enter a stage until the previous one has exited cleanly.
+</NON-NEGOTIABLE>
 
-##### Stage 1 — Plan cycles
+**Exploratory tasks** (`[exploratory]` in `plan.md`): tests are throwaway — honor the deletion trigger and remove tests once it fires.
 
-- **Enter:** task starts. Record `hash-pre-task = HEAD` before writing any test or code.
-- **Action:** derive the cycle sequence in two passes:
-  1. From the task's **acceptance criteria** — one testable behavior per cycle. The first cycle
-     is the task's tracer bullet.
-  2. From **technical edge cases** for this boundary — append cycles for:
-     - **Boundary values** — empty, min/max, single element
-     - **Invalid inputs** — null/undefined, malformed or unexpected data
-     - **Failure paths** — exceptions, rejected promises, IO errors
-     - **State conflicts** — not found, duplicate, already exists
-     - **Concurrency / idempotency** — duplicate requests, race conditions
-     - **Authorization** — wrong owner, insufficient permissions
-     - **Adversarial** — if you were trying to make this method fail, what would you try that
-       isn't listed above? Reason from the interface, not from this list.
+Derive the cycle sequence in two passes:
 
-  Only append cycles that are testable against the public interface and add signal. Skip
-  redundant or speculative cases.
+1. From the task's **acceptance criteria** — one testable behavior per cycle. The first cycle is the task's tracer bullet.
+2. From **technical edge cases** for this boundary — append cycles for:
+   - **Boundary values** — empty, min/max, single element
+   - **Invalid inputs** — null/undefined, malformed or unexpected data
+   - **Failure paths** — exceptions, rejected promises, IO errors
+   - **State conflicts** — not found, duplicate, already exists
+   - **Concurrency / idempotency** — duplicate requests, race conditions
+   - **Authorization** — wrong owner, insufficient permissions
+   - **Adversarial** — what would break this interface that isn't covered above?
 
-- **Exit:** sequence announced.
+Only append cycles that are testable against the public interface and add signal. Skip redundant or speculative cases.
+
+**Output:**
+
+> Cycle sequence for task {task-id}: [list of cycles in order]
+
+**Go to:** Step 6
 
 ##### Stage 2 — RED → GREEN
 
