@@ -171,19 +171,19 @@ Evaluate in order:
 
 **Go to:** Step 8
 
-##### Stage 4 — Validate
+### 8. Validate 🔁
 
-- **Enter:** Stage 3 exited.
-- **Action:**
-  1. Run `pnpm format` and `pnpm format:md` to apply formatting.
-  2. Run `pnpm validate`. Loop until zero errors and zero warnings. If a fix changes observable
-     behavior, return to Stage 2.
-- **Exit:** validation is clean. If this is the **first pass** through Stage 4 for this task,
-  commit:
-  ```
-  feat(<scope>): <task-id> initial implementation [Task <n>]
-  ```
-  On re-runs triggered by an `Apply` disposition, skip this commit.
+1. Run `pnpm format` and `pnpm format:md`.
+2. Run `pnpm validate` — loop until zero errors and zero warnings.
+
+<HARD-GATE>
+- Validation is clean before advancing.
+</HARD-GATE>
+
+**Commit:** feat(`<scope>`): `<task-id>` initial implementation [Task `<n>`] — first pass only; skip on `Apply` re-runs.
+
+**Go to:** Step 6 — if a fix changes observable behavior
+**Go to:** Step 9
 
 ##### Stage 5 — Adversarial self-review
 
