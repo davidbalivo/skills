@@ -51,7 +51,7 @@ confirmation.
 ```mermaid
 flowchart TD
     S1["1. Preparation"]
-    S2["2. Finding Proposals"]
+    S2{{"2. Finding Proposals"}}
     S3{{"3. Confirmation"}}
     S4["4. Writing"]
 
