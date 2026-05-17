@@ -124,20 +124,36 @@ For each candidate, build a proposal.
 
 ### 4. Writing
 
-After the user confirms:
+If the user rejected all findings:
 
-1. If the file does not exist, create it with this header followed by the confirmed findings:
+**Output:**
+
+> No findings were written.
+
+Otherwise:
+
+**Announce:** 📝 Writing confirmed findings
+
+1. If `sdd/{spec-id}/deferred-findings.md` does not exist, create it with this header followed by the confirmed findings:
 
    ```md
    # Deferred Findings: {spec-id}
    ```
 
-2. If the file exists, append the confirmed findings at the end — without reordering existing
-   content.
+2. If the file exists, append the confirmed findings at the end — without reordering existing content.
 
 3. Confirm with a one-line message stating how many findings were written and the file path.
 
-**If the user rejects all findings:** respond `No findings were written.` and close the flow.
+**Artifacts:**
 
-**If a new category was agreed upon:** remind the user that they must manually add it to
-`backlog/categories.md` for the generation script to recognize it.
+```
+sdd/{spec-id}/
+└── deferred-findings.md
+```
+
+- **deferred-findings** — `sdd/{spec-id}/deferred-findings.md`
+  - **What:** structured, append-only record of out-of-scope findings for the spec
+  - **Structure:** `# Deferred Findings: {spec-id}` header followed by one entry per finding
+  - **Template:** [template.md](template.md)
+
+Process ends here.
