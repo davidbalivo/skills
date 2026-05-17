@@ -125,13 +125,14 @@ Only append cycles that are testable against the public interface and add signal
 
 **Go to:** Step 6
 
-##### Stage 2 — RED → GREEN
+### 6. RED → GREEN
 
-- **Enter:** Stage 1 exited.
-- **Action:** for each cycle in order:
-  - **RED**: write one failing test against the public interface.
-  - **GREEN**: write the minimum code to pass — no anticipation of later cycles.
-- **Exit:** every cycle is GREEN.
+For each cycle in order:
+
+- **RED** — write one failing test against the public interface.
+- **GREEN** — write the minimum code to pass; no anticipation of later cycles.
+
+**Go to:** Step 7
 
 ##### Stage 3 — Refactor
 
