@@ -38,7 +38,7 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 ## TDD Principles
 
 - **Tests verify behavior, not implementation.** A good test reads like a spec — exercises the
-  public interface, survives internal refactors. See [.agents/skills/sdd-impl-tdd/tests.md](tests.md) and [.agents/skills/sdd-impl-tdd/mocking.md](mocking.md).
+  public interface, survives internal refactors. See [tests.md](tests.md) and [mocking.md](mocking.md).
 - **Vertical slices, never horizontal.** One test → one implementation → repeat.
 - **Refactor only on GREEN.**
 - **Tracer bullet first.** The thinnest end-to-end path that proves the task works.
