@@ -44,7 +44,7 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 
 The plan may be fresh or partially executed. Treat every `[x]` in `plan.md` as immutable history — do not re-verify, re-write, or re-commit completed items. Read the entire plan for context, then resume at the first unchecked item.
 
-## Implementation Findings Protocol
+## Gap Escalation
 
 A finding is any discovery **while coding** that contradicts or extends the spec/plan.
 
@@ -249,7 +249,7 @@ Run these probes against the task's diff:
 - **Refactor debt.** Did anything persist that Step 7 should have caught?
 - **Interface drift.** Did any implementation decision silently change the public interface beyond what the plan specified? If yes, it is a finding.
 
-Probes that imply a spec change go through the Implementation Findings Protocol.
+Probes that imply a spec change go through the Gap Escalation protocol.
 
 **Skill:**
 
