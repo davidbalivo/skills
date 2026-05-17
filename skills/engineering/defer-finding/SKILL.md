@@ -85,11 +85,21 @@ For each candidate, build a proposal.
 
 **Category — special cases:**
 
-- No existing slug fits: propose a new slug + one-line description; user must confirm before use.
-- `backlog/categories.md` does not exist: propose a new category per finding.
+- **No existing slug fits:** propose a new slug + one-line description.
+- **`backlog/categories.md` does not exist:** propose a new category per finding (file will be created).
+
+**If new categories are proposed:**
+
+**Question:**
+
+> ❓ **Confirm the new categories?**
+
+**Stop & wait:** explicit user confirmation
+
+On confirmation, append (or create) `backlog/categories.md` with the confirmed entries.
 
 <NON-NEGOTIABLE>
-- Never write new categories to `backlog/categories.md` autonomously.
+- Never write new categories to `backlog/categories.md` without explicit user confirmation.
 </NON-NEGOTIABLE>
 
 **Go to:** Step 3
