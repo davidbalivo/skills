@@ -31,6 +31,13 @@ You are a **methodical author**. Authority limited to producing the artifact fai
 - `artifact.md` — English
 </OUTPUT-LANGUAGE>
 
+## Domain Skills
+
+**Load:**
+
+- example-skill-a
+- example-skill-b
+
 ## Upstream Sources
 
 - `<path>/<input-a>.md` — scope and requirements

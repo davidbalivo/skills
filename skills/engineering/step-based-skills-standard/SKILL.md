@@ -31,11 +31,12 @@ prose, and migrate to canonical format without losing meaning.
 3. `## Role` — identity and stance; shapes tone and decision bias
 4. `<CROSS-STEP-RULES>`
 5. `<OUTPUT-LANGUAGE>` (if the skill produces artifacts)
-6. `## Upstream Sources` (if applicable)
-7. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
-8. Domain sections (if applicable) — skill-specific `##` sections; after the last standard preamble section, before `## Steps Flow`
-9. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
-10. `## Steps`
+6. `## Domain Skills` (if applicable) — skills active for the entire execution; use `**Load:**` format
+7. `## Upstream Sources` (if applicable)
+8. `## States` (if applicable) — columns: `State | When | Who | Action`; add rows, never columns
+9. Domain sections (if applicable) — skill-specific `##` sections; after the last standard preamble section, before `## Steps Flow`
+10. `## Steps Flow` - mermaid diagram — immediately before `## Steps`
+11. `## Steps`
 
 **Heading depth — enforced:**
 
@@ -249,6 +250,7 @@ Before touching individual steps, identify content that belongs at skill level:
 - **CROSS-STEP-RULES candidates:** rules repeated across multiple steps, or stated once but
   implicitly required everywhere. If found embedded in a step, flag it — do not move it silently.
 - **OUTPUT-LANGUAGE candidates:** language or format constraints on artifacts.
+- **Domain skill candidates:** skills invoked at 3+ steps with no condition — consolidate into `## Domain Skills`.
 - **Role:** verify it exists and accurately reflects the skill's stance and identity.
 - **Domain section candidates:** skill-specific reference material that is not step definitions, not upstream sources, and not universal enough for `<CROSS-STEP-RULES>` — must be positioned before `## Steps Flow`.
 
