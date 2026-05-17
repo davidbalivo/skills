@@ -64,18 +64,16 @@ flowchart TD
 
 ### 1. Preparation
 
+Read inputs:
+
+- `sdd/{spec-id}/deferred-findings.md` — extract already-recorded titles for deduplication.
+- `backlog/categories.md` — extract valid category slugs with descriptions. If missing, communicate explicitly and proceed (all findings will require a new category proposal).
+
+Extract from the conversation context every finding marked as out-of-scope. Silently exclude candidates whose title exactly matches one already recorded in `deferred-findings.md`.
+
 <NON-NEGOTIABLE>
-- Read `sdd/{spec-id}/deferred-findings.md` before proposing anything. Extract already-recorded
-  titles for deduplication only — do not show them to the user.
+- Already-recorded titles are used for deduplication only — never shown to the user.
 </NON-NEGOTIABLE>
-
-Read `backlog/categories.md` and extract the valid category slugs with their descriptions.
-
-If the file does not exist, communicate this explicitly and proceed — all findings will require a
-new category proposal.
-
-Extract from the conversation context every finding marked as out-of-scope. For each candidate
-whose title exactly matches one already recorded in `deferred-findings.md`, exclude it silently.
 
 **Go to:** Step 2
 
