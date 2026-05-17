@@ -90,7 +90,7 @@ Mark each executed item `[x]` in `plan.md`.
 
 **Go to:** Step 4
 
-### 4. Phase Acceptance Test 🔁
+### 4. Phase Acceptance Test
 
 Execute phases in the order defined by `plan.md` — write each phase's acceptance test before any task begins. It stays RED until the phase closes.
 
@@ -105,7 +105,7 @@ Execute phases in the order defined by `plan.md` — write each phase's acceptan
 
 **Go to:** Step 5
 
-### 5. Plan Cycles 🔁
+### 5. Plan Cycles
 
 For each unchecked task in the phase, in order.
 
