@@ -296,12 +296,14 @@ Reach a joint decision. Each finding ends with one disposition:
 | Disposition | Action                                                                     |
 | ----------- | -------------------------------------------------------------------------- |
 | **Apply**   | Implement the change → return to Step 6, then re-run Steps 7–10            |
-| **Defer**   | Valid but out of scope → record via `defer-finding`                        |
+| **Defer**   | Valid but out of scope → queue for batch recording                         |
 | **Reject**  | Not valuable, incorrect, or deliberate decision → reasoning stays in convo |
+
+After triaging all findings, if any were Deferred, invoke `defer-finding` **once** to record them as a batch.
 
 **Skill:**
 
-- defer-finding — only when user confirms a `Defer` disposition; do not load preemptively.
+- defer-finding — only when at least one finding was Deferred.
 
 If at least one `Apply`: commit amendments; `N` starts at 1, incremented per review cycle with changes.
 
