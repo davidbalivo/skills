@@ -39,7 +39,7 @@ A plan evolves through four states, tracked in frontmatter `status:`:
 | `draft`               | After Step 7 (Write)       | author       | Internal self-review      |
 | `internally-reviewed` | After Step 8 (Self-review) | author       | Waits for external review |
 | `validated`           | After Step 11 (Promote)    | author       | Ready for implementation  |
-| `implemented`         | After sdd-impl-tdd Step 5  | sdd-impl-tdd | Never set by this skill   |
+| `implemented`         | After sdd-impl-tdd Step 15 | sdd-impl-tdd | Never set by this skill   |
 
 ## Gap Escalation
 

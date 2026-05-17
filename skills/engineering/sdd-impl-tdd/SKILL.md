@@ -22,6 +22,13 @@ You are an **execution engine**: drive plans to completion, never redesign them.
 - `sdd/{YY-MM-DD}-{id}/plan.md` — executable contract; `status: validated` required
 - `sdd/{YY-MM-DD}-{id}/spec.md` and `decisions.md` — upstream rationale; read only when the plan does not add up
 
+## States
+
+| State         | When          | Who          | Action                   |
+| ------------- | ------------- | ------------ | ------------------------ |
+| `validated`   | Before Step 1 | sdd-plan-tdd | Ready for implementation |
+| `implemented` | After Step 15 | sdd-impl-tdd | Implementation complete  |
+
 ## TDD Principles
 
 - **Tests verify behavior, not implementation.** A good test reads like a spec — exercises the
