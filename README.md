@@ -26,28 +26,55 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Catalog
 
-| Skill                                                                        | Category      | Mode        | Description                                                                                              |
-| ---------------------------------------------------------------------------- | ------------- | ----------- | -------------------------------------------------------------------------------------------------------- |
-| [deep-alignment](skills/discovery/deep-alignment/)                           | `discovery`   | Global      | Structured interview to align the agent with the user before implementing                                |
-| [git-operations](skills/engineering/git-operations/)                         | `engineering` | Per project | Rules for local git: commit strategy, write-op confirmation, message format                              |
-| [sdd-spec](skills/engineering/sdd-spec/)                                     | `engineering` | Per project | On-demand interrogation flow that turns ideas into reviewable, zero-context specs                        |
-| [sdd-plan](skills/engineering/sdd-plan/)                                     | `engineering` | Per project | Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol      |
-| [sdd-plan-tdd](skills/engineering/sdd-plan-tdd/)                             | `engineering` | Per project | Converts a validated spec and decision log into a concrete, TDD-ready plan                               |
-| [sdd-impl](skills/engineering/sdd-impl/)                                     | `engineering` | Per project | Executes a validated plan through vertical slices with per-task review checkpoints, without TDD protocol |
-| [sdd-impl-tdd](skills/engineering/sdd-impl-tdd/)                             | `engineering` | Per project | Executes a validated plan through vertical-slice TDD with per-task review checkpoints                    |
-| [sdd-spec-gap](skills/engineering/sdd-spec-gap/)                             | `engineering` | Per project | Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step                        |
-| [sdd-defer-finding](skills/engineering/sdd-defer-finding/)                   | `engineering` | Per project | Formalizes out-of-scope findings into structured entries in `deferred-findings.md`                       |
-| [md-essentials](skills/engineering/md-essentials/)                           | `engineering` | Global      | Canonical Markdown formatting rules aligned to the project's Prettier configuration                      |
-| [ts-essentials](skills/engineering/ts-essentials/)                           | `engineering` | Global      | Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async          |
-| [step-based-skills-standard](skills/engineering/step-based-skills-standard/) | `engineering` | Per project | Canonical structure, keywords, tags and mermaid conventions for step-based skills                        |
+### Discovery
+
+**[deep-alignment](skills/discovery/deep-alignment/)**
+Structured interview to align the agent with the user before implementing
+
+### Engineering
+
+**[git-operations](skills/engineering/git-operations/)**
+Rules for local git: commit strategy, write-op confirmation, message format
+
+**[md-essentials](skills/engineering/md-essentials/)**
+Canonical Markdown formatting rules aligned to the project's Prettier configuration
+
+**[sdd-audit-spec](skills/engineering/sdd-audit-spec/)**
+External auditor for sdd-spec: stress-tests specs to break them before sdd-plan does
+
+**[sdd-defer-finding](skills/engineering/sdd-defer-finding/)**
+Formalizes out-of-scope findings into structured entries in `deferred-findings.md`
+
+**[sdd-impl](skills/engineering/sdd-impl/)**
+Executes a validated plan through vertical slices with per-task review checkpoints, without TDD protocol
+
+**[sdd-impl-tdd](skills/engineering/sdd-impl-tdd/)**
+Executes a validated plan through vertical-slice TDD with per-task review checkpoints
+
+**[sdd-plan](skills/engineering/sdd-plan/)**
+Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol
+
+**[sdd-plan-tdd](skills/engineering/sdd-plan-tdd/)**
+Converts a validated spec and decision log into a concrete, TDD-ready plan
+
+**[sdd-spec](skills/engineering/sdd-spec/)**
+Interrogation flow that turns ideas into reviewable, zero-context specs
+
+**[sdd-spec-gap](skills/engineering/sdd-spec-gap/)**
+Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step
+
+**[step-based-skills-standard](skills/engineering/step-based-skills-standard/)**
+Canonical structure, keywords, tags and mermaid conventions for step-based skills
+
+**[ts-essentials](skills/engineering/ts-essentials/)**
+Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async
 
 ## Adding a new skill
 
 1. Create folder `skills/<category>/<skill-name>/`. Prefer existing categories; if new, validate the name with a 3-5 option proposal.
 2. Write `SKILL.md` with required YAML frontmatter (`name`, `description`).
-3. Write `README.md` following the per-skill contract defined in [CLAUDE.md](./CLAUDE.md).
-4. Add a row to the [catalog](#catalog).
-5. Atomic commit: `feat(<category>): add <skill> skill`.
+3. Add an entry to the [catalog](#catalog) under the matching category, in alphabetical order.
+4. Atomic commit: `feat(<category>): add <skill> skill`.
 
 ## Development
 
