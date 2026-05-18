@@ -33,6 +33,9 @@ Structured interview to align the agent with the user before implementing
 
 ### Engineering
 
+**[audit-ts-code](skills/engineering/audit-ts-code/)**
+Adversarial code quality auditor: reviews TypeScript changes across seven pillars before acceptance
+
 **[git-operations](skills/engineering/git-operations/)**
 Rules for local git: commit strategy, write-op confirmation, message format
 
