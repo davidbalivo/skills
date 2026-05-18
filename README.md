@@ -42,6 +42,9 @@ Rules for local git: commit strategy, write-op confirmation, message format
 **[md-essentials](skills/engineering/md-essentials/)**
 Canonical Markdown formatting rules aligned to the project's Prettier configuration
 
+**[sdd-audit-impl-tdd](skills/engineering/sdd-audit-impl-tdd/)**
+External auditor for sdd-impl-tdd: stress-tests TDD phases to break them before the phase gate accepts them
+
 **[sdd-audit-plan-tdd](skills/engineering/sdd-audit-plan-tdd/)**
 External auditor for sdd-plan-tdd: stress-tests TDD plans to break them before sdd-impl-tdd does
 
