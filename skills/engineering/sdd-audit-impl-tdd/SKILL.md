@@ -39,7 +39,7 @@ The invoker provides:
 
 - The phase id under review (e.g. "Phase 2")
 - The list of tasks declared as complete in this review
-- The `hash-pre-task` of the first task in this phase (recorded at Step 5 of `sdd-impl-tdd` before any test or code is written)
+- The `hash-pre-task` of the first task in this phase
 - Optional considerations from the implementer
 
 If any of these is missing, stop and ask before proceeding.
@@ -48,6 +48,8 @@ If any of these is missing, stop and ask before proceeding.
 
 Read in full:
 
+- `sdd/{YY-MM-DD}-{id}/spec.md` — upstream spec; business edge cases live here
+- `sdd/{YY-MM-DD}-{id}/decisions.md` — upstream decisions log; interface contracts live here
 - `sdd/{YY-MM-DD}-{id}/plan.md` — the executable contract; identify the phase under review
 - `~/.agents/skills/sdd-impl-tdd/tests.md` — canonical test-quality reference
 - `~/.agents/skills/sdd-impl-tdd/mocking.md` — canonical mocking reference
@@ -62,9 +64,9 @@ Verify in order. Stop at the first failure and report it as a 🔴 finding under
 
 - `spec.md` frontmatter `status:` is `validated`. `decisions.md` exists and is complete (not a placeholder stub).
 - `plan.md` frontmatter `status:` is `validated`.
-- An acceptance test for the phase exists and is GREEN.
-- `pnpm validate` exits with zero errors and zero warnings on the current working tree.
-- Every task declared complete in Inputs has corresponding tests and production code in the diff; changed code without a declared task fails this check.
+- The phase acceptance test passes when the auditor runs it.
+- `pnpm validate` exits with zero errors and zero warnings when the auditor runs it on the current working tree.
+- Every task declared complete in Inputs maps to commits tagged `[Task <n>]` and has corresponding tests and production code in the diff (except exploratory tasks where the deletion trigger has fired, whose throwaway tests are intentionally absent); changed code without a declared task fails this check.
 
 ### 4. Adversarial Review
 
@@ -73,10 +75,10 @@ Work through each dimension. Omit any dimension with no findings.
 - **Criterion coverage** — every acceptance criterion of every task in the phase must map to at least one test in the diff. An untested criterion is a gap, not an assumption. Search the plan, not just the diff.
 - **Edge case orphans** — every business edge case in `spec.md` that belongs to a flow delivered by this phase must appear in some test. Search the spec, not just the plan.
 - **Technical edge case coverage** — for each task boundary, are the technical edge cases listed in `sdd-impl-tdd` Step 5 (boundary values, invalid inputs, failure paths, state conflicts, concurrency/idempotency, authorization, adversarial) reasonably covered? Flag obvious gaps; do not pad with speculative cases.
-- **Acceptance test honesty** — the phase acceptance test is GREEN, but does it actually drive the slice end-to-end through the public interface, or does it pass by exercising the wrong path, a stub, or a coincidence?
+- **Acceptance test honesty** — the phase acceptance test is GREEN, but does it actually drive the slice end-to-end through the public interface, or does it pass by exercising the wrong path or a stub?
 - **Tests as spec** — tests exercise the public interface, not internal state. Flag tests that assert on private fields, call internal helpers, mirror the implementation step-by-step, or break under a behavior-preserving refactor (per `tests.md`).
 - **Mocking discipline** — mocks are used only at true seams as defined in `mocking.md`. Flag over-mocking of internal collaborators, mocks that simulate the unit under test, or assertions on mock call arity that drift from observable behavior.
-- **Tracer integrity** — for each task, the first cycle is the thinnest end-to-end path through the public interface and contributes to the phase's outer loop. A tracer that only exercises infrastructure is misplaced.
+- **Tracer integrity** — for each task, the test for the `[tracer]` criterion is the thinnest end-to-end path through the public interface and contributes to the phase's outer loop. A tracer that only exercises infrastructure is misplaced.
 - **Orphaned code** — every production change in the diff must be driven by a test in the diff. Code without a corresponding RED cycle is speculation.
 - **Refactor debt** — duplication, misleading names, dead paths, redundant guards the type system already enforces, or unnecessary complexity that should have been removed in Stage 3.
 - **Interface drift** — any public interface change beyond what the plan specified, or any silent extension of a contract declared in `decisions.md`.
