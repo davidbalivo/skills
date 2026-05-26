@@ -80,7 +80,7 @@ For a 1920 × 1080 canvas:
 - Headline: 96-120 px, mixed hand-lettered + semi-structured. Some words bolder or italic for
   emphasis. Underline 1-2 key words with the first accent color.
 - Subtitle: 48-60 px, lighter weight than headline.
-- Bullets: 36-44 px, short phrases. No long prose.
+- Bullets: 48-60 px (same range as subtitle), short phrases. No long prose.
 - Minimum margins: 96 px on all sides.
 - Font feel: confident, editorial — not casual scribble.
 
