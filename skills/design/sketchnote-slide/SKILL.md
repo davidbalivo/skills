@@ -61,6 +61,15 @@ Pick the layout from the fields present:
 - Max 4-5 visual elements in the scene, well spaced.
 - Light directional arrows or dashes to show flow if needed.
 
+## Illustration size
+
+Keep the illustration restrained — never larger than **35% of the canvas in either dimension**. On
+1920 × 1080 that means max ~670 px wide × ~380 px tall, regardless of layout.
+
+- Hero (Layout A): centered below the headline.
+- Split (Layout B): anchored in the right half.
+- Text (Layout C): no illustration; any decorative accent stays under ~120 px.
+
 ## Color palette
 
 - Background: white or off-white.
