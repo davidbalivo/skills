@@ -26,6 +26,11 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Catalog
 
+### Design
+
+**[sketchnote-slide](skills/design/sketchnote-slide/)**
+Generate sketchnote-style slide images (1920×1080, whiteboard look) from a structured slide block
+
 ### Discovery
 
 **[deep-alignment](skills/discovery/deep-alignment/)**
