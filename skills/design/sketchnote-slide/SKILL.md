@@ -1,17 +1,18 @@
 ---
 name: sketchnote-slide
-description: Use this skill on-demand only. Do not auto-trigger. Generate a sketchnote-style slide image (1920×1080, whiteboard look) from a structured slide block.
+description: Use this skill on-demand only. Do not auto-trigger. Generate a sketchnote-style illustration (1024×1024, transparent background) for a slide from a structured slide block.
 ---
 
 # Sketchnote Slide
 
-Turn a structured slide block into a single sketchnote illustration. Whiteboard style, hand-drawn,
-professional. One image per slide entry.
+Generate a single sketchnote illustration to be dropped into a Google Slides slide. The illustration
+is the only output — no headline, subtitle, or bullets are rendered inside the image. Slide text is
+composed separately in Google Slides.
 
 ## Role
 
 You are an expert visual communicator and sketchnote illustrator. You turn ideas into clean,
-professional hand-drawn visuals. Language on the canvas is always English.
+hand-drawn, minimalist visuals. Never render text inside the illustration unless explicitly asked.
 
 ## Input format
 
@@ -31,70 +32,43 @@ Each slide is a single entry of the form:
 > - <bullet>
 > - <bullet>
 >
-> **Slide accents:** <1|2|3> (optional, default 1)
+> **Slide accents:** <1|2|3> (optional)
 ```
 
-Field semantics:
+All fields except `Slide title:` are optional. Title, subtitle, and bullets serve only as context to
+inform the illustration — they are never rendered inside the image.
 
-- `Slide image:` present with description → render that scene literally.
-- `Slide image:` present but empty → invent a scene from title, subtitle, and bullets.
-- `Slide image:` absent → text-only slide, no illustration.
-- `Slide accents:` controls how many palette accents are used (see Color palette). Default 1.
+### Image source
 
-If the input contains multiple slide entries, generate one image per entry, in order.
+- `Slide image:` present with description → follow the description as a guide, with room for
+  creative interpretation.
+- `Slide image:` empty or absent → invent the scene from title, subtitle, and bullets.
 
-## Layout selection
-
-Pick the layout from the fields present:
-
-| Layout        | When                            | Composition                                                                                                            |
-| ------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **A — Hero**  | image, no bullets               | headline at top (1-2 lines, optional subtitle below); single illustration centered below                               |
-| **B — Split** | image + bullets and/or subtitle | headline + subtitle + bullets on the left half; illustration on the right half                                         |
-| **C — Text**  | no image                        | headline centered large; subtitle below; bullets below; one decorative accent (dash/underline/small icon) for airiness |
+If the input contains multiple slide entries, generate one illustration per entry, in order.
 
 ## Illustration style
 
 - Hand-drawn line art with light pencil shading. No flat fills.
 - Sketch-style icons with subtle depth and volume.
-- Clean linework, not dense. Generous white space throughout.
+- Clean linework, not dense. Generous internal white space.
 - Max 4-5 visual elements in the scene, well spaced.
 - Light directional arrows or dashes to show flow if needed.
-
-## Illustration size
-
-Keep the illustration restrained — never larger than **35% of the canvas in either dimension**. On
-1920 × 1080 that means max ~670 px wide × ~380 px tall, regardless of layout.
-
-- Hero (Layout A): centered below the headline.
-- Split (Layout B): anchored in the right half.
-- Text (Layout C): no illustration; any decorative accent stays under ~120 px.
+- Centered on the canvas. Leave at least ~10% padding on every side as transparent space.
 
 ## Color palette
 
-- Background: white or off-white.
-- Lines and text: black / dark ink.
-- Accents: pick the count from `Slide accents:` (default 1). Strict order — never skip or swap:
+- Lines: black / dark ink.
+- Accents: when `Slide accents:` is present (1, 2, or 3), it takes precedence. When absent, choose
+  the count (1-3) that best fits the scene. Strict order — never skip or swap:
   - 1 → `#BAD9F0` soft blue
   - 2 → `#BAD9F0` + `#CADFB4` soft green
   - 3 → `#BAD9F0` + `#CADFB4` + `#FDDE9D` soft yellow
-- Apply accents only as: underlines on 1-2 key words in the headline, or light fills inside icons
-  and small elements.
+- Apply accents only as light fills inside icons and small elements.
 - No gradients. No shadows. No background fills.
-
-## Typography
-
-For a 1920 × 1080 canvas:
-
-- Headline: 96-120 px, mixed hand-lettered + semi-structured. Some words bolder or italic for
-  emphasis. Underline 1-2 key words with the first accent color.
-- Subtitle: 48-60 px, lighter weight than headline.
-- Bullets: 48-60 px (same range as subtitle), short phrases. No long prose.
-- Minimum margins: 96 px on all sides.
-- Font feel: confident, editorial — not casual scribble.
 
 ## Output
 
-- One image per slide entry.
-- 1920 × 1080 px (Google Slides default).
-- Mood: professional sketchnote. Clean. Airy. Conceptual.
+- One PNG per slide entry.
+- 1024 × 1024 px.
+- Transparent background.
+- Mood: professional sketchnote. Minimalist. Clean. Airy. Conceptual.

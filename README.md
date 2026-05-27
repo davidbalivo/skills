@@ -29,7 +29,7 @@ Private store of personal skills for agents (Claude Code and others), installabl
 ### Design
 
 **[sketchnote-slide](skills/design/sketchnote-slide/)**
-Generate sketchnote-style slide images (1920×1080, whiteboard look) from a structured slide block
+Generate sketchnote-style illustrations (1024×1024, transparent) for slides from a structured slide block
 
 ### Discovery
 
