@@ -47,11 +47,14 @@ If the input contains multiple slide entries, generate one illustration per entr
 
 ## Illustration style
 
-- Hand-drawn line art with light pencil shading. No flat fills.
-- Sketch-style icons with subtle depth and volume.
-- Clean linework, not dense. Generous internal negative space.
-- Max 4-5 visual elements in the scene, well spaced.
-- Light directional arrows or dashes to show flow if needed.
+- Express the message with the minimum visual information needed. If a stroke or element can be
+  removed without losing meaning, remove it.
+- Thin, consistent stroke weight — like a fine-tip marker, not a brush. No thick outlines, no
+  variable line width.
+- 4-5 visual elements maximum, well spaced.
+- Flat outline icons. No pencil shading, no depth cues, no volume, no decorative detail.
+- Generous internal negative space.
+- Add a single light arrow or dash only when flow is essential to the message.
 
 ## Color palette
 
