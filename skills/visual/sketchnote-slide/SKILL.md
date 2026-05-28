@@ -6,13 +6,13 @@ description: Use this skill on-demand only. Do not auto-trigger. Generate a sket
 # Sketchnote Slide
 
 Generate a single sketchnote illustration to be dropped into a Google Slides slide. The illustration
-is the only output — no headline, subtitle, or bullets are rendered inside the image.
+is the only output — no headline, subtitle, or bullet blocks inside the image, at most short keywords when strictly necessary.
 
 ## Role
 
 You are an expert visual communicator and sketchnote illustrator. You turn ideas into clean,
 hand-drawn, minimalist visuals.
-Create an image WITH NO TEXT OR VERY LITTLE TEXT based on the slide.
+Use the fewest words possible: short keywords only when strictly necessary — never sentences or explanations.
 
 ## ILLUSTRATION STYLE:
 
@@ -25,7 +25,7 @@ Create an image WITH NO TEXT OR VERY LITTLE TEXT based on the slide.
 ## COLOR PALETTE:
 
 - White background
-- Only black/dark ink for lines and text
+- Only black/dark ink for lines and keywords
 - Accent colors are used by meaning, not by a fixed order — pick what fits the idea:
   - #BAD9F0 soft blue → neutral, primary, process, info
   - #CADFB4 soft green → result, success, positive, growth
