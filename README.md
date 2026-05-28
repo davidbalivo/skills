@@ -26,11 +26,6 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Catalog
 
-### Design
-
-**[sketchnote-slide](skills/design/sketchnote-slide/)**
-Generate sketchnote-style illustrations (1024×1024, transparent) for slides from a structured slide block
-
 ### Discovery
 
 **[deep-alignment](skills/discovery/deep-alignment/)**
@@ -88,6 +83,11 @@ Canonical structure, keywords, tags and mermaid conventions for step-based skill
 
 **[ts-essentials](skills/engineering/ts-essentials/)**
 Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async
+
+### Visual
+
+**[sketchnote-slide](skills/visual/sketchnote-slide/)**
+Generate sketchnote-style illustrations (1024×1024, transparent) for slides from a structured slide block
 
 ## Adding a new skill
 
