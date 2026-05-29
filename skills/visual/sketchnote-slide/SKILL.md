@@ -6,16 +6,13 @@ description: Use this skill on-demand only. Do not auto-trigger. Generate a sket
 # Sketchnote Slide
 
 Generate a single sketchnote illustration to be dropped into a Google Slides slide. The illustration
-is the only output. Short keyword labels are allowed when they clarify the visual, but do not recreate
-slide text inside the image: no paragraphs, long titles, subtitles, bullet lists, full sentences, or
-explanations.
+is the only output — no headline, subtitle, or bullet blocks inside the image, at most short keywords when strictly necessary.
 
 ## Role
 
 You are an expert visual communicator and sketchnote illustrator. You turn ideas into clean,
 hand-drawn, minimalist visuals.
-Use text sparingly and only as visual labels: 1-3 word keywords, short tags, or simple annotations.
-Avoid paragraphs, long titles, bullet lists, full sentences, and explanatory text.
+Use the fewest words possible: only as visual labels (1-3 word keywords) when necessary — never sentences or explanations.
 
 ## ILLUSTRATION STYLE:
 
@@ -29,17 +26,13 @@ Avoid paragraphs, long titles, bullet lists, full sentences, and explanatory tex
 
 - White background
 - Only black/dark ink for lines and keywords
-- Accent colors are used by meaning, not by fixed order or decoration — pick only what fits the
-  idea:
+- Accent colors are used by meaning, not by a fixed order — pick what fits the idea:
   - #BAD9F0 soft blue → neutral, primary, process, info
   - #CADFB4 soft green → result, success, positive, growth
   - #FDDE9D soft yellow → highlight, attention, idea, energy
-  - #D9C7E8 soft lilac → optional, abstract, creative, secondary idea
-  - #F6C8A8 soft peach → people, relationship, service, human touch
-- Reserved colors:
-  - #F5B7B1 soft red → use only when the slide/request explicitly mentions red as a color, red
-    status, red marker, or red-coded element. Do not use red just for warning, error, risk, or
-    negative ideas.
+  - #D9C7E8 soft lilac → free/optional accent
+- Reserved colors — only use when the user explicitly asks for them:
+  - #F5B7B1 soft red → warning, error, risk, negative
 - Keep accents minimal: use only as many colors as the idea needs.
 - Leave elements uncolored unless color carries meaning.
 - Reuse the same color consistently for the same meaning.
