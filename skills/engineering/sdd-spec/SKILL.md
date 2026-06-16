@@ -59,11 +59,20 @@ flowchart TD
 
 **Announce:** 🔍 Scanning prior SDDs
 
-List all SDD paths inside `sdd/` — **read names only, never file contents** — and surface relevant ones. If nothing seems relevant, skip silently.
+Surface relevant prior SDDs through a tiered read — never load a full spec just to judge relevance:
+
+1. **Names** — list all SDD paths inside `sdd/`. Drop those whose `{id}` is clearly unrelated.
+2. **Problem statement** — for each remaining candidate, read **only the head** of its `spec.md`
+   (`limit` ≈ 15 lines: frontmatter + title + `## Problem Statement`), never the full file. Confirm
+   or drop the candidate from that. If the Problem Statement is cut off and you still cannot judge
+   relevance, extend the read once (`limit` ≈ 30); never load the full file.
+
+If nothing seems relevant, skip silently.
 
 **Question:**
 
-> ❓ **I found `sdd/{YY-MM-DD}-{id}/` — do you consider it important to take into account?**
+> ❓ **I found `sdd/{YY-MM-DD}-{id}/` — _{problem statement in one line}_ — do you consider it
+> important to take into account?**
 
 **Stop & wait:** user confirmation
 
