@@ -4,7 +4,8 @@
       "Skill(step-based-skills-standard)",
       "Skill(step-based-skills-standard:*)",
       "Skill(git-operations)",
-      "Skill(git-operations:*)"
+      "Skill(git-operations:*)",
+      "WebSearch"
     ]
   },
   "hooks": {
