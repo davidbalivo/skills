@@ -10,6 +10,13 @@ workflows (QA Form Inventory sheet) are reported in Jira. It takes the tester's 
 triage, prevents duplicates, creates the Bug in FREEMA with the canonical fields, and returns the
 issue key to paste into the sheet.
 
+## Language
+
+This skill's instructions are written in English, but two rules apply regardless:
+
+- Ticket content (summary, description, labels) is always written in Spanish (Spain).
+- Conversation with the user follows the language the user writes in.
+
 ## Fixed Jira Coordinates
 
 Use these values on every ticket. Never ask the user for them.
@@ -28,18 +35,30 @@ Use these values on every ticket. Never ask the user for them.
 ## Tracking Sheet
 
 The tracking sheet is "QA Form Inventory" (Google Drive file id
-`1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`, tab `Resultados`). If Drive access is available,
-resolve module, flow and form criticality from it; otherwise ask the tester and map the module
-through the canonical table below.
+`1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`). Two tabs feed the skill:
+
+- `Flujos de Test`
+  ([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
+  — source of truth for the exact form name (`frmXXX`) and the form criticality (sizing L/M/S).
+- `Resultados` — execution tracking, where results and the Jira key are recorded.
+
+The tester's row number in `Resultados` (collected in Intake) anchors the lookup: if Drive access is
+available, resolve module, flow, form, environment and test date from that row, then take the exact
+form name and criticality from `Flujos de Test`. If Drive access is unavailable, ask the tester
+directly and map the module through [module-slugs.md](module-slugs.md).
 
 ## Intake
 
 Collect from the tester's free-text report (ask only for what is missing):
 
-- Form (`frmXXX...`) or flow number, plus the module if the form alone is ambiguous.
+- Row number in the `Resultados` tab — anchors the lookup for module, flow, environment and test
+  date, then the exact form name and criticality from `Flujos de Test` (see Tracking Sheet).
+- Data used (e.g. company/record ids).
 - What happened, and what the tester expected.
-- Environment and test date.
-- Evidence available (screenshots, data used such as company/record ids).
+- Steps to reproduce.
+- Screenshots.
+- Type (`functional` / `performance` / `technical` / `visual`).
+- Priority, as assessed by the tester.
 
 ## Labels
 
@@ -47,8 +66,7 @@ Collect from the tester's free-text report (ask only for what is missing):
 | ----------------------------------------------------------------- | -------------------------------------------------------- |
 | `websat-stabilization`                                            | Always                                                   |
 | `qa-functional` / `qa-performance` / `qa-technical` / `qa-visual` | Exactly one, per triage                                  |
-| `mod-<module>`                                                    | From the canonical table below, always                   |
-| `winsat-preexisting`                                              | Only when the defect is confirmed reproducible in Winsat |
+| `mod-<module>`                                                    | From [module-slugs.md](module-slugs.md), always          |
 
 Never write a label outside this vocabulary. A typo in a label silently breaks program stats.
 
@@ -64,7 +82,7 @@ Example: `frmFIM_ASI_INTEGRAR · Tratamiento de Borrador · el borrador no integ
 
 ## Description Template
 
-Ticket content is written in Spanish (Spain). Use middle dots for label·value pairs, never colons.
+Use middle dots for label·value pairs, never colons.
 
 ```markdown
 ## Contexto
@@ -121,34 +139,6 @@ project = FREEMA AND parent = FREEMA-4055 AND summary ~ "<form>" AND statusCateg
 On a hit, show the existing issue(s) and propose adding a comment or evidence there instead. Only
 create a new issue if the user confirms it is a different defect, and link it "relates to" the
 existing one.
-
-## Canonical Module Slugs
-
-| Sheet module              | Label                           |
-| ------------------------- | ------------------------------- |
-| Tablas Generales          | `mod-tablas-generales`          |
-| Configuración General     | `mod-configuracion-general`     |
-| Parámetros de Gestión     | `mod-parametros-de-gestion`     |
-| Gestión de Stocks         | `mod-gestion-de-stocks`         |
-| Compras                   | `mod-compras`                   |
-| Personal                  | `mod-personal`                  |
-| Gestión BPO               | `mod-gestion-bpo`               |
-| Prevención de Riesgos     | `mod-prevencion-de-riesgos`     |
-| CRM                       | `mod-crm`                       |
-| Presupuestos y Contratos  | `mod-presupuestos-y-contratos`  |
-| Gestión Cuadrantes        | `mod-gestion-cuadrantes`        |
-| Gestión de Candidatos     | `mod-gestion-de-candidatos`     |
-| e-Movifree                | `mod-e-movifree`                |
-| Equipamiento              | `mod-equipamiento`              |
-| Gestión ETT               | `mod-gestion-ett`               |
-| Servicios a Beneficiarios | `mod-servicios-a-beneficiarios` |
-| Ventas                    | `mod-ventas`                    |
-| Finanzas                  | `mod-finanzas`                  |
-| Nóminas                   | `mod-nominas`                   |
-| Control de Calidad        | `mod-control-de-calidad`        |
-| Control Suite Manager     | `mod-control-suite-manager`     |
-| Gestión Interna           | `mod-gestion-interna`           |
-| Canal Interno Freematica  | `mod-canal-interno-freematica`  |
 
 ## Process
 
