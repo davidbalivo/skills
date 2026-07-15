@@ -12,9 +12,10 @@ issue key to paste into the sheet.
 
 ## Language
 
-This skill's instructions are written in English, but two rules apply regardless:
+This skill's instructions are written in English, but these rules apply regardless:
 
-- Ticket content (summary, description, labels) is always written in Spanish (Spain).
+- Ticket summary and description are always written in Spanish (Spain).
+- Labels stay in English (fixed vocabulary, see Ticket Content).
 - Conversation with the user follows the language the user writes in.
 
 ## Fixed Jira Coordinates
@@ -60,95 +61,19 @@ Collect from the tester's free-text report (ask only for what is missing):
 - Type (`functional` / `performance` / `technical` / `visual`).
 - Priority, as assessed by the tester.
 
-## Labels
+## Ticket Content
 
-| Label                                                             | Rule                                                     |
-| ----------------------------------------------------------------- | -------------------------------------------------------- |
-| `websat-stabilization`                                            | Always                                                   |
-| `qa-functional` / `qa-performance` / `qa-technical` / `qa-visual` | Exactly one, per triage                                  |
-| `mod-<module>`                                                    | From [module-slugs.md](module-slugs.md), always          |
-
-Never write a label outside this vocabulary. A typo in a label silently breaks program stats.
-
-## Summary Convention
-
-```text
-<form> · <flow or form description> · <short symptom>
-```
-
-Spanish, one line, the form always first so tickets are searchable with `summary ~ "frmXXX"`.
-
-Example: `frmFIM_ASI_INTEGRAR · Tratamiento de Borrador · el borrador no integra la contrapartida`
-
-## Description Template
-
-Use middle dots for label·value pairs, never colons.
-
-```markdown
-## Contexto
-
-- Módulo · <module name from sheet>
-- Flujo · <flow number and name> (QA Form Inventory)
-- Form · <frmXXX>
-- Entorno · <environment> · build <date if known>
-- Tester · <name> · <test date>
-
-## Clasificación
-
-- Tipo · <Funcional divergencia vs Winsat | Rendimiento | Técnico | Visual>
-
-## Pasos
-
-1. <step>
-2. <step>
-
-## Comportamiento Winsat (esperado)
-
-<what Winsat does>
-
-## Comportamiento Websat (actual)
-
-<what Websat does>
-
-## Evidencia
-
-<screenshots attached, data used (empresa, registro, fechas)>
-
-## Impacto
-
-<blocks the flow or workaround available · form criticality from the sheet>
-```
-
-Variants by type — replace only the middle sections, keep Contexto, Clasificación, Evidencia and
-Impacto always:
-
-- **Performance:** replace Pasos/Winsat/Websat with `## Escenario` (process and volumetry) and
-  `## Tiempos` (WinSat s · WebSat s · diferencia %), mirroring the sheet columns.
-- **Technical:** replace the Winsat/Websat sections with `## Error observado` (message, stacktrace,
-  correlation id if any).
-- **Visual:** keep Pasos plus screenshots; Impacto is Low unless it hides data.
-
-## Dedupe
-
-Before composing the preview, search:
-
-```text
-project = FREEMA AND parent = FREEMA-4055 AND summary ~ "<form>" AND statusCategory != Done
-```
-
-On a hit, show the existing issue(s) and propose adding a comment or evidence there instead. Only
-create a new issue if the user confirms it is a different defect, and link it "relates to" the
-existing one.
+Compose labels, summary and description from [template.md](template.md); pick the type variant per
+the tester's report.
 
 ## Process
 
 1. Parse the tester's report; collect missing intake data.
 2. Resolve module, flow and form criticality (sheet if available, otherwise ask).
 3. Run the three triage questions.
-4. Run the dedupe search; on a hit, follow the Dedupe section.
-5. Compose summary, labels, priority and description per the sections above.
-6. Show the full preview and wait for explicit confirmation.
-7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
+4. Compose summary, labels, priority and description per the sections above.
+5. Show the full preview and wait for explicit confirmation.
+6. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
    attempt the fix version, drop it with a warning if it does not exist.
-8. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
+7. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
    column of the sheet row.
