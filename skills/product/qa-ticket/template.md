@@ -36,7 +36,7 @@ Use middle dots for label·value pairs, never colons.
 
 **Reproducción**
 
-- Condiciones · <data, volumetry and initial state if relevant>
+- Condiciones · <test data, data volume and initial state if relevant>
 
 1. <step>
 2. <step>
@@ -51,17 +51,20 @@ Use middle dots for label·value pairs, never colons.
 
 **Evidencia**
 
-<screenshots, measurements, logs, stacktrace, correlation id, data used>
+<screenshots, measurements, logs, stacktrace, correlation id>
 
 **Impacto**
 
 <blocks the flow or workaround available>
 ```
 
+Keep test data, data volume and initial state in `Condiciones`. Use `Evidencia` only for supporting
+artifacts and technical diagnostics; do not repeat the test data there.
+
 ## Type-Specific Content
 
 | Type        | Fill rule                                                                                                                                                     |
 | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Functional  | Describe the reference outcome and the incorrect current outcome. Put error messages in Websat and raw technical diagnostics in Evidence.                     |
-| Performance | Put process, volumetry and repetitions in Conditions. Record WinSat s, WebSat s, difference s and difference % in the corresponding behavior sections.        |
+| Performance | Put process, data volume and repetitions in Conditions. Record WinSat s, WebSat s, difference s and difference % in the corresponding behavior sections.      |
 | Visual      | Describe the reference and current presentation, attach comparable screenshots and state the actual user impact. Never default the impact or priority to Low. |
