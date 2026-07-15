@@ -32,7 +32,7 @@ Use middle dots for label·value pairs, never colons.
 - Criticidad del formulario · <L/M/S, from Flujos de Test>
 - Entorno · <environment>
 - Fecha de ejecución · <execution date from Resultados>
-- Tipo · <Funcional divergencia vs Winsat | Rendimiento | Visual>
+- Tipo · <Funcional | Rendimiento | Visual>
 
 **Reproducción**
 
