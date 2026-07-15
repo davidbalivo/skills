@@ -1,5 +1,5 @@
 ---
-status: draft
+status: internally-reviewed
 ---
 
 # Infrastructure Diagnostic Agent
@@ -34,14 +34,14 @@ Infrastructure knowledge is centralized in a small group of people. When inciden
 
 - **Kubernetes**: pod state, events, logs, resource usage.
 - **Databases**: replication status, query performance, resource constraints.
-- **Internal services**: health, logs, metrics, dependencies.
+- **Internal services**: subset to be scoped during planning. Agent can only query services explicitly allowlisted in configuration.
 - **Integration point**: incident tickets (Linear/Jira) with limited query language.
 
 ### Knowledge Artifacts
 
-- Playbooks (predefined investigation flows for common problems).
-- Investigation reports (auto-documented findings and diagnostics).
-- Query patterns (reusable searches and data collection methods).
+- **Playbooks**: predefined investigation flows for common problem types (stored in repo).
+- **Investigation reports**: auto-generated markdown documents capturing investigation steps, queries run, and findings. Stored in repo with incident ticket reference.
+- **Query patterns**: reusable searches and data collection methods extracted from successful investigations.
 
 ## Constraints
 
@@ -50,18 +50,19 @@ Infrastructure knowledge is centralized in a small group of people. When inciden
 - Agent cannot access personally identifiable information (PII).
 - Agent cannot access credentials or secrets.
 - Agent cannot read sensitive databases or tables without explicit ACL.
+- Security enforcement mechanism (IAM policies, data masking, code boundaries) to be detailed during planning. Hard dependency for implementation.
 
 ### Operational
 
 - Agent is read-only (no state changes, no remediation).
 - Agent runs on-demand (triggered by incident tickets), not continuous monitoring.
-- Investigation duration must complete within SLA (to be defined during planning).
+- Investigation must complete within a bounded time (baseline SLA to be defined during planning, e.g., 5–15 minutes for typical incidents).
 
 ### Technical
 
 - Agent integrates via existing APIs (Kubernetes API, database connectors, service endpoints).
 - Knowledge storage is in version-controlled repo (playbooks + investigation logs).
-- No external LLM dependencies for playbook execution (keep it deterministic).
+- Playbook execution is deterministic (no LLM-based branching for core investigation flows). Agent logic outside playbooks may use generative models for exploration (to be scoped during planning).
 
 ## Assumptions
 
@@ -72,10 +73,16 @@ Infrastructure knowledge is centralized in a small group of people. When inciden
 
 ## Success Criteria
 
-**Primary**: Mean time to diagnosis decreases by at least 30% for investigated incident types within 6 months.
+**Primary**: Mean time to diagnosis decreases by at least 30% for investigated incident types (baseline measured at launch, review at 6 months).
 
 **Secondary** (measured at 3 months):
 
-- Agent resolves ≥50% of investigations without human refinement.
+- Agent-generated diagnostics are actionable (lead to resolution or identified root cause) in ≥50% of investigations.
 - ≥10 reusable playbooks created from real incidents.
-- ≥30 team members have triggered at least one diagnostic run.
+- ≥50% of on-call team has used the agent at least once.
+
+**Failure indicators**:
+
+- Diagnostics consistently miss the root cause (false negatives).
+- Playbooks become stale (>30% fail to run due to infrastructure changes).
+- Agent accesses data it should not (security breach).
