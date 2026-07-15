@@ -2,10 +2,10 @@
 
 ## Labels
 
-| Label                                                             | Rule                                            |
-| ----------------------------------------------------------------- | ----------------------------------------------- |
-| `qa-functional` / `qa-performance` / `qa-technical` / `qa-visual` | Exactly one, per triage                         |
-| `mod-<module>`                                                    | From [module-slugs.md](module-slugs.md), always |
+| Label                                            | Rule                                            |
+| ------------------------------------------------ | ----------------------------------------------- |
+| `qa-functional` / `qa-performance` / `qa-visual` | Exactly one, per classification                 |
+| `mod-<module>`                                   | From [module-slugs.md](module-slugs.md), always |
 
 Never write a label outside this vocabulary. A typo in a label silently breaks program stats.
 
@@ -28,44 +28,39 @@ Use middle dots for label·value pairs, never colons.
 
 - Módulo · <module name from sheet>
 - Flujo · <flow number and name> (QA Form Inventory)
-- Form · <frmXXX, canonical name from Flujos de Test>
+- Formulario · <frmXXX, canonical name from Flujos de Test>
 - Criticidad del formulario · <L/M/S, from Flujos de Test>
 - Entorno · <environment> · build <date if known>
-- Tipo · <Funcional divergencia vs Winsat | Rendimiento | Técnico | Visual>
+- Tipo · <Funcional divergencia vs Winsat | Rendimiento | Visual>
 
-**Pasos**
+**Reproducción**
+
+- Condiciones · <data, volumetry and initial state if relevant>
 
 1. <step>
 2. <step>
 
-**Comportamiento Winsat (esperado)**
+**Comportamiento Winsat (referencia)**
 
-<what Winsat does>
+<result or elapsed time in Winsat>
 
 **Comportamiento Websat (actual)**
 
-<what Websat does>
+<result, elapsed time, error or visual difference in Websat>
 
 **Evidencia**
 
-<screenshots attached, data used (empresa, registro, fechas)>
+<screenshots, measurements, logs, stacktrace, correlation id, data used>
 
 **Impacto**
 
 <blocks the flow or workaround available>
 ```
 
-Contexto, Evidencia and Impacto stay in every ticket. Only the middle section changes:
+## Type-Specific Content
 
-| Type        | Middle section(s)                                                       |
-| ----------- | ----------------------------------------------------------------------- |
-| Funcional   | Pasos, Comportamiento Winsat (esperado), Comportamiento Websat (actual) |
-| Rendimiento | Escenario, Tiempos                                                      |
-| Técnico     | Error observado                                                         |
-| Visual      | Pasos                                                                   |
-
-Notes:
-
-- Rendimiento's Tiempos mirrors the sheet columns (WinSat s · WebSat s · diferencia %).
-- Técnico's Error observado includes message, stacktrace, correlation id if any.
-- Visual's Impacto defaults to Low unless it hides data.
+| Type        | Fill rule                                                                                                                                                     |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Functional  | Describe the reference outcome and the incorrect current outcome. Put error messages in Websat and raw technical diagnostics in Evidence.                     |
+| Performance | Put process, volumetry and repetitions in Conditions. Record WinSat s, WebSat s, difference s and difference % in the corresponding behavior sections.        |
+| Visual      | Describe the reference and current presentation, attach comparable screenshots and state the actual user impact. Never default the impact or priority to Low. |

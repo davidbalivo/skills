@@ -1,14 +1,13 @@
 ---
 name: qa-ticket
-description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Create standardized Jira bugs for Websat workflow QA from tester reports and QA Form Inventory data."
 ---
 
 # Websat QA Ticket
 
 This skill governs how defects found during the manual testing campaign of the critical ERP
-workflows (QA Form Inventory sheet) are reported in Jira. It takes the tester's report, runs a short
-triage, prevents duplicates, creates the Bug in FREEMA with the canonical fields, and returns the
-issue key to paste into the sheet.
+workflows (QA Form Inventory sheet) are reported in Jira. It takes the tester's report, creates
+the Bug in FREEMA with the canonical fields, and returns the issue key to paste into the sheet.
 
 ## Language
 
@@ -48,6 +47,18 @@ available, resolve module, flow, form, environment and test date from that row, 
 form name and criticality from `Flujos de Test`. If Drive access is unavailable, ask the tester
 directly and map the module through [module-slugs.md](module-slugs.md).
 
+## Classification
+
+Classify by observed behavior, not by suspected root cause:
+
+- **Functional** · Incorrect outcome, error, exception, blockage, crash or incorrect data.
+- **Performance** · Correct outcome, but unacceptable completion time.
+- **Visual** · Correct behavior, but incorrect presentation.
+
+Treat error messages, stacktraces and correlation IDs as technical evidence for a functional defect,
+not as a separate type. Infer the type from the report; when ambiguous, ask only about the observed
+behavior needed to classify it.
+
 ## Intake
 
 Collect from the tester's free-text report (ask only for what is missing):
@@ -57,23 +68,23 @@ Collect from the tester's free-text report (ask only for what is missing):
 - Data used (e.g. company/record ids).
 - What happened, and what the tester expected.
 - Steps to reproduce.
-- Screenshots.
-- Type (`functional` / `performance` / `technical` / `visual`).
+- Evidence appropriate to the defect (e.g. screenshots, measurements or logs).
 - Priority, as assessed by the tester.
 
 ## Ticket Content
 
-Compose labels, summary and description from [template.md](template.md); pick the type variant per
-the tester's report.
+Compose labels, summary and description from the canonical template and type-specific fill rules in
+[template.md](template.md). Keep the same description sections for every defect type.
 
 ## Process
 
-1. Parse the tester's report; collect missing intake data.
-2. Resolve module, flow and form criticality (sheet if available, otherwise ask).
-3. Run the three triage questions.
-4. Compose summary, labels, priority and description per the sections above.
-5. Show the full preview and wait for explicit confirmation.
-6. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
+1. Parse the tester's report.
+2. Classify the defect by observed behavior per Classification.
+3. Collect only the missing intake data appropriate to that classification.
+4. Resolve module, flow and form criticality (sheet if available, otherwise ask).
+5. Compose summary, labels, priority and description per the sections above.
+6. Show the full preview and wait for explicit confirmation.
+7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
    attempt the fix version, drop it with a warning if it does not exist.
-7. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
+8. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
    column of the sheet row.
