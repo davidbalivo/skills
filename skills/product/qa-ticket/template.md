@@ -37,9 +37,10 @@ Use middle dots for label·value pairs, never colons.
 **Reproducción**
 
 - Condiciones · <test data, data volume and initial state if relevant>
+- Ruta · <Menú 1 → Menú 2 → Pantalla; omit if not applicable>
 
-1. <step>
-2. <step>
+1. <single action using exact visible labels>
+2. <single action using exact visible labels>
 
 **Comportamiento Winsat (referencia)**
 
@@ -60,6 +61,10 @@ Use middle dots for label·value pairs, never colons.
 
 Keep test data, data volume and initial state in `Condiciones`. Use `Evidencia` only for supporting
 artifacts and technical diagnostics; do not repeat the test data there.
+
+For `Ruta`, join exact visible navigation labels with `→`; omit it when no navigation is needed.
+Write one action per numbered step, in Spanish infinitive, and quote exact controls and values. Keep
+expected and current results in their behavior sections.
 
 ## Type-Specific Content
 
