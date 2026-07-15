@@ -37,8 +37,8 @@ Use these values on every ticket. Never ask the user for them.
 The source workbook is "QA Form Inventory" (Google Drive file id
 `1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`). Two tabs feed the skill:
 
-- `Resultados` — execution context and tracking, including module, flow, environment, test date,
-  results and Jira key.
+- `Resultados` — execution context and tracking, including module, flow, environment, execution
+  date, results and Jira key.
 - `Flujos de Test`
   ([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
   — source of truth for the exact form name (`frmXXX`) and the form criticality (sizing L/M/S).
@@ -51,7 +51,7 @@ Use the value from the `ID prueba` column as the execution identifier. Ask the t
 never the visible Google Sheets row number.
 
 If Drive access is available, use it to locate the matching physical `Resultados` row and resolve
-module, flow, environment and test date.
+module, flow, environment and execution date.
 
 ### Form Resolution
 
@@ -62,8 +62,8 @@ canonical form name and criticality from the selected `Flujos de Test` row.
 
 ### Without Drive Access
 
-Ask the tester for module, flow, environment, test date, exact affected form and form criticality,
-then map the module through [module-slugs.md](module-slugs.md).
+Ask the tester for module, flow, environment, execution date, exact affected form and form
+criticality, then map the module through [module-slugs.md](module-slugs.md).
 
 ## Classification
 
@@ -99,7 +99,8 @@ Compose labels, summary and description from the canonical template and type-spe
 1. Parse the tester's report.
 2. Classify the defect by observed behavior per Classification.
 3. Collect only the missing intake data appropriate to that classification.
-4. Resolve module, flow, environment, test date, form and criticality per Test Context Resolution.
+4. Resolve module, flow, environment, execution date, form and criticality per Test Context
+   Resolution.
 5. Compose summary, labels, priority and description per the sections above.
 6. Show the full preview and wait for explicit confirmation.
 7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;

@@ -30,7 +30,8 @@ Use middle dots for label·value pairs, never colons.
 - Flujo · <flow number and name> (QA Form Inventory)
 - Formulario · <frmXXX, canonical name from Flujos de Test>
 - Criticidad del formulario · <L/M/S, from Flujos de Test>
-- Entorno · <environment> · build <date if known>
+- Entorno · <environment>
+- Fecha de ejecución · <execution date from Resultados>
 - Tipo · <Funcional divergencia vs Winsat | Rendimiento | Visual>
 
 **Reproducción**
