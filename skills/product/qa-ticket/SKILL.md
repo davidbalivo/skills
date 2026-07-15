@@ -55,10 +55,11 @@ module, flow, environment and execution date.
 
 ### Form Resolution
 
-With Drive access, use the resolved flow to find the candidate forms in `Flujos de Test`. Select the
-form automatically when there is only one candidate. When there are several, use an exact form named
-in the report if it matches a candidate; otherwise ask the tester which form is affected. Take the
-canonical form name and criticality from the selected `Flujos de Test` row.
+With Drive access, find the exact flow row in `Flujos de Test`. Read `Forms en flujo` as `N` and treat
+that row plus the following `N-1` rows as the candidate forms; continuation rows may leave `Flujo`
+blank. Select the form automatically when there is only one candidate. When there are several, use
+an exact form named in the report if it matches a candidate; otherwise ask the tester which form is
+affected. Take the canonical form name and criticality from the selected `Flujos de Test` row.
 
 ### Without Drive Access
 
