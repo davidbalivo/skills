@@ -55,10 +55,17 @@ Use middle dots for label·value pairs, never colons.
 <blocks the flow or workaround available>
 ```
 
-Variants by type — replace only the middle sections, keep Contexto, Evidencia and Impacto always:
+Contexto, Evidencia and Impacto stay in every ticket. Only the middle section changes:
 
-- **Performance:** replace Pasos/Winsat/Websat with `**Escenario**` (process and volumetry) and
-  `**Tiempos**` (WinSat s · WebSat s · diferencia %), mirroring the sheet columns.
-- **Technical:** replace the Winsat/Websat sections with `**Error observado**` (message, stacktrace,
-  correlation id if any).
-- **Visual:** keep Pasos plus screenshots; Impacto is Low unless it hides data.
+| Type        | Middle section(s)                                                       |
+| ----------- | ----------------------------------------------------------------------- |
+| Funcional   | Pasos, Comportamiento Winsat (esperado), Comportamiento Websat (actual) |
+| Rendimiento | Escenario, Tiempos                                                      |
+| Técnico     | Error observado                                                         |
+| Visual      | Pasos                                                                   |
+
+Notes:
+
+- Rendimiento's Tiempos mirrors the sheet columns (WinSat s · WebSat s · diferencia %).
+- Técnico's Error observado includes message, stacktrace, correlation id if any.
+- Visual's Impacto defaults to Low unless it hides data.
