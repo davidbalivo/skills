@@ -47,11 +47,14 @@ The source workbook is "QA Form Inventory" (Google Drive file id
 
 ### Execution Lookup
 
-Use the value from the `ID prueba` column as the execution identifier. Ask the tester for `ID prueba`,
-never the visible Google Sheets row number.
+Ask the tester for the visible Google Sheets row number in the `Resultados` tab. Treat it as a
+literal, 1-based row number and use it directly in A1 notation: row `12` means
+`Resultados!A12:U12`, and its Jira tracking cell is `Resultados!T12`. Never add or subtract `1`,
+convert it to a zero-based index, or use `ID prueba` as the lookup key.
 
-If Drive access is available, use it to locate the matching physical `Resultados` row and resolve
-module, flow, environment and execution date.
+If Drive access is available, read that exact `Resultados` row and resolve `ID prueba`, module, flow,
+environment and execution date from it. Confirm that the selected row is an execution row rather
+than a module heading or an empty row.
 
 ### Form Resolution
 
@@ -63,8 +66,9 @@ affected. Take the canonical form name and criticality from the selected `Flujos
 
 ### Without Drive Access
 
-Ask the tester for module, flow, environment, execution date, exact affected form and form
-criticality, then map the module through [module-slugs.md](module-slugs.md).
+Keep the tester-provided visible `Resultados` row number for the final tracking reminder. Ask for
+module, flow, environment, execution date, exact affected form and form criticality, then map the
+module through [module-slugs.md](module-slugs.md).
 
 ## Classification
 
@@ -80,20 +84,36 @@ behavior needed to classify it.
 
 ## Intake
 
-Collect from the tester's free-text report (ask only for what is missing):
+First extract everything already available from the tester's report and the selected `Resultados`
+row. Then ask only for missing information that is necessary to make the specific defect clear and
+reproducible:
 
-- `ID prueba` value in the `Resultados` tab — stable execution identifier used for Test Context
+- Visible Google Sheets row number in the `Resultados` tab, used literally per Test Context
   Resolution.
 - Data used (e.g. company/record ids).
-- What happened, and what the tester expected.
+- What the tester expected and what actually happened.
+- Navigation route, when reaching the affected screen requires one.
 - Steps to reproduce.
 - Evidence appropriate to the defect (e.g. screenshots, measurements or logs).
 - Priority, as assessed by the tester.
 
+Impact and workaround are optional. If the report already provides them, include them. Otherwise,
+offer the tester the option to add them in the conversation language. If the tester declines, omit
+the `Impacto` section completely; never invent an impact or write an empty placeholder.
+
+For a performance defect, reuse whatever test context and measurements the tester provides. Ask
+only for the additional facts needed to understand and reproduce the reported delay. Do not require
+data volume, repetitions or a Winsat measurement by default.
+
+For a visual defect, capture the described difference and available evidence. Images cannot be
+attached to Jira automatically through this skill; when an image has no stable URL, tell the tester
+that they must upload it to the created issue themselves.
+
 ## Ticket Content
 
 Compose labels, summary and description from the canonical template and type-specific fill rules in
-[template.md](template.md). Keep the same description sections for every defect type.
+[template.md](template.md). Keep the same core description sections for every defect type. Include
+the optional `Impacto` section only when the tester provides it.
 
 ## Process
 
