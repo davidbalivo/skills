@@ -32,23 +32,38 @@ Use these values on every ticket. Never ask the user for them.
 | Team        | `customfield_10001` = `31c32486-0452-4550-bce9-6282648334c1` |
 | Fix version | `Websat - Stable Relaunch`                                   |
 
-## Tracking Sheet
+## QA Data Sources
 
-The tracking sheet is "QA Form Inventory" (Google Drive file id
+The source workbook is "QA Form Inventory" (Google Drive file id
 `1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`). Two tabs feed the skill:
 
+- `Resultados` — execution context and tracking, including module, flow, environment, test date,
+  results and Jira key.
 - `Flujos de Test`
   ([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
   — source of truth for the exact form name (`frmXXX`) and the form criticality (sizing L/M/S).
-- `Resultados` — execution tracking, where results and the Jira key are recorded.
 
-Use the value from the `ID prueba` column as the execution identifier. It is not the visible Google
-Sheets row number: ask the tester for `ID prueba` and locate the physical row internally.
+## Test Context Resolution
 
-If Drive access is available, locate the row whose `ID prueba` matches, then resolve module, flow,
-form, environment and test date from that row and take the exact form name and criticality from
-`Flujos de Test`. If Drive access is unavailable, ask the tester directly and map the module through
-[module-slugs.md](module-slugs.md).
+### Execution Lookup
+
+Use the value from the `ID prueba` column as the execution identifier. Ask the tester for `ID prueba`,
+never the visible Google Sheets row number.
+
+If Drive access is available, use it to locate the matching physical `Resultados` row and resolve
+module, flow, environment and test date.
+
+### Form Resolution
+
+With Drive access, use the resolved flow to find the candidate forms in `Flujos de Test`. Select the
+form automatically when there is only one candidate. When there are several, use an exact form named
+in the report if it matches a candidate; otherwise ask the tester which form is affected. Take the
+canonical form name and criticality from the selected `Flujos de Test` row.
+
+### Without Drive Access
+
+Ask the tester for module, flow, environment, test date, exact affected form and form criticality,
+then map the module through [module-slugs.md](module-slugs.md).
 
 ## Classification
 
@@ -66,8 +81,8 @@ behavior needed to classify it.
 
 Collect from the tester's free-text report (ask only for what is missing):
 
-- `ID prueba` value in the `Resultados` tab — stable identifier used to locate the actual sheet row
-  and resolve its tracking data (see Tracking Sheet).
+- `ID prueba` value in the `Resultados` tab — stable execution identifier used for Test Context
+  Resolution.
 - Data used (e.g. company/record ids).
 - What happened, and what the tester expected.
 - Steps to reproduce.
@@ -84,11 +99,10 @@ Compose labels, summary and description from the canonical template and type-spe
 1. Parse the tester's report.
 2. Classify the defect by observed behavior per Classification.
 3. Collect only the missing intake data appropriate to that classification.
-4. Locate the `Resultados` row by `ID prueba`, then resolve module, flow and form criticality (sheet
-   if available, otherwise ask).
+4. Resolve module, flow, environment, test date, form and criticality per Test Context Resolution.
 5. Compose summary, labels, priority and description per the sections above.
 6. Show the full preview and wait for explicit confirmation.
 7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
    attempt the fix version, drop it with a warning if it does not exist.
 8. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
-   column of the resolved sheet row.
+   column of the row matching `ID prueba`.
