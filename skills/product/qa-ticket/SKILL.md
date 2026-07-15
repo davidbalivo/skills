@@ -42,10 +42,13 @@ The tracking sheet is "QA Form Inventory" (Google Drive file id
   — source of truth for the exact form name (`frmXXX`) and the form criticality (sizing L/M/S).
 - `Resultados` — execution tracking, where results and the Jira key are recorded.
 
-The tester's row number in `Resultados` (collected in Intake) anchors the lookup: if Drive access is
-available, resolve module, flow, form, environment and test date from that row, then take the exact
-form name and criticality from `Flujos de Test`. If Drive access is unavailable, ask the tester
-directly and map the module through [module-slugs.md](module-slugs.md).
+Use the value from the `ID prueba` column as the execution identifier. It is not the visible Google
+Sheets row number: ask the tester for `ID prueba` and locate the physical row internally.
+
+If Drive access is available, locate the row whose `ID prueba` matches, then resolve module, flow,
+form, environment and test date from that row and take the exact form name and criticality from
+`Flujos de Test`. If Drive access is unavailable, ask the tester directly and map the module through
+[module-slugs.md](module-slugs.md).
 
 ## Classification
 
@@ -63,8 +66,8 @@ behavior needed to classify it.
 
 Collect from the tester's free-text report (ask only for what is missing):
 
-- Row number in the `Resultados` tab — anchors the lookup for module, flow, environment and test
-  date, then the exact form name and criticality from `Flujos de Test` (see Tracking Sheet).
+- `ID prueba` value in the `Resultados` tab — stable identifier used to locate the actual sheet row
+  and resolve its tracking data (see Tracking Sheet).
 - Data used (e.g. company/record ids).
 - What happened, and what the tester expected.
 - Steps to reproduce.
@@ -81,10 +84,11 @@ Compose labels, summary and description from the canonical template and type-spe
 1. Parse the tester's report.
 2. Classify the defect by observed behavior per Classification.
 3. Collect only the missing intake data appropriate to that classification.
-4. Resolve module, flow and form criticality (sheet if available, otherwise ask).
+4. Locate the `Resultados` row by `ID prueba`, then resolve module, flow and form criticality (sheet
+   if available, otherwise ask).
 5. Compose summary, labels, priority and description per the sections above.
 6. Show the full preview and wait for explicit confirmation.
 7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
    attempt the fix version, drop it with a warning if it does not exist.
 8. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
-   column of the sheet row.
+   column of the resolved sheet row.
