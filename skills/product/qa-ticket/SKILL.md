@@ -32,6 +32,16 @@ Use these values on every ticket. Never ask the user for them.
 | Team        | `customfield_10001` = `31c32486-0452-4550-bce9-6282648334c1` |
 | Fix version | `Websat - Stable Relaunch`                                   |
 
+Priority accepts exactly these values; the tester's assessment maps to one of them:
+
+| Priority | Notes        |
+| -------- | ------------ |
+| `Major`  |              |
+| `High`   |              |
+| `Medium` | Jira default |
+| `Low`    |              |
+| `Lowest` |              |
+
 ## QA Data Sources
 
 The source workbook is "QA Form Inventory" (Google Drive file id
@@ -47,6 +57,7 @@ row `3` and module heading rows fill only column `A`.
 | C      | `Flujo`           |
 | J      | `Entorno`         |
 | K      | `Fecha ejecución` |
+| T      | `Ticket Jira`     |
 
 `Flujos de Test`
 ([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
@@ -129,6 +140,9 @@ Compose labels, summary and description from the canonical template in [template
 Keep the same core description sections for every defect type and append the optional sections only
 when the tester provides them.
 
+Any non-mandatory value that is empty or cannot be extracted, labels included, stays out of the
+ticket; the omissions are reported in the preview (Step 7).
+
 ## Steps
 
 ### 1. Intake
@@ -185,6 +199,8 @@ Resolve module, flow, environment, execution date and `ID prueba` from the `Resu
 `Formulario` and `Sizing` from `Flujos de Test`, per Test Context Resolution.
 
 - If the row is a module heading or an empty row, report it and ask for the correct row number.
+- If the row already has a `Ticket Jira` value, warn the tester that the row points to an existing
+  ticket and continue.
 - If the `Flujo` value has no row in `Flujos de Test`, warn the tester and continue:
 
   ```md
@@ -227,11 +243,12 @@ Verbose passages count as findings.
 
 Go to Step 7.
 
-### 7. Preview
+### 7. Preview 🔁
 
 Show the tester the full ticket in chat (summary, labels, priority, description) and wait for
 explicit confirmation. Never create the issue without it. Flag an inferred `Comportamiento
-esperado` as inferred so the tester can correct it.
+esperado` as inferred so the tester can correct it, and list any field omitted because its value
+was missing or could not be extracted.
 
 Trim any verbosity that survived Step 6 before showing the ticket.
 
@@ -247,12 +264,12 @@ If accepted, add the section per Evidence Handling in [template.md](template.md)
 When the ticket already carries the pending upload placeholder, warn in the same message that the
 images must be uploaded manually in Jira.
 
-Go to Step 8.
+- If the tester requests changes, apply them and go back to Step 5.
+- If the tester confirms, go to Step 8.
 
 ### 8. Creation
 
-Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
-attempt the fix version and drop it with a warning if it does not exist.
+Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates.
 
 Then report:
 

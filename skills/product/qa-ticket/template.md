@@ -27,10 +27,11 @@ Use middle dots for label·value pairs, never colons.
 ```markdown
 **Contexto**
 
+- ID prueba · <`ID prueba` from Resultados>
 - Módulo · <module name from sheet>
 - Flujo · <flow number and name> (QA Form Inventory)
-- Formulario · <frmXXX, `Formulario` from Flujos de Test; omit if unavailable>
-- Criticidad del formulario · <L/M/S, `Sizing` from Flujos de Test; omit if unavailable>
+- Formulario · <frmXXX, `Formulario` from Flujos de Test>
+- Criticidad del formulario · <L/M/S, `Sizing` from Flujos de Test>
 - Entorno · <environment>
 - Fecha de ejecución · <execution date from Resultados>
 - Tipo · <Funcional | Rendimiento | Visual>

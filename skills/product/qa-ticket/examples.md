@@ -25,6 +25,7 @@ frmCM_CLIENTES · Ficha de Clientes · el NIF se borra al guardar
 ```markdown
 **Contexto**
 
+- ID prueba · 2
 - Módulo · Tablas Generales
 - Flujo · 1.2 Clientes (QA Form Inventory)
 - Formulario · frmCM_CLIENTES
@@ -68,6 +69,7 @@ frmGM_CAB_FACTURAS · Facturación · generar la factura tarda más de 3 minutos
 ```markdown
 **Contexto**
 
+- ID prueba · 81
 - Módulo · Ventas
 - Flujo · 17.4 Factura (QA Form Inventory)
 - Formulario · frmGM_CAB_FACTURAS
