@@ -39,7 +39,7 @@ Use middle dots for label·value pairs, never colons.
 **Reproducción**
 
 - Condiciones · <test data, data volume and initial state if relevant>
-- Ruta · <Menú 1 → Menú 2 → Pantalla; omit if the tester provides no route>
+- Ruta · <Menú 1 → Menú 2 → Pantalla>
 
 1. <single action using exact visible labels>
 2. <single action using exact visible labels>
@@ -52,8 +52,6 @@ Use middle dots for label·value pairs, never colons.
 
 <expected result or acceptable behavior; mention Winsat only when the tester uses it as reference>
 ```
-
-Keep test data, data volume and initial state in `Condiciones`.
 
 For `Ruta`, join exact visible navigation labels with `→`; include the bullet only when the tester
 provides a route. Write one action per numbered step, in Spanish infinitive, and quote exact

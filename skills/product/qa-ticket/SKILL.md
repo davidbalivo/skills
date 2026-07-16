@@ -14,7 +14,7 @@ the Bug in FREEMA with the canonical fields, and returns the issue key to paste 
 This skill's instructions are written in English, but these rules apply regardless:
 
 - Ticket summary and description are always written in Spanish (Spain).
-- Labels stay in English (fixed vocabulary, see Ticket Content).
+- Labels stay in English (fixed vocabulary in [template.md](template.md)).
 - Messages to the tester are always written in Spanish (Spain).
 
 ## Fixed Jira Coordinates
@@ -32,7 +32,7 @@ Use these values on every ticket. Never ask the user for them.
 | Team        | `customfield_10001` = `31c32486-0452-4550-bce9-6282648334c1` |
 | Fix version | `Websat - Stable Relaunch`                                   |
 
-Priority accepts exactly these values; the tester's assessment maps to one of them:
+Unlike the values above, priority comes from the tester (Intake) and accepts exactly these values:
 
 | Priority | Notes        |
 | -------- | ------------ |
@@ -99,8 +99,8 @@ row.
 
 ### Without Drive Access
 
-Without sheet access the whole context comes from the tester: module, flow, environment, execution
-date, exact affected form and form criticality. The module maps through
+Without sheet access the whole context comes from the tester: `ID prueba`, module, flow,
+environment, execution date, exact affected form and form criticality. The module maps through
 [module-slugs.md](module-slugs.md), and the row number keeps anchoring the final tracking
 reminder.
 
@@ -137,8 +137,7 @@ section. Never invent it and never write an empty placeholder.
 ## Ticket Content
 
 Compose labels, summary and description from the canonical template in [template.md](template.md).
-Keep the same core description sections for every defect type and append the optional sections only
-when the tester provides them.
+The core description sections do not vary by defect type.
 
 Any non-mandatory value that is empty or cannot be extracted, labels included, stays out of the
 ticket; the omissions are reported in the preview (Step 7).
