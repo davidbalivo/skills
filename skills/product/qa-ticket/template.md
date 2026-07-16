@@ -63,8 +63,9 @@ can be inferred from the report.
 
 ### Optional Sections
 
-Append each of these sections only when the tester provides the information. Never prompt for them,
-never invent them and never write an empty placeholder:
+Append each of these sections only when the tester provides the information. Never prompt for them
+(the `Evidencia` offer in Step 7 is the only exception), never invent them and never write an
+empty placeholder:
 
 ```markdown
 **Evidencia**
@@ -81,7 +82,8 @@ Use `Evidencia` only for supporting artifacts and technical diagnostics; keep er
 
 ### Evidence Handling
 
-When an image is available only in the conversation and has no stable URL that Jira can use, write:
+When an image is available only in the conversation with no stable URL that Jira can use, or when
+the tester accepts the `Evidencia` offer in the preview (Step 7), write:
 
 ```markdown
 **Evidencia**

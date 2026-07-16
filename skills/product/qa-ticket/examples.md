@@ -52,7 +52,7 @@ El campo "NIF" conserva el valor introducido tras guardar.
 ## Example 2 · All Optional Fields
 
 Performance defect. The tester gave the mandatory fields, every optional field (expected behavior,
-data used, priority) and the extras (route, evidence, impact).
+data used, route, priority) and the extras (evidence, impact).
 
 **Summary**
 
