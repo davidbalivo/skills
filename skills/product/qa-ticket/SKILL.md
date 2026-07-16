@@ -116,10 +116,12 @@ not as a separate type.
 
 - Expected behavior.
 - Data used (e.g. company/record ids).
+- Navigation route to the affected screen (`Menú → Submenú → Pantalla`), part of the steps to
+  reproduce.
 - Priority, as assessed by the tester; if none is given, use Medium instead of inferring one.
 
-Include any extra information the tester volunteers (navigation route, evidence, impact,
-workaround) in its template section. Never invent it and never write an empty placeholder.
+Include any extra information the tester volunteers (evidence, impact, workaround) in its template
+section. Never invent it and never write an empty placeholder.
 
 ## Ticket Content
 
@@ -206,18 +208,17 @@ Go to Step 5.
 
 ### 5. Ticket Content
 
-<!-- TODO: reference the ticket example file once it exists. -->
-
-Compose summary, labels, priority and description per Ticket Content and
-[template.md](template.md). This is internal work; show nothing to the tester yet.
+Compose summary, labels, priority and description per Ticket Content, [template.md](template.md)
+and the tickets in [examples.md](examples.md). This is internal work; show nothing to the tester
+yet.
 
 Go to Step 6.
 
 ### 6. Adversarial Review
 
 Switch from author to attacker. Check the composed ticket against every rule in this skill,
-[template.md](template.md) and the example file. On any finding, fix the ticket and review again
-until none remains.
+[template.md](template.md) and [examples.md](examples.md). On any finding, fix the ticket and
+review again until none remains.
 
 Go to Step 7.
 

@@ -43,13 +43,13 @@ Use middle dots for label·value pairs, never colons.
 1. <single action using exact visible labels>
 2. <single action using exact visible labels>
 
-**Comportamiento esperado**
-
-<expected result or acceptable behavior; mention Winsat only when the tester uses it as reference>
-
 **Comportamiento actual**
 
 <actual result, elapsed time, error or visual difference observed in Websat>
+
+**Comportamiento esperado**
+
+<expected result or acceptable behavior; mention Winsat only when the tester uses it as reference>
 ```
 
 Keep test data, data volume and initial state in `Condiciones`.
