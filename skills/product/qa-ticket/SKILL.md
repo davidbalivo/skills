@@ -121,8 +121,7 @@ row.
 
 - Expected behavior.
 - Data used (e.g. company/record ids).
-- Priority, as assessed by the tester; if none is given, omit it from the payload so the Jira
-  default applies, and never infer one.
+- Priority, as assessed by the tester; if none is given, use Medium instead of inferring one.
 
 Include any extra information the tester volunteers (navigation route, evidence, impact,
 workaround) in its template section. Never invent it and never write an empty placeholder.
@@ -134,8 +133,6 @@ Keep the same core description sections for every defect type and append the opt
 when the tester provides them.
 
 ## Steps
-
-<!-- TODO: add criticidad de tarea (si no la ha dado el tester, poner medio) -->
 
 ### 1. Intake
 
@@ -211,6 +208,39 @@ ambiguous after reading the report, ask the tester only about the observed behav
 classify it.
 
 Go to Step 5.
+
+### 5. Ticket Content
+
+<!-- TODO: reference the ticket example file once it exists. -->
+
+Compose summary, labels, priority and description per Ticket Content and
+[template.md](template.md). This is internal work; show nothing to the tester yet.
+
+Go to Step 6.
+
+### 6. Adversarial Review
+
+Switch from author to attacker. Check the composed ticket against every rule in this skill,
+[template.md](template.md) and the example file. On any finding, fix the ticket and review again
+until none remains.
+
+Go to Step 7.
+
+### 7. Preview
+
+Show the tester the full ticket in chat (summary, labels, priority, description) and wait for
+explicit confirmation. Never create the issue without it.
+
+If the ticket carries no `Evidencia` section, offer in the same message:
+
+```md
+¿Quieres que deje preparada la sección Evidencia para que adjuntes capturas manualmente? (yo no
+puedo subir imágenes a Jira)
+```
+
+If accepted, add the section per Evidence Handling in [template.md](template.md).
+
+Go to Step 8.
 
 ## Process
 
