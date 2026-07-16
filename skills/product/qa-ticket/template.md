@@ -57,7 +57,8 @@ Keep test data, data volume and initial state in `Condiciones`.
 For `Ruta`, join exact visible navigation labels with `→`; include the bullet only when the tester
 provides a route. Write one action per numbered step, in Spanish infinitive, and quote exact
 controls and values. Keep expected and current results in their behavior sections; omit the
-`Comportamiento esperado` section entirely when the tester provides no expected behavior.
+`Comportamiento esperado` section entirely when the tester provides no expected behavior and none
+can be inferred from the report.
 
 ### Optional Sections
 

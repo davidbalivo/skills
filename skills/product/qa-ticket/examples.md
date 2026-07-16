@@ -7,8 +7,8 @@ Form Inventory sheet.
 ## Example 1 · Mandatory Fields Only
 
 Functional defect. The tester gave row, current behavior and steps to reproduce, nothing else.
-`Comportamiento esperado`, `Condiciones`, `Ruta` and the optional sections are omitted, and
-priority falls back to Medium.
+`Comportamiento esperado` is inferred from the report and flagged in the preview; `Condiciones`,
+`Ruta` and the optional sections are omitted, and priority falls back to Medium.
 
 **Summary**
 
@@ -42,6 +42,10 @@ frmCM_CLIENTES · Ficha de Clientes · el NIF se borra al guardar
 **Comportamiento actual**
 
 El campo "NIF" aparece vacío tras guardar. El resto de cambios sí se conservan.
+
+**Comportamiento esperado**
+
+El campo "NIF" conserva el valor introducido tras guardar.
 ```
 
 ## Example 2 · All Optional Fields

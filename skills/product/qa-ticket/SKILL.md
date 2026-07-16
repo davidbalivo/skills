@@ -209,8 +209,11 @@ Go to Step 5.
 ### 5. Ticket Content
 
 Compose summary, labels, priority and description per Ticket Content, [template.md](template.md)
-and the tickets in [examples.md](examples.md). This is internal work; show nothing to the tester
-yet.
+and the tickets in [examples.md](examples.md). When the tester gave no expected behavior and the
+report makes it obvious, infer `Comportamiento esperado` from context. This is internal work; show
+nothing to the tester yet.
+
+Write tersely; cut every word that adds no information.
 
 Go to Step 6.
 
@@ -220,12 +223,17 @@ Switch from author to attacker. Check the composed ticket against every rule in 
 [template.md](template.md) and [examples.md](examples.md). On any finding, fix the ticket and
 review again until none remains.
 
+Verbose passages count as findings.
+
 Go to Step 7.
 
 ### 7. Preview
 
 Show the tester the full ticket in chat (summary, labels, priority, description) and wait for
-explicit confirmation. Never create the issue without it.
+explicit confirmation. Never create the issue without it. Flag an inferred `Comportamiento
+esperado` as inferred so the tester can correct it.
+
+Trim any verbosity that survived Step 6 before showing the ticket.
 
 If the ticket carries no `Evidencia` section, offer in the same message:
 
