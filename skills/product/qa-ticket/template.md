@@ -87,5 +87,5 @@ When an image is available only in the conversation and has no stable URL that J
 Captura pendiente de adjuntar manualmente por el tester.
 ```
 
-Do not claim that the image is attached. Warn the tester in the preview and remind them after issue
-creation that they must upload it manually in Jira.
+Do not claim that the image is attached. Warn the tester in the preview that they must upload it
+manually in Jira.

@@ -242,18 +242,18 @@ If accepted, add the section per Evidence Handling in [template.md](template.md)
 
 Go to Step 8.
 
-## Process
+### 8. Creation
 
-<!-- TODO: eliminar al finalizar -->
+Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
+attempt the fix version and drop it with a warning if it does not exist.
 
-1. Parse the tester's report.
-2. Classify the defect by observed behavior per Classification.
-3. Collect only the missing intake data appropriate to that classification.
-4. Resolve module, flow, environment, execution date, form and criticality per Test Context
-   Resolution.
-5. Compose summary, labels, priority and description per the sections above.
-6. Show the full preview and wait for explicit confirmation.
-7. Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates;
-   attempt the fix version, drop it with a warning if it does not exist.
-8. Return the issue key and URL, and remind the tester to paste the key into the "Ticket Jira"
-   column of the row matching `ID prueba`.
+Then report:
+
+```md
+✅ Ticket creado · [{FREEMA-XXXX}]({url})
+
+- Pega la clave en la celda `T{fila}` de Resultados.
+- Sube las capturas al ticket manualmente.
+```
+
+Include the captures line only when the tester accepted the Evidencia offer in Step 7.
