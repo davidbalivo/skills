@@ -66,33 +66,32 @@ row locates the single matching flow row in `Flujos de Test`, by exact value.
 
 ### Execution Lookup
 
-<!-- TODO: una vez tengamos los steps, eliminar lo de pedir al usuario y cosas similares. -->
+The tester provides the visible Google Sheets row number in the `Resultados` tab (Intake). It is a
+literal, 1-based row number used directly in A1 notation: row `12` means `Resultados!A12:U12`, and
+its Jira tracking cell is `Resultados!T12`. Never add or subtract `1`, convert it to a zero-based
+index, or use `ID prueba` as the lookup key.
 
-Ask the tester for the visible Google Sheets row number in the `Resultados` tab. Treat it as a
-literal, 1-based row number and use it directly in A1 notation: row `12` means
-`Resultados!A12:U12`, and its Jira tracking cell is `Resultados!T12`. Never add or subtract `1`,
-convert it to a zero-based index, or use `ID prueba` as the lookup key.
-
-If Drive access is available, read that exact `Resultados` row and resolve `ID prueba`, module, flow,
-environment and execution date from it. Confirm that the selected row is an execution row rather
-than a module heading or an empty row.
+That exact row resolves `ID prueba`, module, flow, environment and execution date. It must be an
+execution row, not a module heading or an empty row.
 
 ### Form Resolution
 
-With Drive access, locate the flow row in `Flujos de Test` by the exact `Flujo` value read from
-`Resultados`. If no row matches, warn the tester and continue without form and criticality,
-keeping a form only if the report names one. Read `Forms en flujo` as `N` and treat that row plus
-the following `N-1` rows as
-the candidate forms; continuation rows may leave `Flujo` blank. Select the form automatically when
-there is only one candidate. When there are several, use an exact form named in the report if it
-matches a candidate; otherwise ask the tester which form is affected. Take `Formulario` and
-`Sizing` from the selected row.
+The flow row in `Flujos de Test` is located by the exact `Flujo` value read from `Resultados`.
+Without a match, the ticket goes without form and criticality, keeping a form only if the report
+names one.
+
+Read `Forms en flujo` as `N` and treat that row plus the following `N-1` rows as the candidate
+forms; continuation rows may leave `Flujo` blank. A single candidate is selected automatically.
+Among several, an exact form named in the report wins if it matches a candidate; otherwise the
+tester designates the affected form (Step 3). Take `Formulario` and `Sizing` from the selected
+row.
 
 ### Without Drive Access
 
-Keep the tester-provided visible `Resultados` row number for the final tracking reminder. Ask for
-module, flow, environment, execution date, exact affected form and form criticality, then map the
-module through [module-slugs.md](module-slugs.md).
+Without sheet access the whole context comes from the tester: module, flow, environment, execution
+date, exact affected form and form criticality. The module maps through
+[module-slugs.md](module-slugs.md), and the row number keeps anchoring the final tracking
+reminder.
 
 ## Classification
 
@@ -103,13 +102,9 @@ Classify by observed behavior, not by suspected root cause:
 - **Visual** · Correct behavior, but incorrect presentation.
 
 Treat error messages, stacktraces and correlation IDs as technical evidence for a functional defect,
-not as a separate type. Infer the type from the report; when ambiguous, ask only about the observed
-behavior needed to classify it.
+not as a separate type.
 
 ## Intake
-
-First extract everything already available from the tester's report and the selected `Resultados`
-row.
 
 **Mandatory fields**
 
@@ -117,7 +112,7 @@ row.
 - Current behavior observed.
 - Steps to reproduce.
 
-**Optional fields** (suggest them once when missing, never block on them)
+**Optional fields**
 
 - Expected behavior.
 - Data used (e.g. company/record ids).
@@ -239,6 +234,9 @@ puedo subir imágenes a Jira)
 ```
 
 If accepted, add the section per Evidence Handling in [template.md](template.md).
+
+When the ticket already carries the pending upload placeholder, warn in the same message that the
+images must be uploaded manually in Jira.
 
 Go to Step 8.
 
