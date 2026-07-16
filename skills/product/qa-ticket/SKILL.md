@@ -15,7 +15,7 @@ This skill's instructions are written in English, but these rules apply regardle
 
 - Ticket summary and description are always written in Spanish (Spain).
 - Labels stay in English (fixed vocabulary, see Ticket Content).
-- Conversation with the user follows the language the user writes in.
+- Messages to the tester are always written in Spanish (Spain).
 
 ## Fixed Jira Coordinates
 
@@ -46,6 +46,8 @@ The source workbook is "QA Form Inventory" (Google Drive file id
 ## Test Context Resolution
 
 ### Execution Lookup
+
+<!-- TODO: una vez tengamos los steps, eliminar lo de pedir al usuario y cosas similares. -->
 
 Ask the tester for the visible Google Sheets row number in the `Resultados` tab. Treat it as a
 literal, 1-based row number and use it directly in A1 notation: row `12` means
@@ -85,37 +87,106 @@ behavior needed to classify it.
 ## Intake
 
 First extract everything already available from the tester's report and the selected `Resultados`
-row. Then ask only for missing information that is necessary to make the specific defect clear and
-reproducible:
+row.
 
-- Visible Google Sheets row number in the `Resultados` tab, used literally per Test Context
-  Resolution.
-- Data used (e.g. company/record ids).
-- What the tester expected and what actually happened.
-- Navigation route, when reaching the affected screen requires one.
+**Mandatory fields**
+
+- Google Sheets row number in the `Resultados` tab.
+- Current behavior observed.
 - Steps to reproduce.
-- Evidence appropriate to the defect (e.g. screenshots, measurements or logs).
-- Priority, as assessed by the tester.
 
-Impact and workaround are optional. If the report already provides them, include them. Otherwise,
-offer the tester the option to add them in the conversation language. If the tester declines, omit
-the `Impacto` section completely; never invent an impact or write an empty placeholder.
+**Optional fields** (suggest them once when missing, never block on them)
 
-For a performance defect, reuse whatever test context and measurements the tester provides. Ask
-only for the additional facts needed to understand and reproduce the reported delay. Do not require
-data volume, repetitions or a Winsat measurement by default.
+- Expected behavior.
+- Data used (e.g. company/record ids).
+- Priority, as assessed by the tester; if none is given, omit it from the payload so the Jira
+  default applies, and never infer one.
 
-For a visual defect, capture the described difference and available evidence. Images cannot be
-attached to Jira automatically through this skill; when an image has no stable URL, tell the tester
-that they must upload it to the created issue themselves.
+Include any extra information the tester volunteers (navigation route, evidence, impact,
+workaround) in its template section. Never invent it and never write an empty placeholder.
 
 ## Ticket Content
 
-Compose labels, summary and description from the canonical template and type-specific fill rules in
-[template.md](template.md). Keep the same core description sections for every defect type. Include
-the optional `Impacto` section only when the tester provides it.
+Compose labels, summary and description from the canonical template in [template.md](template.md).
+Keep the same core description sections for every defect type and append the optional sections only
+when the tester provides them.
+
+## Steps
+
+<!-- TODO: add criticidad de tarea (si no la ha dado el tester, poner medio) -->
+
+### 1. Intake
+
+Extract every Intake field already present in the tester's message. If no field is missing, go to
+Step 2 without asking.
+
+Otherwise request everything missing in one single message, omitting the group that is already
+complete:
+
+```md
+**Para crear el ticket necesito**
+
+- {campos obligatorios que faltan}
+
+**Te recomiendo añadir estos campos también, pero no son obligatorios**
+
+- {campos opcionales que faltan}
+```
+
+Repeat until every mandatory field is present. Suggest each optional field only once; never block
+on an optional field.
+
+Go to Step 2.
+
+### 2. Drive Access
+
+Try to read the QA Form Inventory workbook once. If it works, go to Step 3.
+
+If it fails, ask the tester to grant access:
+
+```md
+⚠️ No puedo leer QA Form Inventory. Necesito acceso a Google Drive. Actívalo y avísame para
+reintentar.
+```
+
+Retry once after the reply. If it still fails, warn the tester:
+
+```md
+⚠️ Sigo sin acceso a la hoja. Te pediré los datos del excel a continuación.
+```
+
+Go to Step 3.
+
+### 3. Test Context
+
+With Drive access, inform the tester and resolve the context from the workbook:
+
+```md
+🔍 Leyendo QA Form Inventory
+```
+
+Resolve module, flow, environment, execution date and `ID prueba` from the `Resultados` row, and
+the canonical form name and criticality from `Flujos de Test`, per Test Context Resolution.
+
+- If the row is a module heading or an empty row, report it and ask for the correct row number.
+- If several candidate forms exist and none matches the report, ask the tester which form is
+  affected.
+
+Without Drive access, ask the tester for the whole context per Without Drive Access.
+
+Go to Step 4.
+
+### 4. Classification
+
+Classify the defect as functional, performance or visual per Classification. If the type stays
+ambiguous after reading the report, ask the tester only about the observed behavior needed to
+classify it.
+
+Go to Step 5.
 
 ## Process
+
+<!-- TODO: eliminar al finalizar -->
 
 1. Parse the tester's report.
 2. Classify the defect by observed behavior per Classification.

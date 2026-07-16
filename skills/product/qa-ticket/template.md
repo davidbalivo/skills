@@ -37,7 +37,7 @@ Use middle dots for label·value pairs, never colons.
 **Reproducción**
 
 - Condiciones · <test data, data volume and initial state if relevant>
-- Ruta · <Menú 1 → Menú 2 → Pantalla; omit if not applicable>
+- Ruta · <Menú 1 → Menú 2 → Pantalla; omit if the tester provides no route>
 
 1. <single action using exact visible labels>
 2. <single action using exact visible labels>
@@ -49,31 +49,32 @@ Use middle dots for label·value pairs, never colons.
 **Comportamiento actual**
 
 <actual result, elapsed time, error or visual difference observed in Websat>
-
-**Evidencia**
-
-<screenshots, measurements, logs, stacktrace, correlation id, or pending manual image upload>
 ```
 
-Keep test data, data volume and initial state in `Condiciones`. Use `Evidencia` only for supporting
-artifacts and technical diagnostics; do not repeat the test data there.
+Keep test data, data volume and initial state in `Condiciones`.
 
-For `Ruta`, join exact visible navigation labels with `→`; omit it when no navigation is needed.
-Write one action per numbered step, in Spanish infinitive, and quote exact controls and values. Keep
-expected and current results in their behavior sections.
+For `Ruta`, join exact visible navigation labels with `→`; include the bullet only when the tester
+provides a route. Write one action per numbered step, in Spanish infinitive, and quote exact
+controls and values. Keep expected and current results in their behavior sections; omit the
+`Comportamiento esperado` section entirely when the tester provides no expected behavior.
 
-### Optional Impact
+### Optional Sections
 
-Include this section only when the tester provides an impact or workaround, either in the original
-report or after accepting the optional prompt:
+Append each of these sections only when the tester provides the information. Never prompt for them,
+never invent them and never write an empty placeholder:
 
 ```markdown
+**Evidencia**
+
+<screenshots, measurements, logs, stacktrace or correlation id>
+
 **Impacto**
 
 <blocks the flow, affects the user or has a workaround>
 ```
 
-If the tester declines or provides no impact, omit the heading and section completely.
+Use `Evidencia` only for supporting artifacts and technical diagnostics; keep error messages in
+`Comportamiento actual` and never repeat the test data there.
 
 ### Evidence Handling
 
@@ -87,11 +88,3 @@ Captura pendiente de adjuntar manualmente por el tester.
 
 Do not claim that the image is attached. Warn the tester in the preview and remind them after issue
 creation that they must upload it manually in Jira.
-
-## Type-Specific Content
-
-| Type        | Fill rule                                                                                                                                                                                                                       |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Functional  | Describe the expected outcome and the incorrect current outcome. Put error messages in current behavior and raw technical diagnostics in Evidence.                                                                             |
-| Performance | Use the test context and measurements the tester provides. Ask only for missing facts needed to understand and reproduce the delay; do not require volume, repetitions or a Winsat measurement by default.                    |
-| Visual      | Describe the expected and current presentation and record the available evidence. When an image requires manual upload, follow Evidence Handling. Never infer Low priority solely because the defect is visual.                 |
