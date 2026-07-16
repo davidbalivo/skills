@@ -15,7 +15,8 @@ Never write a label outside this vocabulary. A typo in a label silently breaks p
 <form> · <flow or form description> · <short symptom>
 ```
 
-One line, the form always first so tickets are searchable with `summary ~ "frmXXX"`.
+One line, the form always first so tickets are searchable with `summary ~ "frmXXX"`. Without a
+form, start with the flow.
 
 Example: `frmFIM_ASI_INTEGRAR · Tratamiento de Borrador · el borrador no integra la contrapartida`
 
@@ -28,8 +29,8 @@ Use middle dots for label·value pairs, never colons.
 
 - Módulo · <module name from sheet>
 - Flujo · <flow number and name> (QA Form Inventory)
-- Formulario · <frmXXX, canonical name from Flujos de Test>
-- Criticidad del formulario · <L/M/S, from Flujos de Test>
+- Formulario · <frmXXX, `Formulario` from Flujos de Test; omit if unavailable>
+- Criticidad del formulario · <L/M/S, `Sizing` from Flujos de Test; omit if unavailable>
 - Entorno · <environment>
 - Fecha de ejecución · <execution date from Resultados>
 - Tipo · <Funcional | Rendimiento | Visual>

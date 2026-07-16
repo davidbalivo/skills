@@ -35,13 +35,32 @@ Use these values on every ticket. Never ask the user for them.
 ## QA Data Sources
 
 The source workbook is "QA Form Inventory" (Google Drive file id
-`1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`). Two tabs feed the skill:
+`1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk`). Two tabs feed the skill. In both, headers live in
+row `3` and module heading rows fill only column `A`.
 
-- `Resultados` — execution context and tracking, including module, flow, environment, execution
-  date, results and Jira key.
-- `Flujos de Test`
-  ([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
-  — source of truth for the exact form name (`frmXXX`) and the form criticality (sizing L/M/S).
+`Resultados` · execution context and tracking. Columns used:
+
+| Column | Header            |
+| ------ | ----------------- |
+| A      | `ID prueba`       |
+| B      | `Módulo`          |
+| C      | `Flujo`           |
+| J      | `Entorno`         |
+| K      | `Fecha ejecución` |
+
+`Flujos de Test`
+([`gid=740243351`](https://docs.google.com/spreadsheets/d/1pIfKg0ImwvPHDCxP7-ueFh4FM3d3wYNJaK0Iqll07Dk/edit?gid=740243351#gid=740243351))
+· source of truth for the exact form name (`frmXXX`) and its criticality. Columns used:
+
+| Column | Header           |
+| ------ | ---------------- |
+| C      | `Flujo`          |
+| E      | `Formulario`     |
+| F      | `Sizing` (L/M/S) |
+| G      | `Forms en flujo` |
+
+`Flujo` (column `C` in both tabs) is the link between them. The value read from the `Resultados`
+row locates the single matching flow row in `Flujos de Test`, by exact value.
 
 ## Test Context Resolution
 
@@ -60,11 +79,14 @@ than a module heading or an empty row.
 
 ### Form Resolution
 
-With Drive access, find the exact flow row in `Flujos de Test`. Read `Forms en flujo` as `N` and treat
-that row plus the following `N-1` rows as the candidate forms; continuation rows may leave `Flujo`
-blank. Select the form automatically when there is only one candidate. When there are several, use
-an exact form named in the report if it matches a candidate; otherwise ask the tester which form is
-affected. Take the canonical form name and criticality from the selected `Flujos de Test` row.
+With Drive access, locate the flow row in `Flujos de Test` by the exact `Flujo` value read from
+`Resultados`. If no row matches, warn the tester and continue without form and criticality,
+keeping a form only if the report names one. Read `Forms en flujo` as `N` and treat that row plus
+the following `N-1` rows as
+the candidate forms; continuation rows may leave `Flujo` blank. Select the form automatically when
+there is only one candidate. When there are several, use an exact form named in the report if it
+matches a candidate; otherwise ask the tester which form is affected. Take `Formulario` and
+`Sizing` from the selected row.
 
 ### Without Drive Access
 
@@ -166,9 +188,15 @@ With Drive access, inform the tester and resolve the context from the workbook:
 ```
 
 Resolve module, flow, environment, execution date and `ID prueba` from the `Resultados` row, and
-the canonical form name and criticality from `Flujos de Test`, per Test Context Resolution.
+`Formulario` and `Sizing` from `Flujos de Test`, per Test Context Resolution.
 
 - If the row is a module heading or an empty row, report it and ask for the correct row number.
+- If the `Flujo` value has no row in `Flujos de Test`, warn the tester and continue:
+
+  ```md
+  ⚠️ Este flujo no está en la hoja Flujos de Test. Creo el ticket sin formulario ni criticidad.
+  ```
+
 - If several candidate forms exist and none matches the report, ask the tester which form is
   affected.
 
