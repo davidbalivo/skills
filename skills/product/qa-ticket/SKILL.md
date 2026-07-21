@@ -32,7 +32,8 @@ Use these values on every ticket. Never ask the user for them.
 | Team        | `customfield_10001` = `31c32486-0452-4550-bce9-6282648334c1` |
 | Fix version | `Websat - Stable Relaunch`                                   |
 
-Unlike the values above, priority comes from the tester (Intake) and accepts exactly these values:
+Unlike the values above, priority, effort and area come from the tester (Intake). Priority accepts
+exactly these values:
 
 | Priority | Notes        |
 | -------- | ------------ |
@@ -41,6 +42,15 @@ Unlike the values above, priority comes from the tester (Intake) and accepts exa
 | `Medium` | Jira default |
 | `Low`    |              |
 | `Lowest` |              |
+
+Effort (`customfield_15445`) and Area (`customfield_15446`) are select fields set by option value:
+
+- Effort · `S`, `M`, `L`. Never deduced; without a tester value the field stays unset.
+- Area · `APIs`, `Applications`, `Architecture`, `Finance`, `Infrastructure`, `Labor`,
+  `Operations`, `UI/UX`. Without a tester value, deduce the closest area from the defect and the
+  row context; cross-cutting areas (`UI/UX`, `Architecture`) win over the module's domain, and
+  `Applications` covers software outside the ERP (e.g. mobile app). A deduced area is flagged in
+  the preview (Step 7) for the tester to confirm.
 
 ## QA Data Sources
 
@@ -130,6 +140,8 @@ not as a separate type.
 - Navigation route to the affected screen (`Menú → Submenú → Pantalla`), part of the steps to
   reproduce.
 - Priority, as assessed by the tester; if none is given, use Medium instead of inferring one.
+- Effort, from its accepted values in Fixed Jira Coordinates; unset when not given.
+- Area, from its accepted values in Fixed Jira Coordinates; deduced when not given.
 
 Include any extra information the tester volunteers (evidence, impact, workaround) in its template
 section. Never invent it and never write an empty placeholder.
@@ -163,7 +175,8 @@ complete:
 ```
 
 Repeat until every mandatory field is present. Suggest each optional field only once; never block
-on an optional field.
+on an optional field. Suggest fields with a fixed value set (priority, effort, area) with their
+accepted values in parentheses, e.g. `Effort (S, M, L)`.
 
 Go to Step 2.
 
@@ -225,8 +238,8 @@ Go to Step 5.
 
 Compose summary, labels, priority and description per Ticket Content, [template.md](template.md)
 and the tickets in [examples.md](examples.md). When the tester gave no expected behavior and the
-report makes it obvious, infer `Comportamiento esperado` from context. This is internal work; show
-nothing to the tester yet.
+report makes it obvious, infer `Comportamiento esperado` from context. When the tester gave no
+area, deduce it per Fixed Jira Coordinates. This is internal work; show nothing to the tester yet.
 
 Write tersely; cut every word that adds no information.
 
@@ -244,10 +257,10 @@ Go to Step 7.
 
 ### 7. Preview 🔁
 
-Show the tester the full ticket in chat (summary, labels, priority, description) and wait for
-explicit confirmation. Never create the issue without it. Flag an inferred `Comportamiento
-esperado` as inferred so the tester can correct it, and list any field omitted because its value
-was missing or could not be extracted.
+Show the tester the full ticket in chat (summary, labels, priority, description, plus effort and
+area when set) and wait for explicit confirmation. Never create the issue without it. Flag an
+inferred `Comportamiento esperado` and a deduced area as inferred so the tester confirms or
+corrects them, and list any field omitted because its value was missing or could not be extracted.
 
 Trim any verbosity that survived Step 6 before showing the ticket.
 
@@ -269,6 +282,7 @@ images must be uploaded manually in Jira.
 ### 8. Creation
 
 Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates.
+Include effort only when the tester gave it, and area whenever set.
 
 Then report:
 

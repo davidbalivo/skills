@@ -8,7 +8,8 @@ Form Inventory sheet.
 
 Functional defect. The tester gave row, current behavior and steps to reproduce, nothing else.
 `Comportamiento esperado` is inferred from the report and flagged in the preview; `Condiciones`,
-`Ruta` and the optional sections are omitted, and priority falls back to Medium.
+`Ruta` and the optional sections are omitted, priority falls back to Medium, effort stays unset,
+and area is deduced and flagged in the preview.
 
 **Summary**
 
@@ -19,6 +20,8 @@ frmCM_CLIENTES · Ficha de Clientes · el NIF se borra al guardar
 **Labels** · `qa-functional`, `mod-tablas-generales`
 
 **Priority** · Medium
+
+**Area** · Operations (deduced)
 
 **Description**
 
@@ -52,7 +55,7 @@ El campo "NIF" conserva el valor introducido tras guardar.
 ## Example 2 · All Optional Fields
 
 Performance defect. The tester gave the mandatory fields, every optional field (expected behavior,
-data used, route, priority) and the extras (evidence, impact).
+data used, route, priority, effort, area) and the extras (evidence, impact).
 
 **Summary**
 
@@ -63,6 +66,10 @@ frmGM_CAB_FACTURAS · Facturación · generar la factura tarda más de 3 minutos
 **Labels** · `qa-performance`, `mod-ventas`
 
 **Priority** · High
+
+**Effort** · M
+
+**Area** · Finance
 
 **Description**
 
