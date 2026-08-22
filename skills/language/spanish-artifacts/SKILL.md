@@ -5,7 +5,7 @@ description: Use ALWAYS for English-to-Spanish translation and for creating or e
 
 # Spanish Artifacts
 
-## Scope
+**Announce at start:** 🌐 "Estoy usando la skill spanish-artifacts"
 
 Use this skill whenever the requested output is in Spanish, including:
 
