@@ -16,7 +16,8 @@ Genera siempre el artefacto en español, salvo que el usuario solicite explícit
 
 ## Output Location
 
-Genera el archivo HTML en el directorio `/tmp`.
+- Genera el archivo HTML en `./tmp`, dentro del directorio de trabajo actual.
+- Interpreta `./tmp` como una ruta relativa al directorio de trabajo actual; no utilices el directorio temporal global `/tmp`.
 
 ## HTML Requirements
 
