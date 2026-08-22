@@ -154,6 +154,23 @@ The core description sections do not vary by defect type.
 Any non-mandatory value that is empty or cannot be extracted, labels included, stays out of the
 ticket; the omissions are reported in the preview (Step 7).
 
+## Similar Ticket Detection
+
+Immediately before creation, compare the confirmed ticket with every existing issue whose parent
+is `FREEMA-4055`. Retrieve all pages with the Atlassian MCP (`searchJiraIssuesUsingJql`) using
+`parent = FREEMA-4055 ORDER BY created DESC`, including at least the key, summary, description,
+status and labels. Do not exclude resolved or closed issues.
+
+Judge similarity from the defect itself: the observed behavior, reproduction steps and affected
+form or flow. Classification and labels are supporting signals. Sharing only a form, flow, label or
+suspected root cause does not make two tickets similar. Treat different wording as a match when it
+describes the same defect.
+
+Return only credible exact or similar matches to the tester. For each match, include its key,
+summary, status, Jira link and a brief concrete reason for the match. Never create the issue until
+the tester explicitly chooses whether to continue or cancel. If the Jira search cannot be
+completed, report the failure and wait to retry; never bypass this check.
+
 ## Steps
 
 ### 1. Intake
@@ -279,7 +296,30 @@ images must be uploaded manually in Jira.
 - If the tester requests changes, apply them and go back to Step 5.
 - If the tester confirms, go to Step 8.
 
-### 8. Creation
+### 8. Similar Ticket Check 🔁
+
+Apply Similar Ticket Detection to the final ticket confirmed in Step 7.
+
+If there are no credible matches, go to Step 9 without asking for another confirmation.
+
+If one or more matches exist, show all of them and wait for the tester's explicit decision:
+
+```md
+⚠️ He encontrado tickets que podrían ser iguales o similares:
+
+- [{FREEMA-XXXX}]({url}) · {summary} · {status}
+  - Coincidencia · {brief concrete reason}
+
+¿Quieres crear el ticket igualmente o cancelar la creación?
+```
+
+- If the tester chooses to continue, go to Step 9.
+- If the tester cancels, report `Creación cancelada. No se ha creado ningún ticket.` and stop.
+- If the tester requests ticket changes, apply them and go back to Step 5; repeat the preview and
+  similarity check after the changes.
+- If the decision is ambiguous, ask again. Never infer permission to create.
+
+### 9. Creation
 
 Create the issue via the Atlassian MCP (`createJiraIssue`) with all Fixed Jira Coordinates.
 Include effort only when the tester gave it, and area whenever set.
