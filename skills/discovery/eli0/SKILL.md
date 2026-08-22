@@ -18,6 +18,14 @@ Genera siempre el artefacto en español, salvo que el usuario solicite explícit
 
 Genera el archivo HTML en el directorio `/tmp`.
 
+## HTML Requirements
+
+- Genera un único archivo `.html` autocontenido.
+- Incluye el CSS y los diagramas SVG dentro del propio archivo.
+- Haz que el diseño sea responsive y legible tanto en escritorio como en pantallas pequeñas.
+- Evita dependencias externas salvo que sean imprescindibles.
+- Usa un nombre de archivo descriptivo y no sobrescribas archivos existentes.
+
 ## Visual Style and Precision
 
 - Utiliza diagramas conceptuales vectoriales, sencillos y de estilo infografía editorial técnica. Deben tener una composición limpia, geométrica y minimalista, con pocas palabras, una paleta limitada y fondo claro.
@@ -33,3 +41,9 @@ Genera el archivo HTML en el directorio `/tmp`.
 
 - **Debe ser:** claro, directo y profesional.
 - **No debe ser:** condescendiente, demasiado informal ni hiperbólico.
+
+## Validation and Delivery
+
+- Verifica el resultado renderizado antes de entregarlo.
+- Comprueba que no haya contenido cortado, solapamientos, desbordamientos ni elementos visuales rotos.
+- Entrega al usuario un enlace al archivo HTML generado.
