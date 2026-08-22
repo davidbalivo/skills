@@ -31,6 +31,9 @@ Private store of personal skills for agents (Claude Code and others), installabl
 **[deep-alignment](skills/discovery/deep-alignment/)**
 Structured interview to align the agent with the user before implementing
 
+**[eli5](skills/discovery/eli5/)**
+Explain topics as if to a five-year-old through HTML artifacts with big pictures and few words
+
 ### Engineering
 
 **[audit-ts-code](skills/engineering/audit-ts-code/)**
