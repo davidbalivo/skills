@@ -14,7 +14,7 @@ format without collapsing structure or degrading readability.
 This skill is written against the following Prettier configuration. All formatting rules below
 assume these exact values are in effect:
 
-- `printWidth: 100`
+- `printWidth: 120`
 - `proseWrap: "preserve"`
 - `endOfLine: "lf"`
 
