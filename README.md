@@ -26,16 +26,22 @@ Private store of personal skills for agents (Claude Code and others), installabl
 
 ## Catalog
 
-### Discovery
+### Cognition
 
-**[deep-alignment](skills/discovery/deep-alignment/)**
+**[deep-alignment](skills/cognition/deep-alignment/)**
 Structured interview to align the agent with the user before implementing
 
-**[eli0](skills/discovery/eli0/)**
+**[eli0](skills/cognition/eli0/)**
 Create precise, visually led HTML explanations for intelligent readers with no prior context
 
-**[eli5](skills/discovery/eli5/)**
+**[eli5](skills/cognition/eli5/)**
 Explain topics for readers with no prior context through HTML artifacts with big pictures and few words
+
+**[epistemic-guardrails](skills/cognition/epistemic-guardrails/)**
+Claim-integrity protocol: verify instead of hedge, label claims by origin, refuse filler, never agree under pressure
+
+**[spanish-artifacts](skills/cognition/spanish-artifacts/)**
+Translate English or create and edit Spanish-language artifacts while preserving established English terminology
 
 ### Engineering
 
@@ -89,11 +95,6 @@ Canonical structure, keywords, tags and mermaid conventions for step-based skill
 
 **[ts-essentials](skills/engineering/ts-essentials/)**
 Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async
-
-### Language
-
-**[spanish-artifacts](skills/language/spanish-artifacts/)**
-Translate English or create and edit Spanish-language artifacts while preserving established English terminology
 
 ### Visual
 
