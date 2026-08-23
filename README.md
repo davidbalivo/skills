@@ -29,7 +29,7 @@ Private store of personal skills for agents (Claude Code and others), installabl
 ### Cognition
 
 **[deep-alignment](skills/cognition/deep-alignment/)**
-Structured interview to align the agent with the user before implementing
+Interview the user one question at a time to resolve a plan's design decisions before implementation
 
 **[eli0](skills/cognition/eli0/)**
 Create precise, visually led HTML explanations for intelligent readers with no prior context
@@ -38,7 +38,7 @@ Create precise, visually led HTML explanations for intelligent readers with no p
 Explain topics for readers with no prior context through HTML artifacts with big pictures and few words
 
 **[epistemic-guardrails](skills/cognition/epistemic-guardrails/)**
-Claim-integrity protocol: verify instead of hedge, label claims by origin, refuse filler, never agree under pressure
+Cross-check key claims, state uncertainty, and avoid filler or unsupported agreement
 
 **[spanish-artifacts](skills/cognition/spanish-artifacts/)**
 Translate English or create and edit Spanish-language artifacts while preserving established English terminology
@@ -52,7 +52,7 @@ Adversarial code quality auditor: reviews TypeScript changes across seven pillar
 Rules for local git: commit strategy, write-op confirmation, message format
 
 **[md-essentials](skills/engineering/md-essentials/)**
-Canonical Markdown formatting rules aligned to the project's Prettier configuration
+Canonical Markdown formatting rules for headings, lists, emphasis, links, tables, and code fences
 
 **[sdd-audit-impl](skills/engineering/sdd-audit-impl/)**
 External auditor for sdd-impl: stress-tests phases to break them before the phase gate accepts them
@@ -95,6 +95,11 @@ Canonical structure, keywords, tags and mermaid conventions for step-based skill
 
 **[ts-essentials](skills/engineering/ts-essentials/)**
 Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async
+
+### Product
+
+**[qa-ticket](skills/product/qa-ticket/)**
+Create standardized Jira bugs for Websat workflow QA from tester reports and QA Form Inventory data
 
 ### Visual
 
