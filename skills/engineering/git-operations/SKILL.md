@@ -18,8 +18,6 @@ This skill defines the rules for all git operations in the project: what to comm
 ## Constraints
 
 - **Local only**: no `push`, `pull`, or `fetch` — remote sync is user-only
-- **Strict confirmation**: explain and get explicit "OK" before any write operation (commit, reset, merge)
-- **Auto-read**: `status`, `diff`, and `log` require no confirmation
 - **Ask when unsure**: never assume or guess on missing information — ask before acting
 
 ## Message Format
