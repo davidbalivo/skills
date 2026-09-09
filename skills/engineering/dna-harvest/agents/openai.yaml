@@ -1,0 +1,6 @@
+interface:
+  display_name: "DNA Harvest"
+  short_description: "Captura conocimiento funcional y técnico en DNA"
+  default_prompt: "Usa $dna-harvest para documentar esta área mediante código y entrevista al experto."
+policy:
+  allow_implicit_invocation: false
