@@ -16,7 +16,9 @@
 
 {Añadir enlaces a los demás documentos solo si existen.}
 
-## Validación
+## Investigación y validación
 
-- Revisión experta: {pendiente, o persona/rol, fecha y alcance aprobado}.
-- Transferencia: {pendiente, o caso, fecha, resultado y cobertura comprobada}.
+- Código investigado: {fecha, revisión disponible y alcance; indicar cambios locales relevantes}.
+- Revisión experta: {persona/rol, fecha y alcance aprobado; pendiente si no se ha realizado}.
+- Transferencia: {caso, fecha, resultado y cobertura comprobada; pendiente si no se ha realizado}.
+- Pendiente de validación: {contenido nuevo o modificado y revisión o prueba que falta; omitir si no aplica}.

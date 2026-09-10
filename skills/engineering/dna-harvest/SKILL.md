@@ -122,6 +122,10 @@ Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configurac
 - Localizar tests y puntos de diagnóstico que protejan o permitan observar el comportamiento.
 - Registrar las anclas encontradas y las limitaciones de la investigación.
 
+Registrar en `01_about.md` la fecha de investigación y la revisión del código consultada, si está
+disponible. Si hay cambios locales relevantes, indicarlo: el commit por sí solo no identifica todo
+el código investigado. En actualizaciones parciales, asociar esta referencia al alcance revisado.
+
 Buscar tanto consumidores como proveedores. Una referencia ausente no prueba que el código esté
 muerto: considerar configuración, ejecución dinámica e integraciones no disponibles.
 
@@ -132,8 +136,11 @@ En actualizaciones, verificar el contenido afectado y sus relaciones, conservand
 Crear o actualizar los documentos aplicables con la evidencia disponible. Indicar en `01_about.md`
 la cobertura y lo que queda sin explorar. Mantener navegables los índices global y de dominio.
 
-Marcar el contenido nuevo pendiente de revisión junto al bloque o documento correspondiente. No
-retirar la validación de contenido ajeno a la actualización ni declarar validado un borrador.
+Marcar el contenido nuevo o modificado pendiente de revisión junto al bloque o documento
+correspondiente. Conservar las validaciones anteriores únicamente para el contenido que siga siendo
+válido y no esté afectado por el cambio. En `01_about.md`, distinguir el alcance aprobado del
+pendiente, tanto para la revisión experta como para la transferencia. Una actualización parcial no
+renueva la validación de toda el área.
 
 Buscar ganchos para la entrevista: literales especiales, excepciones por cliente, comentarios de
 advertencia, errores ignorados, órdenes implícitos, escrituras compartidas y contradicciones.
@@ -174,8 +181,11 @@ conocimiento experto. Los desconocidos reconocidos no obligan a una investigaci�
 
 ### 6. Solicitar revisión experta y resolver findings
 
-Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Pedir al
-experto que revise exactitud, motivos e impacto. Detenerse y esperar su respuesta.
+Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
+disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
+disponible, conservar el contenido sin revisar como borrador y pasar al cierre con la revisión
+experta pendiente. Al retomar la sesión, comprobar si han cambiado las fuentes antes de continuar
+la revisión.
 
 Analizar cada finding con el usuario: aplicar si está respaldado; rechazar con explicación si es
 incorrecto; registrar como desconocido si no puede resolverse. Revisar de nuevo las partes cambiadas

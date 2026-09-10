@@ -57,11 +57,17 @@ Canonical Markdown formatting rules for headings, lists, emphasis, links, tables
 **[sdd-audit-impl](skills/engineering/sdd-audit-impl/)**
 External auditor for sdd-impl: stress-tests phases to break them before the phase gate accepts them
 
+**[sdd-audit-impl-lite](skills/engineering/sdd-audit-impl-lite/)**
+External auditor for sdd-impl-lite: stress-tests a whole phase, including behaviors the runtime breakdown missed, before the phase gate accepts it
+
 **[sdd-audit-impl-tdd](skills/engineering/sdd-audit-impl-tdd/)**
 External auditor for sdd-impl-tdd: stress-tests TDD phases to break them before the phase gate accepts them
 
 **[sdd-audit-plan](skills/engineering/sdd-audit-plan/)**
 External auditor for sdd-plan: stress-tests plans to break them before sdd-impl does
+
+**[sdd-audit-plan-lite](skills/engineering/sdd-audit-plan-lite/)**
+External auditor for sdd-plan-lite: stress-tests phase-level plans for missing pieces, hidden decisions, and smuggled detail
 
 **[sdd-audit-plan-tdd](skills/engineering/sdd-audit-plan-tdd/)**
 External auditor for sdd-plan-tdd: stress-tests TDD plans to break them before sdd-impl-tdd does
@@ -75,11 +81,17 @@ Formalizes out-of-scope findings into structured entries in `deferred-findings.m
 **[sdd-impl](skills/engineering/sdd-impl/)**
 Executes a validated plan through vertical slices with per-task review checkpoints, without TDD protocol
 
+**[sdd-impl-lite](skills/engineering/sdd-impl-lite/)**
+Executes a validated lite plan phase by phase, deriving behaviors from the spec at runtime, with one review checkpoint per phase and TDD selected by the plan flag
+
 **[sdd-impl-tdd](skills/engineering/sdd-impl-tdd/)**
 Executes a validated plan through vertical-slice TDD with per-task review checkpoints
 
 **[sdd-plan](skills/engineering/sdd-plan/)**
 Converts a validated spec and decision log into a plan with testable criteria, without TDD protocol
+
+**[sdd-plan-lite](skills/engineering/sdd-plan-lite/)**
+Converts a validated spec and decision log into a phase-level plan, with per-phase edge-case test focus when TDD is chosen
 
 **[sdd-plan-tdd](skills/engineering/sdd-plan-tdd/)**
 Converts a validated spec and decision log into a concrete, TDD-ready plan
