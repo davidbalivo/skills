@@ -87,29 +87,25 @@ No transcribir conversaciones ni registrar cada búsqueda.
 ## Reglas de contenido y evidencia
 
 - Explicar significado funcional, entradas, condiciones, resultados, supuestos y efectos relevantes.
-  Enlazar las instrucciones que ya se entienden al leerlas, sin narrarlas línea a línea.
+  Enlazar el código que se explica por sí mismo, sin narrarlo línea a línea.
 - Omitir introducciones genéricas, resúmenes repetidos y secciones vacías.
-- Usar el vocabulario para establecer el lenguaje ubicuo y relacionarlo con tipos, tablas e interfaz.
-- Explicar secuencias y comportamiento en `flow-map`; localizar código, acoplamientos e impacto en
-  `implementation-map`. Enlazar entre ambos cuando compartan un elemento.
-- Añadir diagramas ASCII en bloques `text` cuando aclaren flujos o dependencias. Etiquetar las
-  relaciones y distinguir llamadas, eventos y datos compartidos. No dibujar relaciones inferidas
-  como si estuvieran verificadas.
-- Toda afirmación no evidente indica procedencia: `código`, `experto`, `incidente`, `decisión` o
-  `normativa`. Para código, citar ruta y símbolo, test, tabla o contrato; para experto, identidad o
-  rol y fecha; para incidente, referencia verificable; para decisión, ADR o explicación atribuida.
-  Para normativa, identificar la fuente aplicable y su vigencia. Si solo hay testimonio sobre ella,
-  atribuirlo al experto y dejar pendiente la verificación normativa.
-- Situar la evidencia junto a la afirmación o al bloque que respalda. Una referencia genérica al
-  repositorio no demuestra una afirmación concreta.
-- Los tests acreditan únicamente el comportamiento que ejercitan. La lectura estática no demuestra
-  ejecución en producción ni ausencia de consumidores externos. El comportamiento de un escenario
-  también depende de datos, configuración y versión desplegada; declarar qué se ha comprobado.
-- No convertir el comportamiento del código en una regla de negocio sin contrastarlo. Conservar
-  las discrepancias explícitas y registrar lo irresuelto en `07_unknowns.md`.
-- Explicar el motivo y ámbito de reglas y excepciones. Señalar cuando se desconocen.
-- No enlazar DNA a SDD. Enlazar ADR solo cuando condicione el contenido. Conservar en DNA el contexto
-  necesario para entender la regla sin reconstruir el historial de cambios.
+- Relacionar el vocabulario del negocio con tipos, tablas e interfaz para establecer el lenguaje ubicuo.
+- Documentar secuencias y comportamiento en `flow-map`; código, acoplamientos e impacto en
+  `implementation-map`. Enlazar lo compartido.
+- Usar diagramas ASCII en bloques `text` cuando aclaren. Etiquetar llamadas, eventos y datos
+  compartidos, distinguiendo relaciones verificadas de inferidas.
+- Indicar la procedencia junto a cada afirmación no evidente o al bloque que respalda:
+  - Código: ruta y símbolo, test, tabla o contrato.
+  - Experto: identidad o rol y fecha.
+  - Incidente: referencia verificable.
+  - Decisión: ADR o explicación atribuida.
+  - Normativa: fuente aplicable y vigencia. Si solo hay testimonio experto, atribuirlo
+    y dejar pendiente la verificación normativa.
+- Declarar qué se ha comprobado y sus límites. Los tests respaldan solo los casos que ejercitan;
+  la lectura estática no demuestra ejecución en producción ni ausencia de consumidores externos.
+  Considerar los datos, la configuración y la versión desplegada.
+- Mantener explícitas las discrepancias entre código y reglas de negocio. Registrar lo irresuelto
+  en `07_unknowns.md`.
 
 ## Templates
 
