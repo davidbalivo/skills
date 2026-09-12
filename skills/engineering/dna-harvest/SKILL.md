@@ -51,31 +51,32 @@ el contenido ajenos al alcance.
 
 ## Estado y continuidad
 
-`00_harvest.md` es el documento de trabajo de la captura dentro del área. Su frontmatter `status`
-indica el estado del alcance en curso; no invalida aprobaciones anteriores de contenido no afectado.
+`00_harvest.md` guarda el trabajo y el estado de la captura en su frontmatter `status`.
+El estado afecta solo al alcance en curso; conserva las aprobaciones anteriores que sigan vigentes.
 
-| Estado | Significado y siguiente acción |
+| Estado | Significado |
 | --- | --- |
-| `draft` | Investigar, preparar documentos y preguntas. |
-| `pending-expert` | Borrador preparado; esperar o recoger las respuestas del experto y consolidarlas. |
-| `in-review` | Contenido consolidado y revisado por el agente; resolver observaciones y obtener aprobación experta. |
-| `validated` | El experto ha aprobado explícitamente el contenido y el alcance indicados. |
+| `draft` | Investigación y borrador en preparación. |
+| `pending-expert` | Faltan respuestas del experto o su consolidación. |
+| `in-review` | Revisado por el agente; pendiente de aprobación experta. |
+| `validated` | El experto ha aprobado explícitamente el contenido y su alcance. |
 
-Recorrido habitual: `draft` → `pending-expert` → `in-review` → `validated`. Si no hacen falta
-preguntas, pasar de `draft` a `in-review`. Una nueva investigación devuelve lo afectado a `draft`;
-si solo falta una respuesta experta, usar `pending-expert`. Las correcciones de redacción pueden
-permanecer en `in-review`. Terminar una sesión no cambia el estado; la transferencia se registra aparte.
+- Recorrido habitual: `draft` → `pending-expert` → `in-review` → `validated`.
+- Sin preguntas al experto, pasar de `draft` a `in-review`.
+- Si hace falta investigar, volver a `draft`; si solo falta aclaración experta, a `pending-expert`.
+  Las correcciones de redacción pueden permanecer en `in-review`.
+- Reabrir una captura validada solo por un alcance nuevo o una corrección identificada.
+- Cerrar la sesión no cambia el estado. Registrar la transferencia por separado.
 
-Al retomar, leer `00_harvest.md` y los documentos que enlaza. Continuar desde el estado y próximo paso
-registrados, sin repetir toda la investigación. Revisar código de nuevo cuando cambien las fuentes,
-aparezcan nuevas pistas o la evidencia sea insuficiente. Una captura `validated` solo se reabre para
-un alcance nuevo o una corrección identificada, conservando las aprobaciones que sigan vigentes.
+Al retomar, leer `00_harvest.md` y sus documentos enlazados. Continuar desde el próximo paso
+registrado. Reinvestigar solo ante cambios en las fuentes, nuevas pistas o evidencia insuficiente.
 
-Mantener en `00_harvest.md` alcance, investigación realizada, hallazgos por incorporar, preguntas,
-revisión y próximo paso. Actualizarlo al cambiar de estado y antes de interrumpir o cerrar la sesión.
-No registrar cada búsqueda ni transcribir la conversación. Una vez consolidado un hallazgo, sustituir
-su desarrollo por un enlace al documento definitivo. Las dudas de la captura viven aquí; las
-incógnitas relevantes que permanezcan en el conocimiento entregado viven en `07_unknowns.md`.
+Mantener alcance, investigación, hallazgos pendientes, preguntas, revisión y próximo paso.
+Actualizar al cambiar de estado y antes de cerrar o interrumpir la sesión.
+
+Sustituir los hallazgos consolidados por enlaces a su documento definitivo. Trabajar aquí las
+preguntas de la captura y trasladar a `07_unknowns.md` las incógnitas que permanezcan en la entrega.
+No transcribir conversaciones ni registrar cada búsqueda.
 
 ## Reglas de contenido y evidencia
 
