@@ -8,6 +8,7 @@
 - Aplica a: {casos y excepciones relevantes}.
 - Implementación: {ancla y comportamiento observado; señalar discrepancias}.
 - Comprobación: {test existente o verificación necesaria, distinguiéndolos}.
-- Procedencia: {código, experto o decisión con referencia}.
+- Procedencia: {fuente que respalda la regla; para normativa, referencia aplicable y vigencia;
+  si solo hay testimonio experto, atribuirlo y dejar pendiente la verificación normativa}.
 
 {Repetir por regla. Enlazar desconocidos cuando falte motivo o ámbito.}

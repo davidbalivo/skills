@@ -4,7 +4,7 @@
 
 - Conocido: {hechos y fuentes disponibles}.
 - Pendiente: {qué no se sabe o qué fuentes discrepan}.
-- Impacto: {qué interpretación o cambio condiciona}.
+- Impacto: {qué interpretación o decisión condiciona y por qué no puede darse por resuelta sin aclarar la duda}.
 - Cómo aclararlo: {persona, fuente o comprobación concreta, si se conoce}.
 
 {Al resolver una duda, incorporar el conocimiento en su documento y retirar la entrada. No usar

@@ -7,12 +7,16 @@ description: "Usar solo cuando se invoque explícitamente. Crea o actualiza el c
 
 Investigar un área, contrastar los hallazgos con el experto y documentar su conocimiento funcional
 y técnico en `dna/`. Producir contexto reutilizable para personas y agentes siguiendo las
-plantillas de la skill.
+plantillas de la skill. Una tarea puede orientar la captura, pero el conocimiento documentado debe
+ser reutilizable sin conocer ese ticket. El comportamiento futuro y las decisiones del cambio se
+definen después en `sdd-spec`.
 
 ## Principios
 
 - Investigar el código antes de entrevistar al experto. Formular preguntas sobre hallazgos concretos.
 - Combinar significado funcional e implementación técnica dentro del área.
+- El código de la revisión investigada es la fuente de verdad sobre la implementación actual.
+  Contrastar con él la documentación; no atribuirle autoridad sobre la corrección del negocio.
 - Distinguir comportamiento observado, reglas esperadas y testimonio experto.
 - Conservar el motivo y el ámbito de las reglas y excepciones. Registrar lo desconocido sin inventarlo.
 - Acotar la captura y declarar su cobertura. En actualizaciones, revisar el contenido afectado.
@@ -47,20 +51,25 @@ Conservar la organización y el contenido ajenos al alcance de la sesión.
 ## Reglas de contenido y evidencia
 
 - Escribir en castellano y conservar la terminología técnica habitual.
-- Omitir introducciones genéricas, resúmenes repetidos, narraciones línea a línea y secciones vacías.
+- Explicar significado funcional, entradas, condiciones, resultados, supuestos y efectos relevantes.
+  Enlazar las instrucciones que ya se entienden al leerlas, sin narrarlas línea a línea.
+- Omitir introducciones genéricas, resúmenes repetidos y secciones vacías.
 - Usar el vocabulario para establecer el lenguaje ubicuo y relacionarlo con tipos, tablas e interfaz.
 - Explicar secuencias y comportamiento en `flow-map`; localizar código, acoplamientos e impacto en
   `implementation-map`. Enlazar entre ambos cuando compartan un elemento.
 - Añadir diagramas ASCII en bloques `text` cuando aclaren flujos o dependencias. Etiquetar las
   relaciones y distinguir llamadas, eventos y datos compartidos. No dibujar relaciones inferidas
   como si estuvieran verificadas.
-- Toda afirmación no evidente indica procedencia: `código`, `experto`, `incidente` o `decisión`.
-  Para código, citar ruta y símbolo, test, tabla o contrato; para experto, identidad o rol y fecha;
-  para incidente, referencia verificable; para decisión, ADR o explicación atribuida.
+- Toda afirmación no evidente indica procedencia: `código`, `experto`, `incidente`, `decisión` o
+  `normativa`. Para código, citar ruta y símbolo, test, tabla o contrato; para experto, identidad o
+  rol y fecha; para incidente, referencia verificable; para decisión, ADR o explicación atribuida.
+  Para normativa, identificar la fuente aplicable y su vigencia. Si solo hay testimonio sobre ella,
+  atribuirlo al experto y dejar pendiente la verificación normativa.
 - Situar la evidencia junto a la afirmación o al bloque que respalda. Una referencia genérica al
   repositorio no demuestra una afirmación concreta.
 - Los tests acreditan únicamente el comportamiento que ejercitan. La lectura estática no demuestra
-  ejecución en producción ni ausencia de consumidores externos.
+  ejecución en producción ni ausencia de consumidores externos. El comportamiento de un escenario
+  también depende de datos, configuración y versión desplegada; declarar qué se ha comprobado.
 - No convertir el comportamiento del código en una regla de negocio sin contrastarlo. Conservar
   las discrepancias explícitas y registrar lo irresuelto en `07_unknowns.md`.
 - Explicar el motivo y ámbito de reglas y excepciones. Señalar cuando se desconocen.
@@ -90,22 +99,47 @@ entre llaves por contenido comprobado y retirar las instrucciones de plantilla d
 
 ## Flujo
 
-```text
-Delimitar -> Investigar -> Borrador y huecos -> Entrevistar
-                                                  |
-                                                  v
-Cerrar <- Transferencia <- Revision experta <- Consolidar y revisar
+```mermaid
+flowchart TD
+    A[Delimitar] --> B[Investigar y preparar borrador]
+    B --> C[Entrevistar y consolidar]
+    C --> D[Revisión experta y transferencia]
+    D --> E[Cerrar]
+    D -.->|Completar o corregir| B
 ```
+
+El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde la entrevista,
+consolidación, revisión experta o transferencia, volver solo al paso necesario:
+
+- Investigar si falta evidencia técnica.
+- Entrevistar si falta una aclaración del experto.
+- Consolidar si basta con incorporar correcciones.
+
+Conservar el alcance y lo ya validado que siga vigente. Los cambios vuelven a la revisión que
+corresponda. Si falta el experto, cerrar como borrador con revisión pendiente; si no se realiza
+la prueba de transferencia, declararla pendiente al cerrar.
 
 ### 1. Delimitar el área
 
 Localizar el repositorio y leer sus instrucciones. Consultar los índices DNA existentes y abrir
 solo las áreas relacionadas. Identificar si se trata de una captura inicial o una actualización.
+Si parte de una tarea, recoger el problema, el comportamiento focal y un ejemplo que permita
+localizarlo, sin adelantar el diseño. Contrastar la cobertura existente con las anclas relevantes.
+Reutilizar el conocimiento vigente y capturar solo lo que falte o haya cambiado, también cuando el
+humano lo conozca pero aún no esté documentado. Si no hay nada que incorporar, pasar al cierre sin
+crear cambios ni repetir la entrevista.
 
 Acordar con el usuario dominio, área, alcance y fuentes accesibles. Si ya están claros en su
 petición, continuar. Usar nombres existentes; confirmar nombres o límites nuevos antes de escribir.
 Una sesión puede cubrir un flujo concreto dentro del área. Identificar también qué debe poder hacer
 el receptor con ese conocimiento.
+
+Distinguir el foco inicial del contexto necesario para comprenderlo. El alcance de modificación se
+decidirá en la especificación y el plan; investigar una dependencia no implica cambiarla.
+Un intervalo de líneas es un punto de entrada, no una frontera de investigación ni una unidad DNA.
+En archivos grandes, localizar símbolos o bloques funcionales y leer los tramos pertinentes. En
+métodos monolíticos, identificar operaciones, condiciones y flujo de control junto a la revisión del
+código. No cargar todo el archivo por defecto ni excluir dependencias por estar fuera del intervalo.
 
 Si falta acceso al código, pedir su ubicación o acceso antes de preparar mapas técnicos. No inventar
 la implementación a partir del nombre del área. No ampliar el alcance a todo el sistema al seguir
@@ -116,9 +150,14 @@ dependencias externas.
 Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
 
 - Derivar el vocabulario desde tipos, tablas, campos y etiquetas de interfaz.
-- Seguir entradas, llamadas, consumidores, lecturas y escrituras para reconstruir flujos.
-- Identificar límites transaccionales, ordenamientos, jobs, concurrencia y datos compartidos cuando
-  afecten al alcance.
+- Seguir quién prepara las entradas, qué condiciones activan el bloque y qué dependencias utiliza.
+- Seguir resultados y consumidores, lecturas y escrituras, variables compartidas, acumulados,
+  tablas, cachés y configuración que condicionen el comportamiento.
+- Identificar ordenamientos, jobs, concurrencia, límites transaccionales y estado ante fallos.
+  Buscar conexiones por datos y orden temporal, además de llamadas directas.
+- Identificar casos límite y posibles regresiones con su mecanismo y evidencia. Describir el
+  impacto condicionado al tipo de cambio, sin presentar un inventario exhaustivo ni afirmar el
+  impacto definitivo de una modificación aún no diseñada.
 - Localizar tests y puntos de diagnóstico que protejan o permitan observar el comportamiento.
 - Registrar las anclas encontradas y las limitaciones de la investigación.
 
@@ -128,6 +167,14 @@ el código investigado. En actualizaciones parciales, asociar esta referencia al
 
 Buscar tanto consumidores como proveedores. Una referencia ausente no prueba que el código esté
 muerto: considerar configuración, ejecución dinámica e integraciones no disponibles.
+
+Por cada conexión relevante, profundizar si puede cambiar la interpretación del comportamiento;
+documentar su contrato si basta para entenderla; o declarar una frontera no verificada cuando falte
+evidencia. No imponer un número fijo de saltos ni recorrer todo el sistema por transitividad.
+Detener la investigación cuando se puedan explicar el recorrido focal, sus condiciones, entradas,
+salidas y conexiones relevantes, y estén identificadas las limitaciones restantes. Un hueco que
+impida comprender ese recorrido exige evidencia adicional o debe declararse bloqueante para las
+decisiones que dependan de él; no exige investigar indefinidamente.
 
 En actualizaciones, verificar el contenido afectado y sus relaciones, conservando el resto.
 
@@ -155,10 +202,15 @@ invariantes, excepciones y diagnóstico.
 
 Cuando ayude a explicar un riesgo, preguntar por un incidente real: qué ocurrió, qué señal permitió
 detectarlo, qué se descartó y qué habría interpretado mal alguien nuevo. También preguntar por
-dependencias operativas que no aparecen en el código.
+dependencias operativas que no aparecen en el código, como preparación manual, correcciones de
+datos o integraciones fuera del recorrido investigado. No limitar la entrevista a rarezas visibles.
 
 Contrastar las respuestas con las fuentes disponibles. Si contradicen el código, distinguir lo que
-debería ocurrir de lo que ocurre y pedir aclaración. No corregir código durante la captura.
+debería ocurrir de lo que ocurre y pedir aclaración. Si una respuesta descubre otra ruta o
+dependencia relevante, volver a investigar y actualizar los mapas antes de continuar.
+Separar explicaciones del estado actual, reglas esperadas vigentes y deseos para el cambio futuro.
+Trasladar estos últimos al contexto de la especificación, sin publicarlos como verdad actual en DNA.
+No corregir código durante la captura.
 
 Cerrar la entrevista cuando los huecos relevantes estén respondidos o reconocidos como desconocidos.
 Si no hay experto disponible, conservar el borrador y los pendientes sin afirmar validación experta.
@@ -172,7 +224,9 @@ Incorporar respuestas con su procedencia y registrar los desconocidos. Revisar:
 - Separación entre hechos observados, expectativas y testimonios.
 - Motivo y ámbito de reglas y excepciones relevantes.
 - Anclas resolubles y evidencia suficiente para las afirmaciones técnicas.
-- Impacto acompañado de comprobaciones concretas, sin inventar garantías o tests existentes.
+- Conexiones por llamadas, datos y orden temporal respaldadas, con fronteras no verificadas visibles.
+- Impacto condicionado al cambio y acompañado de comprobaciones concretas, distinguiendo tests
+  existentes de verificaciones propuestas, sin inventar garantías.
 - Diagramas coherentes con las fuentes y enlaces internos navegables.
 - Ausencia de duplicación, relleno, placeholders y enlaces a SDD.
 
@@ -206,12 +260,31 @@ funcionales. Si no hay receptor disponible, indicar que la transferencia queda p
 equiparar la self-review del agente con esta prueba.
 
 En actualizaciones, repetirla cuando cambien sustancialmente flujos, reglas o impacto. Una revisión
-parcial no valida todo el área.
+parcial no valida todo el área. No repetir la prueba por cada ticket ni convertir la disponibilidad
+de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
+del contexto para esa tarea.
 
 ### 8. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. No declarar completadas validaciones no realizadas.
+
+Si la captura prepara una tarea, informar en el cierre si hay contexto suficiente para `sdd-spec`:
+
+- El problema está localizado y el comportamiento actual tiene evidencia.
+- Se conocen las entradas, salidas y conexiones que condicionan la tarea.
+- Las discrepancias relevantes están resueltas o identificadas, y los desconocidos restantes no
+  impiden formular los requisitos ni decidir el comportamiento que dependa de ellos.
+
+Cerrar una sesión con un borrador no acredita esa suficiencia. Indicar qué decisión impide cada
+hueco bloqueante y cómo aclararlo. Los pendientes ajenos a la tarea no bloquean su especificación.
+Esta valoración depende de la tarea: comunicarla en la entrega, sin convertir DNA en un registro de
+tickets. Enlazar el conocimiento y sus pendientes para que `sdd-spec` pueda consultarlos. No ejecutar
+`sdd-spec` automáticamente.
+
+Si la especificación descubre una carencia relevante, ampliar la captura afectada. Tras implementar
+y verificar un cambio, revisar si ha invalidado el conocimiento documentado y actualizar solo lo
+afectado contra el código resultante. Una propuesta aprobada no demuestra comportamiento implementado.
 
 Si procede un commit autorizado, incluir únicamente los cambios DNA de la sesión y usar:
 
