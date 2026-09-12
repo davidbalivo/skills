@@ -20,4 +20,4 @@
 
 ## Estado de la captura
 
-Consultar el [estado, alcance revisado y pendientes](harvest.md) antes de utilizar este conocimiento.
+Consultar el [estado, alcance revisado y pendientes](00_harvest.md) antes de utilizar este conocimiento.

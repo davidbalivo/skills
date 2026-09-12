@@ -1,26 +1,24 @@
 ---
 name: dna-harvest
-description: "Usar solo cuando se invoque explícitamente. Crea o actualiza el conocimiento de un área en DNA mediante investigación del código y entrevista al experto."
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Crea o actualiza el conocimiento de un área en DNA mediante investigación del código y entrevista al experto."
 ---
 
 # DNA Harvest
 
-Investigar un área, contrastar los hallazgos con el experto y documentar su conocimiento funcional
-y técnico en `dna/`. Producir contexto reutilizable para personas y agentes siguiendo las
-plantillas de la skill. Una tarea puede orientar la captura, pero el conocimiento documentado debe
-ser reutilizable sin conocer ese ticket. El comportamiento futuro y las decisiones del cambio se
-definen después en `sdd-spec`.
+Investigar un área y contrastar los hallazgos con el experto para crear o actualizar su conocimiento
+funcional y técnico en `dna/`. El resultado debe servir a personas y agentes sin contexto previo.
+Una tarea puede orientar la captura, pero lo documentado debe entenderse sin conocer dicha tarea.
 
 ## Principios
 
-- Investigar el código antes de entrevistar al experto. Formular preguntas sobre hallazgos concretos.
-- Combinar significado funcional e implementación técnica dentro del área.
-- El código de la revisión investigada es la fuente de verdad sobre la implementación actual.
-  Contrastar con él la documentación; no atribuirle autoridad sobre la corrección del negocio.
+- Investigar el código antes de preguntar al experto. Preguntar sobre hallazgos concretos.
+- Contrastar la documentación con el código investigado. Este acredita la implementación,
+  no la corrección del negocio.
 - Distinguir comportamiento observado, reglas esperadas y testimonio experto.
-- Conservar el motivo y el ámbito de las reglas y excepciones. Registrar lo desconocido sin inventarlo.
-- Acotar la captura y declarar su cobertura. En actualizaciones, revisar el contenido afectado.
-- Documentar cada dato una sola vez. Priorizar explicaciones breves, anclas y diagramas que aporten claridad.
+- Conservar el motivo y el ámbito de las reglas y excepciones. Declarar lo desconocido sin inventarlo.
+- Acotar la captura y declarar su cobertura. En actualizaciones, revisar solo el contenido afectado.
+- Claridad sobre volumen. Explicar cada concepto una vez y enlazarlo donde haga falta.
+  Usar diagramas cuando aclaren y eliminar texto que no aporte información.
 
 ## Estructura
 
@@ -33,7 +31,7 @@ dna/
     `-- <domain>/
         |-- index.md                      # obligatorio
         `-- <area>/
-            |-- harvest.md                # estado y trabajo de la captura
+            |-- 00_harvest.md             # obligatorio
             |-- 01_about.md               # obligatorio
             |-- 02_vocabulary.md
             |-- 03_invariants.md
@@ -43,16 +41,17 @@ dna/
             `-- 07_unknowns.md
 ```
 
-Crear `harvest.md` al iniciar una captura. Crear los demás documentos sin marcar solo cuando tengan
-contenido. En una captura parcial, describir la cobertura de los documentos obligatorios sin
-aparentar que representan toda el área.
+Crear `00_harvest.md` al iniciar la captura y los demás documentos obligatorios al preparar el
+borrador. Crear los opcionales solo cuando tengan contenido.
 
-Los índices presentan y enlazan el contenido existente. No duplicar en ellos las reglas de las áreas.
-Conservar la organización y el contenido ajenos al alcance de la sesión.
+En capturas parciales, indicar qué está documentado y qué queda sin explorar.
+
+Los índices describen y enlazan el contenido existente sin duplicarlo. Conservar la organización y
+el contenido ajenos al alcance.
 
 ## Estado y continuidad
 
-`harvest.md` es el documento de trabajo de la captura dentro del área. Su frontmatter `status`
+`00_harvest.md` es el documento de trabajo de la captura dentro del área. Su frontmatter `status`
 indica el estado del alcance en curso; no invalida aprobaciones anteriores de contenido no afectado.
 
 | Estado | Significado y siguiente acción |
@@ -67,12 +66,12 @@ preguntas, pasar de `draft` a `in-review`. Una nueva investigación devuelve lo 
 si solo falta una respuesta experta, usar `pending-expert`. Las correcciones de redacción pueden
 permanecer en `in-review`. Terminar una sesión no cambia el estado; la transferencia se registra aparte.
 
-Al retomar, leer `harvest.md` y los documentos que enlaza. Continuar desde el estado y próximo paso
+Al retomar, leer `00_harvest.md` y los documentos que enlaza. Continuar desde el estado y próximo paso
 registrados, sin repetir toda la investigación. Revisar código de nuevo cuando cambien las fuentes,
 aparezcan nuevas pistas o la evidencia sea insuficiente. Una captura `validated` solo se reabre para
 un alcance nuevo o una corrección identificada, conservando las aprobaciones que sigan vigentes.
 
-Mantener en `harvest.md` alcance, investigación realizada, hallazgos por incorporar, preguntas,
+Mantener en `00_harvest.md` alcance, investigación realizada, hallazgos por incorporar, preguntas,
 revisión y próximo paso. Actualizarlo al cambiar de estado y antes de interrumpir o cerrar la sesión.
 No registrar cada búsqueda ni transcribir la conversación. Una vez consolidado un hallazgo, sustituir
 su desarrollo por un enlace al documento definitivo. Las dudas de la captura viven aquí; las
@@ -163,7 +162,7 @@ crear cambios ni repetir la entrevista.
 Acordar con el usuario dominio, área, alcance y fuentes accesibles. Si ya están claros en su
 petición, continuar. Usar nombres existentes; confirmar nombres o límites nuevos antes de escribir.
 Una sesión puede cubrir un flujo concreto dentro del área. Identificar también qué debe poder hacer
-el receptor con ese conocimiento. Si la captura es nueva, crear `harvest.md` en `draft` con ese
+el receptor con ese conocimiento. Si la captura es nueva, crear `00_harvest.md` en `draft` con ese
 alcance y el siguiente paso. Si ya existe, seguir la continuidad registrada en él.
 
 Distinguir el foco inicial del contexto necesario para comprenderlo. El alcance de modificación se
@@ -193,7 +192,7 @@ Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configurac
 - Localizar tests y puntos de diagnóstico que protejan o permitan observar el comportamiento.
 - Registrar las anclas encontradas y las limitaciones de la investigación.
 
-Registrar en `harvest.md` la fecha de investigación y la revisión del código consultada, si está
+Registrar en `00_harvest.md` la fecha de investigación y la revisión del código consultada, si está
 disponible. Si hay cambios locales relevantes, indicarlo: el commit por sí solo no identifica todo
 el código investigado. En actualizaciones parciales, asociar esta referencia al alcance revisado.
 
@@ -217,7 +216,7 @@ la cobertura y lo que queda sin explorar. Mantener navegables los índices globa
 
 Marcar el contenido nuevo o modificado pendiente de revisión junto al bloque o documento
 correspondiente. Conservar las validaciones anteriores únicamente para el contenido que siga siendo
-válido y no esté afectado por el cambio. En `harvest.md`, distinguir el alcance aprobado del
+válido y no esté afectado por el cambio. En `00_harvest.md`, distinguir el alcance aprobado del
 pendiente, tanto para la revisión experta como para la transferencia. Enlazar ese estado desde
 `01_about.md`, que conserva la descripción, cobertura y navegación del área. Una actualización parcial no
 renueva la validación de toda el área.
@@ -225,7 +224,7 @@ renueva la validación de toda el área.
 Buscar ganchos para la entrevista: literales especiales, excepciones por cliente, comentarios de
 advertencia, errores ignorados, órdenes implícitos, escrituras compartidas y contradicciones.
 Priorizar preguntas por impacto y por lo que impide comprender el flujo. No convertir cada detalle
-técnico en una pregunta al experto. Guardar las preguntas en `harvest.md` con contexto y ancla
+técnico en una pregunta al experto. Guardar las preguntas en `00_harvest.md` con contexto y ancla
 suficientes para retomarlas en otra sesión. Cuando estén preparadas, usar `pending-expert`.
 Si no hay preguntas, continuar con la consolidación y revisión del agente.
 
@@ -248,14 +247,14 @@ Trasladar estos últimos al contexto de la especificación, sin publicarlos como
 No corregir código durante la captura.
 
 Cerrar la entrevista cuando los huecos relevantes estén respondidos o reconocidos como desconocidos.
-Registrar las respuestas con su procedencia en `harvest.md` hasta incorporarlas al conocimiento.
+Registrar las respuestas con su procedencia en `00_harvest.md` hasta incorporarlas al conocimiento.
 Si no hay experto disponible y faltan respuestas, conservar `pending-expert` y cerrar la sesión con
 las preguntas y el próximo paso registrados. En actualizaciones sin dudas para el experto, omitir
 esta entrevista.
 
 ### 5. Consolidar y realizar self-review
 
-Incorporar respuestas con su procedencia. Sustituir los hallazgos ya consolidados de `harvest.md`
+Incorporar respuestas con su procedencia. Sustituir los hallazgos ya consolidados de `00_harvest.md`
 por enlaces a su destino. Trasladar a `07_unknowns.md` las incógnitas relevantes que permanecerán
 abiertas en la entrega, sin mantener dos copias. Revisar:
 
@@ -271,27 +270,27 @@ abiertas en la entrega, sin mantener dos copias. Revisar:
 
 Corregir fallos demostrables. Volver a la entrevista si queda una contradicción que requiere
 conocimiento experto. Los desconocidos reconocidos no obligan a una investigación ilimitada.
-Al quedar el contenido listo para revisión experta, establecer `in-review` en `harvest.md`.
+Al quedar el contenido listo para revisión experta, establecer `in-review` en `00_harvest.md`.
 
 ### 6. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
-disponible, conservar `in-review` y pasar al cierre con la aprobación pendiente en `harvest.md`.
+disponible, conservar `in-review` y pasar al cierre con la aprobación pendiente en `00_harvest.md`.
 Al retomar la sesión, comprobar si han cambiado las fuentes antes de continuar la revisión.
 
 Analizar cada finding con el usuario: aplicar si está respaldado; rechazar con explicación si es
 incorrecto; registrar como desconocido si no puede resolverse. Revisar de nuevo las partes cambiadas
 y pedir confirmación sobre ellas. No atribuir al experto una validación que no haya dado.
 
-Registrar en `harvest.md` quién revisó, cuándo y qué alcance aprobó. Establecer `validated` solo
+Registrar en `00_harvest.md` quién revisó, cuándo y qué alcance aprobó. Establecer `validated` solo
 tras aprobación explícita; mantener visibles los desconocidos aceptados y el alcance no aprobado.
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
 ### 7. Validar la transferencia
 
-Registrar el caso y resultado de transferencia en `harvest.md`, separado del estado de revisión.
+Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
 Pedir que use DNA para seguir el flujo, localizar la implementación, reconocer reglas, anticipar
 impacto y proponer pruebas o diagnóstico. El agente prepara el caso; el receptor aporta el resultado.
@@ -308,7 +307,7 @@ del contexto para esa tarea.
 ### 8. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
-transferencia, señalando los pendientes. Dejar actualizado `harvest.md` con su estado y próximo
+transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
 paso. Cada pregunta queda resuelta e incorporada, trasladada a `07_unknowns.md` o descartada con un
 motivo breve; si la sesión se interrumpe, las preguntas por contestar permanecen pendientes.
 Conservar el documento para retomar la captura, sin convertirlo en un historial de conversaciones.
