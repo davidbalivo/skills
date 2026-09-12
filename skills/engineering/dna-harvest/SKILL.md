@@ -20,6 +20,12 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
 - Claridad sobre volumen. Explicar cada concepto una vez y enlazarlo donde haga falta.
   Usar diagramas cuando aclaren y eliminar texto que no aporte información.
 
+## Idioma
+
+Escribir los documentos generados en castellano. Conservar en inglés los términos de uso habitual
+en la industria del software, como endpoint, framework, deploy, rollback, etc.
+Mantener los nombres e identificadores del código sin traducir.
+
 ## Estructura
 
 Crear o actualizar los artefactos en el repositorio del sistema investigado:
@@ -80,7 +86,6 @@ No transcribir conversaciones ni registrar cada búsqueda.
 
 ## Reglas de contenido y evidencia
 
-- Escribir en castellano y conservar la terminología técnica habitual.
 - Explicar significado funcional, entradas, condiciones, resultados, supuestos y efectos relevantes.
   Enlazar las instrucciones que ya se entienden al leerlas, sin narrarlas línea a línea.
 - Omitir introducciones genéricas, resúmenes repetidos y secciones vacías.
