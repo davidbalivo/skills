@@ -112,16 +112,19 @@ No transcribir conversaciones ni registrar cada búsqueda.
 Leer solo las plantillas necesarias de los artefactos que se van a crear o modificar. Sustituir las indicaciones entre llaves por contenido comprobado
 y eliminar las instrucciones del resultado.
 
-- Índice global: [templates/root-index.md](templates/root-index.md).
-- Índice de dominio: [templates/domain-index.md](templates/domain-index.md).
-- Trabajo y estado de la captura: [templates/harvest.md](templates/harvest.md).
-- Descripción del área: [templates/about.md](templates/about.md).
-- Lenguaje ubicuo: [templates/vocabulary.md](templates/vocabulary.md).
-- Invariantes: [templates/invariants.md](templates/invariants.md).
-- Flujos: [templates/flow-map.md](templates/flow-map.md).
-- Implementación e impacto: [templates/implementation-map.md](templates/implementation-map.md).
-- Caveats: [templates/caveats.md](templates/caveats.md).
-- Desconocidos: [templates/unknowns.md](templates/unknowns.md).
+- Índice global: [templates/root-index.md](templates/root-index.md) genera `dna/index.md`,
+  que enumera los dominios documentados y enlaza sus índices.
+- Índice de dominio: [templates/domain-index.md](templates/domain-index.md) genera
+  `dna/domains/<domain>/index.md`, que describe el propósito y los límites del dominio y enlaza
+  el `01_about.md` de cada área documentada.
+- Trabajo y estado de la captura: [templates/00_harvest.md](templates/00_harvest.md).
+- Descripción del área: [templates/01_about.md](templates/01_about.md).
+- Lenguaje ubicuo: [templates/02_vocabulary.md](templates/02_vocabulary.md).
+- Invariantes: [templates/03_invariants.md](templates/03_invariants.md).
+- Flujos: [templates/04_flow-map.md](templates/04_flow-map.md).
+- Implementación e impacto: [templates/05_implementation-map.md](templates/05_implementation-map.md).
+- Caveats: [templates/06_caveats.md](templates/06_caveats.md).
+- Desconocidos: [templates/07_unknowns.md](templates/07_unknowns.md).
 
 ## Flujo
 
