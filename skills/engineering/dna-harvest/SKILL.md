@@ -109,8 +109,8 @@ No transcribir conversaciones ni registrar cada búsqueda.
 
 ## Templates
 
-Leer solo las plantillas de los artefactos que se van a crear o modificar. Sustituir las indicaciones
-entre llaves por contenido comprobado y retirar las instrucciones de plantilla del resultado.
+Leer solo las plantillas necesarias de los artefactos que se van a crear o modificar. Sustituir las indicaciones entre llaves por contenido comprobado
+y eliminar las instrucciones del resultado.
 
 - Índice global: [templates/root-index.md](templates/root-index.md).
 - Índice de dominio: [templates/domain-index.md](templates/domain-index.md).
@@ -122,12 +122,6 @@ entre llaves por contenido comprobado y retirar las instrucciones de plantilla d
 - Implementación e impacto: [templates/implementation-map.md](templates/implementation-map.md).
 - Caveats: [templates/caveats.md](templates/caveats.md).
 - Desconocidos: [templates/unknowns.md](templates/unknowns.md).
-
-## Skills relacionadas
-
-- Aplicar `unslop`, `md-essentials` y `spanish-artifacts` si están disponibles en el repositorio destino.
-- Usar `git-operations` antes de operaciones Git si está disponible. Respetar las convenciones del
-  repositorio y la autorización de la sesión para commits.
 
 ## Flujo
 
@@ -147,9 +141,7 @@ consolidación, revisión experta o transferencia, volver solo al paso necesario
 - Entrevistar si falta una aclaración del experto.
 - Consolidar si basta con incorporar correcciones.
 
-Conservar el alcance y lo ya validado que siga vigente. Los cambios vuelven a la revisión que
-corresponda. Si falta el experto, conservar `pending-expert` cuando falten respuestas o `in-review`
-cuando solo falte aprobación. Si no se realiza la transferencia, declararla pendiente al cerrar.
+## Pasos
 
 ### 1. Delimitar el área
 
