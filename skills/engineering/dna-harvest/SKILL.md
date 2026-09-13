@@ -174,24 +174,32 @@ consolidación, revisión experta o transferencia, volver solo al paso necesario
 
 ### 1. Recoger la petición
 
-Trabajar por defecto en el repositorio desde el que se invoca la skill y leer sus instrucciones.
-Si la petición requiere otro repositorio o el directorio actual no permite identificarlo, indicarlo
-al usuario y aclarar la ubicación antes de continuar allí. Si falta acceso a una fuente necesaria,
-pedir su contenido o acceso; no deducir la implementación a partir del nombre del área.
+Trabajar por defecto en el repositorio desde el que se invoca.
 
-Identificar el punto de partida con la información ya disponible:
+Hay dos tipos de captura: directa, para documentar un área o tema, y a partir de una tarea, cuando un ticket o explicación sirve de punto de partida.
 
-- Solo documentar: recoger el dominio o área y el tema concreto que se quiere explicar.
-  El usuario puede aportar un directorio o archivo de código y contexto adicional.
-- Documentar a partir de una tarea: recibir un ticket de Jira o una explicación de la tarea.
-  Recoger el problema, el comportamiento focal y los ejemplos disponibles, sin adelantar el diseño.
-  El directorio o archivo de código, el dominio o área y el contexto adicional son opcionales.
-  Si el ticket no es accesible, pedir su contenido.
+- Determina el tipo de captura con la información disponible:
+  - Si el usuario aporta un ticket de Jira o explica una tarea, trata la petición como una captura a partir de una tarea.
+  - Si el usuario indica un dominio, un área o que quiere documentar un tema, trátala como una captura para documentar.
+  - Si no hay información suficiente, pregunta qué quiere hacer. Después, pide solo los datos que falten.
 
-Concretar qué debe quedar explicado y qué debe poder hacer el receptor con ese conocimiento.
-No convertir las entradas en cuestionarios obligatorios ni volver a pedir datos ya proporcionados.
-Si no hay una ruta de código, el agente la localizará; si la tarea no identifica dominio o área,
-el agente los investigará. Preguntar solo cuando falte información necesaria para orientar la captura.
+- Si se quiere documentar un tema:
+  - Recoge el dominio o área y el tema que se quiere explicar.
+  - Usa el directorio, archivo de código o contexto adicional que aporte el usuario.
+
+- Si la captura parte de una tarea:
+  - Recoge el ticket de Jira o la explicación de la tarea.
+  - Identifica el problema, el comportamiento focal y los ejemplos disponibles.
+  - No adelantes el diseño ni propongas una solución.
+  - Si no puedes acceder al ticket, pide su contenido.
+  - Trata el directorio o archivo de código, el dominio o área y el contexto adicional como datos opcionales.
+
+- En ambos casos:
+  - Define qué debe explicar la captura y qué debe poder hacer el receptor con ese conocimiento.
+  - No repitas datos ya proporcionados ni conviertas la entrada en un cuestionario.
+  - Localiza la ruta de código si no se ha indicado.
+  - Investiga el dominio o área si la tarea no los identifica.
+  - Pregunta solo si falta información necesaria para orientar la captura.
 
 ### 2. Consultar el conocimiento existente
 
