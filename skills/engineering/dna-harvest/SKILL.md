@@ -168,14 +168,16 @@ flowchart TD
     K --> A[Delimitar la captura]
     A --> B[Investigar y preparar borrador]
     B --> S[Self-review adversarial]
-    S --> C[Entrevistar y consolidar]
+    S --> R[Revisión externa]
+    R --> C[Entrevistar y consolidar]
     C --> D[Revisión experta y transferencia]
     D --> E[Cerrar]
     D -.->|Completar o corregir| B
 ```
 
 El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde el self-review, la
-entrevista, la consolidación, la revisión experta o la transferencia, volver solo al paso necesario:
+revisión externa, la entrevista, la consolidación, la revisión experta o la transferencia, volver
+solo al paso necesario:
 
 - Investigar si falta evidencia técnica.
 - Entrevistar si falta una aclaración del experto.
@@ -403,9 +405,65 @@ Haz un commit con las correcciones:
 
 docs(dna): self-review {domain}/{area}
 
-### 7. Entrevistar al experto
+### 7. Solicitar revisión externa y resolver findings
 
-Sin preguntas pendientes, salta al paso 8.
+La revisión externa la hace un revisor sin contexto de la sesión: persona o agente. Comprueba
+forma y evidencia; no sustituye la validación del experto ni cambia el `status` de `00_harvest.md`.
+
+Muestra al usuario esta petición:
+
+> **Listo para revisión** 🤝
+>
+> - Documentos: {rutas creadas o modificadas en la sesión, incluidos `00_harvest.md` y
+>   `dna/deferred-findings.md` si cambió}.
+> - Alcance: {dominio, área, tema y cobertura acordados en el paso 3}.
+> - Consideraciones: {decisiones de delimitación, fronteras no verificadas, limitaciones aceptadas
+>   como fuentes sin acceso o documentos relacionados no abiertos, hallazgos diferidos; omitir si
+>   no hay nada no evidente}.
+> - Qué revisar con ojos nuevos:
+>   - Anclas que resuelven y procedencia en cada afirmación no evidente.
+>   - Hechos observados, reglas esperadas y testimonio experto separados.
+>   - Reglas y excepciones con motivo y ámbito, o con la duda declarada.
+>   - Conexiones e impacto respaldados por evidencia; fronteras no verificadas declaradas.
+>   - Cada dato en su archivo y sin duplicar; índices que llegan al contenido nuevo.
+>   - Contenido comprensible sin conocer la tarea ni la conversación.
+>   - Redacción sin relleno y sin placeholders de plantilla.
+> - Cómo reportar: cada finding cita ruta y texto; sin propuestas de solución. 🔴 impide usar el
+>   conocimiento; 🟡 mejora.
+
+Detente y espera. El usuario responde con los findings del revisor o con "sin findings". Sin
+findings, pasa al paso 8.
+
+Con los findings recibidos:
+
+- Trátalos como observaciones, no como verdades. Contrasta cada uno con las fuentes, no con la
+  memoria de la sesión. Rechaza con seguridad los incorrectos, sin contexto o sin valor.
+- Acuerda con el usuario un destino por finding:
+
+| Destino   | Acción                                                                                        |
+| --------- | --------------------------------------------------------------------------------------------- |
+| Aplicar   | Corregir el documento afectado.                                                               |
+| Preguntar | Requiere conocimiento experto: `Preguntas pendientes` en `00_harvest.md`, con contexto y ancla. |
+| Registrar | No puede resolverse con las fuentes disponibles: `07_unknowns.md`.                            |
+| Diferir   | Importante pero fuera del alcance acordado: [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance). |
+| Rechazar  | Incorrecto, sin valor o decisión deliberada: motivo en la conversación.                       |
+
+- No amplíes el alcance para atender un finding. Si lo exige, vuelve a acordarlo según el paso 3.
+- Revisa las partes cambiadas con los criterios del paso 6.
+
+Pregunta al usuario:
+
+❓ Findings resueltos. ¿Otra ronda de revisión o continuar?
+
+Espera su decisión. Otra ronda: repite la petición con los documentos actualizados. Continuar: paso 8.
+
+Si hubo cambios, haz un commit:
+
+docs(dna): external-review {domain}/{area}
+
+### 8. Entrevistar al experto
+
+Sin preguntas pendientes, salta al paso 9.
 
 Formular una pregunta por mensaje y esperar la respuesta. Presentar el hallazgo y su ancla con el
 contexto mínimo necesario. Validar primero el recorrido funcional y profundizar en motivos,
@@ -431,7 +489,7 @@ Si no hay experto disponible y faltan respuestas, conservar `pending-expert` y c
 las preguntas y el próximo paso registrados. En actualizaciones sin dudas para el experto, omitir
 esta entrevista.
 
-### 8. Consolidar y repetir el self-review
+### 9. Consolidar y repetir el self-review
 
 Incorpora las respuestas del experto:
 
@@ -444,7 +502,7 @@ queda una contradicción que requiere conocimiento experto.
 
 Con el contenido listo para revisión experta, establece `in-review` en `00_harvest.md`.
 
-### 9. Solicitar revisión experta y resolver findings
+### 10. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
@@ -460,7 +518,7 @@ tras aprobación explícita; mantener visibles los desconocidos aceptados y el a
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
-### 10. Validar la transferencia
+### 11. Validar la transferencia
 
 Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
@@ -476,7 +534,7 @@ parcial no valida todo el área. No repetir la prueba por cada ticket ni convert
 de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
 del contexto para esa tarea.
 
-### 11. Cerrar
+### 12. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
