@@ -198,22 +198,31 @@ Hay dos tipos de captura: directa, para documentar un área o tema, y a partir d
   - Define qué debe explicar la captura y qué debe poder hacer el receptor con ese conocimiento.
   - No repitas datos ya proporcionados ni conviertas la entrada en un cuestionario.
   - Localiza la ruta de código si no se ha indicado.
-  - Investiga el dominio o área si la tarea no los identifica.
-  - Pregunta solo si falta información necesaria para orientar la captura.
+  - Identifica el dominio, el área y el tema que se documentarán antes de continuar.
+  - Si alguno no está claro, usa la información de la petición y una exploración inicial para localizarlo.
+  - Pregunta solo si no puedes identificarlo con esa información.
 
 ### 2. Consultar el conocimiento existente
 
-Consultar los índices DNA existentes y abrir solo las áreas relacionadas. Revisar las entradas
-pertinentes de `dna/deferred-findings.md`, si existe, sin incorporarlas automáticamente al alcance.
-Si hay una captura previa, leer su `00_harvest.md` y los documentos enlazados para recuperar el estado
-y el próximo paso. Si no existe DNA, tratar la petición como una captura inicial.
+Muestra al usuario este mensaje antes de buscar: `🧐 Consultando conocimiento existente en dna/`.
 
-Contrastar la cobertura existente con las anclas relevantes. Hacer la exploración inicial necesaria
-para localizar el comportamiento e identificar el dominio o área cuando falten, sin iniciar todavía
-la investigación detallada. Identificar si se trata de una captura inicial o una actualización.
-Reutilizar el conocimiento vigente y capturar solo lo que falte o haya cambiado, también cuando el
-humano lo conozca pero aún no esté documentado. Si no hay nada que incorporar, pasar al cierre sin
-crear cambios ni repetir la entrevista.
+Consulta los índices DNA de `dna/`, el índice global y el índice del dominio. Incluye la captura
+previa y los hallazgos fuera de alcance, si existen. No abras los documentos encontrados de forma
+automática.
+
+Cuando encuentres documentos que parezcan relevantes:
+
+- Indica su ruta y por qué pueden aportar contexto.
+- Pregunta al usuario cuáles quiere que leas.
+- Lee solo los documentos que confirme.
+
+Con lo leído, determina si el tema ya está documentado, debe ampliarse o requiere una captura nueva.
+No dupliques conocimiento. Actualiza o amplía el documento existente cuando ya cubra parte del tema.
+Mantén presentes los hechos, reglas, anclas y pendientes relevantes durante la captura.
+
+Si no hay documentación relacionada, trata la petición como una captura inicial. Si hay indicios de
+duplicación y el usuario no quiere abrir los documentos relacionados, explica el riesgo y su motivo.
+Si vuelve a rechazarlo, continúa sin abrirlos y mantén visible esa limitación durante la captura.
 
 ### 3. Delimitar la captura
 
