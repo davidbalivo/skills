@@ -200,13 +200,17 @@ Hay dos tipos de captura: directa, para documentar un área o tema, y a partir d
   - Define qué debe explicar la captura y qué debe poder hacer el receptor con ese conocimiento.
   - No repitas datos ya proporcionados ni conviertas la entrada en un cuestionario.
   - Localiza la ruta de código si no se ha indicado.
+  - El código que aporte el usuario (directorio, archivo o líneas) es un punto de partida, no un
+    límite. Explora las conexiones que hagan falta para explicar el tema.
   - Identifica de forma provisional el dominio, el área y el tema para consultar el conocimiento existente.
   - Si alguno no está claro, usa la información de la petición y una exploración inicial para localizarlo.
   - Pregunta solo si no puedes identificarlo con esa información.
 
 ### 2. Consultar el conocimiento existente
 
-Muestra al usuario este mensaje antes de buscar: `🧐 Consultando conocimiento existente en dna/`.
+Muestra al usuario este mensaje antes de buscar:
+
+🧐 Consultando conocimiento existente en dna/
 
 Consulta los índices DNA de `dna/`, el índice global y el índice del dominio. Incluye la captura
 previa y los hallazgos fuera de alcance, si existen. No abras los documentos encontrados de forma
@@ -230,11 +234,9 @@ Si vuelve a rechazarlo, continúa sin abrirlos y mantén visible esa limitación
 
 Muestra al usuario este mensaje antes de empezar:
 
-```text
 🎯 Ahora vamos a delimitar el dominio y el área de la captura.
 - Dominio: parte del negocio con propósito, vocabulario, reglas y límites propios.
 - Área: parte concreta del dominio donde vive el conocimiento que se documenta.
-```
 
 Con la información de los pasos anteriores, prepara una propuesta:
 
@@ -260,44 +262,62 @@ Con el ok:
 
 ### 4. Investigar el sistema
 
-Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
+Muestra al usuario este mensaje antes de empezar: 
 
-Usa un intervalo de líneas solo como punto de entrada. En archivos grandes, localiza símbolos o
-bloques funcionales y lee los tramos necesarios. En métodos monolíticos, identifica operaciones,
-condiciones y flujo de control. No cargues archivos completos por defecto ni ignores dependencias
-solo porque estén fuera del intervalo inicial.
+🔬 Investigando el sistema
 
-- Derivar el vocabulario desde tipos, tablas, campos y etiquetas de interfaz.
-- Seguir quién prepara las entradas, qué condiciones activan el bloque y qué dependencias utiliza.
-- Seguir resultados y consumidores, lecturas y escrituras, variables compartidas, acumulados,
-  tablas, cachés y configuración que condicionen el comportamiento.
-- Identificar ordenamientos, jobs, concurrencia, límites transaccionales y estado ante fallos.
-  Buscar conexiones por datos y orden temporal, además de llamadas directas.
-- Identificar casos límite y posibles regresiones con su mecanismo y evidencia. Describir el
-  impacto condicionado al tipo de cambio, sin presentar un inventario exhaustivo ni afirmar el
-  impacto definitivo de una modificación aún no diseñada.
-- Localizar tests y puntos de diagnóstico que protejan o permitan observar el comportamiento.
-- Registrar las anclas encontradas y las limitaciones de la investigación.
+Fuentes a consultar:
 
-Registrar en `00_harvest.md` la fecha de investigación y la revisión del código consultada, si está
-disponible. Si hay cambios locales relevantes, indicarlo: el commit por sí solo no identifica todo
-el código investigado. En actualizaciones parciales, asociar esta referencia al alcance revisado.
+- Código aportado y sus dependencias.
+- Tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
+- Documentación existente, si la hay: `docs/`, `adr/`, README y comentarios del código. Contrástala
+  con el código; documenta las discrepancias.
 
-Buscar tanto consumidores como proveedores. Una referencia ausente no prueba que el código esté
-muerto: considerar configuración, ejecución dinámica e integraciones no disponibles.
+Cómo leer:
 
-Por cada conexión relevante, profundizar si puede cambiar la interpretación del comportamiento;
-documentar su contrato si basta para entenderla; o declarar una frontera no verificada cuando falte
-evidencia. No imponer un número fijo de saltos ni recorrer todo el sistema por transitividad.
-Aplicar también a las nuevas conexiones la delimitación acordada: registrar en `dna/deferred-findings.md`
-los hallazgos y necesidades de documentación que cumplan los criterios de «Hallazgos fuera de
-alcance», conservando aquí el contrato o la frontera necesarios para comprender el recorrido actual.
-Detener la investigación cuando se puedan explicar el recorrido focal, sus condiciones, entradas,
-salidas y conexiones relevantes, y estén identificadas las limitaciones restantes. Un hueco que
-impida comprender ese recorrido exige evidencia adicional o debe declararse bloqueante para las
-decisiones que dependan de él; no exige investigar indefinidamente.
+- En archivos grandes, localiza símbolos o bloques funcionales y lee solo los tramos necesarios.
+- En métodos monolíticos, identifica operaciones, condiciones y flujo de control.
+- No cargues archivos completos por defecto.
 
-En actualizaciones, verificar el contenido afectado y sus relaciones, conservando el resto.
+Qué seguir:
+
+- Vocabulario: tipos, tablas, campos y etiquetas de interfaz.
+- Entradas: quién las prepara, qué condiciones activan el bloque y qué dependencias usa.
+- Salidas: resultados, consumidores, lecturas y escrituras, estado compartido, cachés.
+- Configuración por entorno o cliente que condicione el comportamiento.
+- Orden temporal: jobs, concurrencia, límites transaccionales y estado ante fallos.
+- Casos límite y posibles regresiones, con su mecanismo y evidencia.
+- Tests y puntos de diagnóstico que protejan u observen el comportamiento.
+- Ganchos para la entrevista: literales especiales, excepciones por cliente, comentarios de
+  advertencia, errores ignorados, órdenes implícitos y contradicciones. Anótalos para el paso 5.
+
+Busca consumidores y proveedores. Una referencia ausente no prueba código muerto: considera
+configuración, ejecución dinámica e integraciones no disponibles.
+
+Por cada conexión relevante, elige una opción:
+
+- Profundizar, si puede cambiar la interpretación del comportamiento.
+- Documentar su contrato, si basta para entenderla.
+- Declarar frontera no verificada, si falta evidencia.
+- Si queda fuera del alcance acordado, sigue [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance)
+  y conserva aquí solo el contrato o la frontera.
+
+Cuándo parar:
+
+- Puedes explicar el recorrido focal: condiciones, entradas, salidas y conexiones relevantes.
+- Las limitaciones restantes están identificadas.
+- No impongas un número fijo de saltos ni recorras todo el sistema.
+- Un hueco que impida entender el recorrido exige más evidencia o se declara bloqueante para las
+  decisiones que dependan de él. No investigues indefinidamente.
+
+Registra en `00_harvest.md`, sección `Investigación realizada`:
+
+- Fecha y revisión del código consultada. Si hay cambios locales relevantes, indícalo.
+- Recorrido comprobado y anclas encontradas.
+- Limitaciones de la investigación.
+- En actualizaciones parciales, asocia esta referencia al alcance revisado.
+
+En actualizaciones, verifica el contenido afectado y sus relaciones. Conserva el resto.
 
 ### 5. Preparar el borrador y detectar huecos
 
@@ -311,9 +331,7 @@ pendiente, tanto para la revisión experta como para la transferencia. Enlazar e
 `01_about.md`, que conserva la descripción, cobertura y navegación del área. Una actualización parcial no
 renueva la validación de toda el área.
 
-Buscar ganchos para la entrevista: literales especiales, excepciones por cliente, comentarios de
-advertencia, errores ignorados, órdenes implícitos, escrituras compartidas y contradicciones.
-Priorizar preguntas por impacto y por lo que impide comprender el flujo. No convertir cada detalle
+Convertir en preguntas los ganchos anotados en el paso 4. Priorizar preguntas por impacto y por lo que impide comprender el flujo. No convertir cada detalle
 técnico en una pregunta al experto. Guardar las preguntas en `00_harvest.md` con contexto y ancla
 suficientes para retomarlas en otra sesión. Cuando estén preparadas, usar `pending-expert`.
 Si no hay preguntas, continuar con la consolidación y revisión del agente.
