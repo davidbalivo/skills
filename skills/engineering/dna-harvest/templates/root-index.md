@@ -6,7 +6,9 @@
 
 - [{Dominio}](domains/{domain}/index.md): {alcance funcional breve}.
 
-## Consulta
+## Hallazgos fuera de alcance
 
-Localizar el dominio y el área, leer su descripción funcional y abrir los documentos pertinentes
-para la tarea. Consultar la cobertura y los pendientes antes de usar sus reglas o mapas.
+{Incluir este apartado solo si existe deferred-findings.md; omitir el apartado completo si no existe.}
+
+[Consultar los hallazgos pendientes](deferred-findings.md): hallazgos que requieren atención y
+conocimiento relevante del dominio pendiente de documentar.

@@ -33,6 +33,7 @@ Crear o actualizar los artefactos en el repositorio del sistema investigado:
 ```text
 dna/
 |-- index.md                              # obligatorio
+|-- deferred-findings.md
 `-- domains/
     `-- <domain>/
         |-- index.md                      # obligatorio
@@ -84,6 +85,28 @@ Sustituir los hallazgos consolidados por enlaces a su documento definitivo. Trab
 preguntas de la captura y trasladar a `07_unknowns.md` las incógnitas que permanezcan en la entrega.
 No transcribir conversaciones ni registrar cada búsqueda.
 
+## Hallazgos fuera de alcance
+
+`dna/deferred-findings.md` recoge dos casos:
+
+- Hallazgos importantes que quedan fuera del alcance actual y necesitan atención, aunque atenderlos
+  no consista en documentar.
+- Conocimiento importante para el dominio actual que debe documentarse, pero queda fuera del alcance
+  de esta captura. Explicar por qué es relevante y necesita documentación.
+
+Crear el archivo con el primer hallazgo y enlazarlo desde `dna/index.md`. Cada entrada explica qué
+se encontró, dónde, sus referencias, por qué importa y por qué queda fuera del alcance. Reutilizar
+entradas existentes; registrarlas no implica resolverlas en esta captura.
+
+Guardar cada tipo de información en su archivo:
+
+- `00_harvest.md`: trabajo y preguntas de la captura actual.
+- `07_unknowns.md`: dudas o contradicciones que siguen abiertas en la documentación entregada.
+- `deferred-findings.md`: hallazgos importantes fuera del alcance actual que requieren atención o
+  documentación.
+
+No usar el archivo como historial ni como lista de todo lo que falta explorar.
+
 ## Reglas de contenido y evidencia
 
 - Explicar significado funcional, entradas, condiciones, resultados, supuestos y efectos relevantes.
@@ -117,6 +140,7 @@ y eliminar las instrucciones del resultado.
 - Índice de dominio: [templates/domain-index.md](templates/domain-index.md) genera
   `dna/domains/<domain>/index.md`, que describe el propósito y los límites del dominio y enlaza
   el `01_about.md` de cada área documentada.
+- Hallazgos fuera de alcance: [templates/deferred-findings.md](templates/deferred-findings.md) genera `dna/deferred-findings.md`.
 - Trabajo y estado de la captura: [templates/00_harvest.md](templates/00_harvest.md).
 - Descripción del área: [templates/01_about.md](templates/01_about.md).
 - Lenguaje ubicuo: [templates/02_vocabulary.md](templates/02_vocabulary.md).
@@ -130,7 +154,9 @@ y eliminar las instrucciones del resultado.
 
 ```mermaid
 flowchart TD
-    A[Delimitar] --> B[Investigar y preparar borrador]
+    P[Recoger la petición] --> K[Consultar conocimiento existente]
+    K --> A[Delimitar la captura]
+    A --> B[Investigar y preparar borrador]
     B --> C[Entrevistar y consolidar]
     C --> D[Revisión experta y transferencia]
     D --> E[Cerrar]
@@ -146,21 +172,57 @@ consolidación, revisión experta o transferencia, volver solo al paso necesario
 
 ## Pasos
 
-### 1. Delimitar el área
+### 1. Recoger la petición
 
-Localizar el repositorio y leer sus instrucciones. Consultar los índices DNA existentes y abrir
-solo las áreas relacionadas. Identificar si se trata de una captura inicial o una actualización.
-Si parte de una tarea, recoger el problema, el comportamiento focal y un ejemplo que permita
-localizarlo, sin adelantar el diseño. Contrastar la cobertura existente con las anclas relevantes.
+Trabajar por defecto en el repositorio desde el que se invoca la skill y leer sus instrucciones.
+Si la petición requiere otro repositorio o el directorio actual no permite identificarlo, indicarlo
+al usuario y aclarar la ubicación antes de continuar allí. Si falta acceso a una fuente necesaria,
+pedir su contenido o acceso; no deducir la implementación a partir del nombre del área.
+
+Identificar el punto de partida con la información ya disponible:
+
+- Solo documentar: recoger el dominio o área y el tema concreto que se quiere explicar.
+  El usuario puede aportar un directorio o archivo de código y contexto adicional.
+- Documentar a partir de una tarea: recibir un ticket de Jira o una explicación de la tarea.
+  Recoger el problema, el comportamiento focal y los ejemplos disponibles, sin adelantar el diseño.
+  El directorio o archivo de código, el dominio o área y el contexto adicional son opcionales.
+  Si el ticket no es accesible, pedir su contenido.
+
+Concretar qué debe quedar explicado y qué debe poder hacer el receptor con ese conocimiento.
+No convertir las entradas en cuestionarios obligatorios ni volver a pedir datos ya proporcionados.
+Si no hay una ruta de código, el agente la localizará; si la tarea no identifica dominio o área,
+el agente los investigará. Preguntar solo cuando falte información necesaria para orientar la captura.
+
+### 2. Consultar el conocimiento existente
+
+Consultar los índices DNA existentes y abrir solo las áreas relacionadas. Revisar las entradas
+pertinentes de `dna/deferred-findings.md`, si existe, sin incorporarlas automáticamente al alcance.
+Si hay una captura previa, leer su `00_harvest.md` y los documentos enlazados para recuperar el estado
+y el próximo paso. Si no existe DNA, tratar la petición como una captura inicial.
+
+Contrastar la cobertura existente con las anclas relevantes. Hacer la exploración inicial necesaria
+para localizar el comportamiento e identificar el dominio o área cuando falten, sin iniciar todavía
+la investigación detallada. Identificar si se trata de una captura inicial o una actualización.
 Reutilizar el conocimiento vigente y capturar solo lo que falte o haya cambiado, también cuando el
 humano lo conozca pero aún no esté documentado. Si no hay nada que incorporar, pasar al cierre sin
 crear cambios ni repetir la entrevista.
 
-Acordar con el usuario dominio, área, alcance y fuentes accesibles. Si ya están claros en su
-petición, continuar. Usar nombres existentes; confirmar nombres o límites nuevos antes de escribir.
-Una sesión puede cubrir un flujo concreto dentro del área. Identificar también qué debe poder hacer
-el receptor con ese conocimiento. Si la captura es nueva, crear `00_harvest.md` en `draft` con ese
-alcance y el siguiente paso. Si ya existe, seguir la continuidad registrada en él.
+### 3. Delimitar la captura
+
+Combinar la petición con el conocimiento encontrado para acordar dominio, área, tema y cobertura de
+la sesión. Si ya están claros, continuar. Usar nombres existentes; confirmar nombres o límites nuevos
+antes de escribir. Una tarea puede atravesar varias áreas: identificar las implicadas y acordar cuál
+se documentará en esta captura, sin forzar todo el recorrido dentro de una sola área.
+
+Una sesión puede cubrir un flujo concreto. Registrar en `dna/deferred-findings.md` los hallazgos importantes
+que requieran atención y el conocimiento relevante del dominio que deba documentarse fuera del
+alcance actual, según la sección «Hallazgos fuera de alcance». Si una conexión es necesaria para explicar el recorrido acordado,
+investigar lo suficiente para comprenderla o acordar una reducción de cobertura, dejando explícitas
+las limitaciones. Aplazarla no resuelve los huecos ni permite dar por respaldadas las conclusiones
+que dependan de ella.
+
+Si la captura es nueva, crear `00_harvest.md` en `draft` con el alcance, el resultado esperado y el
+siguiente paso. Si ya existe, seguir la continuidad registrada y actualizar el alcance cuando cambie.
 
 Distinguir el foco inicial del contexto necesario para comprenderlo. El alcance de modificación se
 decidirá en la especificación y el plan; investigar una dependencia no implica cambiarla.
@@ -169,11 +231,7 @@ En archivos grandes, localizar símbolos o bloques funcionales y leer los tramos
 métodos monolíticos, identificar operaciones, condiciones y flujo de control junto a la revisión del
 código. No cargar todo el archivo por defecto ni excluir dependencias por estar fuera del intervalo.
 
-Si falta acceso al código, pedir su ubicación o acceso antes de preparar mapas técnicos. No inventar
-la implementación a partir del nombre del área. No ampliar el alcance a todo el sistema al seguir
-dependencias externas.
-
-### 2. Investigar el sistema
+### 4. Investigar el sistema
 
 Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
 
@@ -199,6 +257,9 @@ muerto: considerar configuración, ejecución dinámica e integraciones no dispo
 Por cada conexión relevante, profundizar si puede cambiar la interpretación del comportamiento;
 documentar su contrato si basta para entenderla; o declarar una frontera no verificada cuando falte
 evidencia. No imponer un número fijo de saltos ni recorrer todo el sistema por transitividad.
+Aplicar también a las nuevas conexiones la delimitación acordada: registrar en `dna/deferred-findings.md`
+los hallazgos y necesidades de documentación que cumplan los criterios de «Hallazgos fuera de
+alcance», conservando aquí el contrato o la frontera necesarios para comprender el recorrido actual.
 Detener la investigación cuando se puedan explicar el recorrido focal, sus condiciones, entradas,
 salidas y conexiones relevantes, y estén identificadas las limitaciones restantes. Un hueco que
 impida comprender ese recorrido exige evidencia adicional o debe declararse bloqueante para las
@@ -206,7 +267,7 @@ decisiones que dependan de él; no exige investigar indefinidamente.
 
 En actualizaciones, verificar el contenido afectado y sus relaciones, conservando el resto.
 
-### 3. Preparar el borrador y detectar huecos
+### 5. Preparar el borrador y detectar huecos
 
 Crear o actualizar los documentos aplicables con la evidencia disponible. Indicar en `01_about.md`
 la cobertura y lo que queda sin explorar. Mantener navegables los índices global y de dominio.
@@ -225,7 +286,7 @@ técnico en una pregunta al experto. Guardar las preguntas en `00_harvest.md` co
 suficientes para retomarlas en otra sesión. Cuando estén preparadas, usar `pending-expert`.
 Si no hay preguntas, continuar con la consolidación y revisión del agente.
 
-### 4. Entrevistar al experto
+### 6. Entrevistar al experto
 
 Formular una pregunta por mensaje y esperar la respuesta. Presentar el hallazgo y su ancla con el
 contexto mínimo necesario. Validar primero el recorrido funcional y profundizar en motivos,
@@ -238,7 +299,9 @@ datos o integraciones fuera del recorrido investigado. No limitar la entrevista 
 
 Contrastar las respuestas con las fuentes disponibles. Si contradicen el código, distinguir lo que
 debería ocurrir de lo que ocurre y pedir aclaración. Si una respuesta descubre otra ruta o
-dependencia relevante, volver a investigar y actualizar los mapas antes de continuar.
+dependencia que condiciona el recorrido acordado, volver a investigar y actualizar los mapas antes
+de continuar. Registrar en `dna/deferred-findings.md` los hallazgos importantes y necesidades de documentación
+fuera de alcance que cumplan sus criterios.
 Separar explicaciones del estado actual, reglas esperadas vigentes y deseos para el cambio futuro.
 Trasladar estos últimos al contexto de la especificación, sin publicarlos como verdad actual en DNA.
 No corregir código durante la captura.
@@ -249,7 +312,7 @@ Si no hay experto disponible y faltan respuestas, conservar `pending-expert` y c
 las preguntas y el próximo paso registrados. En actualizaciones sin dudas para el experto, omitir
 esta entrevista.
 
-### 5. Consolidar y realizar self-review
+### 7. Consolidar y realizar self-review
 
 Incorporar respuestas con su procedencia. Sustituir los hallazgos ya consolidados de `00_harvest.md`
 por enlaces a su destino. Trasladar a `07_unknowns.md` las incógnitas relevantes que permanecerán
@@ -269,7 +332,7 @@ Corregir fallos demostrables. Volver a la entrevista si queda una contradicción
 conocimiento experto. Los desconocidos reconocidos no obligan a una investigación ilimitada.
 Al quedar el contenido listo para revisión experta, establecer `in-review` en `00_harvest.md`.
 
-### 6. Solicitar revisión experta y resolver findings
+### 8. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
@@ -285,7 +348,7 @@ tras aprobación explícita; mantener visibles los desconocidos aceptados y el a
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
-### 7. Validar la transferencia
+### 9. Validar la transferencia
 
 Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
@@ -301,7 +364,7 @@ parcial no valida todo el área. No repetir la prueba por cada ticket ni convert
 de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
 del contexto para esa tarea.
 
-### 8. Cerrar
+### 10. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
@@ -309,6 +372,10 @@ paso. Cada pregunta queda resuelta e incorporada, trasladada a `07_unknowns.md` 
 motivo breve; si la sesión se interrumpe, las preguntas por contestar permanecen pendientes.
 Conservar el documento para retomar la captura, sin convertirlo en un historial de conversaciones.
 No declarar completadas validaciones no realizadas.
+
+Revisar las entradas de `dna/deferred-findings.md` afectadas por la captura: retirar las resueltas o documentadas
+y conservar lo pendiente con sus anclas y contexto para retomarlo. Resumir los hallazgos diferidos en la
+entrega y comprobar el enlace desde el índice global si el archivo existe.
 
 Si la captura prepara una tarea, informar en el cierre si hay contexto suficiente para `sdd-spec`:
 

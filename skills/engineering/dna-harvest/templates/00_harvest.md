@@ -9,6 +9,8 @@ status: draft
 {Comportamiento que se está capturando y límites. En una actualización, identificar el contenido
 afectado sin extender su estado a las partes ya aprobadas.}
 
+- Resultado esperado: {qué debe quedar explicado y qué podrá hacer el receptor con ese conocimiento}.
+
 ## Investigación realizada
 
 - Código investigado: {fecha, revisión disponible y cambios locales relevantes}.
