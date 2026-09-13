@@ -156,14 +156,15 @@ flowchart TD
     P[Recoger la petición] --> K[Consultar conocimiento existente]
     K --> A[Delimitar la captura]
     A --> B[Investigar y preparar borrador]
-    B --> C[Entrevistar y consolidar]
+    B --> S[Self-review adversarial]
+    S --> C[Entrevistar y consolidar]
     C --> D[Revisión experta y transferencia]
     D --> E[Cerrar]
     D -.->|Completar o corregir| B
 ```
 
-El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde la entrevista,
-consolidación, revisión experta o transferencia, volver solo al paso necesario:
+El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde el self-review, la
+entrevista, la consolidación, la revisión experta o la transferencia, volver solo al paso necesario:
 
 - Investigar si falta evidencia técnica.
 - Entrevistar si falta una aclaración del experto.
@@ -362,9 +363,44 @@ Prepara las preguntas para el experto:
 - Convierte en preguntas los ganchos anotados en el paso 4.
 - Prioriza por impacto y por lo que impide entender el flujo. No preguntes cada detalle técnico.
 - Guarda cada pregunta en `00_harvest.md`, sección `Preguntas pendientes`, con contexto y ancla.
-- Con preguntas listas, pasa a `pending-expert`. Sin preguntas, salta al paso 7.
+- Con preguntas listas, pasa a `pending-expert`.
 
-### 6. Entrevistar al experto
+Haz un commit solo con los cambios DNA de la sesión, como base antes de revisar:
+
+docs(dna): draft {domain}/{area}
+
+### 6. Self-review adversarial
+
+Muestra al usuario este mensaje antes de empezar:
+
+🕵️ Revisando el borrador
+
+Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
+
+- Afirmaciones sin ancla o con ancla que no resuelve.
+- Hechos observados, reglas esperadas y testimonios mezclados como una sola evidencia.
+- Reglas y excepciones sin motivo ni ámbito, o con un motivo supuesto.
+- Conexiones afirmadas sin evidencia; fronteras no verificadas presentadas como comprobadas.
+- Impacto definitivo de cambios no diseñados; garantías inventadas. Distingue tests existentes de
+  verificaciones propuestas.
+- Diagramas que contradicen las fuentes; enlaces internos rotos.
+- Duplicación, relleno, placeholders de plantilla y enlaces a SDD.
+- Incoherencias entre `01_about.md`, vocabulario, invariantes y mapas.
+
+Con los hallazgos:
+
+- Corrige lo demostrable.
+- Lo que requiera conocimiento experto pasa a `Preguntas pendientes` en `00_harvest.md`.
+- Lo que no pueda resolverse queda en `07_unknowns.md`.
+- No investigues indefinidamente por desconocidos ya reconocidos.
+
+Haz un commit con las correcciones:
+
+docs(dna): self-review {domain}/{area}
+
+### 7. Entrevistar al experto
+
+Sin preguntas pendientes, salta al paso 8.
 
 Formular una pregunta por mensaje y esperar la respuesta. Presentar el hallazgo y su ancla con el
 contexto mínimo necesario. Validar primero el recorrido funcional y profundizar en motivos,
@@ -390,27 +426,20 @@ Si no hay experto disponible y faltan respuestas, conservar `pending-expert` y c
 las preguntas y el próximo paso registrados. En actualizaciones sin dudas para el experto, omitir
 esta entrevista.
 
-### 7. Consolidar y realizar self-review
+### 8. Consolidar y repetir el self-review
 
-Incorporar respuestas con su procedencia. Sustituir los hallazgos ya consolidados de `00_harvest.md`
-por enlaces a su destino. Trasladar a `07_unknowns.md` las incógnitas relevantes que permanecerán
-abiertas en la entrega, sin mantener dos copias. Revisar:
+Incorpora las respuestas del experto:
 
-- Cobertura explícita y coherencia entre descripción, vocabulario, reglas y mapas.
-- Separación entre hechos observados, expectativas y testimonios.
-- Motivo y ámbito de reglas y excepciones relevantes.
-- Anclas resolubles y evidencia suficiente para las afirmaciones técnicas.
-- Conexiones por llamadas, datos y orden temporal respaldadas, con fronteras no verificadas visibles.
-- Impacto condicionado al cambio y acompañado de comprobaciones concretas, distinguiendo tests
-  existentes de verificaciones propuestas, sin inventar garantías.
-- Diagramas coherentes con las fuentes y enlaces internos navegables.
-- Ausencia de duplicación, relleno, placeholders y enlaces a SDD.
+- Añade cada respuesta con su procedencia en el documento definitivo.
+- Sustituye en `00_harvest.md` los hallazgos consolidados por enlaces a su destino.
+- Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, sin mantener dos copias.
 
-Corregir fallos demostrables. Volver a la entrevista si queda una contradicción que requiere
-conocimiento experto. Los desconocidos reconocidos no obligan a una investigación ilimitada.
-Al quedar el contenido listo para revisión experta, establecer `in-review` en `00_harvest.md`.
+Repite el self-review del paso 6 sobre el contenido nuevo o modificado. Vuelve a la entrevista si
+queda una contradicción que requiere conocimiento experto.
 
-### 8. Solicitar revisión experta y resolver findings
+Con el contenido listo para revisión experta, establece `in-review` en `00_harvest.md`.
+
+### 9. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
@@ -426,7 +455,7 @@ tras aprobación explícita; mantener visibles los desconocidos aceptados y el a
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
-### 9. Validar la transferencia
+### 10. Validar la transferencia
 
 Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
@@ -442,7 +471,7 @@ parcial no valida todo el área. No repetir la prueba por cada ticket ni convert
 de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
 del contexto para esa tarea.
 
-### 10. Cerrar
+### 11. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
