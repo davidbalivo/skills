@@ -22,9 +22,11 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
 
 ## Idioma
 
-Escribir los documentos generados en castellano. Conservar en inglés los términos de uso habitual
-en la industria del software, como endpoint, framework, deploy, rollback, etc.
-Mantener los nombres e identificadores del código sin traducir.
+Escribir los documentos generados en español por defecto. Si el usuario indica otro idioma, usar ese.
+
+- Conservar en inglés los términos habituales de la industria del software: endpoint, framework,
+  deploy, rollback, etc.
+- Mantener los nombres e identificadores del código sin traducir.
 
 ## Estructura
 
