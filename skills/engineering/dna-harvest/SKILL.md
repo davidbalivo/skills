@@ -17,8 +17,7 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
 - Distinguir comportamiento observado, reglas esperadas y testimonio experto.
 - Conservar el motivo y el ámbito de las reglas y excepciones. Declarar lo desconocido sin inventarlo.
 - Acotar la captura y declarar su cobertura. En actualizaciones, revisar solo el contenido afectado.
-- Claridad sobre volumen. Explicar cada concepto una vez y enlazarlo donde haga falta.
-  Usar diagramas cuando aclaren y eliminar texto que no aporte información.
+- Claridad sobre volumen, según [Redacción](#redacción).
 
 ## Idioma
 
@@ -27,6 +26,19 @@ Escribir los documentos generados en español por defecto. Si el usuario indica 
 - Conservar en inglés los términos habituales de la industria del software: endpoint, framework,
   deploy, rollback, etc.
 - Mantener los nombres e identificadores del código sin traducir.
+
+## Redacción
+
+Escribir claro y sencillo. El criterio es la información, no la longitud:
+
+- Cada frase aporta un hecho, una regla, un motivo, un ancla o un límite. Si al quitarla no se
+  pierde nada, quitarla.
+- Sin introducciones, resúmenes, repeticiones ni relleno. Lo ya explicado se enlaza.
+- Recortar nunca justifica omitir. Conservar siempre hechos, reglas con su motivo y ámbito,
+  excepciones, anclas, procedencia, discrepancias y limitaciones.
+- Ante la duda entre acortar o perder información, conservar la información y simplificar la
+  redacción.
+- Usar diagramas cuando aclaren.
 
 ## Estructura
 
@@ -110,7 +122,6 @@ No usar el archivo como historial ni como lista de todo lo que falta explorar.
 
 - Explicar significado funcional, entradas, condiciones, resultados, supuestos y efectos relevantes.
   Enlazar el código que se explica por sí mismo, sin narrarlo línea a línea.
-- Omitir introducciones genéricas, resúmenes repetidos y secciones vacías.
 - Relacionar el vocabulario del negocio con tipos, tablas e interfaz para establecer el lenguaje ubicuo.
 - Documentar secuencias y comportamiento en `flow-map`; código, acoplamientos e impacto en
   `implementation-map`. Enlazar lo compartido.
@@ -323,15 +334,7 @@ Muestra al usuario este mensaje antes de empezar:
 
 📝 Preparando el borrador
 
-**Importante.** Escribe claro y sencillo. El criterio es la información, no la longitud:
-
-- Cada frase aporta un hecho, una regla, un motivo, un ancla o un límite. Si al quitarla no se
-  pierde nada, quítala.
-- Sin introducciones, resúmenes, repeticiones ni relleno. Lo ya explicado se enlaza.
-- Recortar nunca justifica omitir. Conserva siempre hechos, reglas con su motivo y ámbito,
-  excepciones, anclas, procedencia, discrepancias y limitaciones.
-- Ante la duda entre acortar o perder información, conserva la información y simplifica la
-  redacción.
+**Importante.** Aplica las reglas de [Redacción](#redacción).
 
 Crea o actualiza los documentos del área con las [plantillas](#templates) y la evidencia disponible.
 Los opcionales solo si hay contenido relevante; no crees archivos vacíos.
@@ -375,6 +378,8 @@ Muestra al usuario este mensaje antes de empezar:
 
 🕵️ Revisando el borrador
 
+**Importante.** Comprueba que el texto cumple [Redacción](#redacción).
+
 Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 
 - Afirmaciones sin ancla o con ancla que no resuelve.
@@ -384,7 +389,7 @@ Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 - Impacto definitivo de cambios no diseñados; garantías inventadas. Distingue tests existentes de
   verificaciones propuestas.
 - Diagramas que contradicen las fuentes; enlaces internos rotos.
-- Duplicación, relleno, placeholders de plantilla y enlaces a SDD.
+- Texto que incumple [Redacción](#redacción) y placeholders de plantilla.
 - Incoherencias entre `01_about.md`, vocabulario, invariantes y mapas.
 
 Con los hallazgos:
