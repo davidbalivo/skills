@@ -198,7 +198,7 @@ Hay dos tipos de captura: directa, para documentar un área o tema, y a partir d
   - Define qué debe explicar la captura y qué debe poder hacer el receptor con ese conocimiento.
   - No repitas datos ya proporcionados ni conviertas la entrada en un cuestionario.
   - Localiza la ruta de código si no se ha indicado.
-  - Identifica el dominio, el área y el tema que se documentarán antes de continuar.
+  - Identifica de forma provisional el dominio, el área y el tema para consultar el conocimiento existente.
   - Si alguno no está claro, usa la información de la petición y una exploración inicial para localizarlo.
   - Pregunta solo si no puedes identificarlo con esa información.
 
@@ -226,31 +226,32 @@ Si vuelve a rechazarlo, continúa sin abrirlos y mantén visible esa limitación
 
 ### 3. Delimitar la captura
 
-Combinar la petición con el conocimiento encontrado para acordar dominio, área, tema y cobertura de
-la sesión. Si ya están claros, continuar. Usar nombres existentes; confirmar nombres o límites nuevos
-antes de escribir. Una tarea puede atravesar varias áreas: identificar las implicadas y acordar cuál
-se documentará en esta captura, sin forzar todo el recorrido dentro de una sola área.
+Con la información obtenida en los pasos anteriores, fija el dominio, el área, el tema y la cobertura
+de la captura. Reutiliza los nombres existentes. Si necesitas crear un dominio, un área o un límite
+nuevo, confírmalo con el usuario antes de escribir.
 
-Una sesión puede cubrir un flujo concreto. Registrar en `dna/deferred-findings.md` los hallazgos importantes
-que requieran atención y el conocimiento relevante del dominio que deba documentarse fuera del
-alcance actual, según la sección «Hallazgos fuera de alcance». Si una conexión es necesaria para explicar el recorrido acordado,
-investigar lo suficiente para comprenderla o acordar una reducción de cobertura, dejando explícitas
-las limitaciones. Aplazarla no resuelve los huecos ni permite dar por respaldadas las conclusiones
-que dependan de ella.
+Decide si necesitas crear una captura, ampliar una existente o actualizar una parte. Define qué se
+documentará y qué quedará fuera. Una captura puede cubrir un área completa o un flujo concreto.
+Incluye el contexto necesario para explicarlo, sin ampliar la captura con dependencias que no aporten
+a ese objetivo.
 
-Si la captura es nueva, crear `00_harvest.md` en `draft` con el alcance, el resultado esperado y el
-siguiente paso. Si ya existe, seguir la continuidad registrada y actualizar el alcance cuando cambie.
+Para los hallazgos fuera de alcance, sigue la sección [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
 
-Distinguir el foco inicial del contexto necesario para comprenderlo. El alcance de modificación se
-decidirá en la especificación y el plan; investigar una dependencia no implica cambiarla.
-Un intervalo de líneas es un punto de entrada, no una frontera de investigación ni una unidad DNA.
-En archivos grandes, localizar símbolos o bloques funcionales y leer los tramos pertinentes. En
-métodos monolíticos, identificar operaciones, condiciones y flujo de control junto a la revisión del
-código. No cargar todo el archivo por defecto ni excluir dependencias por estar fuera del intervalo.
+Si la captura es nueva, crea `00_harvest.md` con la [plantilla](templates/00_harvest.md):
+
+- Define el frontmatter `status: draft`.
+- Completa `Alcance`, `Resultado esperado` y `Próximo paso`.
+
+Si ya existe, sigue su continuidad y actualiza el alcance cuando cambie.
 
 ### 4. Investigar el sistema
 
 Leer código, tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
+
+Usa un intervalo de líneas solo como punto de entrada. En archivos grandes, localiza símbolos o
+bloques funcionales y lee los tramos necesarios. En métodos monolíticos, identifica operaciones,
+condiciones y flujo de control. No cargues archivos completos por defecto ni ignores dependencias
+solo porque estén fuera del intervalo inicial.
 
 - Derivar el vocabulario desde tipos, tablas, campos y etiquetas de interfaz.
 - Seguir quién prepara las entradas, qué condiciones activan el bloque y qué dependencias utiliza.
