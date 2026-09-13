@@ -50,9 +50,6 @@ dna/
             `-- 07_unknowns.md
 ```
 
-Crear `00_harvest.md` al iniciar la captura y los demás documentos obligatorios al preparar el
-borrador. Crear los opcionales solo cuando tengan contenido.
-
 En capturas parciales, indicar qué está documentado y qué queda sin explorar.
 
 Los índices describen y enlazan el contenido existente sin duplicarlo. Conservar la organización y
@@ -321,20 +318,41 @@ En actualizaciones, verifica el contenido afectado y sus relaciones. Conserva el
 
 ### 5. Preparar el borrador y detectar huecos
 
-Crear o actualizar los documentos aplicables con la evidencia disponible. Indicar en `01_about.md`
-la cobertura y lo que queda sin explorar. Mantener navegables los índices global y de dominio.
+Muestra al usuario este mensaje antes de empezar:
 
-Marcar el contenido nuevo o modificado pendiente de revisión junto al bloque o documento
-correspondiente. Conservar las validaciones anteriores únicamente para el contenido que siga siendo
-válido y no esté afectado por el cambio. En `00_harvest.md`, distinguir el alcance aprobado del
-pendiente, tanto para la revisión experta como para la transferencia. Enlazar ese estado desde
-`01_about.md`, que conserva la descripción, cobertura y navegación del área. Una actualización parcial no
-renueva la validación de toda el área.
+📝 Preparando el borrador
 
-Convertir en preguntas los ganchos anotados en el paso 4. Priorizar preguntas por impacto y por lo que impide comprender el flujo. No convertir cada detalle
-técnico en una pregunta al experto. Guardar las preguntas en `00_harvest.md` con contexto y ancla
-suficientes para retomarlas en otra sesión. Cuando estén preparadas, usar `pending-expert`.
-Si no hay preguntas, continuar con la consolidación y revisión del agente.
+Crea o actualiza los documentos del área con las [plantillas](#templates) y la evidencia disponible.
+Los opcionales solo si hay contenido relevante; no crees archivos vacíos.
+
+| Archivo                    | Contenido                                              | Cuándo             |
+| -------------------------- | ------------------------------------------------------ | ------------------ |
+| `01_about.md`              | Propósito, límites, cobertura y qué queda sin explorar | Siempre            |
+| `04_flow-map.md`           | Flujos, estados, orden y excepciones                   | Siempre            |
+| `05_implementation-map.md` | Anclas, dependencias, impacto y qué verificar          | Siempre            |
+| `02_vocabulary.md`         | Términos del negocio y su representación en código     | Solo con contenido |
+| `03_invariants.md`         | Reglas que deben cumplirse, motivo y ámbito            | Solo con contenido |
+| `06_caveats.md`            | Comportamientos contraintuitivos y diagnóstico         | Solo con contenido |
+| `07_unknowns.md`           | Dudas que quedarán abiertas en la entrega              | Solo con contenido |
+| `dna/deferred-findings.md` | Hallazgos importantes fuera del alcance (global)       | Solo con contenido |
+
+Mantén navegables `dna/index.md` y el índice del dominio. Sigue las
+[Reglas de contenido y evidencia](#reglas-de-contenido-y-evidencia) y, para el último archivo,
+[Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+
+Marca lo pendiente de revisión:
+
+- Señala el contenido nuevo o modificado junto al bloque o documento.
+- Conserva las validaciones anteriores solo para el contenido no afectado.
+- En `00_harvest.md`, separa el alcance aprobado del pendiente. Una actualización parcial no
+  renueva la validación de toda el área.
+
+Prepara las preguntas para el experto:
+
+- Convierte en preguntas los ganchos anotados en el paso 4.
+- Prioriza por impacto y por lo que impide entender el flujo. No preguntes cada detalle técnico.
+- Guarda cada pregunta en `00_harvest.md`, sección `Preguntas pendientes`, con contexto y ancla.
+- Con preguntas listas, pasa a `pending-expert`. Sin preguntas, salta al paso 7.
 
 ### 6. Entrevistar al experto
 
