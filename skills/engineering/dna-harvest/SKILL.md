@@ -228,23 +228,35 @@ Si vuelve a rechazarlo, continúa sin abrirlos y mantén visible esa limitación
 
 ### 3. Delimitar la captura
 
-Con la información obtenida en los pasos anteriores, fija el dominio, el área, el tema y la cobertura
-de la captura. Reutiliza los nombres existentes. Si necesitas crear un dominio, un área o un límite
-nuevo, confírmalo con el usuario antes de escribir.
+Muestra al usuario este mensaje antes de empezar:
 
-Decide si necesitas crear una captura, ampliar una existente o actualizar una parte. Define qué se
-documentará y qué quedará fuera. Una captura puede cubrir un área completa o un flujo concreto.
-Incluye el contexto necesario para explicarlo, sin ampliar la captura con dependencias que no aporten
-a ese objetivo.
+```text
+🎯 Ahora vamos a delimitar el dominio y el área de la captura.
+- Dominio: parte del negocio con propósito, vocabulario, reglas y límites propios.
+- Área: parte concreta del dominio donde vive el conocimiento que se documenta.
+```
 
-Para los hallazgos fuera de alcance, sigue la sección [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+Con la información de los pasos anteriores, prepara una propuesta:
 
-Si la captura es nueva, crea `00_harvest.md` con la [plantilla](templates/00_harvest.md):
+- Dominio y área. Reutiliza los nombres existentes. Si hace falta uno nuevo, indícalo.
+- Tema y cobertura: qué se documentará y qué quedará fuera. Una captura puede cubrir un área
+  completa o un flujo concreto.
+- Tipo de captura: nueva, ampliación de una existente o actualización de una parte.
+- Contexto necesario para explicar el tema, sin dependencias que no aporten a ese objetivo.
 
-- Define el frontmatter `status: draft`.
-- Completa `Alcance`, `Resultado esperado` y `Próximo paso`.
+Presenta la propuesta y pide al usuario el ok explícito a tres cosas: dominio, área y línea de
+trabajo (tema, cobertura y tipo de captura). Espera siempre su confirmación:
 
-Si ya existe, sigue su continuidad y actualiza el alcance cuando cambie.
+- Si corrige algo, ajusta la propuesta y vuelve a pedir el ok.
+- No escribas en `dna/` hasta tener las tres confirmadas.
+
+Con el ok:
+
+- Captura nueva: crea `00_harvest.md` con la [plantilla](templates/00_harvest.md), frontmatter
+  `status: draft` y las secciones `Alcance`, `Resultado esperado` y `Próximo paso`.
+- Captura existente: sigue su continuidad y actualiza el alcance si cambia.
+- Hallazgos fuera de alcance: sigue la sección
+  [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
 
 ### 4. Investigar el sistema
 
