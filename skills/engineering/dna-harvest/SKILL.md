@@ -259,7 +259,7 @@ Con el ok:
 
 ### 4. Investigar el sistema
 
-Muestra al usuario este mensaje antes de empezar: 
+Muestra al usuario este mensaje antes de empezar:
 
 🔬 Investigando el sistema
 
@@ -321,6 +321,16 @@ En actualizaciones, verifica el contenido afectado y sus relaciones. Conserva el
 Muestra al usuario este mensaje antes de empezar:
 
 📝 Preparando el borrador
+
+**Importante.** Escribe claro y sencillo. El criterio es la información, no la longitud:
+
+- Cada frase aporta un hecho, una regla, un motivo, un ancla o un límite. Si al quitarla no se
+  pierde nada, quítala.
+- Sin introducciones, resúmenes, repeticiones ni relleno. Lo ya explicado se enlaza.
+- Recortar nunca justifica omitir. Conserva siempre hechos, reglas con su motivo y ámbito,
+  excepciones, anclas, procedencia, discrepancias y limitaciones.
+- Ante la duda entre acortar o perder información, conserva la información y simplifica la
+  redacción.
 
 Crea o actualiza los documentos del área con las [plantillas](#templates) y la evidencia disponible.
 Los opcionales solo si hay contenido relevante; no crees archivos vacíos.
