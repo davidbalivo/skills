@@ -32,11 +32,10 @@ Al incorporarlas, sustituir su desarrollo por un enlace al documento definitivo.
 {Repetir solo para preguntas reales. Al consolidar, enlazar el conocimiento incorporado o la duda
 trasladada a 07_unknowns.md; registrar un motivo breve si se descarta. Omitir si no hay preguntas.}
 
-## Revisión y transferencia
+## Revisión
 
 - Revisión experta: {pendiente, o persona/rol, fecha y alcance aprobado; conservar aprobaciones vigentes}.
 - Pendientes de revisión: {correcciones o contenido que falta aprobar; omitir si no aplica}.
-- Transferencia: {pendiente, o caso, fecha, resultado y cobertura comprobada}.
 
 ## Próximo paso
 

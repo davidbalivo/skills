@@ -101,7 +101,7 @@ El estado afecta solo al alcance en curso; conserva las aprobaciones anteriores 
 - Si hace falta investigar, volver a `draft`; si solo falta aclaración experta, a `pending-expert`.
   Las correcciones de redacción pueden permanecer en `in-review`.
 - Reabrir una captura validada solo por un alcance nuevo o una corrección identificada.
-- Cerrar la sesión no cambia el estado. Registrar la transferencia por separado.
+- Cerrar la sesión no cambia el estado.
 
 Al retomar, leer `00_harvest.md` y sus documentos enlazados. Continuar desde el próximo paso
 registrado. Reinvestigar solo ante cambios en las fuentes, nuevas pistas o evidencia insuficiente.
@@ -191,14 +191,14 @@ flowchart TD
     S --> R[Revisión externa]
     R --> C[Entrevistar y consolidar]
     C --> R2[Revisión externa]
-    R2 --> D[Revisión experta y transferencia]
+    R2 --> D[Revisión experta]
     D --> E[Cerrar]
     D -.->|Completar o corregir| B
 ```
 
 El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde el self-review, la
-revisión externa, la entrevista, la consolidación, la revisión experta o la transferencia, volver
-solo al paso necesario:
+revisión externa, la entrevista, la consolidación o la revisión experta, volver solo al paso
+necesario:
 
 - Investigar si falta evidencia técnica.
 - Entrevistar si falta una aclaración del experto.
@@ -599,7 +599,7 @@ Pregunta al usuario:
 
 ❓ ¿Quién es el experto que ha revisado?.
 
-Detente y espera. Registra nombre y fecha en `Revisión y transferencia` de `00_harvest.md`.
+Detente y espera. Registra nombre y fecha en `Revisión` de `00_harvest.md`.
 Es la procedencia de esta revisión.
 
 Pregunta al usuario:
@@ -625,7 +625,7 @@ la aprobación explícita.
 
 Con la aprobación:
 
-- Registra en `Revisión y transferencia` de `00_harvest.md` quién revisó, cuándo y qué alcance
+- Registra en `Revisión` de `00_harvest.md` quién revisó, cuándo y qué alcance
   aprobó.
 - Retira las marcas de pendiente de revisión del contenido aprobado.
 - Establece `status: validated` en el frontmatter de `00_harvest.md`. No lo establezcas sin
@@ -635,30 +635,10 @@ Si hubo cambios, haz un commit:
 
 docs(dna): expert-review {domain}/{area}
 
-### 13. Validar la transferencia
+### 13. Cerrar
 
-Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
-En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
-Pedir que use DNA para seguir el flujo, localizar la implementación, reconocer reglas, anticipar
-impacto y proponer pruebas o diagnóstico. El agente prepara el caso; el receptor aporta el resultado.
-
-Corregir los huecos que revele la prueba. Devolver al experto los cambios que alteren afirmaciones
-funcionales. Si no hay receptor disponible, indicar que la transferencia queda pendiente; no
-equiparar la self-review del agente con esta prueba.
-
-En actualizaciones, repetirla cuando cambien sustancialmente flujos, reglas o impacto. Una revisión
-parcial no valida todo el área. No repetir la prueba por cada ticket ni convertir la disponibilidad
-de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
-del contexto para esa tarea.
-
-Si hubo cambios, hacer un commit:
-
-docs(dna): transfer {domain}/{area}
-
-### 14. Cerrar
-
-Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
-transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
+Comprobar los archivos finales y resumir rutas, cobertura y revisión experta, señalando los
+pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
 paso. Cada pregunta queda resuelta e incorporada, trasladada a `07_unknowns.md` o descartada con un
 motivo breve; si la sesión se interrumpe, las preguntas por contestar permanecen pendientes.
 Conservar el documento para retomar la captura, sin convertirlo en un historial de conversaciones.
