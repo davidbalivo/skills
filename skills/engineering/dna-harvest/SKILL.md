@@ -94,7 +94,7 @@ El estado afecta solo al alcance en curso; conserva las aprobaciones anteriores 
 | `draft` | Investigación y borrador en preparación. |
 | `pending-expert` | Faltan respuestas del experto o su consolidación. |
 | `in-review` | Revisado por el agente; pendiente de aprobación experta. |
-| `validated` | El experto ha aprobado explícitamente el contenido y su alcance. |
+| `validated` | El experto ha aprobado explícitamente el contenido y su alcance, y la captura está finalizada. |
 
 - Recorrido habitual: `draft` → `pending-expert` → `in-review` → `validated`.
 - Sin preguntas al experto, pasar de `draft` a `in-review`.
@@ -628,45 +628,31 @@ Con la aprobación:
 - Registra en `Revisión` de `00_harvest.md` quién revisó, cuándo y qué alcance
   aprobó.
 - Retira las marcas de pendiente de revisión del contenido aprobado.
-- Establece `status: validated` en el frontmatter de `00_harvest.md`. No lo establezcas sin
-  aprobación explícita de todo el alcance.
+- No pases al paso 13 sin aprobación explícita de todo el alcance.
 
 Si hubo cambios, haz un commit:
 
 docs(dna): expert-review {domain}/{area}
 
-### 13. Cerrar
+### 13. Finalizar captura
 
-Comprobar los archivos finales y resumir rutas, cobertura y revisión experta, señalando los
-pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
-paso. Cada pregunta queda resuelta e incorporada, trasladada a `07_unknowns.md` o descartada con un
-motivo breve; si la sesión se interrumpe, las preguntas por contestar permanecen pendientes.
-Conservar el documento para retomar la captura, sin convertirlo en un historial de conversaciones.
-No declarar completadas validaciones no realizadas.
+Muestra al usuario este mensaje antes de empezar:
 
-Revisar las entradas de `dna/deferred-findings.md` afectadas por la captura: retirar las resueltas o documentadas
-y conservar lo pendiente con sus anclas y contexto para retomarlo. Resumir los hallazgos diferidos en la
-entrega y comprobar el enlace desde el índice global si el archivo existe.
+🏁 Finalizando captura
 
-Si la captura prepara una tarea, informar en el cierre si hay contexto suficiente para `sdd-spec`:
+Revisa a alto nivel que todo encaja, sin entrar en el detalle:
 
-- El problema está localizado y el comportamiento actual tiene evidencia.
-- Se conocen las entradas, salidas y conexiones que condicionan la tarea.
-- Las discrepancias relevantes están resueltas o identificadas, y los desconocidos restantes no
-  impiden formular los requisitos ni decidir el comportamiento que dependa de ellos.
+- `dna/index.md` y el índice del dominio llegan al contenido nuevo.
+- `01_about.md` es coherente con los mapas y con los archivos que existen.
+- No quedan marcas de pendiente de revisión ni placeholders de plantilla.
+- `dna/deferred-findings.md`: retira las entradas resueltas o documentadas en esta captura y conserva
+  las pendientes con su contexto. Comprueba su enlace desde `dna/index.md`.
+- `00_harvest.md` no tiene preguntas pendientes y `Próximo paso` indica que no hay acción pendiente.
 
-Cerrar una sesión con un borrador no acredita esa suficiencia. Indicar qué decisión impide cada
-hueco bloqueante y cómo aclararlo. Los pendientes ajenos a la tarea no bloquean su especificación.
-Esta valoración depende de la tarea: comunicarla en la entrega, sin convertir DNA en un registro de
-tickets. Enlazar el conocimiento y sus pendientes para que `sdd-spec` pueda consultarlos. No ejecutar
-`sdd-spec` automáticamente.
+Si algo no encaja, vuelve al paso que corresponda según [Flujo](#flujo).
 
-Si la especificación descubre una carencia relevante, ampliar la captura afectada. Tras implementar
-y verificar un cambio, revisar si ha invalidado el conocimiento documentado y actualizar solo lo
-afectado contra el código resultante. Una propuesta aprobada no demuestra comportamiento implementado.
+Establece `status: validated` en el frontmatter de `00_harvest.md`.
 
-Hacer un commit solo con los cambios DNA de la sesión:
+Haz un commit solo con los cambios DNA de la sesión:
 
-docs(dna): close {domain}/{area}
-
-No crear commits vacíos ni hacer push como parte de la captura.
+docs(dna): finalize {domain}/{area}
