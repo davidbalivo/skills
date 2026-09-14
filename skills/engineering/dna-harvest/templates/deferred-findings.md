@@ -8,8 +8,8 @@
 - Origen: {dónde se descubrió; enlace al conocimiento o captura de origen, si existe}.
 - Anclas disponibles: {rutas, símbolos, contratos u otras fuentes para retomar la investigación;
   indicar si aún no se han localizado}.
-- Relevancia: {por qué el hallazgo necesita atención o por qué el conocimiento es importante para
-  el dominio actual y debe documentarse}.
+- Relevancia: {por qué el hallazgo necesita atención, por qué el conocimiento es importante para
+  el dominio actual y debe documentarse, o qué regla o comportamiento cambiaría la propuesta}.
 - Fuera de alcance: {por qué no se atiende dentro de la captura actual}.
 
 {Repetir solo para los tres tipos indicados cuando sean importantes y estén fuera del alcance actual.

@@ -22,7 +22,8 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
 
 ## Idioma
 
-Escribir los documentos generados en español por defecto. Si el usuario indica otro idioma, usar ese.
+Escribir los documentos generados en español por defecto. Si el usuario indica otro idioma, usar ese,
+también en los títulos y campos de las plantillas.
 
 - Conservar en inglés los términos habituales de la industria del software: endpoint, framework,
   deploy, rollback, etc.
@@ -159,6 +160,8 @@ No usar el archivo como historial ni como lista de todo lo que falta explorar.
   Considerar los datos, la configuración y la versión desplegada.
 - Mantener explícitas las discrepancias entre código y reglas de negocio. Registrar lo irresuelto
   en `07_unknowns.md`.
+- Marcar el contenido nuevo o modificado pendiente de aprobación experta con la línea
+  `> Pendiente de revisión` bajo el título del bloque o del documento. Retirarla al aprobarse.
 
 ## Templates
 
@@ -287,7 +290,7 @@ trabajo (tema, cobertura y tipo de captura). Espera siempre su confirmación:
 Con el ok:
 
 - Captura nueva: crea `00_harvest.md` con la [plantilla](templates/00_harvest.md), frontmatter
-  `status: draft` y las secciones `Alcance`, `Resultado esperado` y `Próximo paso`.
+  `status: draft` y las secciones `Alcance`, con su resultado esperado, y `Próximo paso`.
 - Captura existente: sigue su continuidad y actualiza el alcance si cambia.
 - Hallazgos fuera de alcance: sigue la sección
   [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
@@ -321,7 +324,8 @@ Qué seguir:
 - Casos límite y posibles regresiones, con su mecanismo y evidencia.
 - Tests y puntos de diagnóstico que protejan u observen el comportamiento.
 - Ganchos para la entrevista: literales especiales, excepciones por cliente, comentarios de
-  advertencia, errores ignorados, órdenes implícitos y contradicciones. Anótalos para el paso 5.
+  advertencia, errores ignorados, órdenes implícitos y contradicciones. Anótalos en
+  `Hallazgos por incorporar` de `00_harvest.md`, con evidencia y posible destino.
 
 Busca consumidores y proveedores. Una referencia ausente no prueba código muerto: considera
 configuración, ejecución dinámica e integraciones no disponibles.
@@ -365,7 +369,8 @@ la evidencia disponible. Mantén navegables `dna/index.md` y el índice del domi
 
 Marca lo pendiente de revisión:
 
-- Señala el contenido nuevo o modificado junto al bloque o documento.
+- Señala el contenido nuevo o modificado con la marca definida en
+  [Reglas de contenido y evidencia](#reglas-de-contenido-y-evidencia).
 - Conserva las validaciones anteriores solo para el contenido no afectado.
 - En `00_harvest.md`, separa el alcance aprobado del pendiente. Una actualización parcial no
   renueva la validación de toda el área.
