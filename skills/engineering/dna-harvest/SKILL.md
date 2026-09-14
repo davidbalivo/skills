@@ -581,28 +581,57 @@ Repite el paso 7 sobre el contenido consolidado:
 - Triaje con la misma tabla de destinos. Un finding con destino Preguntar vuelve al paso 8 y
   después al 9.
 
+Registra en `00_harvest.md` el próximo paso: revisión experta.
+
 Si hubo cambios, haz un commit:
 
 docs(dna): interview external-review {domain}/{area}
 
 ### 12. Solicitar revisión experta y resolver findings
 
-Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
-disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
-disponible, conservar `status: in-review` en el frontmatter de `00_harvest.md` y pasar al cierre con
-la aprobación pendiente registrada allí.
-Al retomar la sesión, comprobar si han cambiado las fuentes antes de continuar la revisión.
+Muestra al usuario este mensaje antes de empezar:
 
-Analizar cada finding con el usuario: aplicar si está respaldado; rechazar con explicación si es
-incorrecto; registrar como desconocido si no puede resolverse. Revisar de nuevo las partes cambiadas
-y pedir confirmación sobre ellas. No atribuir al experto una validación que no haya dado.
+🎓 Revisión experta
 
-Registrar en `00_harvest.md` quién revisó, cuándo y qué alcance aprobó. Establecer `status: validated`
-en su frontmatter solo tras aprobación explícita; mantener visibles los desconocidos aceptados y el alcance no aprobado.
-En una corrección puramente mecánica de referencias,
-comprobar las anclas sin exigir una nueva validación funcional.
+**Importante.** Aplica las reglas de [Redacción](#redacción) a los cambios.
 
-Si hubo cambios, hacer un commit:
+Pregunta al usuario:
+
+❓ ¿Quién es el experto que ha revisado?.
+
+Detente y espera. Registra nombre y fecha en `Revisión y transferencia` de `00_harvest.md`.
+Es la procedencia de esta revisión.
+
+Pregunta al usuario:
+
+❓ Alcance revisado: {dominio, área, tema y cobertura}. ¿Está todo correcto o hay hallazgos que
+revisar? Puedes darlos uno a uno o todos a la vez.
+
+Detente y espera. Con la aprobación, salta a `Con la aprobación`.
+
+Con cada finding:
+
+- Reformula lo entendido y confirma antes de actuar.
+- Analiza el finding contra las fuentes y da tu recomendación al experto.
+- Si coincides, aplícalo.
+- Si discrepas, expón tu evidencia. El experto decide. Si mantiene el finding, aplícalo con
+  procedencia experta y registra tu evidencia contraria en `07_unknowns.md` como contradicción
+  entre código y testimonio.
+- Trata su contenido como una respuesta del paso 8: mismos casos y destinos.
+- Revisa las partes cambiadas con los criterios del paso 6.
+
+Tras resolver todos los findings, repite la petición solo con las partes cambiadas. Continúa hasta
+la aprobación explícita.
+
+Con la aprobación:
+
+- Registra en `Revisión y transferencia` de `00_harvest.md` quién revisó, cuándo y qué alcance
+  aprobó.
+- Retira las marcas de pendiente de revisión del contenido aprobado.
+- Establece `status: validated` en el frontmatter de `00_harvest.md`. No lo establezcas sin
+  aprobación explícita de todo el alcance.
+
+Si hubo cambios, haz un commit:
 
 docs(dna): expert-review {domain}/{area}
 
