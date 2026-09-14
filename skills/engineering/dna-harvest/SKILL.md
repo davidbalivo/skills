@@ -17,6 +17,7 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
 - Distinguir comportamiento observado, reglas esperadas y testimonio experto.
 - Conservar el motivo y el ámbito de las reglas y excepciones. Declarar lo desconocido sin inventarlo.
 - Acotar la captura y declarar su cobertura. En actualizaciones, revisar solo el contenido afectado.
+- No corregir código durante la captura.
 - Claridad sobre volumen, según [Redacción](#redacción).
 
 ## Idioma
@@ -98,12 +99,15 @@ No transcribir conversaciones ni registrar cada búsqueda.
 
 ## Hallazgos fuera de alcance
 
-`dna/deferred-findings.md` recoge dos casos:
+`dna/deferred-findings.md` recoge tres casos:
 
 - Hallazgos importantes que quedan fuera del alcance actual y necesitan atención, aunque atenderlos
-  no consista en documentar.
+  no consista en documentar. Incluye los defectos confirmados por el experto.
 - Conocimiento importante para el dominio actual que debe documentarse, pero queda fuera del alcance
   de esta captura. Explicar por qué es relevante y necesita documentación.
+- Propuestas de cambio del experto: reglas que deberían cumplirse o comportamientos que deberían
+  cambiar y aún no están vigentes. No son verdad actual y no entran en los documentos del área.
+  Registrar quién lo propone y cuándo. Las ideas sueltas no se registran.
 
 Crear el archivo con el primer hallazgo y enlazarlo desde `dna/index.md`. Cada entrada explica qué
 se encontró, dónde, sus referencias, por qué importa y por qué queda fuera del alcance. Reutilizar
@@ -114,7 +118,7 @@ Guardar cada tipo de información en su archivo:
 - `00_harvest.md`: trabajo y preguntas de la captura actual.
 - `07_unknowns.md`: dudas o contradicciones que siguen abiertas en la documentación entregada.
 - `deferred-findings.md`: hallazgos importantes fuera del alcance actual que requieren atención o
-  documentación.
+  documentación, y propuestas de cambio.
 
 No usar el archivo como historial ni como lista de todo lo que falta explorar.
 
@@ -367,7 +371,8 @@ Prepara las preguntas para el experto:
 
 - Convierte en preguntas los ganchos anotados en el paso 4.
 - Prioriza por impacto y por lo que impide entender el flujo. No preguntes cada detalle técnico.
-- Guarda cada pregunta en `00_harvest.md`, sección `Preguntas pendientes`, con contexto y ancla.
+- Guarda cada pregunta en `00_harvest.md`, sección `Preguntas pendientes`, en orden de prioridad y
+  con contexto y ancla.
 - Con preguntas listas, pasa a `pending-expert`.
 
 Haz un commit solo con los cambios DNA de la sesión, como base antes de revisar:
@@ -397,7 +402,8 @@ Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 Con los hallazgos:
 
 - Corrige lo demostrable.
-- Lo que requiera conocimiento experto pasa a `Preguntas pendientes` en `00_harvest.md`.
+- Lo que requiera conocimiento experto pasa a `Preguntas pendientes` en `00_harvest.md`, insertado
+  según su prioridad.
 - Lo que no pueda resolverse queda en `07_unknowns.md`.
 - No investigues indefinidamente por desconocidos ya reconocidos.
 
@@ -443,7 +449,7 @@ Con los findings recibidos:
 | Destino   | Acción                                                                                        |
 | --------- | --------------------------------------------------------------------------------------------- |
 | Aplicar   | Corregir el documento afectado.                                                               |
-| Preguntar | Requiere conocimiento experto: `Preguntas pendientes` en `00_harvest.md`, con contexto y ancla. |
+| Preguntar | Requiere conocimiento experto: `Preguntas pendientes` en `00_harvest.md`, según su prioridad, con contexto y ancla. |
 | Registrar | No puede resolverse con las fuentes disponibles: `07_unknowns.md`.                            |
 | Diferir   | Importante pero fuera del alcance acordado: [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance). |
 | Rechazar  | Incorrecto, sin valor o decisión deliberada: motivo en la conversación.                       |
@@ -463,31 +469,55 @@ docs(dna): external-review {domain}/{area}
 
 ### 8. Entrevistar al experto
 
-Sin preguntas pendientes, salta al paso 9.
+Sin preguntas en `Preguntas pendientes` de `00_harvest.md`, salta al paso 9.
 
-Formular una pregunta por mensaje y esperar la respuesta. Presentar el hallazgo y su ancla con el
-contexto mínimo necesario. Validar primero el recorrido funcional y profundizar en motivos,
-invariantes, excepciones y diagnóstico.
+Muestra al usuario este mensaje antes de empezar:
 
-Cuando ayude a explicar un riesgo, preguntar por un incidente real: qué ocurrió, qué señal permitió
-detectarlo, qué se descartó y qué habría interpretado mal alguien nuevo. También preguntar por
-dependencias operativas que no aparecen en el código, como preparación manual, correcciones de
-datos o integraciones fuera del recorrido investigado. No limitar la entrevista a rarezas visibles.
+❓ Preguntas para el domain expert
 
-Contrastar las respuestas con las fuentes disponibles. Si contradicen el código, distinguir lo que
-debería ocurrir de lo que ocurre y pedir aclaración. Si una respuesta descubre otra ruta o
-dependencia que condiciona el recorrido acordado, volver a investigar y actualizar los mapas antes
-de continuar. Registrar en `dna/deferred-findings.md` los hallazgos importantes y necesidades de documentación
-fuera de alcance que cumplan sus criterios.
-Separar explicaciones del estado actual, reglas esperadas vigentes y deseos para el cambio futuro.
-Trasladar estos últimos al contexto de la especificación, sin publicarlos como verdad actual en DNA.
-No corregir código durante la captura.
+El experto responde en la conversación, directamente o a través del usuario. Al empezar:
 
-Cerrar la entrevista cuando los huecos relevantes estén respondidos o reconocidos como desconocidos.
-Registrar las respuestas con su procedencia en `00_harvest.md` hasta incorporarlas al conocimiento.
-Si no hay experto disponible y faltan respuestas, conservar `pending-expert` y cerrar la sesión con
-las preguntas y el próximo paso registrados. En actualizaciones sin dudas para el experto, omitir
-esta entrevista.
+- Pide una vez el nombre o rol del experto y anota la fecha. Es la procedencia de cada respuesta.
+- Establece `pending-expert` en `00_harvest.md` si no lo está.
+- Recorre las preguntas en el orden en que están guardadas.
+
+Por cada pregunta:
+
+- Una pregunta por mensaje, también las repreguntas. Espera la respuesta antes de seguir.
+- Formula en términos funcionales. El hallazgo y su ancla van como referencia, con el contexto
+  mínimo.
+- Valida primero el recorrido funcional; después motivos, invariantes, excepciones y diagnóstico.
+- Repregunta hasta cerrar el tema. Un tema está cerrado cuando tienes el hecho o la regla, su
+  motivo, su ámbito, sus excepciones y la procedencia, o el experto declara que no lo sabe.
+- No completes con suposiciones lo que la respuesta no dice. Si es parcial o ambigua, repregunta.
+- Antes de registrar, reformula lo entendido y pide confirmación. Registra solo lo confirmado.
+- Registra cada respuesta confirmada en `00_harvest.md`, junto a su pregunta y con procedencia,
+  tras cada respuesta, por si la sesión se interrumpe.
+
+Pregunta también, cuando ayude a explicar un riesgo:
+
+- Incidentes reales: qué ocurrió, qué señal permitió detectarlo, qué se descartó y qué habría
+  interpretado mal alguien nuevo.
+- Dependencias operativas ausentes del código: preparación manual, correcciones de datos,
+  integraciones fuera del recorrido investigado.
+
+Contrasta cada respuesta con las fuentes y actúa según el caso:
+
+- Coincide con el código: hecho o regla con procedencia, pendiente de consolidar en el paso 9.
+- Contradice el código: distingue lo que debería ocurrir de lo que ocurre y pide aclaración. Si el
+  experto confirma un defecto, registra la discrepancia en `03_invariants.md` y una entrada en
+  `deferred-findings.md` como hallazgo que requiere atención.
+- Describe un cambio deseado y no una regla vigente: entrada en `deferred-findings.md` como
+  propuesta de cambio, según [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+- Abre otra ruta o dependencia que condiciona el recorrido acordado: vuelve al paso 4, actualiza
+  los mapas y retoma la entrevista.
+- Genera una pregunta nueva: insértala en `Preguntas pendientes` según su prioridad y sigue.
+- El experto no lo sabe: márcala como candidata a `07_unknowns.md`.
+- La pregunta no aplica: descártala con un motivo breve.
+
+Cierra la entrevista cuando todas las preguntas estén respondidas, trasladadas o descartadas. Si el
+experto no está disponible y quedan preguntas, conserva `pending-expert`, registra el próximo paso
+y cierra la sesión.
 
 ### 9. Consolidar y repetir el self-review
 

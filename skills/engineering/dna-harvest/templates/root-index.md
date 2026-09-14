@@ -10,5 +10,5 @@
 
 {Incluir este apartado solo si existe deferred-findings.md; omitir el apartado completo si no existe.}
 
-[Consultar los hallazgos pendientes](deferred-findings.md): hallazgos que requieren atención y
-conocimiento relevante del dominio pendiente de documentar.
+[Consultar los hallazgos pendientes](deferred-findings.md): hallazgos que requieren atención,
+conocimiento relevante del dominio pendiente de documentar y propuestas de cambio.
