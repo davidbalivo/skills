@@ -68,6 +68,22 @@ En capturas parciales, indicar qué está documentado y qué queda sin explorar.
 Los índices describen y enlazan el contenido existente sin duplicarlo. Conservar la organización y
 el contenido ajenos al alcance.
 
+## Documentos del área
+
+Cada dato va al archivo que le corresponde. Los opcionales solo se crean con contenido relevante;
+nunca vacíos. El último es global y sigue [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+
+| Archivo                    | Contenido                                              | Cuándo             |
+| -------------------------- | ------------------------------------------------------ | ------------------ |
+| `01_about.md`              | Propósito, límites, cobertura y qué queda sin explorar | Siempre            |
+| `04_flow-map.md`           | Flujos, estados, orden y excepciones                   | Siempre            |
+| `05_implementation-map.md` | Anclas, dependencias, impacto y qué verificar          | Siempre            |
+| `02_vocabulary.md`         | Términos del negocio y su representación en código     | Solo con contenido |
+| `03_invariants.md`         | Reglas que deben cumplirse, motivo y ámbito            | Solo con contenido |
+| `06_caveats.md`            | Comportamientos contraintuitivos y diagnóstico         | Solo con contenido |
+| `07_unknowns.md`           | Dudas que quedarán abiertas en la entrega              | Solo con contenido |
+| `dna/deferred-findings.md` | Hallazgos importantes fuera del alcance (global)       | Solo con contenido |
+
 ## Estado y continuidad
 
 `00_harvest.md` guarda el trabajo y el estado de la captura en su frontmatter `status`.
@@ -174,7 +190,8 @@ flowchart TD
     B --> S[Self-review adversarial]
     S --> R[Revisión externa]
     R --> C[Entrevistar y consolidar]
-    C --> D[Revisión experta y transferencia]
+    C --> R2[Revisión externa]
+    R2 --> D[Revisión experta y transferencia]
     D --> E[Cerrar]
     D -.->|Completar o corregir| B
 ```
@@ -342,23 +359,9 @@ Muestra al usuario este mensaje antes de empezar:
 
 **Importante.** Aplica las reglas de [Redacción](#redacción).
 
-Crea o actualiza los documentos del área con las [plantillas](#templates) y la evidencia disponible.
-Los opcionales solo si hay contenido relevante; no crees archivos vacíos.
-
-| Archivo                    | Contenido                                              | Cuándo             |
-| -------------------------- | ------------------------------------------------------ | ------------------ |
-| `01_about.md`              | Propósito, límites, cobertura y qué queda sin explorar | Siempre            |
-| `04_flow-map.md`           | Flujos, estados, orden y excepciones                   | Siempre            |
-| `05_implementation-map.md` | Anclas, dependencias, impacto y qué verificar          | Siempre            |
-| `02_vocabulary.md`         | Términos del negocio y su representación en código     | Solo con contenido |
-| `03_invariants.md`         | Reglas que deben cumplirse, motivo y ámbito            | Solo con contenido |
-| `06_caveats.md`            | Comportamientos contraintuitivos y diagnóstico         | Solo con contenido |
-| `07_unknowns.md`           | Dudas que quedarán abiertas en la entrega              | Solo con contenido |
-| `dna/deferred-findings.md` | Hallazgos importantes fuera del alcance (global)       | Solo con contenido |
-
-Mantén navegables `dna/index.md` y el índice del dominio. Sigue las
-[Reglas de contenido y evidencia](#reglas-de-contenido-y-evidencia) y, para el último archivo,
-[Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+Crea o actualiza los [documentos del área](#documentos-del-área) con las [plantillas](#templates) y
+la evidencia disponible. Mantén navegables `dna/index.md` y el índice del dominio. Sigue las
+[Reglas de contenido y evidencia](#reglas-de-contenido-y-evidencia).
 
 Marca lo pendiente de revisión:
 
@@ -373,7 +376,7 @@ Prepara las preguntas para el experto:
 - Prioriza por impacto y por lo que impide entender el flujo. No preguntes cada detalle técnico.
 - Guarda cada pregunta en `00_harvest.md`, sección `Preguntas pendientes`, en orden de prioridad y
   con contexto y ancla.
-- Con preguntas listas, pasa a `pending-expert`.
+- Con preguntas listas, establece `status: pending-expert` en el frontmatter de `00_harvest.md`.
 
 Haz un commit solo con los cambios DNA de la sesión, como base antes de revisar:
 
@@ -478,7 +481,7 @@ Muestra al usuario este mensaje antes de empezar:
 El experto responde en la conversación, directamente o a través del usuario. Al empezar:
 
 - Pide una vez el nombre o rol del experto y anota la fecha. Es la procedencia de cada respuesta.
-- Establece `pending-expert` en `00_harvest.md` si no lo está.
+- Establece `status: pending-expert` en el frontmatter de `00_harvest.md` si no lo está.
 - Recorre las preguntas en el orden en que están guardadas.
 
 Por cada pregunta:
@@ -516,39 +519,73 @@ Contrasta cada respuesta con las fuentes y actúa según el caso:
 - La pregunta no aplica: descártala con un motivo breve.
 
 Cierra la entrevista cuando todas las preguntas estén respondidas, trasladadas o descartadas. Si el
-experto no está disponible y quedan preguntas, conserva `pending-expert`, registra el próximo paso
-y cierra la sesión.
+experto no está disponible y quedan preguntas, conserva `status: pending-expert` en el frontmatter
+de `00_harvest.md`, registra el próximo paso y cierra la sesión.
+
+Haz un commit, también si la sesión se cierra con preguntas pendientes:
+
+docs(dna): interview {domain}/{area}
 
 ### 9. Consolidar y repetir el self-review
 
-Incorpora las respuestas del experto:
+Muestra al usuario este mensaje antes de empezar:
 
-- Añade cada respuesta con su procedencia en el documento definitivo.
-- Sustituye en `00_harvest.md` los hallazgos consolidados por enlaces a su destino.
-- Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, sin mantener dos copias.
+🧩 Consolidando respuestas
 
-Repite el self-review del paso 6 sobre el contenido nuevo o modificado. Vuelve a la entrevista si
-queda una contradicción que requiere conocimiento experto.
+Sin respuestas que incorporar, establece `status: in-review` en el frontmatter de `00_harvest.md` y
+salta al paso 11.
 
-Con el contenido listo para revisión experta, establece `in-review` en `00_harvest.md`.
+Incorpora cada respuesta confirmada:
 
-### 10. Solicitar revisión experta y resolver findings
+- Escribe el hecho, regla, término, flujo o caveat en su [documento del área](#documentos-del-área),
+  con su procedencia. Los defectos y las propuestas ya tienen destino desde el paso 8.
+- Marca el contenido nuevo o modificado como pendiente de revisión, como en el paso 5.
+- Si creas un archivo, enlázalo en `Navegación` de `01_about.md`. Mantén navegables los índices.
+- Sustituye en `00_harvest.md` los hallazgos y respuestas consolidados por enlaces a su destino.
+- Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
+  paso 8, sin mantener dos copias.
+
+Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
+
+- Contradicción que requiere conocimiento experto: pregunta nueva en `Preguntas pendientes` y
+  vuelve al paso 8.
+- Falta evidencia técnica: vuelve al paso 4.
+
+Cuando no quede ninguna pregunta pendiente ni finding abierto, establece `status: in-review` en el
+frontmatter de `00_harvest.md`.
+
+Haz un commit:
+
+docs(dna): consolidate {domain}/{area}
+
+### 10. Revisar externamente la consolidación
+
+Repite el paso 7 sobre el contenido consolidado:
+
+- La petición enumera solo los documentos modificados desde la revisión anterior y las respuestas
+  del experto incorporadas.
+- Triaje con la misma tabla de destinos. Un finding con destino Preguntar vuelve al paso 8 y
+  después al 9.
+- Si hubo cambios, haz un commit: `docs(dna): review {domain}/{area}`.
+
+### 11. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
-disponible, conservar `in-review` y pasar al cierre con la aprobación pendiente en `00_harvest.md`.
+disponible, conservar `status: in-review` en el frontmatter de `00_harvest.md` y pasar al cierre con
+la aprobación pendiente registrada allí.
 Al retomar la sesión, comprobar si han cambiado las fuentes antes de continuar la revisión.
 
 Analizar cada finding con el usuario: aplicar si está respaldado; rechazar con explicación si es
 incorrecto; registrar como desconocido si no puede resolverse. Revisar de nuevo las partes cambiadas
 y pedir confirmación sobre ellas. No atribuir al experto una validación que no haya dado.
 
-Registrar en `00_harvest.md` quién revisó, cuándo y qué alcance aprobó. Establecer `validated` solo
-tras aprobación explícita; mantener visibles los desconocidos aceptados y el alcance no aprobado.
+Registrar en `00_harvest.md` quién revisó, cuándo y qué alcance aprobó. Establecer `status: validated`
+en su frontmatter solo tras aprobación explícita; mantener visibles los desconocidos aceptados y el alcance no aprobado.
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
-### 11. Validar la transferencia
+### 12. Validar la transferencia
 
 Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
@@ -564,7 +601,7 @@ parcial no valida todo el área. No repetir la prueba por cada ticket ni convert
 de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
 del contexto para esa tarea.
 
-### 12. Cerrar
+### 13. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
