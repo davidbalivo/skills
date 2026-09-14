@@ -412,7 +412,7 @@ Con los hallazgos:
 
 Haz un commit con las correcciones:
 
-docs(dna): self-review {domain}/{area}
+docs(dna): draft self-review {domain}/{area}
 
 ### 7. Solicitar revisión externa y resolver findings
 
@@ -468,7 +468,7 @@ Espera su decisión. Otra ronda: repite la petición con los documentos actualiz
 
 Si hubo cambios, haz un commit:
 
-docs(dna): external-review {domain}/{area}
+docs(dna): draft external-review {domain}/{area}
 
 ### 8. Entrevistar al experto
 
@@ -526,14 +526,14 @@ Haz un commit, también si la sesión se cierra con preguntas pendientes:
 
 docs(dna): interview {domain}/{area}
 
-### 9. Consolidar y repetir el self-review
+### 9. Consolidar las respuestas
 
 Muestra al usuario este mensaje antes de empezar:
 
 🧩 Consolidando respuestas
 
 Sin respuestas que incorporar, establece `status: in-review` en el frontmatter de `00_harvest.md` y
-salta al paso 11.
+salta al paso 12.
 
 Incorpora cada respuesta confirmada:
 
@@ -545,6 +545,16 @@ Incorpora cada respuesta confirmada:
 - Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
   paso 8, sin mantener dos copias.
 
+Haz un commit:
+
+docs(dna): interview consolidate {domain}/{area}
+
+### 10. Self-review de la consolidación
+
+Muestra al usuario este mensaje antes de empezar:
+
+🕵️ Revisando la consolidación
+
 Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
 
 - Contradicción que requiere conocimiento experto: pregunta nueva en `Preguntas pendientes` y
@@ -554,11 +564,11 @@ Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
 Cuando no quede ninguna pregunta pendiente ni finding abierto, establece `status: in-review` en el
 frontmatter de `00_harvest.md`.
 
-Haz un commit:
+Si hubo cambios, haz un commit:
 
-docs(dna): consolidate {domain}/{area}
+docs(dna): interview self-review {domain}/{area}
 
-### 10. Revisar externamente la consolidación
+### 11. Revisar externamente la consolidación
 
 Repite el paso 7 sobre el contenido consolidado:
 
@@ -566,9 +576,12 @@ Repite el paso 7 sobre el contenido consolidado:
   del experto incorporadas.
 - Triaje con la misma tabla de destinos. Un finding con destino Preguntar vuelve al paso 8 y
   después al 9.
-- Si hubo cambios, haz un commit: `docs(dna): review {domain}/{area}`.
 
-### 11. Solicitar revisión experta y resolver findings
+Si hubo cambios, haz un commit:
+
+docs(dna): interview external-review {domain}/{area}
+
+### 12. Solicitar revisión experta y resolver findings
 
 Presentar documentos modificados, alcance, diff cuando esté disponible y pendientes. Si hay experto
 disponible, pedir que revise exactitud, motivos e impacto y esperar su respuesta. Si no está
@@ -585,7 +598,11 @@ en su frontmatter solo tras aprobación explícita; mantener visibles los descon
 En una corrección puramente mecánica de referencias,
 comprobar las anclas sin exigir una nueva validación funcional.
 
-### 12. Validar la transferencia
+Si hubo cambios, hacer un commit:
+
+docs(dna): expert-review {domain}/{area}
+
+### 13. Validar la transferencia
 
 Registrar el caso y resultado de transferencia en `00_harvest.md`, separado del estado de revisión.
 En una captura inicial, proponer un caso realista dentro del alcance para una persona sin contexto.
@@ -601,7 +618,11 @@ parcial no valida todo el área. No repetir la prueba por cada ticket ni convert
 de un receptor en requisito para empezar una especificación; valorar por separado la suficiencia
 del contexto para esa tarea.
 
-### 13. Cerrar
+Si hubo cambios, hacer un commit:
+
+docs(dna): transfer {domain}/{area}
+
+### 14. Cerrar
 
 Comprobar los archivos finales y resumir rutas, cobertura, revisión experta y resultado de
 transferencia, señalando los pendientes. Dejar actualizado `00_harvest.md` con su estado y próximo
@@ -631,16 +652,8 @@ Si la especificación descubre una carencia relevante, ampliar la captura afecta
 y verificar un cambio, revisar si ha invalidado el conocimiento documentado y actualizar solo lo
 afectado contra el código resultante. Una propuesta aprobada no demuestra comportamiento implementado.
 
-Si procede un commit autorizado, incluir únicamente los cambios DNA de la sesión y usar:
+Hacer un commit solo con los cambios DNA de la sesión:
 
-```text
-docs(dna): document {domain}/{area}
-```
-
-Para una actualización:
-
-```text
-docs(dna): update {domain}/{area}
-```
+docs(dna): close {domain}/{area}
 
 No crear commits vacíos ni hacer push como parte de la captura.
