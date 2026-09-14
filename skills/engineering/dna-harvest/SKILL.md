@@ -532,6 +532,8 @@ Muestra al usuario este mensaje antes de empezar:
 
 🧩 Consolidando respuestas
 
+**Importante.** Aplica las reglas de [Redacción](#redacción).
+
 Sin respuestas que incorporar, establece `status: in-review` en el frontmatter de `00_harvest.md` y
 salta al paso 12.
 
@@ -554,6 +556,8 @@ docs(dna): interview consolidate {domain}/{area}
 Muestra al usuario este mensaje antes de empezar:
 
 🕵️ Revisando la consolidación
+
+**Importante.** Comprueba que el texto cumple [Redacción](#redacción).
 
 Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
 
