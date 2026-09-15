@@ -127,7 +127,7 @@ Mantenimiento de `00_harvest.md`:
 
 - Al retomar, léelo con sus documentos enlazados y continúa desde el próximo paso registrado.
   Reinvestiga solo ante cambios en las fuentes, nuevas pistas o evidencia insuficiente.
-- Mantén alcance, investigación, hallazgos pendientes, preguntas, revisión y próximo paso.
+- Mantén origen, alcance, investigación, hallazgos pendientes, preguntas, revisión y próximo paso.
   Actualízalo al cambiar de estado y antes de cerrar o interrumpir la sesión.
 - Sustituye los hallazgos consolidados por enlaces a su documento definitivo.
 - Trabaja aquí las preguntas de la captura. Traslada a `08_unknowns.md` las incógnitas que
@@ -281,20 +281,23 @@ entrevista o consolidación, vuelve solo al paso necesario:
 
 Trabaja por defecto en el repositorio desde el que se invoca la skill.
 
-Determina el tipo de captura con la información disponible:
+Determina el origen de la captura con la información disponible:
 
-- Ticket de Jira o explicación de una tarea: captura a partir de una tarea.
-- Dominio, área o tema que documentar: captura directa.
+- Ticket de Jira o explicación de una tarea: `Motivo: tarea`.
+- Dominio, área o tema que documentar: `Motivo: documentación solicitada`.
 - Sin información suficiente: pregunta qué quiere hacer y pide solo los datos que falten.
 
 Captura directa:
 
 - Recoge el dominio o área y el tema que se quiere explicar.
 - Usa el directorio, archivo de código o contexto adicional que aporte el usuario.
+- Registra `Fuente: petición del usuario`.
 
 Captura a partir de una tarea:
 
 - Recoge el ticket o la explicación. Si no puedes acceder al ticket, pide su contenido.
+- Si procede de Jira, registra `Fuente: Jira` seguida de la tarea, por ejemplo `FREEMA-4060`. En
+  otro caso, registra `Fuente: explicación aportada por el usuario`.
 - Identifica el problema, el comportamiento focal y los ejemplos disponibles.
 - No adelantes el diseño ni propongas una solución.
 - Directorio o archivo de código, dominio o área y contexto adicional son opcionales.
@@ -361,9 +364,9 @@ Espera siempre la confirmación:
 Con el ok:
 
 - Captura nueva: crea `00_harvest.md` con su [plantilla](templates/00_harvest.md), `status: draft`
-  y las secciones `Alcance`, con su resultado esperado, y `Próximo paso`.
-- Captura existente: sigue [Estado y continuidad](#estado-y-continuidad) y actualiza el alcance si
-  cambia.
+  y las secciones `Origen`, `Alcance`, con su resultado esperado, y `Próximo paso`.
+- Captura existente: sigue [Estado y continuidad](#estado-y-continuidad) y actualiza el origen y el
+  alcance si cambian.
 - Lo importante que queda fuera: [Hallazgos diferidos](#hallazgos-diferidos).
 
 ### 4. Investigación

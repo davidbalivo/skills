@@ -4,6 +4,12 @@ status: draft
 
 # Captura de {área}
 
+## Origen
+
+- Motivo: {tarea o documentación solicitada}.
+- Fuente: {si procede de Jira, Jira seguido de la tarea en código, por ejemplo FREEMA-4060; en otro
+  caso, petición o explicación aportada por el usuario}.
+
 ## Alcance
 
 {Comportamiento que se está capturando y límites. En una actualización, identificar el contenido
