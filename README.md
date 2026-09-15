@@ -48,6 +48,9 @@ Translate English or create and edit Spanish-language artifacts while preserving
 **[audit-ts-code](skills/engineering/audit-ts-code/)**
 Adversarial code quality auditor: reviews TypeScript changes across seven pillars before acceptance
 
+**[dna-audit-harvest](skills/engineering/dna-audit-harvest/)**
+Auditor externo de dna-harvest: revisa borrador y consolidación de una captura DNA para romperla antes de que llegue al experto
+
 **[git-operations](skills/engineering/git-operations/)**
 Rules for local git: commit strategy, write-op confirmation, message format
 
