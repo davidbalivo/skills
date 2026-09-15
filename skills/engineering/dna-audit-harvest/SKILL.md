@@ -26,6 +26,10 @@ antes de que el conocimiento se dé por fiable.
   concreto anclado en lo que el documento dice.
 - La ausencia de información solo es finding si la exige el contrato de `dna-harvest`: sus
   plantillas, sus documentos obligatorios y sus reglas de contenido.
+- Un hueco declarado no es finding. En modo Borrador los huecos que esperan al experto viven en
+  `Preguntas pendientes` de `00_harvest.md`. En la entrega, en `07_unknowns.md`. Es finding si el
+  hueco no está declarado en ninguno, si el documento lo afirma como hecho, o si la pregunta no
+  tiene contexto ni ancla.
 - Evalúa densidad, no longitud. Un finding de redacción señala la frase exacta que repite o no
   aporta. Contexto, motivo, ámbito, excepciones y limitaciones no son relleno. La brevedad no
   demuestra completitud.
@@ -92,10 +96,12 @@ Dimensiones comunes:
   símbolos, tests, tablas y contratos frente a números de línea.
 - **Procedencia**: toda afirmación no evidente indica su fuente según `Contenido y evidencia`.
   Código con ruta y símbolo. Experto con identidad o rol y fecha. Normativa con fuente y vigencia.
+  Sin fuente, la afirmación se presenta como pendiente de confirmar y enlaza su pregunta o duda.
 - **Separación de evidencia**: hechos observados en código, reglas esperadas y testimonio experto no
   se presentan como una sola evidencia.
-- **Motivo y ámbito**: cada regla y excepción tiene motivo y ámbito, o declara la duda y la enlaza en
-  `07_unknowns.md`. Un motivo supuesto es un finding.
+- **Motivo y ámbito**: cada regla y excepción tiene motivo y ámbito, o declara la duda. En modo
+  Borrador la duda vive en `Preguntas pendientes`; en la entrega, en `07_unknowns.md`. Un motivo
+  supuesto es un finding.
 - **Conexiones y fronteras**: las conexiones afirmadas tienen evidencia. Las fronteras no verificadas
   se declaran como tales. Una referencia ausente no se presenta como código muerto.
 - **Impacto y garantías**: el impacto se condiciona al tipo de cambio y a su mecanismo. Los tests
@@ -116,9 +122,17 @@ Dimensiones comunes:
 - **Redacción**: cumple `Redacción` del contrato. Señala la frase exacta que introduce, resume,
   repite o no aporta hecho, regla, motivo, ancla ni límite. Señala también lo omitido que el contrato
   obliga a conservar.
-- **Estado y continuidad**: `status` coincide con el contenido. `Preguntas pendientes` tiene contexto
-  y ancla por pregunta. `Próximo paso` indica una acción concreta. `Investigación realizada` declara
-  fecha, revisión y limitaciones.
+- **Estado y continuidad**: `status` coincide con el contenido. `Próximo paso` indica una acción
+  concreta. `Investigación realizada` declara fecha, revisión y limitaciones.
+
+Dimensión solo en modo Borrador:
+
+- **Preguntas al experto**: revisa `Preguntas pendientes` de `00_harvest.md`. Es finding:
+  - Un hueco que requiere al experto y no tiene pregunta. Motivo, ámbito, excepción o regla esperada
+    sin fuente.
+  - Una pregunta que el código ya responde. No debe ir al experto.
+  - Una pregunta sin contexto, sin ancla o sin prioridad clara.
+  - Una pregunta en términos técnicos en lugar de funcionales.
 
 Dimensión solo en modo Consolidación:
 
