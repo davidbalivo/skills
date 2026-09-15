@@ -114,7 +114,7 @@ Mantenimiento de `00_harvest.md`:
   permanezcan en la entrega.
 - No transcribas conversaciones ni registres cada búsqueda.
 
-## Hallazgos fuera de alcance
+## Hallazgos diferidos
 
 `dna/deferred-findings.md` es global a DNA y recoge tres casos:
 
@@ -140,7 +140,7 @@ Destino de cada pendiente:
 - `07_unknowns.md`: dudas o contradicciones abiertas en la documentación entregada.
 - `dna/deferred-findings.md`: los tres casos anteriores.
 
-## Reglas de contenido y evidencia
+## Contenido y evidencia
 
 - Explica significado funcional, entradas, condiciones, resultados, supuestos y efectos
   relevantes. Enlaza el código que se explica por sí mismo; no lo narres línea a línea.
@@ -186,15 +186,15 @@ entre llaves por contenido comprobado y elimina las instrucciones del resultado.
 
 ```mermaid
 flowchart TD
-    P[Recoger la petición] --> K[Consultar conocimiento existente]
-    K --> A[Delimitar la captura]
-    A --> B[Investigar y preparar borrador]
-    B --> S[Self-review adversarial]
+    P[Petición] --> K[Conocimiento existente]
+    K --> A[Delimitación]
+    A --> B[Investigación y borrador]
+    B --> S[Adversarial self-review]
     S --> R[Revisión externa]
-    R --> C[Entrevistar y consolidar]
-    C --> R2[Revisión externa]
+    R --> C[Entrevista y consolidación]
+    C --> R2[Revisión externa final]
     R2 --> D[Revisión experta]
-    D --> E[Cerrar]
+    D --> E[Cierre]
     D -.->|Completar o corregir| B
 ```
 
@@ -207,7 +207,7 @@ entrevista o consolidación, vuelve solo al paso necesario:
 
 ## Pasos
 
-### 1. Recoger la petición
+### 1. Petición
 
 Trabaja por defecto en el repositorio desde el que se invoca la skill.
 
@@ -238,7 +238,7 @@ En ambos casos:
 - Identifica de forma provisional dominio, área y tema con la petición y una exploración inicial.
   Pregunta solo si no puedes identificarlos.
 
-### 2. Consultar el conocimiento existente
+### 2. Conocimiento existente
 
 Muestra este mensaje antes de buscar:
 
@@ -264,7 +264,7 @@ Con lo leído:
 - Si hay indicios de duplicación y el usuario no quiere abrir los documentos, explica el riesgo.
   Si insiste, continúa sin abrirlos y mantén visible esa limitación.
 
-### 3. Delimitar la captura
+### 3. Delimitación
 
 Muestra este mensaje antes de empezar:
 
@@ -292,9 +292,9 @@ Con el ok:
 - Captura nueva: crea `00_harvest.md` con su [plantilla](templates/00_harvest.md), `status: draft`
   y las secciones `Alcance`, con su resultado esperado, y `Próximo paso`.
 - Captura existente: sigue su continuidad y actualiza el alcance si cambia.
-- Lo importante que queda fuera: [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).
+- Lo importante que queda fuera: [Hallazgos diferidos](#hallazgos-diferidos).
 
-### 4. Investigar el sistema
+### 4. Investigación
 
 Muestra este mensaje antes de empezar:
 
@@ -332,7 +332,7 @@ Conexiones:
   configuración, ejecución dinámica e integraciones no disponibles.
 - Por cada conexión relevante, elige: profundizar si puede cambiar la interpretación, documentar
   su contrato si basta para entenderla, o declarar frontera no verificada si falta evidencia.
-- Si queda fuera del alcance acordado, sigue [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance)
+- Si queda fuera del alcance acordado, sigue [Hallazgos diferidos](#hallazgos-diferidos)
   y conserva aquí solo el contrato o la frontera.
 
 Cuándo parar:
@@ -352,7 +352,7 @@ Registra en `Investigación realizada` de `00_harvest.md`:
 
 En actualizaciones, verifica el contenido afectado y sus relaciones. Conserva el resto.
 
-### 5. Preparar el borrador y detectar huecos
+### 5. Borrador
 
 Muestra este mensaje antes de empezar:
 
@@ -364,7 +364,7 @@ Documentos:
 
 - Crea o actualiza los [documentos del área](#documentos-del-área) con las
   [plantillas](#templates) y la evidencia disponible.
-- Sigue las [Reglas de contenido y evidencia](#reglas-de-contenido-y-evidencia).
+- Sigue las reglas de [Contenido y evidencia](#contenido-y-evidencia).
 - Mantén navegables `dna/index.md` y el índice del dominio.
 
 Pendiente de revisión:
@@ -384,7 +384,7 @@ Preguntas para el experto:
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit solo con los cambios DNA de la
 sesión: `docs(dna): draft {domain}/{area}`.
 
-### 6. Self-review adversarial
+### 6. Adversarial self-review
 
 Muestra este mensaje antes de empezar:
 
@@ -415,7 +415,7 @@ Con los hallazgos:
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit con las correcciones:
 `docs(dna): draft self-review {domain}/{area}`.
 
-### 7. Solicitar revisión externa y resolver findings
+### 7. Revisión externa
 
 La revisión externa la hace un revisor sin contexto de la sesión, persona o agente. Comprueba forma
 y evidencia. No sustituye la validación del experto ni cambia el `status` de `00_harvest.md`.
@@ -454,7 +454,7 @@ Con findings:
 | Aplicar   | Corregir el documento afectado.                                                                 |
 | Preguntar | Requiere conocimiento experto: `Preguntas pendientes` de `00_harvest.md`, con contexto y ancla. |
 | Registrar | No puede resolverse con las fuentes disponibles: `07_unknowns.md`.                              |
-| Diferir   | Importante pero fuera del alcance: [Hallazgos fuera de alcance](#hallazgos-fuera-de-alcance).   |
+| Diferir   | Importante pero fuera del alcance: [Hallazgos diferidos](#hallazgos-diferidos).                 |
 | Rechazar  | Incorrecto, sin valor o decisión deliberada: motivo en la conversación.                         |
 
 - No amplíes el alcance por un finding. Si lo exige, vuelve a acordarlo según el paso 3.
@@ -469,7 +469,7 @@ Espera su decisión. Otra ronda: repite la petición con los documentos actualiz
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
 `docs(dna): draft external-review {domain}/{area}`.
 
-### 8. Entrevistar al experto
+### 8. Entrevista
 
 Sin preguntas en `Preguntas pendientes` de `00_harvest.md`, salta al paso 9.
 
@@ -524,7 +524,7 @@ Cierre:
 - Actualiza `Próximo paso` de `00_harvest.md` y haz un commit, también si quedan preguntas
   pendientes: `docs(dna): interview {domain}/{area}`.
 
-### 9. Consolidar las respuestas
+### 9. Consolidación
 
 Muestra este mensaje antes de empezar:
 
@@ -547,7 +547,7 @@ Por cada respuesta confirmada:
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
 `docs(dna): interview consolidate {domain}/{area}`.
 
-### 10. Self-review de la consolidación
+### 10. Self-review final
 
 Muestra este mensaje antes de empezar:
 
@@ -566,7 +566,7 @@ Sin preguntas pendientes ni findings abiertos, establece `status: in-review`.
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
 `docs(dna): interview self-review {domain}/{area}`.
 
-### 11. Revisar externamente la consolidación
+### 11. Revisión externa final
 
 Repite el paso 7 sobre el contenido consolidado:
 
@@ -578,7 +578,7 @@ Repite el paso 7 sobre el contenido consolidado:
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
 `docs(dna): interview external-review {domain}/{area}`.
 
-### 12. Solicitar revisión experta y resolver findings
+### 12. Revisión experta
 
 Muestra este mensaje antes de empezar:
 
@@ -623,7 +623,7 @@ Con la aprobación:
 Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
 `docs(dna): expert-review {domain}/{area}`.
 
-### 13. Finalizar captura
+### 13. Cierre
 
 Muestra este mensaje antes de empezar:
 
