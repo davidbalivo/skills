@@ -40,6 +40,12 @@ Escribe claro y sencillo. El criterio es la información, no la longitud:
 - Ante la duda, conserva la información y simplifica la redacción.
 - Usa diagramas cuando aclaren.
 
+Skills de apoyo. Si están disponibles, invócalas; si no, aplica solo estas reglas:
+
+- `md-essentials`: formato Markdown, antes de crear o editar cualquier documento.
+- `spanish-artifacts`: redacción en español, al escribir los documentos.
+- `unslop`: limpieza del texto, durante los self-review.
+
 ## Estructura
 
 Crea o actualiza los artefactos en el repositorio del sistema investigado:
