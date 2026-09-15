@@ -6,7 +6,7 @@
 
 - [{Dominio}](domains/{domain}/index.md): {alcance funcional breve}.
 
-## Hallazgos fuera de alcance
+## Hallazgos diferidos
 
 {Incluir este apartado solo si existe deferred-findings.md; omitir el apartado completo si no existe.}
 
