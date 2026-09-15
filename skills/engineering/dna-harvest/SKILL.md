@@ -272,7 +272,8 @@ Muestra este mensaje antes de buscar:
 Consulta:
 
 - `dna/index.md` y el índice del dominio.
-- La captura previa del área y `dna/deferred-findings.md`, si existen.
+- La captura previa del área, según [Estado y continuidad](#estado-y-continuidad), y
+  `dna/deferred-findings.md`, si existen.
 - No abras los documentos encontrados de forma automática.
 
 Con documentos que parezcan relevantes:
@@ -316,7 +317,8 @@ Con el ok:
 
 - Captura nueva: crea `00_harvest.md` con su [plantilla](templates/00_harvest.md), `status: draft`
   y las secciones `Alcance`, con su resultado esperado, y `Próximo paso`.
-- Captura existente: sigue su continuidad y actualiza el alcance si cambia.
+- Captura existente: sigue [Estado y continuidad](#estado-y-continuidad) y actualiza el alcance si
+  cambia.
 - Lo importante que queda fuera: [Hallazgos diferidos](#hallazgos-diferidos).
 
 ### 4. Investigación
@@ -330,7 +332,7 @@ Fuentes:
 - Código aportado y sus dependencias.
 - Tests, formularios, APIs, procesos, eventos, esquemas y configuración pertinentes.
 - Documentación existente: `docs/`, `adr/`, README y comentarios del código. Contrástala con el
-  código y documenta las discrepancias.
+  código y documenta las discrepancias según [Contenido y evidencia](#contenido-y-evidencia).
 
 Cómo leer:
 
@@ -383,10 +385,11 @@ Muestra este mensaje antes de empezar:
 
 📝 Preparando el borrador
 
-**Importante.** Aplica las reglas de [Redacción](#redacción).
+**Importante.** Aplica las reglas de [Redacción](#redacción) e [Idioma](#idioma).
 
 Documentos:
 
+- Crea dominio o área nuevos según [Estructura](#estructura).
 - Crea o actualiza los [documentos DNA](#documentos-dna) con las
   [plantillas](#templates) y la evidencia disponible.
 - Sigue las reglas de [Contenido y evidencia](#contenido-y-evidencia).
@@ -435,6 +438,7 @@ Con los hallazgos:
 - Lo que requiera conocimiento experto: pregunta nueva en `Preguntas pendientes` de
   `00_harvest.md`, según su prioridad.
 - Lo que no pueda resolverse: `07_unknowns.md`.
+- Lo importante fuera del alcance: [Hallazgos diferidos](#hallazgos-diferidos).
 - No investigues indefinidamente desconocidos ya reconocidos.
 
 Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits) con las correcciones:
@@ -529,7 +533,8 @@ Pregunta también, cuando ayude a explicar un riesgo:
 - Dependencias operativas ausentes del código: preparación manual, correcciones de datos,
   integraciones fuera del recorrido investigado.
 
-Contrasta cada respuesta con las fuentes y actúa según el caso:
+Contrasta cada respuesta con las fuentes y actúa según el caso. Los defectos y propuestas siguen
+[Hallazgos diferidos](#hallazgos-diferidos):
 
 | Caso                                             | Acción                                                                                                                                                           |
 | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -555,16 +560,18 @@ Muestra este mensaje antes de empezar:
 
 🧩 Consolidando respuestas
 
-**Importante.** Aplica las reglas de [Redacción](#redacción).
+**Importante.** Aplica las reglas de [Redacción](#redacción) e [Idioma](#idioma).
 
 Sin respuestas que incorporar, establece `status: in-review` y salta al paso 12.
 
 Por cada respuesta confirmada:
 
 - Escribe el hecho, regla, término, flujo o caveat en su [documento DNA](#documentos-dna),
-  con su procedencia. Los defectos y las propuestas ya tienen destino desde el paso 8.
+  con su procedencia según [Contenido y evidencia](#contenido-y-evidencia). Los defectos y las
+  propuestas ya tienen destino desde el paso 8.
 - Marca el contenido nuevo o modificado con `> Pendiente de revisión`.
-- Si creas un archivo, enlázalo en `Navegación` de `01_about.md`. Mantén navegables los índices.
+- Si creas un archivo, usa su [plantilla](#templates) y enlázalo en `Navegación` de `01_about.md`.
+  Mantén navegables los índices.
 - Sustituye en `00_harvest.md` los hallazgos y respuestas consolidados por enlaces a su destino.
 - Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
   paso 8, sin mantener dos copias.
@@ -642,7 +649,8 @@ hasta la aprobación explícita.
 Con la aprobación:
 
 - Registra en `Revisión` de `00_harvest.md` quién revisó, cuándo y qué alcance aprobó.
-- Retira las marcas `> Pendiente de revisión` del contenido aprobado.
+- Retira las marcas `> Pendiente de revisión` del contenido aprobado, según
+  [Contenido y evidencia](#contenido-y-evidencia).
 - No pases al paso 13 sin aprobación explícita de todo el alcance.
 
 Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
@@ -660,7 +668,8 @@ Revisa a alto nivel que todo encaja, sin entrar en el detalle:
 - `01_about.md` es coherente con los mapas y con los archivos que existen.
 - No quedan marcas `> Pendiente de revisión` ni placeholders de plantilla.
 - `dna/deferred-findings.md`: retira las entradas resueltas o documentadas en esta captura y
-  conserva las pendientes con su contexto. Comprueba su enlace desde `dna/index.md`.
+  conserva las pendientes con su contexto, según [Hallazgos diferidos](#hallazgos-diferidos).
+  Comprueba su enlace desde `dna/index.md`.
 - `00_harvest.md` no tiene preguntas pendientes y `Próximo paso` indica que no hay acción pendiente.
 
 Si algo no encaja, vuelve al paso que corresponda según [Flujo](#flujo).
