@@ -15,4 +15,4 @@
 {Repetir por hallazgo importante fuera del alcance actual; reutilizar la entrada del mismo asunto.
 Al retomarlo, indicar dónde se atiende sin enlazar SDD. Retirar la entrada al resolverse, documentarse
 o descartarse con motivo. Las preguntas de la captura van en 00_harvest.md y las dudas de la entrega en
-07_unknowns.md. No usar como historial.}
+08_unknowns.md. No usar como historial.}

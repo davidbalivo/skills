@@ -17,7 +17,8 @@ Solo si hay varios actores o sistemas externos.}
 ## Navegación
 
 - [Flujos](04_flow-map.md).
-- [Implementación e impacto](05_implementation-map.md).
+- [Implementación](05_implementation-map.md).
+- [Blast radius](06_blast-radius.md).
 
 {Añadir enlaces a los demás documentos solo si existen.}
 

@@ -30,7 +30,7 @@ Al incorporarlas, sustituir su desarrollo por un enlace al documento definitivo.
 - Respuesta: {pendiente, o respuesta atribuida con persona/rol y fecha}.
 
 {Repetir solo para preguntas reales. Al consolidar, enlazar el conocimiento incorporado o la duda
-trasladada a 07_unknowns.md; registrar un motivo breve si se descarta. Omitir si no hay preguntas.}
+trasladada a 08_unknowns.md; registrar un motivo breve si se descarta. Omitir si no hay preguntas.}
 
 ## Revisión
 

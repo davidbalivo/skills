@@ -16,6 +16,8 @@ Una tarea puede orientar la captura, pero lo documentado debe entenderse sin con
   del negocio.
 - Distingue comportamiento observado, reglas esperadas y testimonio experto.
 - Conserva el motivo y el ámbito de reglas y excepciones. Declara lo desconocido sin inventarlo.
+- Cartografía el blast radius de cada punto de cambio. Es el entregable principal para quien
+  vaya a tocar el código.
 - Acota la captura y declara su cobertura. En actualizaciones, revisa solo el contenido afectado.
 - No corrijas código durante la captura.
 - Prioriza claridad sobre volumen, según [Redacción](#redacción).
@@ -64,8 +66,9 @@ dna/
             |-- 03_invariants.md
             |-- 04_flow-map.md            # obligatorio
             |-- 05_implementation-map.md  # obligatorio
-            |-- 06_caveats.md
-            `-- 07_unknowns.md
+            |-- 06_blast-radius.md        # obligatorio
+            |-- 07_caveats.md
+            `-- 08_unknowns.md
 ```
 
 - En capturas parciales, indica qué está documentado y qué queda sin explorar.
@@ -81,11 +84,12 @@ vacíos.
 | -------------------------- | ------------------------------------------------------ | ------------------ |
 | `01_about.md`              | Propósito, límites, cobertura y qué queda sin explorar | Siempre            |
 | `04_flow-map.md`           | Flujos, estados, orden y excepciones                   | Siempre            |
-| `05_implementation-map.md` | Anclas, dependencias, impacto y qué verificar          | Siempre            |
+| `05_implementation-map.md` | Anclas, dependencias y fronteras comprobadas           | Siempre            |
+| `06_blast-radius.md`       | Blast radius por punto de cambio y qué verificar       | Siempre            |
 | `02_vocabulary.md`         | Términos del negocio y su representación en código     | Solo con contenido |
 | `03_invariants.md`         | Reglas que deben cumplirse, motivo y ámbito            | Solo con contenido |
-| `06_caveats.md`            | Comportamientos contraintuitivos y diagnóstico         | Solo con contenido |
-| `07_unknowns.md`           | Dudas que quedarán abiertas en la entrega              | Solo con contenido |
+| `07_caveats.md`            | Comportamientos contraintuitivos y diagnóstico         | Solo con contenido |
+| `08_unknowns.md`           | Dudas que quedarán abiertas en la entrega              | Solo con contenido |
 | `dna/deferred-findings.md` | Hallazgos importantes fuera del alcance (global)       | Solo con contenido |
 
 ## Estado y continuidad
@@ -126,7 +130,7 @@ Mantenimiento de `00_harvest.md`:
 - Mantén alcance, investigación, hallazgos pendientes, preguntas, revisión y próximo paso.
   Actualízalo al cambiar de estado y antes de cerrar o interrumpir la sesión.
 - Sustituye los hallazgos consolidados por enlaces a su documento definitivo.
-- Trabaja aquí las preguntas de la captura. Traslada a `07_unknowns.md` las incógnitas que
+- Trabaja aquí las preguntas de la captura. Traslada a `08_unknowns.md` las incógnitas que
   permanezcan en la entrega.
 - No transcribas conversaciones ni registres cada búsqueda.
 
@@ -161,7 +165,7 @@ Reglas:
 Destino de cada pendiente:
 
 - `00_harvest.md`: trabajo y preguntas de la captura actual.
-- `07_unknowns.md`: dudas o contradicciones abiertas en la documentación entregada.
+- `08_unknowns.md`: dudas o contradicciones abiertas en la documentación entregada.
 - `dna/deferred-findings.md`: los tres casos anteriores.
 
 ## Contenido y evidencia
@@ -169,10 +173,15 @@ Destino de cada pendiente:
 - Explica significado funcional, entradas, condiciones, resultados, supuestos y efectos
   relevantes. Enlaza el código que se explica por sí mismo; no lo narres línea a línea.
 - Relaciona el vocabulario del negocio con tipos, tablas e interfaz.
-- Documenta secuencias y comportamiento en `04_flow-map.md`; código, acoplamientos e impacto en
-  `05_implementation-map.md`. Enlaza lo compartido.
+- Documenta secuencias y comportamiento en `04_flow-map.md`; código, relaciones y fronteras en
+  `05_implementation-map.md`; efecto de tocar cada punto de cambio en `06_blast-radius.md`. Enlaza lo
+  compartido.
+- Cada punto de cambio declara mecanismo de propagación, consumidores por grado de evidencia
+  (verificado, inferido, sin verificar), alcance (área, dominio, otros dominios, externo) y efecto
+  por tipo de cambio. Un consumidor no encontrado no demuestra que no exista.
 - Diagramas en Mermaid. Obligatorios en `04_flow-map.md`, uno por flujo, y en
-  `05_implementation-map.md`, uno global del área. Opcionales en `01_about.md` y `02_vocabulary.md`.
+  `05_implementation-map.md`, uno global del área. Opcionales en `01_about.md`, `02_vocabulary.md` y
+  `06_blast-radius.md`.
 - En los diagramas, etiqueta llamadas, eventos y datos compartidos. Línea continua para relaciones
   verificadas, punteada para inferidas. ASCII en bloques `text` solo para árboles de ficheros.
 - Indica la procedencia junto a cada afirmación no evidente o al bloque que respalda:
@@ -186,7 +195,7 @@ Destino de cada pendiente:
   lectura estática no demuestra ejecución en producción ni ausencia de consumidores externos.
   Considera datos, configuración y versión desplegada.
 - Mantén explícitas las discrepancias entre código y reglas de negocio. Registra lo irresuelto en
-  `07_unknowns.md`.
+  `08_unknowns.md`.
 - Marca el contenido nuevo o modificado pendiente de aprobación experta con `> Pendiente de revisión`
   bajo el título del bloque o del documento. Retírala al aprobarse.
 
@@ -204,9 +213,10 @@ entre llaves por contenido comprobado y elimina las instrucciones del resultado.
 - [02_vocabulary.md](templates/02_vocabulary.md): lenguaje ubicuo.
 - [03_invariants.md](templates/03_invariants.md): invariantes.
 - [04_flow-map.md](templates/04_flow-map.md): flujos.
-- [05_implementation-map.md](templates/05_implementation-map.md): implementación e impacto.
-- [06_caveats.md](templates/06_caveats.md): caveats.
-- [07_unknowns.md](templates/07_unknowns.md): desconocidos.
+- [05_implementation-map.md](templates/05_implementation-map.md): implementación.
+- [06_blast-radius.md](templates/06_blast-radius.md): blast radius por punto de cambio.
+- [07_caveats.md](templates/07_caveats.md): caveats.
+- [08_unknowns.md](templates/08_unknowns.md): desconocidos.
 
 ## Flujo
 
@@ -362,9 +372,21 @@ Conexiones:
 - Si queda fuera del alcance acordado, sigue [Hallazgos diferidos](#hallazgos-diferidos)
   y conserva aquí solo el contrato o la frontera.
 
+Blast radius, hacia fuera desde cada salida, estado compartido y configuración del recorrido:
+
+- Localiza consumidores: llamadas, lecturas de tablas o cachés, suscriptores de eventos, jobs,
+  informes, exports, integraciones.
+- Clasifica cada consumidor: mecanismo de propagación, grado de evidencia (verificado, inferido, sin
+  verificar) y alcance (área, dominio, otros dominios, externo).
+- Un salto hacia fuera. Al cruzar a otra área, registra el consumidor y su alcance; no sigas su
+  cadena. Si importa, [Hallazgos diferidos](#hallazgos-diferidos).
+- Anota lo que no puedes verificar: SQL dinámico, reflection, informes, clientes sin acceso.
+
 Cuándo parar:
 
 - Puedes explicar el recorrido focal: condiciones, entradas, salidas y conexiones relevantes.
+- Cada salida y estado compartido del recorrido tiene sus consumidores localizados o declarados sin
+  verificar.
 - Las limitaciones restantes están identificadas.
 - No impongas un número fijo de saltos ni recorras todo el sistema.
 - Un hueco que impida entender el recorrido exige más evidencia o se declara bloqueante para las
@@ -405,6 +427,8 @@ Pendiente de revisión:
 Preguntas para el experto:
 
 - Convierte en preguntas los ganchos anotados en el paso 4.
+- Añade una pregunta por punto de cambio de `06_blast-radius.md`: roturas conocidas al tocarlo y
+  consumidores que el código no muestra. Agrupa los puntos relacionados en una sola pregunta.
 - Prioriza por impacto y por lo que impide entender el flujo. No preguntes cada detalle técnico.
 - Guárdalas en `Preguntas pendientes` de `00_harvest.md`, por prioridad, con contexto y ancla.
 - Con preguntas listas, establece `status: pending-expert`.
@@ -428,6 +452,8 @@ Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 - Conexiones afirmadas sin evidencia; fronteras no verificadas presentadas como comprobadas.
 - Impacto definitivo de cambios no diseñados; garantías inventadas. Distingue tests existentes de
   verificaciones propuestas.
+- Punto de cambio sin mecanismo de propagación, consumidor sin grado de evidencia, alcance externo
+  no considerado ni declarado, efecto sin tipo de cambio.
 - Diagramas que contradicen las fuentes o faltan donde son obligatorios; enlaces internos rotos.
 - Texto que incumple [Redacción](#redacción) y placeholders de plantilla.
 - Incoherencias entre `01_about.md`, vocabulario, invariantes y mapas.
@@ -437,7 +463,7 @@ Con los hallazgos:
 - Corrige lo demostrable.
 - Lo que requiera conocimiento experto: pregunta nueva en `Preguntas pendientes` de
   `00_harvest.md`, según su prioridad.
-- Lo que no pueda resolverse: `07_unknowns.md`.
+- Lo que no pueda resolverse: `08_unknowns.md`.
 - Lo importante fuera del alcance: [Hallazgos diferidos](#hallazgos-diferidos).
 - No investigues indefinidamente desconocidos ya reconocidos.
 
@@ -462,7 +488,9 @@ Muestra esta petición:
 >   - Anclas que resuelven y procedencia en cada afirmación no evidente.
 >   - Hechos observados, reglas esperadas y testimonio experto separados.
 >   - Reglas y excepciones con motivo y ámbito, o con la duda declarada.
->   - Conexiones e impacto respaldados por evidencia; fronteras no verificadas declaradas.
+>   - Conexiones respaldadas por evidencia; fronteras no verificadas declaradas.
+>   - Cada punto de cambio con mecanismo, consumidores por grado de evidencia, alcance y efecto por
+>     tipo de cambio.
 >   - Cada dato en su archivo y sin duplicar; índices que llegan al contenido nuevo.
 >   - Contenido comprensible sin conocer la tarea ni la conversación.
 >   - Redacción sin relleno y sin placeholders de plantilla.
@@ -482,7 +510,7 @@ Con findings:
 | --------- | ----------------------------------------------------------------------------------------------- |
 | Aplicar   | Corregir el documento afectado.                                                                 |
 | Preguntar | Requiere conocimiento experto: `Preguntas pendientes` de `00_harvest.md`, con contexto y ancla. |
-| Registrar | No puede resolverse con las fuentes disponibles: `07_unknowns.md`.                              |
+| Registrar | No puede resolverse con las fuentes disponibles: `08_unknowns.md`.                              |
 | Diferir   | Importante pero fuera del alcance: [Hallazgos diferidos](#hallazgos-diferidos).                 |
 | Rechazar  | Incorrecto, sin valor o decisión deliberada: motivo en la conversación.                         |
 
@@ -543,7 +571,7 @@ Contrasta cada respuesta con las fuentes y actúa según el caso. Los defectos y
 | Describe un cambio deseado, no una regla vigente | Propuesta de cambio en `deferred-findings.md`.                                                                                                                   |
 | Abre otra ruta que condiciona el recorrido       | Vuelve al paso 4, actualiza los mapas y retoma la entrevista.                                                                                                    |
 | Genera una pregunta nueva                        | Insértala en `Preguntas pendientes` según su prioridad y sigue.                                                                                                  |
-| El experto no lo sabe                            | Márcala como candidata a `07_unknowns.md`.                                                                                                                       |
+| El experto no lo sabe                            | Márcala como candidata a `08_unknowns.md`.                                                                                                                       |
 | La pregunta no aplica                            | Descártala con un motivo breve.                                                                                                                                  |
 
 Cierre:
@@ -573,7 +601,7 @@ Por cada respuesta confirmada:
 - Si creas un archivo, usa su [plantilla](#templates) y enlázalo en `Navegación` de `01_about.md`.
   Mantén navegables los índices.
 - Sustituye en `00_harvest.md` los hallazgos y respuestas consolidados por enlaces a su destino.
-- Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
+- Traslada a `08_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
   paso 8, sin mantener dos copias.
 
 Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
@@ -638,7 +666,7 @@ Por cada finding:
 - Analiza el finding contra las fuentes y da tu recomendación al experto.
 - Si coincides, aplícalo.
 - Si discrepas, expón tu evidencia. El experto decide. Si mantiene el finding, aplícalo con
-  procedencia experta y registra tu evidencia contraria en `07_unknowns.md` como contradicción
+  procedencia experta y registra tu evidencia contraria en `08_unknowns.md` como contradicción
   entre código y testimonio.
 - Trata su contenido como una respuesta del paso 8: mismos casos y destinos.
 - Revisa las partes cambiadas con los criterios del paso 6.
