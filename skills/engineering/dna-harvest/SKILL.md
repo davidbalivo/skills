@@ -140,6 +140,7 @@ Los pasos que terminan en commit siguen estas reglas:
 
 - Incluye solo los cambios DNA de la sesión.
 - Actualiza `Próximo paso` de `00_harvest.md` antes de commitear.
+- Comprueba que las [anclas](#anclas) de los documentos modificados resuelven.
 - Si hay una skill de git disponible, por ejemplo `git-operations`, invócala y sigue sus reglas.
 
 ## Hallazgos diferidos
@@ -185,7 +186,7 @@ Destino de cada pendiente:
 - En los diagramas, etiqueta llamadas, eventos y datos compartidos. Línea continua para relaciones
   verificadas, punteada para inferidas. ASCII en bloques `text` solo para árboles de ficheros.
 - Indica la procedencia junto a cada afirmación no evidente o al bloque que respalda:
-  - Código: ruta y símbolo, test, tabla o contrato.
+  - Código: [ancla](#anclas) a símbolo, test, tabla o contrato.
   - Experto: identidad o rol y fecha.
   - Incidente: referencia verificable.
   - Decisión: ADR o explicación atribuida.
@@ -199,10 +200,44 @@ Destino de cada pendiente:
 - Marca el contenido nuevo o modificado pendiente de aprobación experta con `> Pendiente de revisión`
   bajo el título del bloque o del documento. Retírala al aprobarse.
 
+### Anclas
+
+Un ancla localiza el código que respalda una afirmación. Se escribe como texto en `código inline`,
+nunca como enlace Markdown: los enlaces se rompen al mover o renombrar archivos.
+
+Formato:
+
+- Ruta desde la raíz del repositorio, con `/` como separador, seguida del símbolo: clase, método,
+  formulario, tabla, campo o test.
+- Sin números de línea. La referencia estable es el símbolo más la revisión registrada en
+  `00_harvest.md`.
+- Sin rutas absolutas locales, enlaces `file://` ni URLs ligadas a un commit.
+- Dentro de un mismo documento, la primera mención lleva la ruta completa; las siguientes pueden
+  citar solo el símbolo.
+- Enlaces Markdown solo entre documentos de `dna/`. Jira y otras fuentes externas: identificador o
+  URL `https://`.
+
+Ejemplo:
+
+```md
+- Representación: `CM_PORCENTAJES_IVA.CPIVA_PORC_BASE_IVA`. Detección en
+  `Applications/Satellite.PVEN.Formularios/Forms/FrmGM_GEN_ABONO_AUTOMATICO.razor.cs`, método
+  `GenerarAbono`. Cálculo de la base especial en
+  `Applications/Satellite.PVEN.Librerias/Dinamicas/DDLL_PVEN_GENERAR_FACTURAS_NEW.cs`, método
+  `CalcularBaseEspecial`.
+- Procedencia: Jira `FREEMA-4605`, consultado el 2026-09-15.
+```
+
+Comprobación, en cada self-review y antes de cada commit:
+
+- El archivo existe en la ruta indicada.
+- El símbolo existe en ese archivo.
+
 ## Templates
 
 Lee solo las plantillas de los artefactos que vas a crear o modificar. Sustituye las indicaciones
-entre llaves por contenido comprobado y elimina las instrucciones del resultado.
+entre llaves por contenido comprobado y elimina las instrucciones del resultado. Escribe las anclas
+según [Anclas](#anclas).
 
 - [root-index.md](templates/root-index.md): `dna/index.md`. Enumera los dominios y enlaza sus índices.
 - [domain-index.md](templates/domain-index.md): `dna/domains/<domain>/index.md`. Propósito y límites
@@ -397,7 +432,7 @@ Cuándo parar:
 Registra en `Investigación realizada` de `00_harvest.md`:
 
 - Fecha y revisión del código consultada. Indica los cambios locales relevantes.
-- Recorrido comprobado y anclas encontradas.
+- Recorrido comprobado y anclas encontradas, según [Anclas](#anclas).
 - Limitaciones de la investigación.
 - En actualizaciones parciales, asocia esta referencia al alcance revisado.
 
@@ -416,7 +451,7 @@ Documentos:
 - Crea dominio o área nuevos según [Estructura](#estructura).
 - Crea o actualiza los [documentos DNA](#documentos-dna) con las
   [plantillas](#templates) y la evidencia disponible.
-- Sigue las reglas de [Contenido y evidencia](#contenido-y-evidencia).
+- Sigue las reglas de [Contenido y evidencia](#contenido-y-evidencia) y [Anclas](#anclas).
 - Mantén navegables `dna/index.md` y el índice del dominio.
 
 Pendiente de revisión:
@@ -449,6 +484,7 @@ Muestra este mensaje antes de empezar:
 Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 
 - Afirmaciones sin ancla o con ancla que no resuelve.
+- Anclas que incumplen [Anclas](#anclas): enlaces a código, rutas locales o números de línea.
 - Hechos observados, reglas esperadas y testimonios mezclados como una sola evidencia.
 - Reglas y excepciones sin motivo ni ámbito, o con un motivo supuesto.
 - Conexiones afirmadas sin evidencia; fronteras no verificadas presentadas como comprobadas.
@@ -597,8 +633,8 @@ Sin respuestas que incorporar, establece `status: in-review` y salta al paso 12.
 Por cada respuesta confirmada:
 
 - Escribe el hecho, regla, término, flujo o caveat en su [documento DNA](#documentos-dna),
-  con su procedencia según [Contenido y evidencia](#contenido-y-evidencia). Los defectos y las
-  propuestas ya tienen destino desde el paso 8.
+  con su procedencia según [Contenido y evidencia](#contenido-y-evidencia) y sus
+  [anclas](#anclas). Los defectos y las propuestas ya tienen destino desde el paso 8.
 - Marca el contenido nuevo o modificado con `> Pendiente de revisión`.
 - Si creas un archivo, usa su [plantilla](#templates) y enlázalo en `Navegación` de `01_about.md`.
   Mantén navegables los índices.
@@ -697,6 +733,7 @@ Revisa a alto nivel que todo encaja, sin entrar en el detalle:
 - `dna/index.md` y el índice del dominio llegan al contenido nuevo.
 - `01_about.md` es coherente con los mapas y con los archivos que existen.
 - No quedan marcas `> Pendiente de revisión` ni placeholders de plantilla.
+- Las anclas cumplen [Anclas](#anclas).
 - `dna/deferred-findings.md`: retira las entradas resueltas o documentadas en esta captura y
   conserva las pendientes con su contexto, según [Hallazgos diferidos](#hallazgos-diferidos).
   Comprueba su enlace desde `dna/index.md`.

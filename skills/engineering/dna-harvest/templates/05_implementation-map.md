@@ -10,7 +10,7 @@ o estado compartido. Línea continua verificado, punteada inferido. Marcar consu
 ## {Componente o frontera relevante}
 
 - Ubicación: {ruta y símbolo, formulario, endpoint, proceso o consumidor; en código monolítico,
-  identificar el bloque funcional y sus condiciones, sin depender solo de líneas}.
+  identificar el bloque funcional y sus condiciones, sin números de línea ni enlaces}.
 - Datos: {tipos y tablas leídos/escritos con anclas, cuando aplique}.
 - Relaciones: {preparación de entradas y proveedores; mecanismo y evidencia de conexiones por
   llamadas, estado compartido u orden temporal. Los consumidores van en 06_blast-radius.md}.
