@@ -102,8 +102,18 @@ afecta solo al alcance en curso y conserva las aprobaciones anteriores que sigan
 
 Transiciones:
 
-- Recorrido habitual: `draft` → `pending-expert` → `in-review` → `validated`.
-- Sin preguntas al experto, pasa de `draft` a `in-review`.
+```mermaid
+stateDiagram-v2
+    direction LR
+    state "pending-expert" as pending
+    state "in-review" as review
+    [*] --> draft
+    draft --> pending: preguntas al experto
+    pending --> review: respuestas consolidadas
+    review --> validated: aprobación experta
+    draft --> review: sin preguntas
+```
+
 - Si hace falta investigar, vuelve a `draft`. Si solo falta aclaración experta, a `pending-expert`.
   Las correcciones de redacción pueden quedarse en `in-review`.
 - Reabre una captura validada solo por un alcance nuevo o una corrección identificada.
@@ -200,19 +210,18 @@ entre llaves por contenido comprobado y elimina las instrucciones del resultado.
 
 ```mermaid
 flowchart TD
-    P[Petición] --> K[Conocimiento existente]
-    K --> A[Delimitación]
-    A --> B[Investigación y borrador]
-    B --> S[Adversarial self-review]
-    S --> R[Revisión externa]
-    R --> C[Entrevista y consolidación]
-    C --> R2[Revisión externa final]
-    R2 --> D[Revisión experta]
-    D --> E[Cierre]
-    D -.->|Completar o corregir| B
+    A[1-3 Petición, conocimiento y delimitación] --> B[4-5 Investigación y borrador]
+    B --> C[6 Adversarial self-review]
+    C --> D[7 Revisión externa]
+    D --> E[8-9 Entrevista y consolidación]
+    E --> F[10 Self-review final]
+    F --> G[11 Revisión externa final]
+    G --> H[12 Revisión experta]
+    H --> I[13 Cierre]
+    H -.->|Completar o corregir| B
 ```
 
-El diagrama agrupa las fases y resume los retornos en una sola flecha. Desde cualquier revisión,
+El diagrama agrupa pasos y resume los retornos en una sola flecha. Desde cualquier revisión,
 entrevista o consolidación, vuelve solo al paso necesario:
 
 - Investigar, si falta evidencia técnica.
