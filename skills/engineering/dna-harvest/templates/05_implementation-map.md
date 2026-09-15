@@ -1,5 +1,12 @@
 # Implementación e impacto
 
+## Mapa
+
+```mermaid
+{flowchart LR con los componentes y fronteras del área. Aristas etiquetadas: llamada, evento, tabla
+o estado compartido. Línea continua verificado, punteada inferido. Marcar consumidores no verificados.}
+```
+
 ## {Componente o frontera relevante}
 
 - Ubicación: {ruta y símbolo, formulario, endpoint, proceso o consumidor; en código monolítico,
@@ -13,5 +20,5 @@
 - Diagnóstico: {logs, métricas o puntos observables disponibles, cuando aporten valor}.
 - Flujo: {enlace al flujo funcional correspondiente}.
 
-{Repetir por frontera relevante. Usar un diagrama ASCII con relaciones etiquetadas si aclara
-acoplamientos por llamadas, eventos, datos u orden temporal. Declarar consumidores no verificados.}
+{Repetir por frontera relevante. Cada componente del mapa tiene su sección. Declarar consumidores no
+verificados.}

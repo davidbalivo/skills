@@ -38,7 +38,7 @@ Escribe claro y sencillo. El criterio es la información, no la longitud:
 - Recortar no justifica omitir. Conserva hechos, reglas con motivo y ámbito, excepciones, anclas,
   procedencia, discrepancias y limitaciones.
 - Ante la duda, conserva la información y simplifica la redacción.
-- Usa diagramas cuando aclaren.
+- Usa diagramas donde las plantillas lo exigen y cuando aclaren.
 
 Skills de apoyo. Si están disponibles, invócalas; si no, aplica solo estas reglas:
 
@@ -171,8 +171,10 @@ Destino de cada pendiente:
 - Relaciona el vocabulario del negocio con tipos, tablas e interfaz.
 - Documenta secuencias y comportamiento en `04_flow-map.md`; código, acoplamientos e impacto en
   `05_implementation-map.md`. Enlaza lo compartido.
-- Usa diagramas ASCII en bloques `text` cuando aclaren. Etiqueta llamadas, eventos y datos
-  compartidos. Distingue relaciones verificadas de inferidas.
+- Diagramas en Mermaid. Obligatorios en `04_flow-map.md`, uno por flujo, y en
+  `05_implementation-map.md`, uno global del área. Opcionales en `01_about.md` y `02_vocabulary.md`.
+- En los diagramas, etiqueta llamadas, eventos y datos compartidos. Línea continua para relaciones
+  verificadas, punteada para inferidas. ASCII en bloques `text` solo para árboles de ficheros.
 - Indica la procedencia junto a cada afirmación no evidente o al bloque que respalda:
   - Código: ruta y símbolo, test, tabla o contrato.
   - Experto: identidad o rol y fecha.
@@ -423,7 +425,7 @@ Revisa el borrador como un revisor hostil que quiere tumbarlo. Busca:
 - Conexiones afirmadas sin evidencia; fronteras no verificadas presentadas como comprobadas.
 - Impacto definitivo de cambios no diseñados; garantías inventadas. Distingue tests existentes de
   verificaciones propuestas.
-- Diagramas que contradicen las fuentes; enlaces internos rotos.
+- Diagramas que contradicen las fuentes o faltan donde son obligatorios; enlaces internos rotos.
 - Texto que incumple [Redacción](#redacción) y placeholders de plantilla.
 - Incoherencias entre `01_about.md`, vocabulario, invariantes y mapas.
 

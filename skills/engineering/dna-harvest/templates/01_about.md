@@ -2,6 +2,9 @@
 
 {Propósito funcional, actores, entradas y resultados.}
 
+{Opcional: flowchart LR de contexto con actores y entradas, el área, y resultados y consumidores.
+Solo si hay varios actores o sistemas externos.}
+
 ## Alcance y cobertura
 
 - Incluye: {responsabilidades del área}.

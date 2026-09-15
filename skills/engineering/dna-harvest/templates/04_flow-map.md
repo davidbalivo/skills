@@ -2,17 +2,17 @@
 
 ## {Flujo funcional}
 
-{Trigger, actor y resultado del flujo.}
+{Trigger, actor y resultado del flujo, en una o dos frases.}
 
-```text
-{Entrada} --{acción}--> {Área} --{evento/resultado}--> {Consumidor}
+```mermaid
+{sequenceDiagram para recorridos entre actores y sistemas; flowchart para ramas y condiciones;
+stateDiagram-v2 si el flujo tiene estados. Línea continua verificado, punteada inferido.}
 ```
 
-{Sustituir el diagrama por la secuencia real. Omitirlo si una frase basta.}
-
-- Recorrido: {pasos y estados, con orden obligatorio y límites síncronos/asíncronos si aplican}.
+- Recorrido: {solo lo que el diagrama no muestra: orden obligatorio, límites síncronos/asíncronos}.
 - Excepciones: {ramas y fallos relevantes, solo si existen}.
 - Implementación: {enlace a la sección correspondiente de 05_implementation-map.md}.
 - Procedencia: {evidencia de la secuencia y limitaciones conocidas}.
 
-{Repetir por flujo dentro de la cobertura. Enlazar invariantes sin repetirlas.}
+{Repetir por flujo dentro de la cobertura. El diagrama es obligatorio; el texto añade solo lo que el
+diagrama no muestra. Enlazar invariantes sin repetirlas.}
