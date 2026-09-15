@@ -27,7 +27,7 @@ antes de que el conocimiento se dé por fiable.
 - La ausencia de información solo es finding si la exige el contrato de `dna-harvest`: sus
   plantillas, sus documentos obligatorios y sus reglas de contenido.
 - Un hueco declarado no es finding. En modo Borrador los huecos que esperan al experto viven en
-  `Preguntas pendientes` de `00_harvest.md`. En la entrega, en `07_unknowns.md`. Es finding si el
+  `Preguntas pendientes` de `00_harvest.md`. En la entrega, en `08_unknowns.md`. Es finding si el
   hueco no está declarado en ninguno, si el documento lo afirma como hecho, o si la pregunta no
   tiene contexto ni ancla.
 - Evalúa densidad, no longitud. Un finding de redacción señala la frase exacta que repite o no
@@ -74,14 +74,15 @@ comprobar que un ancla resuelve.
 Verifica en orden. Detente en el primer fallo y repórtalo como 🔴 bajo **Estructura**:
 
 - El área vive en `dna/domains/<domain>/<area>/`. Existen `dna/index.md` y el índice del dominio.
-- Existen `00_harvest.md`, `01_about.md`, `04_flow-map.md` y `05_implementation-map.md`.
+- Existen `00_harvest.md`, `01_about.md`, `04_flow-map.md`, `05_implementation-map.md` y
+  `06_blast-radius.md`.
 - Solo `00_harvest.md` lleva frontmatter, y solo con el campo `status`.
 - `status` es `draft`, `pending-expert` o `in-review`. `validated` ya superó esta puerta.
 - Cada documento tiene las secciones y campos de su plantilla. Ningún archivo opcional está vacío o
   es solo esqueleto.
 - Ningún documento conserva placeholders `{...}` ni instrucciones de plantilla.
 - `04_flow-map.md` tiene un diagrama Mermaid por flujo. `05_implementation-map.md` tiene el
-  diagrama global del área.
+  diagrama global del área. `06_blast-radius.md` tiene al menos un punto de cambio.
 - Si existe `dna/deferred-findings.md`, `dna/index.md` lo enlaza.
 - Los índices llegan al contenido nuevo: dominio en `dna/index.md`, área en el índice del dominio,
   documentos en `Navegación` de `01_about.md`.
@@ -100,18 +101,21 @@ Dimensiones comunes:
 - **Separación de evidencia**: hechos observados en código, reglas esperadas y testimonio experto no
   se presentan como una sola evidencia.
 - **Motivo y ámbito**: cada regla y excepción tiene motivo y ámbito, o declara la duda. En modo
-  Borrador la duda vive en `Preguntas pendientes`; en la entrega, en `07_unknowns.md`. Un motivo
+  Borrador la duda vive en `Preguntas pendientes`; en la entrega, en `08_unknowns.md`. Un motivo
   supuesto es un finding.
 - **Conexiones y fronteras**: las conexiones afirmadas tienen evidencia. Las fronteras no verificadas
   se declaran como tales. Una referencia ausente no se presenta como código muerto.
-- **Impacto y garantías**: el impacto se condiciona al tipo de cambio y a su mecanismo. Los tests
-  existentes se distinguen de las verificaciones propuestas. Sin garantías inventadas.
+- **Blast radius y garantías**: cada punto de cambio de `06_blast-radius.md` declara mecanismo de
+  propagación, consumidores por grado de evidencia y alcance. El efecto se condiciona al tipo de
+  cambio. Un consumidor afirmado sin ancla, un alcance externo omitido sin declararlo o un impacto
+  sin mecanismo es finding. Los tests existentes se distinguen de las verificaciones propuestas. Sin
+  garantías inventadas. El efecto de un cambio no vive en `05_implementation-map.md`.
 - **Diagramas**: existen donde son obligatorios, coinciden con el texto y las fuentes, etiquetan
   llamadas, eventos y datos compartidos, y usan línea continua para lo verificado y punteada para lo
   inferido.
 - **Ubicación y duplicación**: cada dato vive en el archivo que le corresponde según
   `Documentos DNA`. Lo compartido se enlaza, no se repite. Los tres destinos de pendientes no se
-  mezclan: trabajo de la captura en `00_harvest.md`, dudas de la entrega en `07_unknowns.md`, fuera
+  mezclan: trabajo de la captura en `00_harvest.md`, dudas de la entrega en `08_unknowns.md`, fuera
   de alcance en `dna/deferred-findings.md`.
 - **Coherencia**: `01_about.md`, vocabulario, invariantes y mapas no se contradicen. La cobertura
   declarada coincide con lo documentado.
@@ -138,7 +142,7 @@ Dimensión solo en modo Consolidación:
 
 - **Consolidación**: cada respuesta confirmada en `00_harvest.md` está en su documento DNA con
   procedencia experta. Su desarrollo en `00_harvest.md` se sustituyó por un enlace. Las candidatas a
-  `07_unknowns.md` se trasladaron sin duplicar. Los defectos confirmados están como discrepancia en
+  `08_unknowns.md` se trasladaron sin duplicar. Los defectos confirmados están como discrepancia en
   `03_invariants.md` y como entrada en `dna/deferred-findings.md`. Las propuestas de cambio están
   solo en `dna/deferred-findings.md`, no como verdad actual.
 
