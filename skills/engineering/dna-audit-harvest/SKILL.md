@@ -70,17 +70,22 @@ Lee completos:
 No abras otros archivos salvo que un documento revisado los enlace. Consulta el código solo para
 comprobar que un ancla resuelve.
 
-### 2. Estructura (Hard Gate)
+### 2. Estructura
 
-Verifica en orden. Detente en el primer fallo y repórtalo como 🔴 bajo **Estructura**:
+Verifica los siguientes requisitos antes de la revisión adversarial.
+
+Detente solo si el fallo impide determinar el modo, localizar el área o leer alguno de los
+documentos obligatorios. Reporta los demás fallos con la severidad que corresponda y continúa con
+la revisión adversarial.
 
 - El área vive en `dna/domains/<domain>/<area>/`. Existen `dna/index.md` y el índice del dominio.
 - Existen `00_harvest.md`, `01_about.md`, `04_flow-map.md`, `05_implementation-map.md` y
   `06_blast-radius.md`.
 - Solo `00_harvest.md` lleva frontmatter, y solo con el campo `status`.
 - `status` es `draft`, `pending-expert` o `in-review`. `validated` ya superó esta puerta.
-- Cada documento tiene las secciones y campos de su plantilla. Ningún archivo opcional está vacío o
-  es solo esqueleto.
+- Cada documento contiene las secciones y campos necesarios según su plantilla. Los campos cuyo
+  contenido no aplica pueden omitirse cuando la propia plantilla lo permita. Ningún archivo
+  opcional está vacío o es solo esqueleto.
 - Ningún documento conserva placeholders `{...}` ni instrucciones de plantilla.
 - `04_flow-map.md` tiene un diagrama Mermaid por flujo. `05_implementation-map.md` tiene el
   diagrama global del área. `06_blast-radius.md` tiene al menos un punto de cambio.
