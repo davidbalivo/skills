@@ -381,7 +381,8 @@ Preguntas para el experto:
 - Guárdalas en `Preguntas pendientes` de `00_harvest.md`, por prioridad, con contexto y ancla.
 - Con preguntas listas, establece `status: pending-expert`.
 
-Haz un commit solo con los cambios DNA de la sesión: `docs(dna): draft {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit solo con los cambios DNA de la
+sesión: `docs(dna): draft {domain}/{area}`.
 
 ### 6. Self-review adversarial
 
@@ -411,7 +412,8 @@ Con los hallazgos:
 - Lo que no pueda resolverse: `07_unknowns.md`.
 - No investigues indefinidamente desconocidos ya reconocidos.
 
-Haz un commit con las correcciones: `docs(dna): draft self-review {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit con las correcciones:
+`docs(dna): draft self-review {domain}/{area}`.
 
 ### 7. Solicitar revisión externa y resolver findings
 
@@ -464,7 +466,8 @@ Pregunta al usuario:
 
 Espera su decisión. Otra ronda: repite la petición con los documentos actualizados. Continuar: paso 8.
 
-Si hubo cambios, haz un commit: `docs(dna): draft external-review {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+`docs(dna): draft external-review {domain}/{area}`.
 
 ### 8. Entrevistar al experto
 
@@ -518,7 +521,8 @@ Cierre:
 - Cierra la entrevista cuando todas las preguntas estén respondidas, trasladadas o descartadas.
 - Si el experto no está disponible y quedan preguntas, conserva `status: pending-expert`, registra
   el próximo paso y cierra la sesión.
-- Haz un commit, también si quedan preguntas pendientes: `docs(dna): interview {domain}/{area}`.
+- Actualiza `Próximo paso` de `00_harvest.md` y haz un commit, también si quedan preguntas
+  pendientes: `docs(dna): interview {domain}/{area}`.
 
 ### 9. Consolidar las respuestas
 
@@ -540,7 +544,8 @@ Por cada respuesta confirmada:
 - Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
   paso 8, sin mantener dos copias.
 
-Haz un commit: `docs(dna): interview consolidate {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+`docs(dna): interview consolidate {domain}/{area}`.
 
 ### 10. Self-review de la consolidación
 
@@ -558,7 +563,8 @@ Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
 
 Sin preguntas pendientes ni findings abiertos, establece `status: in-review`.
 
-Si hubo cambios, haz un commit: `docs(dna): interview self-review {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+`docs(dna): interview self-review {domain}/{area}`.
 
 ### 11. Revisar externamente la consolidación
 
@@ -569,9 +575,8 @@ Repite el paso 7 sobre el contenido consolidado:
 - Triaje con la misma tabla de destinos. Un finding con destino Preguntar vuelve al paso 8 y
   después al 9.
 
-Registra en `Próximo paso` de `00_harvest.md`: revisión experta.
-
-Si hubo cambios, haz un commit: `docs(dna): interview external-review {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+`docs(dna): interview external-review {domain}/{area}`.
 
 ### 12. Solicitar revisión experta y resolver findings
 
@@ -615,7 +620,8 @@ Con la aprobación:
 - Retira las marcas `> Pendiente de revisión` del contenido aprobado.
 - No pases al paso 13 sin aprobación explícita de todo el alcance.
 
-Si hubo cambios, haz un commit: `docs(dna): expert-review {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+`docs(dna): expert-review {domain}/{area}`.
 
 ### 13. Finalizar captura
 
