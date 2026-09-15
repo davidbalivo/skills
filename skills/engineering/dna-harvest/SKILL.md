@@ -120,6 +120,14 @@ Mantenimiento de `00_harvest.md`:
   permanezcan en la entrega.
 - No transcribas conversaciones ni registres cada búsqueda.
 
+## Commits
+
+Los pasos que terminan en commit siguen estas reglas:
+
+- Incluye solo los cambios DNA de la sesión.
+- Actualiza `Próximo paso` de `00_harvest.md` antes de commitear.
+- Si hay una skill de git disponible, por ejemplo `git-operations`, invócala y sigue sus reglas.
+
 ## Hallazgos diferidos
 
 `dna/deferred-findings.md` es global a DNA y recoge tres casos:
@@ -387,8 +395,8 @@ Preguntas para el experto:
 - Guárdalas en `Preguntas pendientes` de `00_harvest.md`, por prioridad, con contexto y ancla.
 - Con preguntas listas, establece `status: pending-expert`.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit solo con los cambios DNA de la
-sesión: `docs(dna): draft {domain}/{area}`.
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
+`docs(dna): draft {domain}/{area}`.
 
 ### 6. Adversarial self-review
 
@@ -418,7 +426,7 @@ Con los hallazgos:
 - Lo que no pueda resolverse: `07_unknowns.md`.
 - No investigues indefinidamente desconocidos ya reconocidos.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit con las correcciones:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits) con las correcciones:
 `docs(dna): draft self-review {domain}/{area}`.
 
 ### 7. Revisión externa
@@ -472,7 +480,7 @@ Pregunta al usuario:
 
 Espera su decisión. Otra ronda: repite la petición con los documentos actualizados. Continuar: paso 8.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
 `docs(dna): draft external-review {domain}/{area}`.
 
 ### 8. Entrevista
@@ -527,7 +535,7 @@ Cierre:
 - Cierra la entrevista cuando todas las preguntas estén respondidas, trasladadas o descartadas.
 - Si el experto no está disponible y quedan preguntas, conserva `status: pending-expert`, registra
   el próximo paso y cierra la sesión.
-- Actualiza `Próximo paso` de `00_harvest.md` y haz un commit, también si quedan preguntas
+- Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits), también si quedan preguntas
   pendientes: `docs(dna): interview {domain}/{area}`.
 
 ### 9. Consolidación
@@ -550,7 +558,7 @@ Por cada respuesta confirmada:
 - Traslada a `07_unknowns.md` las incógnitas que seguirán abiertas, incluidas las candidatas del
   paso 8, sin mantener dos copias.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
 `docs(dna): interview consolidate {domain}/{area}`.
 
 ### 10. Self-review final
@@ -569,7 +577,7 @@ Repite el self-review del paso 6 sobre el contenido nuevo o modificado:
 
 Sin preguntas pendientes ni findings abiertos, establece `status: in-review`.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
 `docs(dna): interview self-review {domain}/{area}`.
 
 ### 11. Revisión externa final
@@ -581,7 +589,7 @@ Repite el paso 7 sobre el contenido consolidado:
 - Triaje con la misma tabla de destinos. Un finding con destino Preguntar vuelve al paso 8 y
   después al 9.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
 `docs(dna): interview external-review {domain}/{area}`.
 
 ### 12. Revisión experta
@@ -626,7 +634,7 @@ Con la aprobación:
 - Retira las marcas `> Pendiente de revisión` del contenido aprobado.
 - No pases al paso 13 sin aprobación explícita de todo el alcance.
 
-Actualiza `Próximo paso` de `00_harvest.md` y haz un commit:
+Actualiza `Próximo paso` de `00_harvest.md` y haz un [commit](#commits):
 `docs(dna): expert-review {domain}/{area}`.
 
 ### 13. Cierre
@@ -648,4 +656,4 @@ Si algo no encaja, vuelve al paso que corresponda según [Flujo](#flujo).
 
 Establece `status: validated` en `00_harvest.md`.
 
-Haz un commit solo con los cambios DNA de la sesión: `docs(dna): finalize {domain}/{area}`.
+Haz un [commit](#commits): `docs(dna): finalize {domain}/{area}`.
