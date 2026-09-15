@@ -64,7 +64,8 @@ Lee completos:
 - Las plantillas de `~/.agents/skills/dna-harvest/templates/` de cada documento revisado. Son la
   referencia de forma.
 - De `~/.agents/skills/dna-harvest/SKILL.md`, las secciones `Idioma`, `Redacción`, `Documentos DNA`,
-  `Hallazgos diferidos` y `Contenido y evidencia`. Son el contrato que auditas.
+  `Hallazgos diferidos` y `Contenido y evidencia`, y el sub-bloque `Blast radius` del paso
+  `4. Investigación`. Son el contrato que auditas.
 
 No abras otros archivos salvo que un documento revisado los enlace. Consulta el código solo para
 comprobar que un ancla resuelve.
@@ -93,6 +94,17 @@ Recorre cada dimensión sobre el ámbito del modo. Omite las dimensiones sin fin
 
 Dimensiones comunes:
 
+- **Blast radius**: es la dimensión de mayor peso. Es el entregable principal de la captura y un
+  fallo aquí es 🔴 por defecto; justifica el 🟡. Es finding:
+  - Una salida, estado compartido, contrato o configuración de `05_implementation-map.md` sin punto
+    de cambio en `06_blast-radius.md`.
+  - Un punto de cambio sin barrido completo de mecanismos. Cada mecanismo tiene consumidores o
+    «no aplica» con la búsqueda declarada en `Procedencia`.
+  - Un consumidor sin ancla o sin grado de evidencia. Un alcance externo omitido sin declararlo.
+  - Un efecto sin mecanismo o sin tipo de cambio. Una garantía inventada. Los tests existentes se
+    distinguen de las verificaciones propuestas.
+  - Una cadena seguida dentro de otra área. Solo se registra el consumidor y su alcance.
+  - El efecto de un cambio en `05_implementation-map.md` en lugar de `06_blast-radius.md`.
 - **Anclas**: toda afirmación técnica lleva ancla verificable y el ancla resuelve. Se prefieren rutas,
   símbolos, tests, tablas y contratos frente a números de línea.
 - **Procedencia**: toda afirmación no evidente indica su fuente según `Contenido y evidencia`.
@@ -105,11 +117,6 @@ Dimensiones comunes:
   supuesto es un finding.
 - **Conexiones y fronteras**: las conexiones afirmadas tienen evidencia. Las fronteras no verificadas
   se declaran como tales. Una referencia ausente no se presenta como código muerto.
-- **Blast radius y garantías**: cada punto de cambio de `06_blast-radius.md` declara mecanismo de
-  propagación, consumidores por grado de evidencia y alcance. El efecto se condiciona al tipo de
-  cambio. Un consumidor afirmado sin ancla, un alcance externo omitido sin declararlo o un impacto
-  sin mecanismo es finding. Los tests existentes se distinguen de las verificaciones propuestas. Sin
-  garantías inventadas. El efecto de un cambio no vive en `05_implementation-map.md`.
 - **Diagramas**: existen donde son obligatorios, coinciden con el texto y las fuentes, etiquetan
   llamadas, eventos y datos compartidos, y usan línea continua para lo verificado y punteada para lo
   inferido.
@@ -137,6 +144,8 @@ Dimensión solo en modo Borrador:
   - Una pregunta que el código ya responde. No debe ir al experto.
   - Una pregunta sin contexto, sin ancla o sin prioridad clara.
   - Una pregunta en términos técnicos en lugar de funcionales.
+  - Un punto de cambio de `06_blast-radius.md` sin pregunta, propia o agrupada, sobre roturas
+    conocidas y consumidores que el código no muestra.
 
 Dimensión solo en modo Consolidación:
 
@@ -144,7 +153,8 @@ Dimensión solo en modo Consolidación:
   procedencia experta. Su desarrollo en `00_harvest.md` se sustituyó por un enlace. Las candidatas a
   `08_unknowns.md` se trasladaron sin duplicar. Los defectos confirmados están como discrepancia en
   `03_invariants.md` y como entrada en `dna/deferred-findings.md`. Las propuestas de cambio están
-  solo en `dna/deferred-findings.md`, no como verdad actual.
+  solo en `dna/deferred-findings.md`, no como verdad actual. Las respuestas sobre blast radius están
+  en `Consumidores` o `Síntomas conocidos` del punto de cambio correspondiente.
 
 ### 4. Reporte
 
