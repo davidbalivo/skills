@@ -66,7 +66,7 @@ dna/
 - Los índices describen y enlazan el contenido existente sin duplicarlo.
 - Conserva la organización y el contenido ajenos al alcance.
 
-## Documentos del área
+## Documentos DNA
 
 Cada dato va al archivo que le corresponde. Crea los opcionales solo con contenido relevante, nunca
 vacíos.
@@ -362,7 +362,7 @@ Muestra este mensaje antes de empezar:
 
 Documentos:
 
-- Crea o actualiza los [documentos del área](#documentos-del-área) con las
+- Crea o actualiza los [documentos DNA](#documentos-dna) con las
   [plantillas](#templates) y la evidencia disponible.
 - Sigue las reglas de [Contenido y evidencia](#contenido-y-evidencia).
 - Mantén navegables `dna/index.md` y el índice del dominio.
@@ -536,7 +536,7 @@ Sin respuestas que incorporar, establece `status: in-review` y salta al paso 12.
 
 Por cada respuesta confirmada:
 
-- Escribe el hecho, regla, término, flujo o caveat en su [documento del área](#documentos-del-área),
+- Escribe el hecho, regla, término, flujo o caveat en su [documento DNA](#documentos-dna),
   con su procedencia. Los defectos y las propuestas ya tienen destino desde el paso 8.
 - Marca el contenido nuevo o modificado con `> Pendiente de revisión`.
 - Si creas un archivo, enlázalo en `Navegación` de `01_about.md`. Mantén navegables los índices.
