@@ -372,15 +372,17 @@ Conexiones:
 - Si queda fuera del alcance acordado, sigue [Hallazgos diferidos](#hallazgos-diferidos)
   y conserva aquí solo el contrato o la frontera.
 
-Blast radius, hacia fuera desde cada salida, estado compartido y configuración del recorrido:
+Blast radius. Es el entregable principal. Hazlo de forma sistemática, no de paso:
 
-- Localiza consumidores: llamadas, lecturas de tablas o cachés, suscriptores de eventos, jobs,
-  informes, exports, integraciones.
-- Clasifica cada consumidor: mecanismo de propagación, grado de evidencia (verificado, inferido, sin
-  verificar) y alcance (área, dominio, otros dominios, externo).
-- Un salto hacia fuera. Al cruzar a otra área, registra el consumidor y su alcance; no sigas su
-  cadena. Si importa, [Hallazgos diferidos](#hallazgos-diferidos).
-- Anota lo que no puedes verificar: SQL dinámico, reflection, informes, clientes sin acceso.
+- Lista los puntos de cambio del recorrido: salidas, estado compartido, contratos y configuración.
+- Por cada punto, barre todos los mecanismos de propagación: llamada, tabla o estado compartido,
+  evento, configuración, orden temporal, contrato externo, datos históricos.
+- Por cada mecanismo anota consumidores o «no aplica», con la búsqueda hecha: qué buscaste y dónde.
+- Clasifica cada consumidor: grado de evidencia (verificado, inferido, sin verificar) y alcance
+  (área, dominio, otros dominios, externo).
+- Un salto hacia fuera. Al cruzar a otra área, registra consumidor y alcance; no sigas su cadena.
+  Si importa, [Hallazgos diferidos](#hallazgos-diferidos).
+- Declara lo que no puedes verificar: SQL dinámico, reflection, informes, clientes sin acceso.
 
 Cuándo parar:
 

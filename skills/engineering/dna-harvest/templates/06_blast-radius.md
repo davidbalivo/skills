@@ -21,7 +21,8 @@
 - Verificar al cambiar: {tests existentes, comprobaciones manuales o datos a revisar,
   distinguiéndolos}.
 - Implementación: {enlace a la sección correspondiente de 05_implementation-map.md}.
-- Procedencia: {evidencia de los consumidores y del efecto, con sus límites}.
+- Procedencia: {evidencia de los consumidores y del efecto, búsqueda realizada por mecanismo y sus
+  límites}.
 
 {Repetir por punto de cambio dentro de la cobertura. Documentar un salto hacia fuera: al cruzar a otra
 área, registrar el consumidor y su alcance, sin seguir su cadena. Opcional: flowchart LR del fan-out
