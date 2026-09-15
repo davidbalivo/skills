@@ -51,6 +51,9 @@ Adversarial code quality auditor: reviews TypeScript changes across seven pillar
 **[dna-audit-harvest](skills/engineering/dna-audit-harvest/)**
 Auditor externo de dna-harvest: revisa borrador y consolidación de una captura DNA para romperla antes de que llegue al experto
 
+**[dna-harvest](skills/engineering/dna-harvest/)**
+Crea o actualiza el conocimiento de un área en DNA mediante investigación del código y entrevista al experto
+
 **[git-operations](skills/engineering/git-operations/)**
 Rules for local git: commit strategy, write-op confirmation, message format
 
