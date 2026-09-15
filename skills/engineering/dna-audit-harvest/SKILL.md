@@ -64,8 +64,8 @@ Lee completos:
 - Las plantillas de `~/.agents/skills/dna-harvest/templates/` de cada documento revisado. Son la
   referencia de forma.
 - De `~/.agents/skills/dna-harvest/SKILL.md`, las secciones `Idioma`, `Redacción`, `Documentos DNA`,
-  `Hallazgos diferidos` y `Contenido y evidencia`, y el sub-bloque `Blast radius` del paso
-  `4. Investigación`. Son el contrato que auditas.
+  `Hallazgos diferidos` y `Contenido y evidencia` con su sub-sección `Anclas`, y el sub-bloque
+  `Blast radius` del paso `4. Investigación`. Son el contrato que auditas.
 
 No abras otros archivos salvo que un documento revisado los enlace. Consulta el código solo para
 comprobar que un ancla resuelve.
@@ -110,8 +110,12 @@ Dimensiones comunes:
     distinguen de las verificaciones propuestas.
   - Una cadena seguida dentro de otra área. Solo se registra el consumidor y su alcance.
   - El efecto de un cambio en `05_implementation-map.md` en lugar de `06_blast-radius.md`.
-- **Anclas**: toda afirmación técnica lleva ancla verificable y el ancla resuelve. Se prefieren rutas,
-  símbolos, tests, tablas y contratos frente a números de línea.
+- **Anclas**: toda afirmación técnica lleva ancla y el ancla cumple `Anclas` del contrato. Es
+  finding:
+  - Un ancla que no resuelve: la ruta no existe o el símbolo no está en ese archivo.
+  - Un ancla como enlace Markdown a código, con ruta absoluta local o con número de línea.
+  - Un ancla sin ruta desde la raíz del repositorio en la primera mención del documento.
+  - Un enlace Markdown a un archivo fuera de `dna/`, salvo URL `https://`.
 - **Procedencia**: toda afirmación no evidente indica su fuente según `Contenido y evidencia`.
   Código con ruta y símbolo. Experto con identidad o rol y fecha. Normativa con fuente y vigencia.
   Sin fuente, la afirmación se presenta como pendiente de confirmar y enlaza su pregunta o duda.
