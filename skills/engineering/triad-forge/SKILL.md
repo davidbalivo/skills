@@ -28,7 +28,9 @@ Espera a que terminen todos antes de pasar a la Fase C. Si alguno no entrega una
 
 ## Fase C: Revisión
 
-Cuando terminen todos los candidatos de la Fase B, elige un modelo de la línea `arena cross-judge pool` de `~/.cursor/rules/pstack-models.mdc`. Si falta la regla o esa línea, elige entre `claude-opus-5-5-xhigh` y `grok-4.7-xhigh-fast`. Prefiere una familia de modelos distinta a la del padre. Lanza un subagent juez de solo lectura con ese modelo. Ve los criterios de evaluación y los candidatos por etiqueta de ruta, puntúa cada criterio y recomienda una base con su justificación. Se ejecuta en paralelo con la lectura del padre en la Fase D, no con los propios candidatos. No lances el juez mientras los candidatos sigan escribiendo.
+Al terminar la Fase B, lanza un agente revisor con Fable 5.1. Entrégale los criterios de evaluación y las rutas de las propuestas disponibles, identificadas por candidato. Indícale que no modifique archivos.
+
+El revisor puntúa cada propuesta criterio por criterio, recomienda una base y explica por qué. Haz tu propia lectura de la Fase D mientras trabaja, sin compartirle tu valoración antes de que termine.
 
 ## Fase D: Elegir Base
 
