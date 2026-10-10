@@ -62,8 +62,9 @@ Si encuentras un problema, corrige la causa y vuelve a comprobar el resultado. R
 
 ## Salidas
 
-Un artefacto sintetizado. Una breve nota de síntesis junto a él que nombre la base, los injertos (con su candidato de origen), los descartes, las bajas si las hubo y el resultado de la verificación.
+Entrega el artefacto final y una nota breve de síntesis junto a él. La nota debe incluir:
 
-## Origen
-
-Traducción de la skill `arena` de [cursor/plugins](https://github.com/cursor/plugins/blob/main/pstack/skills/arena/SKILL.md) (`pstack`), con licencia MIT. Copyright (c) 2026 Lauren Tan.
+- Qué propuesta elegiste como base y por qué, y qué recomendó el revisor.
+- Qué aportaciones integraste y de qué propuesta proceden; cuáles descartaste y por qué.
+- Si algún agente no entregó su propuesta o si las propuestas coincidieron en lo esencial.
+- Qué comprobaste sobre el resultado final, con sus resultados y lo que quedó sin verificar.
