@@ -13,9 +13,10 @@ Lanza 3 agentes en paralelo sobre la misma tarea. Lee cada candidato de principi
 Prepara una tarea común para los candidatos antes de lanzarlos:
 
 - Define qué debe entregar cada agente. Todos reciben el mismo encargo y el mismo contexto.
+- Exige que cada agente compruebe su resultado y aporte pruebas de cada afirmación verificable. Si algo no puede comprobarse, debe indicarlo.
 - Fija entre tres y seis criterios de evaluación concretos para comparar los resultados en la Fase D. No incluyas esos criterios en el encargo: los candidatos solo reciben la tarea.
 - Usa tres agentes con Claude Opus 5.5. Cambia el número o el modelo solo si el usuario lo pide.
-- Usa el directorio temporal del repositorio para las salidas. Si no existe, créalo. Da a cada agente una subcarpeta distinta para que no sobrescriban los resultados de los demás.
+- Asigna a cada agente una subcarpeta propia en el directorio temporal del repositorio. Si ese directorio no existe, créalo.
 
 ## Fase B: Desplegar
 
