@@ -20,11 +20,11 @@ Prepara una tarea común para los candidatos antes de lanzarlos:
 
 ## Fase B: Desplegar
 
-Lanza los N subagents en un solo mensaje con `run_in_background: true`, cada uno con la tarea, la ruta al contexto compartido, su propia ruta de salida e instrucciones para producir tanto el artefacto como una breve justificación.
+Lanza a todos los agentes para que trabajen en paralelo. Dales el mismo encargo y el mismo contexto definidos en la Fase A, y asigna a cada uno su subcarpeta.
 
-Cada justificación nombra las alternativas que el candidato consideró y lo que descartó.
+Pide a cada agente que entregue su propuesta, una explicación breve de las alternativas que consideró y descartó, y las comprobaciones realizadas con sus resultados. Debe señalar lo que no haya podido verificar.
 
-Si un candidato no produce salida, continúa con N-1 y anota la baja en el registro de síntesis.
+Espera a que terminen todos antes de pasar a la Fase C. Si alguno no entrega una propuesta, continúa con las demás y deja constancia en la nota de síntesis.
 
 ## Fase C: Revisión
 
