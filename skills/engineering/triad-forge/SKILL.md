@@ -54,9 +54,11 @@ Si las propuestas coinciden en lo esencial, registra la coincidencia y entrega e
 
 ## Fase F: Validar
 
-El artefacto sintetizado tiene que resistir el mismo escrutinio que cualquier otra salida, según la skill de principio **prove-it-works**.
+Comprueba directamente el artefacto final después de integrar las aportaciones. Haz las verificaciones adecuadas para la tarea: ejecútalo, inspecciona el resultado o revisa el archivo final. No des por bueno el trabajo solo porque un candidato diga que lo probó o porque el código compile.
 
-Si la verificación revela un problema que la arena no detectó, o la Fase A estaba mal (reencuadra y vuelve a ejecutar) o un candidato lo detectó y se te pasó el injerto (vuelve a la Fase E). No lo tapes.
+Anota en la nota de síntesis qué comprobaste, cómo lo hiciste y qué resultado obtuviste. Incluye lo que no pudiste verificar.
+
+Si encuentras un problema, corrige la causa y vuelve a comprobar el resultado. Regresa a la Fase E si falló la integración, o a la Fase A si el encargo o los criterios de evaluación estaban mal definidos.
 
 ## Salidas
 
