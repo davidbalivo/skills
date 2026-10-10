@@ -34,13 +34,13 @@ El revisor puntúa cada propuesta criterio por criterio, recomienda una base y e
 
 ## Fase D: Elegir Base
 
-Lee cada candidato de principio a fin antes de elegir.
+Lee por completo cada propuesta, su justificación y las pruebas que aporta. Puntúala según los criterios de evaluación de la Fase A y explica brevemente cada puntuación.
 
-Puntúa cada candidato según los criterios de evaluación, uno por uno, no por sensación global. Compara con el juicio cruzado. Si coincidís en la base, la elección queda confirmada. Si no, uno de los dos está sesgado o los criterios de evaluación eran ambiguos. Lee ambas justificaciones antes de decidir.
+Cuando termine el revisor de la Fase C, compara su evaluación con la tuya. Si no coincidís, revisa las propuestas y las pruebas que sustentan ambas valoraciones antes de decidir.
 
-Elige como base el candidato que un futuro maintainer pueda extender con más facilidad sin romper invariantes. Si dos parecen empatados, prefiere el de límites más limpios o API más pequeña, según el Laziness Protocol.
+Elige como base la propuesta que mejor cumpla los criterios. Si dos quedan igualadas, elige la que sea más fácil de mantener y ampliar.
 
-Registra la elección y el motivo en una breve nota de síntesis junto al artefacto base, incluido el veredicto del juicio cruzado.
+Registra la elección, tus motivos y la recomendación del revisor en una nota de síntesis junto a la propuesta base.
 
 ## Fase E: Integración
 
