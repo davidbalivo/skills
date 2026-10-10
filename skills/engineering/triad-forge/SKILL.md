@@ -44,13 +44,13 @@ Registra la elección, tus motivos y la recomendación del revisor en una nota d
 
 ## Fase E: Integración
 
-Recorre una vez más cada candidato perdedor e identifica qué merece la pena portar a la base. La señal suele ser una o dos cosas por candidato, no la mayor parte.
+Revisa de nuevo las propuestas que no elegiste como base. Identifica qué aportaciones mejoran la elegida según los criterios de evaluación. Incorpora solo esas aportaciones.
 
-Incorpora cada injerto a mano, según la skill de principio **redesign-from-first-principles**. No pegues de forma mecánica. El resultado tiene que seguir siendo coherente bajo un único modelo mental.
+Para integrar una idea, adapta la base como si esa idea hubiera formado parte del diseño desde el principio. Ajusta todas las partes afectadas para que el resultado siga siendo coherente; evita pegar fragmentos sin más.
 
-Registra qué se injertó, de qué candidato, y qué se descartó y por qué.
+Anota qué incorporaste, de qué propuesta procede y qué descartaste, con sus motivos.
 
-Cuando los N candidatos convergen en la misma forma, es una señal fuerte de acuerdo. Anota la convergencia en el registro y entrega la forma de consenso. No hace falta injertar. Cuando los N candidatos divergen mucho, la Fase A estaba poco especificada. Reencuadra y vuelve a ejecutar en lugar de promediar la divergencia.
+Si las propuestas coinciden en lo esencial, registra la coincidencia y entrega esa solución sin forzar cambios. Si difieren tanto que no puedes defender una base, aclara el encargo de la Fase A y repite la ronda.
 
 ## Fase F: Validar
 
