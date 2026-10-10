@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triad Forge — Roles</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6b6b70;
+    --line: #8a8a90;
+    --orq: #2f5bd3;
+    --orq-soft: #e6ecfb;
+    --cand: #1f8a5b;
+    --cand-soft: #e3f3eb;
+    --rev: #b5611a;
+    --rev-soft: #fbeee2;
+    --out: #6a4bc4;
+    --out-soft: #efeafb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416;
+      --surface: #1e1e22;
+      --ink: #ececef;
+      --muted: #a0a0a8;
+      --line: #7c7c85;
+      --orq: #7c9dff;
+      --orq-soft: #1f2a48;
+      --cand: #5cc896;
+      --cand-soft: #17332a;
+      --rev: #f0a35e;
+      --rev-soft: #3a2817;
+      --out: #b29cff;
+      --out-soft: #2a2245;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141416;
+    --surface: #1e1e22;
+    --ink: #ececef;
+    --muted: #a0a0a8;
+    --line: #7c7c85;
+    --orq: #7c9dff;
+    --orq-soft: #1f2a48;
+    --cand: #5cc896;
+    --cand-soft: #17332a;
+    --rev: #f0a35e;
+    --rev-soft: #3a2817;
+    --out: #b29cff;
+    --out-soft: #2a2245;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px 16px 32px;
+  }
+  h1 {
+    margin: 0 auto 16px;
+    max-width: 1000px;
+    font-size: 22px;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  .wrap { max-width: 1000px; margin: 0 auto; }
+  svg { display: block; width: 100%; height: auto; }
+  svg text { font-family: inherit; fill: var(--ink); }
+  .t-title { font-size: 16px; font-weight: 650; }
+  .t-sub { font-size: 12px; fill: var(--muted); }
+  .t-chip { font-size: 13px; font-weight: 600; }
+  .t-lbl { font-size: 12.5px; font-weight: 600; }
+  .t-note { font-size: 11.5px; fill: var(--muted); }
+  .orq-box { fill: var(--orq-soft); stroke: var(--orq); stroke-width: 1.5; }
+  .orq-chip { fill: var(--surface); stroke: var(--orq); stroke-width: 1; }
+  .cand-group { fill: none; stroke: var(--cand); stroke-width: 1.2; stroke-dasharray: 5 4; }
+  .cand-box { fill: var(--cand-soft); stroke: var(--cand); stroke-width: 1.5; }
+  .rev-box { fill: var(--rev-soft); stroke: var(--rev); stroke-width: 1.5; }
+  .out-box { fill: var(--out-soft); stroke: var(--out); stroke-width: 1.5; }
+  .user-box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+  .tag { fill: var(--surface); stroke: var(--rev); stroke-width: 1; }
+  .a-orq { stroke: var(--orq); stroke-width: 1.8; fill: none; }
+  .a-cand { stroke: var(--cand); stroke-width: 1.8; fill: none; }
+  .a-rev { stroke: var(--rev); stroke-width: 1.8; fill: none; }
+  .a-out { stroke: var(--out); stroke-width: 1.8; fill: none; }
+  .a-user { stroke: var(--line); stroke-width: 1.8; fill: none; }
+  .a-read { stroke: var(--rev); stroke-width: 1.4; fill: none; stroke-dasharray: 5 4; }
+  .a-loop { stroke: var(--orq); stroke-width: 1.3; fill: none; stroke-dasharray: 3 3; }
+  .c-orq { fill: var(--orq); }
+  .c-cand { fill: var(--cand); }
+  .c-rev { fill: var(--rev); }
+  .c-out { fill: var(--out); }
+  .c-muted { fill: var(--muted); }
+</style>
+</head>
+<body>
+<h1>Triad Forge - Roles</h1>
+<div class="wrap">
+<svg viewBox="0 0 1000 660" role="img" aria-labelledby="dtitle">
+  <title id="dtitle">Triad Forge — Roles</title>
+  <defs>
+    <marker id="m-orq" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-orq"/></marker>
+    <marker id="m-cand" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-cand"/></marker>
+    <marker id="m-rev" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-rev"/></marker>
+    <marker id="m-out" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-out"/></marker>
+    <marker id="m-muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="c-muted"/></marker>
+  </defs>
+
+  <!-- Usuario -->
+  <rect class="user-box" x="430" y="20" width="140" height="44" rx="10"/>
+  <text class="t-title" x="500" y="47" text-anchor="middle">Usuario</text>
+  <path class="a-user" d="M500,64 L500,126" marker-end="url(#m-muted)"/>
+  <text class="t-lbl" x="510" y="100">Tarea</text>
+
+  <!-- Orquestador -->
+  <rect class="orq-box" x="370" y="130" width="260" height="290" rx="14"/>
+  <text class="t-title" x="500" y="158" text-anchor="middle">Orquestador</text>
+
+  <rect class="orq-chip" x="405" y="178" width="190" height="38" rx="8"/>
+  <text class="t-chip" x="500" y="202" text-anchor="middle">A · Delimitar</text>
+  <rect class="orq-chip" x="405" y="238" width="190" height="38" rx="8"/>
+  <text class="t-chip" x="500" y="262" text-anchor="middle">D · Elegir base</text>
+  <rect class="orq-chip" x="405" y="298" width="190" height="38" rx="8"/>
+  <text class="t-chip" x="500" y="322" text-anchor="middle">E · Integrar</text>
+  <rect class="orq-chip" x="405" y="358" width="190" height="38" rx="8"/>
+  <text class="t-chip" x="500" y="382" text-anchor="middle">F · Validar</text>
+
+  <!-- Bucles de fallo -->
+  <path class="a-loop" d="M595,377 L612,377 L612,317 L599,317" marker-end="url(#m-orq)"/>
+  <path class="a-loop" d="M405,377 L388,377 L388,197 L401,197" marker-end="url(#m-orq)"/>
+  <text class="t-note" x="500" y="412" text-anchor="middle">fallo → E / A</text>
+
+  <!-- Candidatos -->
+  <rect class="cand-group" x="20" y="130" width="200" height="290" rx="14"/>
+  <text class="t-title" x="120" y="158" text-anchor="middle">Candidatos ×3</text>
+  <text class="t-sub" x="120" y="176" text-anchor="middle">Opus 5.5 · en paralelo</text>
+
+  <rect class="cand-box" x="45" y="192" width="150" height="56" rx="10"/>
+  <text class="t-chip" x="120" y="216" text-anchor="middle">Candidato 1</text>
+  <text class="t-sub" x="120" y="234" text-anchor="middle">subcarpeta 1</text>
+  <rect class="cand-box" x="45" y="266" width="150" height="56" rx="10"/>
+  <text class="t-chip" x="120" y="290" text-anchor="middle">Candidato 2</text>
+  <text class="t-sub" x="120" y="308" text-anchor="middle">subcarpeta 2</text>
+  <rect class="cand-box" x="45" y="340" width="150" height="56" rx="10"/>
+  <text class="t-chip" x="120" y="364" text-anchor="middle">Candidato 3</text>
+  <text class="t-sub" x="120" y="382" text-anchor="middle">subcarpeta 3</text>
+
+  <!-- Orquestador -> Candidatos -->
+  <path class="a-orq" d="M370,197 L224,197" marker-end="url(#m-orq)"/>
+  <text class="t-lbl" x="297" y="187" text-anchor="middle">B · Mismo encargo</text>
+  <text class="t-note" x="297" y="214" text-anchor="middle">sin criterios</text>
+
+  <!-- Candidatos -> Orquestador -->
+  <path class="a-cand" d="M220,257 L366,257" marker-end="url(#m-cand)"/>
+  <text class="t-lbl" x="295" y="247" text-anchor="middle">Propuesta</text>
+  <text class="t-note" x="295" y="274" text-anchor="middle">descartes · pruebas</text>
+
+  <!-- Revisor -->
+  <rect class="rev-box" x="780" y="178" width="200" height="118" rx="14"/>
+  <text class="t-title" x="880" y="208" text-anchor="middle">Revisor</text>
+  <text class="t-sub" x="880" y="226" text-anchor="middle">Fable 5.1</text>
+  <rect class="tag" x="826" y="244" width="108" height="24" rx="12"/>
+  <text class="t-note" x="880" y="260" text-anchor="middle">solo lectura</text>
+
+  <!-- Orquestador -> Revisor -->
+  <path class="a-orq" d="M630,207 L776,207" marker-end="url(#m-orq)"/>
+  <text class="t-lbl" x="705" y="197" text-anchor="middle">C · Criterios + rutas</text>
+
+  <!-- Revisor -> Orquestador -->
+  <path class="a-rev" d="M780,257 L634,257" marker-end="url(#m-rev)"/>
+  <text class="t-lbl" x="705" y="247" text-anchor="middle">Puntuación + base</text>
+  <text class="t-note" x="705" y="274" text-anchor="middle">vs. evaluación propia</text>
+
+  <!-- Revisor lee propuestas -->
+  <path class="a-read" d="M120,420 L120,620 L880,620 L880,300" marker-end="url(#m-rev)"/>
+  <text class="t-note" x="760" y="610" text-anchor="middle">lee propuestas</text>
+
+  <!-- Salidas -->
+  <path class="a-out" d="M500,420 L500,448 M500,448 L410,448 L410,476 M500,448 L590,448 L590,476" />
+  <path class="a-out" d="M410,470 L410,478" marker-end="url(#m-out)"/>
+  <path class="a-out" d="M590,470 L590,478" marker-end="url(#m-out)"/>
+  <rect class="out-box" x="330" y="482" width="160" height="50" rx="10"/>
+  <text class="t-chip" x="410" y="512" text-anchor="middle">Artefacto final</text>
+  <rect class="out-box" x="510" y="482" width="160" height="50" rx="10"/>
+  <text class="t-chip" x="590" y="512" text-anchor="middle">Nota de síntesis</text>
+  <text class="t-note" x="500" y="556" text-anchor="middle">Salidas</text>
+</svg>
+</div>
+</body>
+</html>

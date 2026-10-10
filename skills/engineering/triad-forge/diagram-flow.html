@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Triad Forge — Flujo</title>
+<style>
+  :root {
+    --bg: #f7f6f2;
+    --surface: #ffffff;
+    --ink: #1d1d1f;
+    --muted: #6b6b70;
+    --line: #8a8a90;
+    --orq: #2f5bd3;
+    --orq-soft: #e6ecfb;
+    --cand: #1f8a5b;
+    --cand-soft: #e3f3eb;
+    --rev: #b5611a;
+    --rev-soft: #fbeee2;
+    --out: #6a4bc4;
+    --out-soft: #efeafb;
+    --back: #c0392b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141416;
+      --surface: #1e1e22;
+      --ink: #ececef;
+      --muted: #a0a0a8;
+      --line: #7c7c85;
+      --orq: #7c9dff;
+      --orq-soft: #1f2a48;
+      --cand: #5cc896;
+      --cand-soft: #17332a;
+      --rev: #f0a35e;
+      --rev-soft: #3a2817;
+      --out: #b29cff;
+      --out-soft: #2a2245;
+      --back: #ff7b6b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141416;
+    --surface: #1e1e22;
+    --ink: #ececef;
+    --muted: #a0a0a8;
+    --line: #7c7c85;
+    --orq: #7c9dff;
+    --orq-soft: #1f2a48;
+    --cand: #5cc896;
+    --cand-soft: #17332a;
+    --rev: #f0a35e;
+    --rev-soft: #3a2817;
+    --out: #b29cff;
+    --out-soft: #2a2245;
+    --back: #ff7b6b;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px 16px 32px;
+  }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 22px; font-weight: 650; margin: 0 0 16px; text-align: center; }
+  svg { display: block; width: 100%; height: auto; }
+
+  .t  { font-size: 15px; font-weight: 650; fill: var(--ink); text-anchor: middle; }
+  .s  { font-size: 12px; fill: var(--muted); text-anchor: middle; }
+  .lbl { font-size: 12px; fill: var(--muted); }
+  .lbl-back { font-size: 12px; fill: var(--back); font-weight: 600; }
+
+  .orq  { fill: var(--orq-soft);  stroke: var(--orq);  stroke-width: 1.5; }
+  .cand { fill: var(--cand-soft); stroke: var(--cand); stroke-width: 1.5; }
+  .rev  { fill: var(--rev-soft);  stroke: var(--rev);  stroke-width: 1.5; }
+  .out  { fill: var(--out-soft);  stroke: var(--out);  stroke-width: 1.5; }
+  .dec  { fill: var(--surface);   stroke: var(--line); stroke-width: 1.5; }
+
+  .flow { fill: none; stroke: var(--line); stroke-width: 1.5; }
+  .loop { fill: none; stroke: var(--back); stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .head-flow { fill: var(--line); }
+  .head-loop { fill: var(--back); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Triad Forge - Flujo</h1>
+  <svg viewBox="0 0 760 930" role="img" aria-label="Flujo de la skill Triad Forge, fases A a F">
+    <defs>
+      <marker id="a-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="head-flow"/>
+      </marker>
+      <marker id="a-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" class="head-loop"/>
+      </marker>
+    </defs>
+
+    <!-- A -->
+    <rect class="orq" x="270" y="20" width="220" height="60" rx="10"/>
+    <text class="t" x="380" y="45">A · Delimitar</text>
+    <text class="s" x="380" y="66">mismo encargo · 3–6 criterios</text>
+
+    <!-- A → B -->
+    <path class="flow" d="M380,80 L380,100 L190,100 L190,128" marker-end="url(#a-flow)"/>
+    <path class="flow" d="M380,100 L380,128" marker-end="url(#a-flow)"/>
+    <path class="flow" d="M380,100 L570,100 L570,128" marker-end="url(#a-flow)"/>
+    <text class="lbl" x="640" y="96" text-anchor="middle">B · en paralelo</text>
+
+    <!-- B: candidatos -->
+    <rect class="cand" x="110" y="130" width="160" height="56" rx="10"/>
+    <text class="t" x="190" y="153">Candidato 1</text>
+    <text class="s" x="190" y="173">Opus 5.5</text>
+    <rect class="cand" x="300" y="130" width="160" height="56" rx="10"/>
+    <text class="t" x="380" y="153">Candidato 2</text>
+    <text class="s" x="380" y="173">Opus 5.5</text>
+    <rect class="cand" x="490" y="130" width="160" height="56" rx="10"/>
+    <text class="t" x="570" y="153">Candidato 3</text>
+    <text class="s" x="570" y="173">Opus 5.5</text>
+
+    <!-- B → C / lectura propia -->
+    <path class="flow" d="M190,186 L190,226 M380,186 L380,226 M570,186 L570,226 M190,226 L570,226"/>
+    <text class="s" x="380" y="247" style="font-size:11px">propuesta · descartes · pruebas</text>
+    <path class="flow" d="M250,226 L250,258" marker-end="url(#a-flow)"/>
+    <path class="flow" d="M510,226 L510,258" marker-end="url(#a-flow)"/>
+
+    <!-- C + lectura propia -->
+    <rect class="rev" x="150" y="260" width="200" height="56" rx="10"/>
+    <text class="t" x="250" y="283">C · Revisor</text>
+    <text class="s" x="250" y="303">Fable 5.1 · solo lectura</text>
+    <rect class="orq" x="410" y="260" width="200" height="56" rx="10"/>
+    <text class="t" x="510" y="283">Lectura propia</text>
+    <text class="s" x="510" y="303">puntuar por criterio</text>
+
+    <!-- → D -->
+    <path class="flow" d="M250,316 L250,338 L340,338 L340,358" marker-end="url(#a-flow)"/>
+    <path class="flow" d="M510,316 L510,338 L420,338 L420,358" marker-end="url(#a-flow)"/>
+
+    <!-- D -->
+    <rect class="orq" x="270" y="360" width="220" height="56" rx="10"/>
+    <text class="t" x="380" y="383">D · Elegir base</text>
+    <text class="s" x="380" y="403">comparar y decidir</text>
+
+    <!-- ¿base clara? -->
+    <path class="flow" d="M380,416 L380,436" marker-end="url(#a-flow)"/>
+    <polygon class="dec" points="380,438 470,473 380,508 290,473"/>
+    <text class="t" x="380" y="478" style="font-size:13px">¿Base clara?</text>
+    <path class="flow" d="M380,508 L380,536" marker-end="url(#a-flow)"/>
+    <text class="lbl" x="388" y="526">sí</text>
+
+    <!-- E -->
+    <rect class="orq" x="270" y="538" width="220" height="56" rx="10"/>
+    <text class="t" x="380" y="561">E · Integrar</text>
+    <text class="s" x="380" y="581">mejores ideas de los otros</text>
+
+    <!-- F -->
+    <path class="flow" d="M380,594 L380,626" marker-end="url(#a-flow)"/>
+    <rect class="orq" x="270" y="628" width="220" height="56" rx="10"/>
+    <text class="t" x="380" y="651">F · Validar</text>
+    <text class="s" x="380" y="671">comprobar el resultado</text>
+
+    <!-- ¿correcto? -->
+    <path class="flow" d="M380,684 L380,712" marker-end="url(#a-flow)"/>
+    <polygon class="dec" points="380,714 470,749 380,784 290,749"/>
+    <text class="t" x="380" y="754" style="font-size:13px">¿Correcto?</text>
+    <path class="flow" d="M380,784 L380,830" marker-end="url(#a-flow)"/>
+    <text class="lbl" x="388" y="812">sí</text>
+
+    <!-- Salidas -->
+    <rect class="out" x="230" y="832" width="300" height="64" rx="10"/>
+    <text class="t" x="380" y="858">Salidas</text>
+    <text class="s" x="380" y="880">artefacto final + nota de síntesis</text>
+
+    <!-- Vueltas atrás: a A (izquierda) -->
+    <path class="loop" d="M290,749 L50,749 L50,50 L268,50" marker-end="url(#a-loop)"/>
+    <path class="loop" d="M290,473 L50,473"/>
+    <text class="lbl-back" x="170" y="465" text-anchor="middle">no → A</text>
+    <text class="lbl-back" x="170" y="741" text-anchor="middle">encargo mal → A</text>
+
+    <!-- Vuelta atrás: a E (derecha) -->
+    <path class="loop" d="M470,749 L660,749 L660,566 L492,566" marker-end="url(#a-loop)"/>
+    <text class="lbl-back" x="580" y="741" text-anchor="middle">integración → E</text>
+  </svg>
+</main>
+</body>
+</html>
