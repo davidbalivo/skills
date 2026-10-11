@@ -1,7 +1,6 @@
 ---
 name: triad-forge
-description: Lanza 3 agentes en paralelo sobre la misma tarea, elige una base e integra en ella las mejores ideas de los otros
-disable-model-invocation: true
+description: "Use this skill on-demand, when explicitly invoked. Do not auto-trigger. Lanza 3 agentes en paralelo sobre la misma tarea, elige una base e integra en ella las mejores ideas de los otros"
 ---
 
 # Triad Forge
