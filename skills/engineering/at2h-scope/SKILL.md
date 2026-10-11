@@ -66,6 +66,7 @@ Cada candidato debe:
 - Revisar solo las fuentes necesarias para decidir dónde investigar.
 - Identificar el contexto imprescindible, como el cliente, el pod, la base de datos, el entorno o la versión. Buscarlo primero en el ticket y después, si hace falta, en el código u otras fuentes. Anotar en `open-items.md` los datos necesarios que no pueda identificar.
 - Definir solo las líneas de investigación necesarias para el ticket. Ejemplos: `code` (código), `data-map` (base de datos), `logs` (registros) y `research` (normativa, formatos y APIs).
+- Dedicar cada línea a un solo tema. Si hay que investigar código y base de datos, crea dos encargos. Una línea puede usar los resultados de otra, pero no asumir su investigación.
 - Para cada línea, indicar qué pregunta debe responder, por qué importa, qué queda fuera y los puntos de partida conocidos.
 
 `result.md` debe tener dos partes:
