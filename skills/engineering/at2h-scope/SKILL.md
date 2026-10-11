@@ -75,6 +75,8 @@ Cada candidato debe:
 
 En ambas partes, distingue los hechos de las suposiciones.
 
+`result.md` sigue la estructura de [`template.md`](template.md). Incluye su ruta en el encargo para que los candidatos usen la misma estructura. Su contenido es ficticio: no se copian datos, nombres de ficheros ni tablas.
+
 ## Fase C: Confirmar
 
 Muestra la explicación funcional de `result.md` a la persona que debe confirmar el alcance. Pregúntale si la investigación prevista responde a lo que pide el ticket. Espera su respuesta.
