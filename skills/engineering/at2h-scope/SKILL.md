@@ -43,24 +43,19 @@ Lee el ticket completo en Jira, incluidos el título, la descripción, los comen
 
 ## Fase B: Definir el alcance
 
-Ejecuta la skill triad-forge con `01-scope/` como carpeta de trabajo.
+Ejecuta `triad-forge` con `01-scope/` como carpeta de trabajo. El encargo es delimitar la investigación necesaria para resolver el ticket. Deja claro que en esta fase no se buscan causas, no se formulan hipótesis ni se proponen soluciones.
 
-El objetivo es decidir qué hay que investigar. En esta fase, bajo ningún concepto debes buscar la causa, proponer soluciones ni formular hipótesis. Eso corresponde a los pasos siguientes. Deja este límite claro en el encargo. Cada candidato debe:
+Cada candidato debe:
 
-- Explorar solo lo necesario para saber dónde investigar. Las fuentes dependen del ticket y pueden incluir código, esquema de la base de datos, logs, documentación u otras. Esta exploración orienta la investigación; no explica qué ocurre.
-- Identificar solo el contexto necesario para investigar, como el cliente, el pod, la base de datos, el entorno o la versión. Buscarlo primero en el ticket y, si no aparece, en el código u otras fuentes. Si algún dato necesario no puede identificarse, anotarlo en `open-items.md`.
-- Definir solo las líneas de investigación necesarias para el ticket. Por ejemplo:
-  - `code`: si hay que investigar el código implicado.
-  - `data-map`: si hay que investigar la base de datos.
-  - `logs`: si hay que revisar logs.
-  - `research`: si hay que consultar una normativa, un formato oficial o la API de un tercero.
-  - cualquier otra línea de investigación relevante para el ticket.
-- Para cada línea de investigación, indicar qué pregunta debe responder, por qué es necesaria, qué queda fuera y los puntos de partida conocidos: archivos, tablas, registros, documentos u otros.
+- Revisar solo las fuentes necesarias para decidir dónde investigar.
+- Identificar el contexto imprescindible, como el cliente, el pod, la base de datos, el entorno o la versión. Buscarlo primero en el ticket y después, si hace falta, en el código u otras fuentes. Anotar en `open-items.md` los datos necesarios que no pueda identificar.
+- Definir solo las líneas de investigación necesarias para el ticket. Ejemplos: `code` (código), `data-map` (base de datos), `logs` (registros) y `research` (normativa, formatos y APIs).
+- Para cada línea, indicar qué pregunta debe responder, por qué importa, qué queda fuera y los puntos de partida conocidos.
 
-`result.md` tiene dos partes:
+`result.md` debe tener dos partes:
 
-- Explicación funcional para alguien sin contexto: qué pide el ticket, qué se va a investigar, por qué y qué queda fuera. Aplica las skills indicadas en las reglas.
-- Detalle técnico: el contexto identificado, los resultados de la exploración y un encargo por cada línea de investigación. `at2h-investigate` recibe esos encargos. Incluye solo lo que corresponda al ticket.
+- Una explicación funcional para alguien sin contexto: qué pide el ticket, qué se investigará, por qué y qué queda fuera. Aplica las skills indicadas en las reglas.
+- El detalle técnico: contexto identificado, resultados de la exploración y un encargo por línea de investigación para `at2h-investigate`.
 
 En ambas partes, distingue los hechos de las suposiciones.
 
