@@ -12,6 +12,19 @@ Lanza 3 agentes en paralelo sobre la misma tarea. Lee cada candidato de principi
 
 Trabaja en la carpeta indicada como parámetro. Si no la recibe, crea una carpeta para la tarea en el directorio temporal del repositorio. Si ese directorio no existe, créalo.
 
+El parámetro puede indicar la ruta completa de la carpeta de trabajo o solo la de su carpeta padre. Si solo se indica la carpeta padre, o no se indica ninguna ruta, usa el nombre predeterminado que corresponda al tema de la tarea:
+
+| Tema                     | Carpeta         |
+| ------------------------ | --------------- |
+| Código                   | `code`          |
+| Datos y configuración    | `data-map`      |
+| Normativa y APIs externas | `research`      |
+| Paridad legacy           | `legacy-parity` |
+| Historial                | `history`       |
+| Logs y errores           | `logs`          |
+
+Si se indica otro nombre, úsalo. Si el tema no encaja en ninguna de estas categorías, usa un nombre corto en inglés con formato `kebab-case`.
+
 ```text
 {carpeta}/
 ├── assignment.md
@@ -87,6 +100,7 @@ Si encuentras un problema, corrige la causa y vuelve a comprobar el resultado. R
 
 Escribe ahora `criteria.md` con los criterios de evaluación de la Fase A. Entrega `result.md`, `synthesis.md` y `criteria.md` en la carpeta de trabajo. `synthesis.md` debe incluir:
 
+- Una tabla con cada rol, su carpeta y el ID exacto del modelo que usó, con el nivel de esfuerzo si no es el predeterminado.
 - Qué propuesta elegiste como base y por qué, y qué recomendó el revisor.
 - Qué aportaciones integraste y de qué propuesta proceden; cuáles descartaste y por qué.
 - Si algún agente no entregó su propuesta o si las propuestas coincidieron en lo esencial.
