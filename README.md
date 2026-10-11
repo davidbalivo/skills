@@ -45,6 +45,9 @@ Translate English or create and edit Spanish-language artifacts while preserving
 
 ### Engineering
 
+**[at2h-scope](skills/engineering/at2h-scope/)**
+Primer paso de AT2H: lee un ticket de Jira y define con triad-forge qué hay que investigar, sin buscar la causa
+
 **[audit-ts-code](skills/engineering/audit-ts-code/)**
 Adversarial code quality auditor: reviews TypeScript changes across seven pillars before acceptance
 
