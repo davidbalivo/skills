@@ -111,8 +111,8 @@ Interrogation flow that turns ideas into reviewable, zero-context specs
 **[sdd-spec-gap](skills/engineering/sdd-spec-gap/)**
 Detect, confirm, and trace gaps or ambiguities found during any SDD workflow step
 
-**[step-based-skills-standard](skills/engineering/step-based-skills-standard/)**
-Canonical structure, keywords, tags and mermaid conventions for step-based skills
+**[triad-forge](skills/engineering/triad-forge/)**
+Lanza 3 agentes en paralelo sobre la misma tarea, elige una base e integra en ella las mejores ideas de los otros
 
 **[ts-essentials](skills/engineering/ts-essentials/)**
 Universal non-negotiable TypeScript rules: type safety, modeling, inference, nullability, async
