@@ -1,20 +1,20 @@
 ---
 name: at2h-scope
-description: Primer paso de AT2H. Lee un ticket de Jira, define con triad-forge qué hay que investigar para resolverlo y lo deja listo para confirmación humana
+description: Primer paso de AT2H. Lee un ticket de Jira, define con triad-forge qué investigar para resolverlo y presenta el alcance para confirmación humana
 disable-model-invocation: true
 ---
 
 # AT2H Scope
 
-Recibe la clave de un ticket de Jira. Crea la carpeta del ticket. Define con triad-forge qué hay que investigar para resolverlo. Termina cuando una persona confirma el alcance.
+A partir de la clave de un ticket de Jira, crea su carpeta y usa triad-forge para definir qué hace falta investigar. El proceso se completa cuando una persona confirma el alcance.
 
-Quien ejecuta esta skill no conoce el código ni el dominio. Todo lo que tenga que leer o confirmar se escribe en lenguaje funcional sencillo.
+Da por hecho que la persona que debe confirmar el alcance no conoce el código ni el dominio. Escribe en lenguaje funcional sencillo todo lo que deba leer o confirmar.
 
 ## Reglas
 
-- Nunca escribas en la base de datos de un cliente. Solo se consulta en modo lectura.
-- Las explicaciones funcionales usan la skill `unslop` si está instalada. Si están en español, usan también `spanish-artifacts` si está instalada.
-- Los hallazgos críticos ajenos al ticket se anotan en `out-of-scope.md`. Un hallazgo es crítico si puede causar pérdida o corrupción de datos, importes o nóminas incorrectos, incumplimiento legal o fiscal, o un fallo de seguridad. No se investigan ni se corrigen.
+- No escribas nunca en la base de datos de un cliente. Consúltala solo en modo lectura.
+- Al redactar explicaciones funcionales, aplica la skill `unslop` si está instalada. Si escribes en español, aplica también `spanish-artifacts` si está instalada.
+- Anota en `out-of-scope.md` los hallazgos críticos ajenos al ticket, sin investigarlos ni corregirlos. Se consideran críticos los que puedan causar pérdida o corrupción de datos, importes o nóminas incorrectos, incumplimiento legal o fiscal, o un fallo de seguridad.
 
 ## Carpeta del ticket
 
@@ -28,49 +28,49 @@ at2h/{ticket}/
 └── 01-scope/
 ```
 
-- `status.md`: qué pasos están hechos, cuál está en curso y cuáles faltan, con la fecha y la ruta de cada resultado.
-- `open-items.md`: lo que falta por investigar o aclarar para resolver el ticket. Cada entrada indica el paso que la abre, qué falta, por qué importa y su estado: `abierta`, `en curso`, `resuelta` o `descartada`.
+- `status.md`: los pasos completados, el que está en curso y los pendientes, con la fecha y la ruta de cada resultado.
+- `open-items.md`: las cuestiones que quedan por investigar o aclarar para resolver el ticket. Cada entrada indica en qué paso se abrió, qué falta, por qué importa y su estado: `abierta`, `en curso`, `resuelta` o `descartada`.
 - `out-of-scope.md`: hallazgos críticos ajenos al ticket. Cada entrada indica el paso que lo detecta, qué ocurre y a quién afecta, la evidencia y por qué es crítico.
 - `01-scope/`: la carpeta de trabajo de triad-forge para este paso.
 
 ## Fase A: Preparar
 
-Si `at2h/{ticket}/` no existe, créala con sus tres ficheros y la carpeta `01-scope/`. Registra en `status.md` que el alcance está en curso.
+Si `at2h/{ticket}/` no existe, crea la carpeta con sus tres archivos y `01-scope/`. Registra en `status.md` que el alcance está en curso.
 
-Si ya existe, lee `status.md`. Si el alcance ya está confirmado, para e indica cuál es el siguiente paso. Si no, continúa desde donde se quedó.
+Si la carpeta ya existe, lee `status.md`. Si el alcance está confirmado, detente e indica cuál es el siguiente paso. Si sigue pendiente, retoma el trabajo donde se dejó.
 
-Lee el ticket completo en Jira: título, descripción, comentarios y adjuntos. Si no tiene información suficiente para entender qué falla o qué se pide, para. Explica qué falta en lenguaje funcional y regístralo en `status.md`.
+Lee el ticket completo en Jira, incluidos el título, la descripción, los comentarios y los adjuntos. Si falta información para entender qué falla o qué se pide, detente. Explica en lenguaje funcional qué falta y regístralo en `status.md`.
 
 ## Fase B: Definir el alcance
 
 Ejecuta la skill triad-forge con `01-scope/` como carpeta de trabajo.
 
-El objetivo es decidir qué hay que investigar. Bajo ningún concepto se busca la causa, se propone una solución o se formula una hipótesis. Eso corresponde a los pasos siguientes. El encargo lo deja claro y pide a cada candidato:
+El objetivo es decidir qué hay que investigar. En esta fase, bajo ningún concepto debes buscar la causa, proponer soluciones ni formular hipótesis. Eso corresponde a los pasos siguientes. Deja este límite claro en el encargo. Cada candidato debe:
 
-- Explorar lo justo para saber dónde mirar, en las fuentes que el ticket necesite: código, esquema de la base de datos, logs, documentación u otras. La exploración orienta la investigación; no explica qué ocurre.
-- Identificar solo el contexto que la investigación vaya a necesitar, por ejemplo cliente, pod, base de datos, entorno o versión. Se obtiene del ticket o, si no aparece, del código u otras fuentes. Si hace falta y no se puede identificar, se anota en `open-items.md`.
-- Definir las líneas de investigación que el ticket necesita, ni más ni menos. Por ejemplo:
-  - `code`: en caso de que haya que investigar el código implicado.
-  - `data-map`: en caso de que haya que investigar la base de datos.
-  - `logs`: en caso de que sea necesario revisar logs.
-  - `research`: qué dice una normativa, un formato oficial o la API de un tercero.
-  - cualquiero otro tipo de investigación relevante para el ticket.
-- Para cada línea de investigación, fijar la pregunta que debe responder, el motivo, qué queda fuera y los puntos de partida conocidos: ficheros, tablas, registros, documentos u otros.
+- Explorar solo lo necesario para saber dónde investigar. Las fuentes dependen del ticket y pueden incluir código, esquema de la base de datos, logs, documentación u otras. Esta exploración orienta la investigación; no explica qué ocurre.
+- Identificar solo el contexto necesario para investigar, como el cliente, el pod, la base de datos, el entorno o la versión. Buscarlo primero en el ticket y, si no aparece, en el código u otras fuentes. Si algún dato necesario no puede identificarse, anotarlo en `open-items.md`.
+- Definir solo las líneas de investigación necesarias para el ticket. Por ejemplo:
+  - `code`: si hay que investigar el código implicado.
+  - `data-map`: si hay que investigar la base de datos.
+  - `logs`: si hay que revisar logs.
+  - `research`: si hay que consultar una normativa, un formato oficial o la API de un tercero.
+  - cualquier otra línea de investigación relevante para el ticket.
+- Para cada línea de investigación, indicar qué pregunta debe responder, por qué es necesaria, qué queda fuera y los puntos de partida conocidos: archivos, tablas, registros, documentos u otros.
 
 `result.md` tiene dos partes:
 
-1. Explicación funcional, para alguien sin contexto: qué pide el ticket, qué se va a investigar y por qué, y qué queda fuera. Debes utilizar las skills que se mencionan en las reglas.
-2. Detalle técnico: el contexto identificado, lo que encontró la exploración y un encargo por línea de investigación, que es lo que recibe `at2h-investigate`. Incluye solo lo que aplica al ticket.
+- Explicación funcional para alguien sin contexto: qué pide el ticket, qué se va a investigar, por qué y qué queda fuera. Aplica las skills indicadas en las reglas.
+- Detalle técnico: el contexto identificado, los resultados de la exploración y un encargo por cada línea de investigación. `at2h-investigate` recibe esos encargos. Incluye solo lo que corresponda al ticket.
 
-Ambas partes separan hechos de suposiciones.
+En ambas partes, distingue los hechos de las suposiciones.
 
 ## Fase C: Confirmar
 
-Muestra la explicación funcional de `result.md` a la persona que ejecuta la skill. Pregúntale si lo que se va a investigar responde a lo que pide el ticket. Espera su respuesta.
+Muestra la explicación funcional de `result.md` a la persona que debe confirmar el alcance. Pregúntale si la investigación prevista responde a lo que pide el ticket. Espera su respuesta.
 
-Si pide ajustes que cambian las líneas de investigación, vuelve a la Fase B con esos ajustes. Si solo afectan a la redacción, corrige `result.md`.
+Si pide ajustes que cambian las líneas de investigación, vuelve a la Fase B e incorpóralos. Si los cambios solo afectan a la redacción, corrige `result.md`.
 
-Cuando confirme, registra en `status.md` que el alcance está confirmado y añade cada línea de investigación como pendiente.
+Cuando confirme el alcance, regístralo en `status.md` y añade cada línea de investigación como pendiente.
 
 ## Salidas
 
