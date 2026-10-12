@@ -57,6 +57,9 @@ Auditor externo de dna-harvest: revisa borrador y consolidación de una captura 
 **[dna-harvest](skills/engineering/dna-harvest/)**
 Crea o actualiza el conocimiento de un área en DNA mediante investigación del código y entrevista al experto
 
+**[freematica-pods-access](skills/engineering/freematica-pods-access/)**
+Connect to Freematica pods over SSH and to their SQL servers through local tunnels, read-only
+
 **[git-operations](skills/engineering/git-operations/)**
 Rules for local git: commit strategy, write-op confirmation, message format
 
