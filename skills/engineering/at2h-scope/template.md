@@ -1,16 +1,16 @@
 # Alcance de FREEMA-1234
 
-Este ejemplo ficticio muestra la estructura de `01-scope/result.md` cuando hace falta investigar fuera del sistema. Si no hace falta, conserva las dos partes y explica el motivo en el detalle técnico, sin añadir encargos. Si hay varios temas, añade un bloque técnico por cada uno.
+Este ejemplo ficticio muestra la estructura de `01-scope/result.md` cuando hace falta investigar fuera del sistema. Si no hace falta, explica el motivo en `Qué hay que investigar` e indica en `Encargos de investigación` que no hay encargos. Si hay varios temas, incluye una viñeta y un encargo por cada uno, en el mismo orden.
 
-## Explicación funcional
-
-### Qué pide el ticket
+## Qué pide el ticket
 
 Según el ticket, un empleado de Seguriber trabajó varias noches en marzo de 2026. El plus de nocturnidad no aparece en la nómina de ese mes, aunque sí se le pagó en febrero de 2026. La consultora pide averiguar por qué y corregir el problema.
 
-### ¿Hace falta investigar fuera del sistema?
+## Qué hay que investigar
 
-Sí. Hay que consultar el convenio colectivo aplicable para saber qué horas considera nocturnas y cómo se calcula el plus. El ticket no identifica ese convenio, así que hay que confirmarlo. Sus reglas servirán después para comprobar el cálculo de la nómina.
+Antes de analizar el código, hay que investigar este tema fuera del sistema:
+
+- **Convenio colectivo:** una vez confirmado cuál se aplica al empleado, averiguar qué horas considera nocturnas y cómo se calcula el plus. Esas reglas servirán después para comprobar el cálculo de la nómina.
 
 **Sabemos**
 
@@ -21,7 +21,7 @@ Sí. Hay que consultar el convenio colectivo aplicable para saber qué horas con
 
 - Se le aplica el convenio estatal de seguridad privada, pero el ticket no lo confirma. Esta duda queda anotada en `open-items.md`.
 
-## Detalle técnico
+## Encargos de investigación
 
 ### `collective-agreements`
 

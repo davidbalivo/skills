@@ -31,7 +31,7 @@ at2h/{ticket}/
 - `status.md`: el historial de pasos del ticket. Ver [Status](#status).
 - `open-items.md`: las cuestiones que quedan por investigar o aclarar para resolver el ticket. Cada entrada lleva un identificador `OI-n` e indica en qué paso se abrió, qué falta, por qué importa y su estado: `abierta`, `en curso`, `resuelta` o `descartada`.
 - `out-of-scope.md`: hallazgos críticos ajenos al ticket. Cada entrada lleva un identificador `OOS-n` e indica en qué paso se detectó, qué ocurre, a quién afecta, la evidencia y por qué es crítico.
-- `01-scope/result.md`: la decisión tomada en este paso.
+- `01-scope/result.md`: la decisión y, si hace falta investigar, la lista de temas y sus encargos.
 
 ## Status
 
@@ -82,18 +82,19 @@ Si hace falta investigar un tema que no aparece en la tabla, asígnale un nombre
 
 Para cada tema, indica qué pregunta debe responder la investigación, por qué importa para formular la hipótesis, qué queda fuera y los puntos de partida conocidos.
 
-`result.md` debe tener dos partes:
+`result.md` debe tener tres secciones, en este orden:
 
-- Una explicación funcional para alguien sin contexto: qué pide el ticket, si hace falta investigar algo fuera del sistema y por qué. Aplica las skills indicadas en las reglas.
-- El detalle técnico: un encargo por tema, o el motivo por el que no hace falta ninguno.
+- `Qué pide el ticket`: resume el problema o la petición en lenguaje funcional sencillo para alguien sin contexto. Aplica las skills indicadas en las reglas.
+- `Qué hay que investigar`: indica claramente si hace falta investigar algo fuera del sistema antes de analizar el código. Si hace falta, enumera los temas en viñetas: una por tema, con lo que hay que averiguar y por qué. Si no hace falta, explica el motivo. Usa nombres comprensibles para alguien que no conoce el código. Después, separa los hechos de las suposiciones con los rótulos **Sabemos** y **Suponemos**.
+- `Encargos de investigación`: desarrolla cada tema en el mismo orden que la lista anterior, con un encargo por viñeta. Si no hay temas, explica por qué no hay encargos.
 
-En ambas partes, distingue los hechos de las suposiciones.
+Distingue los hechos de las suposiciones en todo el documento. No incluyas encargos para temas que no aparezcan en `Qué hay que investigar`.
 
 `result.md` sigue la estructura de [`template.md`](template.md). Su contenido es ficticio: no copies datos, nombres de ficheros ni tablas.
 
 ## Fase C: Confirmar
 
-Muestra la explicación funcional de `result.md` a la persona que debe confirmar. Pregúntale si la decisión responde a lo que pide el ticket. Espera su respuesta.
+Muestra las secciones `Qué pide el ticket` y `Qué hay que investigar` de `result.md`. Pregunta si confirma los temas propuestos o, si no hay ninguno, la decisión de no investigar fuera del sistema. Espera su respuesta.
 
 Si pide ajustes, corrige `result.md` y vuelve a preguntar.
 
