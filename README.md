@@ -51,6 +51,9 @@ Registra las cuestiones pendientes de un ticket AT2H y permite seguir su estado
 **[at2h-out-of-scope](skills/engineering/at2h-out-of-scope/)**
 Registra los hallazgos críticos fuera de scope de un ticket AT2H que aparecen durante el trabajo
 
+**[at2h-research](skills/engineering/at2h-research/)**
+Segundo paso de AT2H: investiga los temas fuera del sistema que pide el alcance, con triad-forge si son normativos
+
 **[at2h-scope](skills/engineering/at2h-scope/)**
 Primer paso de AT2H: decide si hace falta investigar algo fuera del sistema antes de analizar el código
 
