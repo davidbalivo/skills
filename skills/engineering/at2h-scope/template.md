@@ -23,7 +23,7 @@ Sí. Hay que consultar el convenio colectivo aplicable para saber qué horas con
 
 ## Detalle técnico
 
-### `agreement`
+### `collective-agreements`
 
 - **Normativo:** sí.
 - **Pregunta:** según el convenio aplicable en marzo de 2026, ¿qué horas son nocturnas y cómo se calcula el plus?

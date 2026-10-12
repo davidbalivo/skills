@@ -38,15 +38,15 @@ at2h/{ticket}/
 `status.md` es una tabla a la que solo se añaden filas. Nunca edites ni borres filas anteriores. La última fila muestra el evento más reciente; hay un paso en curso solo si ese evento es `start`.
 
 ```md
-| Date             | Step                  | Event   | Note                        |
-| ---------------- | --------------------- | ------- | --------------------------- |
-| 2026-10-11 10:02 | 01-scope              | start   |                             |
-| 2026-10-11 10:45 | 01-scope              | done    |                             |
-| 2026-10-11 11:00 | 02-research/agreement | start   |                             |
-| 2026-10-11 11:52 | 02-research/agreement | stopped | No se encuentra el convenio |
+| Date             | Step                              | Event   | Note                        |
+| ---------------- | --------------------------------- | ------- | --------------------------- |
+| 2026-10-11 10:02 | 01-scope                          | start   |                             |
+| 2026-10-11 10:45 | 01-scope                          | done    |                             |
+| 2026-10-11 11:00 | 02-research/collective-agreements | start   |                             |
+| 2026-10-11 11:52 | 02-research/collective-agreements | stopped | No se encuentra el convenio |
 ```
 
-- `Step`: la carpeta del paso, por ejemplo `01-scope` o `02-research/agreement`.
+- `Step`: la carpeta del paso, por ejemplo `01-scope` o `02-research/collective-agreements`.
 - `Event`: solo `start`, `stopped` o `done`.
 - `Note`: el motivo de `stopped`; se deja vacío en `start` y `done`.
 
@@ -66,17 +66,17 @@ Lee el ticket completo en Jira, incluidos el título, la descripción, los comen
 
 ## Fase B: Decidir
 
-Decide si, antes de investigar el código, la base de datos y los logs, hace falta investigar algo fuera del sistema. Si el ticket no basta para decidirlo, revisa superficialmente el código afectado solo para determinar si hace falta esa investigación externa. Durante esta revisión, no busques la causa del problema, no formules hipótesis y no busques ni propongas soluciones.
+Decide si, antes de investigar el código, la base de datos y los logs, hace falta investigar algo fuera del sistema. Si el ticket no basta para decidirlo, encarga a un agente con Claude Opus 5.5 una lectura superficial del código afectado. Su tarea es únicamente comprobar si hace falta investigar algo fuera del sistema e indicar qué ha consultado para llegar a esa conclusión. No debe profundizar en el código, buscar la causa del problema, formular hipótesis ni buscar o proponer soluciones. Usa su respuesta solo para decidir qué investigación externa hace falta.
 
 Temas habituales:
 
-| Tema                                                            | Carpeta       | Normativo |
-| --------------------------------------------------------------- | ------------- | --------- |
-| Normativa legal, fiscal o laboral                               | `regulation`  | Sí        |
-| Convenios colectivos                                            | `agreement`   | Sí        |
-| Formatos oficiales: AEAT, Seguridad Social, SEPA                | `formats`     | Sí        |
-| APIs y servicios de terceros                                    | `third-party` | No        |
-| Documentación interna: Confluence, manuales, tickets anteriores | `internal`    | No        |
+| Tema                                                            | Carpeta                 | Normativo |
+| --------------------------------------------------------------- | ----------------------- | --------- |
+| Normativa legal, fiscal o laboral                               | `regulation`            | Sí        |
+| Convenios colectivos                                            | `collective-agreements` | Sí        |
+| Formatos oficiales: AEAT, Seguridad Social, SEPA                | `official-formats`      | Sí        |
+| APIs y servicios de terceros                                    | `third-party-services`  | No        |
+| Documentación interna: Confluence, manuales, tickets anteriores | `internal-docs`         | No        |
 
 Si hace falta investigar un tema que no aparece en la tabla, asígnale un nombre corto en inglés e indica si es normativo.
 
