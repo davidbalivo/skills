@@ -66,7 +66,9 @@ Lee el ticket completo en Jira, incluidos el título, la descripción, los comen
 
 ## Fase B: Decidir
 
-Decide si, antes de investigar el código, la base de datos y los logs, hace falta investigar algo fuera del sistema. Si el ticket no basta para decidirlo, encarga a un agente con Claude Opus 5.5 una lectura superficial del código afectado. Su tarea es únicamente comprobar si hace falta investigar algo fuera del sistema e indicar qué ha consultado para llegar a esa conclusión. No debe profundizar en el código, buscar la causa del problema, formular hipótesis ni buscar o proponer soluciones. Usa su respuesta solo para decidir qué investigación externa hace falta.
+Decide si, antes de investigar el código, la base de datos y los logs, hace falta investigar algo fuera del sistema. Abre un encargo solo si falta una respuesta externa concreta para poder formular después la hipótesis. Que un tema esté relacionado con el ticket no basta.
+
+Si el ticket no basta para decidirlo, encarga a un agente con Claude Opus 5.5 una lectura superficial del código afectado. Su tarea es únicamente comprobar si hace falta investigar algo fuera del sistema e indicar qué ha consultado para llegar a esa conclusión. No debe profundizar en el código, buscar la causa del problema, formular hipótesis ni buscar o proponer soluciones. Usa su respuesta solo para decidir qué investigación externa hace falta.
 
 Temas habituales:
 
@@ -106,8 +108,8 @@ Cuando confirme:
 
 Indica el siguiente paso:
 
-- `at2h-research` si hay temas que investigar.
-- `at2h-hypothesis` si no hay ninguno.
+- `at2h-research` si hay temas que investigar fuera del sistema.
+- `at2h-hypothesis` si se puede pasar directamente a investigar el código, sin investigación externa.
 
 ## Salidas
 
