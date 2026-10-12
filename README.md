@@ -45,8 +45,17 @@ Translate English or create and edit Spanish-language artifacts while preserving
 
 ### Engineering
 
+**[at2h-open-items](skills/engineering/at2h-open-items/)**
+Registra las cuestiones pendientes de un ticket AT2H y permite seguir su estado
+
+**[at2h-out-of-scope](skills/engineering/at2h-out-of-scope/)**
+Registra los hallazgos críticos fuera de scope de un ticket AT2H que aparecen durante el trabajo
+
 **[at2h-scope](skills/engineering/at2h-scope/)**
 Primer paso de AT2H: decide si hace falta investigar algo fuera del sistema antes de analizar el código
+
+**[at2h-status](skills/engineering/at2h-status/)**
+Registra el inicio, la finalización y las interrupciones de cada paso AT2H
 
 **[audit-ts-code](skills/engineering/audit-ts-code/)**
 Adversarial code quality auditor: reviews TypeScript changes across seven pillars before acceptance
