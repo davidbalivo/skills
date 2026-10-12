@@ -1,6 +1,6 @@
-# Carpetas por tema
+# Directorios por tema
 
-| Tema                      | Carpeta                 |
+| Tema                      | Directorio              |
 | ------------------------- | ----------------------- |
 | Código                    | `code`                  |
 | Datos y configuración     | `data-map`              |

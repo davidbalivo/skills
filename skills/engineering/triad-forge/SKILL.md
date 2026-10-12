@@ -7,16 +7,16 @@ description: "Use this skill on-demand, when explicitly invoked. Do not auto-tri
 
 Lanza 3 agentes en paralelo sobre la misma tarea. Lee cada candidato de principio a fin. Elige el más fuerte como base. Integra en él las mejores ideas de los demás. Verifica el resultado sintetizado.
 
-## Carpeta de trabajo
+## Directorio de trabajo
 
-Trabaja en la carpeta indicada como parámetro. Si no la recibe, crea una carpeta para la tarea en el directorio temporal del repositorio. Si ese directorio no existe, créalo.
+Trabaja en el directorio indicado como parámetro. Si no recibes uno, créalo para la tarea dentro del directorio temporal del repositorio. Crea también este último si no existe.
 
-El parámetro puede indicar la ruta completa de la carpeta de trabajo o solo la de su carpeta padre. Si solo se indica la carpeta padre, o no se indica ninguna ruta, usa el nombre que corresponda de la [tabla de carpetas por tema](folder-names.md). Si varias categorías encajan, elige la más específica.
+El parámetro puede indicar la ruta completa del directorio de trabajo o solo la de su directorio padre. Si solo se indica el directorio padre, o no se indica ninguna ruta, usa el nombre que corresponda de la [tabla de directorios por tema](folder-names.md). Si varias categorías encajan, elige la más específica.
 
 Si se indica otro nombre, úsalo. Si el tema no aparece en la tabla, usa un nombre corto en inglés con formato `kebab-case`.
 
 ```text
-{carpeta}/
+{directorio}/
 ├── assignment.md
 ├── criteria.md
 ├── candidate-a/
@@ -88,9 +88,9 @@ Si encuentras un problema, corrige la causa y vuelve a comprobar el resultado. R
 
 ## Salidas
 
-Escribe ahora `criteria.md` con los criterios de evaluación de la Fase A. Entrega `result.md`, `synthesis.md` y `criteria.md` en la carpeta de trabajo. `synthesis.md` debe incluir:
+Escribe ahora `criteria.md` con los criterios de evaluación de la Fase A. Entrega `result.md`, `synthesis.md` y `criteria.md` en el directorio de trabajo. `synthesis.md` debe incluir:
 
-- Una tabla con cada rol, su carpeta y el ID exacto del modelo que usó, con el nivel de esfuerzo si no es el predeterminado.
+- Una tabla con cada rol, su directorio y el ID exacto del modelo que usó, con el nivel de esfuerzo si no es el predeterminado.
 - Qué propuesta elegiste como base y por qué, y qué recomendó el revisor.
 - Qué aportaciones integraste y de qué propuesta proceden; cuáles descartaste y por qué.
 - Si algún agente no entregó su propuesta o si las propuestas coincidieron en lo esencial.
