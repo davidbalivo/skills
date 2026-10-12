@@ -13,7 +13,7 @@ Da por hecho que la persona que debe confirmar la decisión no conoce el código
 
 - En este paso no busques causas, no formules hipótesis ni propongas soluciones. Limítate a decidir qué hace falta investigar fuera del sistema.
 - Al redactar explicaciones funcionales, aplica la skill `unslop` si está instalada. Si escribes en español, aplica también `spanish-artifacts` si está instalada.
-- Anota en `out-of-scope.md` los hallazgos críticos ajenos al ticket, sin investigarlos ni corregirlos. Se consideran críticos los que puedan causar pérdida o corrupción de datos, importes o nóminas incorrectos, incumplimiento legal o fiscal, o un fallo de seguridad.
+- Si durante este paso detectas de forma incidental un problema ajeno al ticket con indicios concretos de impacto grave, anótalo en `out-of-scope.md`. No lo investigues ni lo corrijas.
 
 ## Carpeta del ticket
 
@@ -29,7 +29,7 @@ at2h/{ticket}/
 ```
 
 - `status.md`: el historial de pasos del ticket. Ver [Status](#status).
-- `open-items.md`: las cuestiones que quedan por investigar o aclarar para resolver el ticket. Cada entrada lleva un identificador `OI-n` e indica en qué paso se abrió, qué falta, por qué importa y su estado: `abierta`, `en curso`, `resuelta` o `descartada`.
+- `open-items.md`: el registro de cuestiones que hay que investigar o aclarar para resolver el ticket. Tras el título, incluye una tabla con `ID`, `Asunto` y `Estado`. Cada ID `OI-n` enlaza con su sección de detalle, que indica en qué paso se abrió, qué falta y por qué importa. Usa `abierta`, `en curso`, `resuelta` o `descartada` como estado y actualízalo solo en la tabla.
 - `out-of-scope.md`: hallazgos críticos ajenos al ticket. Cada entrada lleva un identificador `OOS-n` e indica en qué paso se detectó, qué ocurre, a quién afecta, la evidencia y por qué es crítico.
 - `01-scope/result.md`: la decisión y, si hace falta investigar, la lista de temas y sus encargos.
 
