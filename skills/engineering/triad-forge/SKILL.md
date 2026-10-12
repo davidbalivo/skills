@@ -11,18 +11,9 @@ Lanza 3 agentes en paralelo sobre la misma tarea. Lee cada candidato de principi
 
 Trabaja en la carpeta indicada como parámetro. Si no la recibe, crea una carpeta para la tarea en el directorio temporal del repositorio. Si ese directorio no existe, créalo.
 
-El parámetro puede indicar la ruta completa de la carpeta de trabajo o solo la de su carpeta padre. Si solo se indica la carpeta padre, o no se indica ninguna ruta, usa el nombre predeterminado que corresponda al tema de la tarea:
+El parámetro puede indicar la ruta completa de la carpeta de trabajo o solo la de su carpeta padre. Si solo se indica la carpeta padre, o no se indica ninguna ruta, usa el nombre que corresponda de la [tabla de carpetas por tema](folder-names.md). Si varias categorías encajan, elige la más específica.
 
-| Tema                     | Carpeta         |
-| ------------------------ | --------------- |
-| Código                   | `code`          |
-| Datos y configuración    | `data-map`      |
-| Normativa y APIs externas | `research`      |
-| Paridad legacy           | `legacy-parity` |
-| Historial                | `history`       |
-| Logs y errores           | `logs`          |
-
-Si se indica otro nombre, úsalo. Si el tema no encaja en ninguna de estas categorías, usa un nombre corto en inglés con formato `kebab-case`.
+Si se indica otro nombre, úsalo. Si el tema no aparece en la tabla, usa un nombre corto en inglés con formato `kebab-case`.
 
 ```text
 {carpeta}/
